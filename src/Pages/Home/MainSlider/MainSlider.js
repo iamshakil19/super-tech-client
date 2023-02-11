@@ -16,7 +16,7 @@ const MainSlider = () => {
       showIndicators={true}
       emulateTouch={true}
     >
-      <div>
+      <div className="">
         <img
           className="h-96 lg:h-[500px] object-cover"
           src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600"

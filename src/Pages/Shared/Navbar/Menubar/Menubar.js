@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../../../Assets/logo.png";
+import logo from "../../../../Assets/Others/logo.png";
 import { Link } from "react-router-dom";
 import NavLinks from "../NavLinks/NavLinks";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -20,14 +20,14 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
             <div>
               <AiOutlineSearch
                 onClick={() => setSearchOpen(true)}
-                className="text-2xl mr-5"
+                className="text-2xl mr-5 text-slate-600 cursor-pointer"
               />
             </div>
 
             <div className="pr-2 mt-2 mr-5 z-0">
               <div className="indicator">
                 <span className="cursor-pointer">
-                  <BsCart3 className="text-xl" />
+                  <BsCart3 className="text-xl text-slate-600" />
                 </span>
                 <span className="badge badge-xs indicator-item bg-red-500 border-0 text-white">
                   8
@@ -38,15 +38,15 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
               onClick={() => setOpen(true)}
               className="text-2xl transition-all duration-100 md:hidden"
             >
-              <RxHamburgerMenu />
+              <RxHamburgerMenu className="cursor-pointer"/>
             </div>
           </div>
         </div>
 
-        <div className="">
+        <div className="z-20">
           <ul className="md:flex hidden uppercase items-center poppins-font">
             <li>
-              <Link to="/" className="py-5 px-4 inline-block text-md">
+              <Link to="/" className="py-3 px-4 inline-block text-md text-slate-600">
                 Home
               </Link>
             </li>
@@ -63,18 +63,18 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           <li className="pr-8 mt-4 pb-3">
             <MdClose
               onClick={() => setOpen(false)}
-              className="float-right text-2xl"
+              className="float-right text-2xl cursor-pointer"
             />
           </li>
           <li>
-            <Link to="/" className="py-4 px-3 inline-block text-md">
+            <Link to="/" className="py-4 px-4 inline-block text-md">
               Home
             </Link>
           </li>
           <div className="border-b border-gray-200 mr-4"></div>
           <NavLinks />
           <li>
-            <Link to="/login" className="py-4 px-3 inline-block text-md">
+            <Link to="/login" className="py-4 px-4 inline-block text-md text-slate-600">
               Login
             </Link>
           </li>

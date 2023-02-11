@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../../Assets/logo.png";
+import logo from "../../../../Assets/Others/logo.png";
 import { FaSearch } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 import { TfiUser } from "react-icons/tfi";
@@ -15,14 +15,14 @@ const Topbar = ({setSearchOpen}) => {
           <span className="flex items-center poppins-font mb-2">
             {" "}
             <MdCall className="text-xl mr-3" />
-            <span className="text-sm hover:text-red-500 cursor-pointer">
+            <span className="text-sm hover:text-red-500 cursor-pointer text-slate-600">
               01716-926040
             </span>{" "}
           </span>
           <span className="flex items-center poppins-font">
             {" "}
             <MdEmail className="text-xl mr-3" />{" "}
-            <span className="text-sm hover:text-red-500 cursor-pointer">
+            <span className="text-sm hover:text-red-500 cursor-pointer text-slate-600">
               super.tech767@gmail.com
             </span>{" "}
           </span>
@@ -35,13 +35,13 @@ const Topbar = ({setSearchOpen}) => {
         <div className="flex items-center justify-end">
           <div>
             <span>
-              <AiOutlineSearch onClick={() => setSearchOpen(true)} className="text-3xl cursor-pointer" />
+              <AiOutlineSearch onClick={() => setSearchOpen(true)} className="text-3xl cursor-pointer text-slate-600" />
             </span>
           </div>
           <div className="pl-7 pr-2 mt-2">
             <div className="indicator">
               <span className="cursor-pointer">
-                <BsCart3 className="text-2xl" />
+                <BsCart3 className="text-2xl text-slate-600" />
               </span>
               <span className="badge badge-sm indicator-item bg-red-500 border-0 text-white">
                 8

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import Menubar from "./Menubar/Menubar";
 import "./Navbar.css";
 import Topbar from "./Topbar/Topbar";
