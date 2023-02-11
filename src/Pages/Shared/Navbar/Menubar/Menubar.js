@@ -6,10 +6,9 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
 import { BsCart3 } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
-const Menubar = () => {
+
+const Menubar = ({ setSearchOpen, searchOpen }) => {
   const [open, setOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  console.log(searchOpen);
 
   return (
     <div className="bg-white">
@@ -44,19 +43,20 @@ const Menubar = () => {
           </div>
         </div>
 
-        <ul className="md:flex hidden uppercase items-center gap-3 poppins-font">
-          <li>
-            <Link to="/" className="py-4 px-2 inline-block text-sm">
-              Home
-            </Link>
-          </li>
-          <NavLinks />
-        </ul>
-
+        <div className="">
+          <ul className="md:flex hidden uppercase items-center poppins-font">
+            <li>
+              <Link to="/" className="py-5 px-4 inline-block text-md">
+                Home
+              </Link>
+            </li>
+            <NavLinks />
+          </ul>
+        </div>
         {/*========== Mobile Navbar ============*/}
         <ul
           className={`
-        md:hidden bg-white absolute w-full h-full bottom-0 py-2 pl-4 duration-500 ${
+        md:hidden bg-white absolute w-full h-full bottom-0 py-2 pl-4 duration-500 z-50 ${
           open ? "left-0" : "left-[-100%]"
         }`}
         >
@@ -83,11 +83,13 @@ const Menubar = () => {
       </div>
 
       {/* Mobile Searchbar */}
-      <div className="md:hidden">
+      <div
+        className={`absolute w-full top-0 left-0 duration-300 ease-in-out z-50 shadow-2xl bg-white ${
+          searchOpen ? "top-0" : "top-[-100%]"
+        }`}
+      >
         <div
-          className={`absolute w-full top-0 left-0 duration-500 ease-in-out ${
-            searchOpen ? "top-0" : "top-[-100%]"
-          } flex justify-between items-center py-7 bg-white shadow-2xl`}
+          className={`container flex justify-between items-center py-5 md:py-7 mx-auto`}
         >
           <div className="flex items-center">
             <span>
@@ -106,7 +108,7 @@ const Menubar = () => {
           <span>
             <MdClose
               onClick={() => setSearchOpen(false)}
-              className="text-2xl mr-3"
+              className="text-2xl mr-3 cursor-pointer"
             />
           </span>
         </div>

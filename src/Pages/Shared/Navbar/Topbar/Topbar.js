@@ -5,47 +5,39 @@ import { BsCart3 } from "react-icons/bs";
 import { TfiUser } from "react-icons/tfi";
 import { MdCall, MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AiOutlineSearch } from "react-icons/ai";
 
-const Topbar = () => {
+const Topbar = ({setSearchOpen}) => {
   return (
     <div className="md:block hidden">
-      <div className="flex justify-between items-center">
-        <div className="hidden lg:block">
+      <div className="grid grid-cols-2 md:grid-cols-3 ">
+        <div className="hidden md:block">
           <span className="flex items-center poppins-font mb-2">
             {" "}
             <MdCall className="text-xl mr-3" />
-            <span className="text-sm hover:text-red-500">01716-926040</span>{" "}
+            <span className="text-sm hover:text-red-500 cursor-pointer">
+              01716-926040
+            </span>{" "}
           </span>
           <span className="flex items-center poppins-font">
             {" "}
             <MdEmail className="text-xl mr-3" />{" "}
-            <span className="text-sm hover:text-red-500" >super.tech767@gmail.com</span>{" "}
+            <span className="text-sm hover:text-red-500 cursor-pointer">
+              super.tech767@gmail.com
+            </span>{" "}
           </span>
         </div>
 
         <div className="">
-          <img className="w-32" src={logo} alt="" />
+          <img className="w-32 mx-auto" src={logo} alt="" />
         </div>
 
-        <div className="flex items-center">
-          <div className="">
-            <form action="" className="search-bar border border-gray-400">
-              <input
-                autoComplete="off"
-                type="text"
-                placeholder="Search here"
-                name=""
-                className="bg-slate-800 poppins-font"
-              />
-              <button disabled type="">
-                <span className="search-icon cursor-pointer">
-                  {" "}
-                  <FaSearch />{" "}
-                </span>
-              </button>
-            </form>
+        <div className="flex items-center justify-end">
+          <div>
+            <span>
+              <AiOutlineSearch onClick={() => setSearchOpen(true)} className="text-3xl cursor-pointer" />
+            </span>
           </div>
-
           <div className="pl-7 pr-2 mt-2">
             <div className="indicator">
               <span className="cursor-pointer">

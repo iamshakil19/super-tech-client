@@ -1,9 +1,10 @@
 import React from 'react';
+import MainSlider from '../MainSlider/MainSlider';
 
 const Home = () => {
     return (
-        <div className='mt-10'>
-            <h1>This is home</h1>
+        <div className=''>
+            <MainSlider/>
         </div>
     );
 };

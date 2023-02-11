@@ -12,7 +12,7 @@ const NavLinks = () => {
         <div>
           <div className="px-2 lg:px-4 text-le md:cursor-pointer group">
             <h1
-              className="py-4 flex items-center justify-between md:pr-0 pr-5 text-md px-1 whitespace-nowrap"
+              className="py-4 flex items-center justify-between md:pr-0 pr-5 text-md px-2 whitespace-nowrap"
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
@@ -31,11 +31,10 @@ const NavLinks = () => {
             </h1>
             {link.submenu && (
               <div>
-                <div className="absolute top-36 hidden group-hover:md:block hover:md:block ">
+                <div className="absolute z-50 inset-x-0 container mx-auto content-center top-36 hidden group-hover:md:block hover:md:block duration-500 ease-in-out px-5">
                   <div className="py-3">
-                    <div className="w-4 h-4 left-3 absolute mt-1 bg-white rotate-45"></div>
                   </div>
-                  <div className="bg-white p-5 grid grid-cols-3 gap-10 shadow-xl rounded-lg">
+                  <div className=" bg-white p-5 grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 shadow-xl rounded-md">
                     {link.subLinks?.map((mySubLink) => (
                       <div>
                         <h1 className="text-sm font-semibold md:pr-0 pr-5">
@@ -45,7 +44,7 @@ const NavLinks = () => {
                           <li className="text-sm text-gray-600 my-2.5">
                             <Link
                               to={sLink.link}
-                              className="hover:text-blue-400"
+                              className="hover:text-red-400"
                             >
                               {sLink.name}
                             </Link>
@@ -106,7 +105,7 @@ const NavLinks = () => {
               </div>
             ))}
           </div>
-          <div className="border-b border-gray-200 mr-4"></div>
+          <div className="border-b border-gray-200 mr-4 md:hidden"></div>
         </div>
       ))}
     </>
