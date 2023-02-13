@@ -1,50 +1,45 @@
 import React from "react";
-
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import PopularSlider from "./ProductSlider/PopularSlider";
-import RecentSlider from "./ProductSlider/RecentSlider";
+import PopularProductSlider from "./ProductSlider/PopularProductSlider";
+import RecentProductSlider from "./ProductSlider/RecentProductSlider";
 
 const HomeProduct = () => {
   const [isSelected, setSelected] = useState(true);
-  const navigate = useNavigate();
 
   const handleRecent = () => {
     setSelected(true);
-    navigate("/");
   };
   const handlePopular = () => {
     setSelected(false);
-    navigate("/");
   };
   return (
-    <div className="container mx-auto mt-5">
-      <div>
+    <div className=" py-5 mt-5 bg-[#F2F3F8]">
+      <div className="container mx-auto">
         <section className="px-2 sm:px-0 pt-2">
           <div className="flex space-x-1 rounded-xl p-1 max-w-md mx-auto mb-4">
             <button
               onClick={handleRecent}
-              className={`w-full py-2.5 text-xl poppins-font font-semibold ${
+              className={`w-full py-2.5 text-xl poppins font-semibold ${
                 isSelected
-                  ? " text-slate-600 border-b border-gray-500"
-                  : "text-slate-600"
+                  ? " text-slate-700 border-b border-gray-500 transition-all duration-500 ease-in-out"
+                  : "text-slate-700"
               }`}
             >
               Recent
             </button>
             <button
               onClick={handlePopular}
-              className={` w-full py-2.5 poppins-font text-xl font-semibold ${
+              className={` w-full py-2.5 poppins text-xl font-semibold ${
                 !isSelected
-                  ? "text-slate-600 border-b border-gray-500"
-                  : "text-slate-600 "
+                  ? "text-slate-700 border-b border-gray-500 transition-all duration-500 ease-in-out"
+                  : "text-slate-700 "
               } `}
             >
               Popular
             </button>
           </div>
         </section>
-        {isSelected ? <RecentSlider /> : <PopularSlider />}
+        {isSelected ? <RecentProductSlider /> : <PopularProductSlider />}
       </div>
     </div>
   );

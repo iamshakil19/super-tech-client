@@ -20,14 +20,14 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
             <div>
               <AiOutlineSearch
                 onClick={() => setSearchOpen(true)}
-                className="text-2xl mr-5 text-slate-600 cursor-pointer"
+                className="text-2xl mr-5 text-slate-700 cursor-pointer"
               />
             </div>
 
             <div className="pr-2 mt-2 mr-5 z-0">
               <div className="indicator">
                 <span className="cursor-pointer">
-                  <BsCart3 className="text-xl text-slate-600" />
+                  <BsCart3 className="text-xl text-slate-700 " />
                 </span>
                 <span className="badge badge-xs indicator-item bg-red-500 border-0 text-white">
                   8
@@ -38,15 +38,18 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
               onClick={() => setOpen(true)}
               className="text-2xl transition-all duration-100 md:hidden"
             >
-              <RxHamburgerMenu className="cursor-pointer"/>
+              <RxHamburgerMenu className="cursor-pointer" />
             </div>
           </div>
         </div>
 
         <div className="z-20">
-          <ul className="md:flex hidden uppercase items-center poppins-font">
+          <ul className="md:flex hidden uppercase items-center poppins">
             <li>
-              <Link to="/" className="py-3 px-4 inline-block text-md text-slate-600">
+              <Link
+                to="/"
+                className="py-3 px-4 inline-block text-md text-slate-700 "
+              >
                 Home
               </Link>
             </li>
@@ -74,7 +77,10 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           <div className="border-b border-gray-200 mr-4"></div>
           <NavLinks />
           <li>
-            <Link to="/login" className="py-4 px-4 inline-block text-md text-slate-600">
+            <Link
+              to="/login"
+              className="py-4 px-4 inline-block text-md text-slate-700 "
+            >
               Login
             </Link>
           </li>
@@ -101,7 +107,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
                 type="text"
                 placeholder="Search here"
                 name=""
-                className=" poppins-font bg-transparent text-black outline-none text-lg h-10"
+                className=" poppins bg-transparent text-black outline-none text-lg h-10"
               />
             </form>
           </div>

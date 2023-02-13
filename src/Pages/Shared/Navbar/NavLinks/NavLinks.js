@@ -12,7 +12,7 @@ const NavLinks = () => {
         <div>
           <div className="px-2 lg:px-4 text-le md:cursor-pointer group">
             <h1
-              className="py-3 flex items-center justify-between md:pr-0 pr-5 text-md px-2 whitespace-nowrap text-slate-600"
+              className="py-3 flex items-center justify-between md:pr-0 pr-5 text-md px-2 whitespace-nowrap text-slate-700 "
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
@@ -36,7 +36,7 @@ const NavLinks = () => {
                   <div className=" bg-white p-5 grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 shadow-xl rounded-md">
                     {link.subLinks?.map((mySubLink) => (
                       <div>
-                        <h1 className="text-sm font-semibold md:pr-0 pr-5 text-slate-600">
+                        <h1 className="text-sm font-semibold md:pr-0 pr-5 text-slate-700 ">
                           {mySubLink.Head}
                         </h1>
                         {mySubLink.subLink?.map((sLink) => (
@@ -74,7 +74,7 @@ const NavLinks = () => {
                         ? setSubHeading(sLinks.Head)
                         : setSubHeading("")
                     }
-                    className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex items-center justify-between text-md text-slate-600"
+                    className="py-4 pl-7 font-semibold md:pr-0 pr-5 flex items-center justify-between text-md text-slate-700 "
                   >
                     {sLinks.Head}
                     {subHeading === sLinks.Head ? (
@@ -93,7 +93,7 @@ const NavLinks = () => {
                     }`}
                   >
                     {sLinks.subLink.map((sLink) => (
-                      <li className="py-3 pl-14 text-sm text-slate-600">
+                      <li className="py-3 pl-14 text-sm text-slate-700 ">
                         <Link to={sLink.link} className="hover:text-blue-400">
                           {sLink.name}
                         </Link>
