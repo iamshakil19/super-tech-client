@@ -6,6 +6,7 @@ import Policy from "../Policy/Policy";
 import Reviews from "../Reviews/Reviews";
 import Companies from "../Companies/Companies";
 import AboutProduct from "../AboutProduct/AboutProduct";
+import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Reviews />
       <Companies />
       <AboutProduct />
+      <WhySuperTech/>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import image from "../../../Assets/Others/chair.jpg";
 
 const AboutProduct = () => {
   return (
-    <div className="container mx-auto px-5">
+    <div className="container mx-auto px-5 mb-20">
       <div className="md:grid grid-cols-2 gap-5">
         <div>
           <img className="w-[500px] mx-auto md:float-right" src={image} alt="" />

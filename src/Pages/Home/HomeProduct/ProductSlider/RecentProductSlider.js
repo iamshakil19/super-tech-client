@@ -95,7 +95,7 @@ const RecentProductSlider = () => {
       draggable={false}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={2000}
+      autoPlaySpeed={3000}
       arrows={true}
     >
       {productData.map((product) => (
