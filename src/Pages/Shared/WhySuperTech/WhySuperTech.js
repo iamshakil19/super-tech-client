@@ -2,7 +2,7 @@ import React from "react";
 
 const WhySuperTech = () => {
   return (
-    <div className="border-t border-slate-200 pt-10">
+    <div className="border-t border-slate-200 py-14">
       <div className=" container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <div className="p-5 ">
           <img
