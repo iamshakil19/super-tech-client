@@ -28,8 +28,8 @@ const Topbar = ({ setSearchOpen }) => {
           </span>
         </div>
 
-        <div className="">
-          <img className="w-32 mx-auto" src={logo} alt="" />
+        <div className="mx-auto">
+          <Link to="/"><img className="w-32 inline-block" src={logo} alt="" /></Link>
         </div>
 
         <div className="flex items-center justify-end">
@@ -54,7 +54,7 @@ const Topbar = ({ setSearchOpen }) => {
 
           <div className="pl-7">
             <span>
-              <Link to={"/login"}>
+              <Link to={"/account"}>
                 <TfiUser className="text-2xl cursor-pointer" />
               </Link>
             </span>

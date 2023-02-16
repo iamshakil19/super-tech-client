@@ -98,7 +98,7 @@ const Footer = () => {
             <div>
               <Link
                 to={link.path}
-                className="text-white poppins hover:underline  inline-block mb-3"
+                className="text-white poppins hover:underline  inline-block mb-3 capitalize"
               >
                 {link.name}
               </Link>
@@ -112,7 +112,7 @@ const Footer = () => {
             <div>
               <Link
                 to={link.path}
-                className="text-white poppins hover:underline  inline-block mb-3"
+                className="text-white poppins hover:underline  inline-block mb-3  capitalize"
               >
                 {link.name}
               </Link>
@@ -126,7 +126,7 @@ const Footer = () => {
             <div>
               <Link
                 to={link.path}
-                className="text-white poppins hover:underline  inline-block mb-3"
+                className="text-white poppins hover:underline  inline-block mb-3 capitalize"
               >
                 {link.name}
               </Link>
@@ -134,11 +134,11 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        
       </div>
-      <p className="text-center text-white mt-20 px-5">
-          Copyright © {currentYear} - Super Tech Furniture & Interior, All rights reserved
-        </p>
+      <p className="text-center text-white mt-20 px-5 poppins">
+        Copyright © {currentYear} - Super Tech Furniture & Interior, All rights
+        reserved
+      </p>
     </div>
   );
 };

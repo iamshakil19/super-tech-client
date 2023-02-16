@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const HomeProductCard = ({ product }) => {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
 
+
   const { name, price, primaryImage, image2 } = product;
   return (
     <div className="mx-3 relative pb-16 pt-8">

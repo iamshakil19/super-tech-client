@@ -13,7 +13,6 @@ import home from "../../../Assets/Main-Category/home.png";
 import garments from "../../../Assets/Main-Category/garments.png";
 import interior from "../../../Assets/Main-Category/interior.png";
 import CategoryCard from "../../../Components/CategoryCard";
-// import CategoryCard from "../../../../Components/CategoryCard";
 
 const categoryData = [
   { image: all, name: "all collection", path: "/all-collection" },

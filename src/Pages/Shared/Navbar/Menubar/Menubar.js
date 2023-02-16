@@ -78,7 +78,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           <NavLinks />
           <li>
             <Link
-              to="/login"
+              to="/account/login"
               className="py-4 px-4 inline-block text-md text-slate-700 "
             >
               Login
