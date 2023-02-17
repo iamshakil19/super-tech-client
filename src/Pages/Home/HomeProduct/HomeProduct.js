@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import NewArrivalProductSlider from "./ProductSlider/NewArrivalProductSlider";
 import PopularProductSlider from "./ProductSlider/PopularProductSlider";
-import RecentProductSlider from "./ProductSlider/RecentProductSlider";
 
 const HomeProduct = () => {
   const [isSelected, setSelected] = useState(true);
@@ -25,7 +25,7 @@ const HomeProduct = () => {
                   : "text-slate-700"
               }`}
             >
-              Recent
+              New Arrival
             </button>
             <button
               onClick={handlePopular}
@@ -39,7 +39,7 @@ const HomeProduct = () => {
             </button>
           </div>
         </section>
-        {isSelected ? <RecentProductSlider /> : <PopularProductSlider />}
+        {isSelected ? <NewArrivalProductSlider /> : <PopularProductSlider />}
       </div>
     </div>
   );

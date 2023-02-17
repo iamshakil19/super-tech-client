@@ -70,7 +70,7 @@ const Reviews = () => {
         Don't take our word for it
       </h2>
       <Carousel
-        className=" container mx-auto"
+        className=" container mx-auto z-20"
         responsive={responsive}
         draggable={false}
         infinite={true}

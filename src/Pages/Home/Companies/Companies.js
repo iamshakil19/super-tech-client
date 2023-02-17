@@ -7,9 +7,26 @@ import ilo from "../../../Assets/Companies/ilo.jpg";
 import pwd from "../../../Assets/Companies/pwd.png";
 import who from "../../../Assets/Companies/who.png";
 import bsmrmu from "../../../Assets/Companies/bsmrmu.png";
+import bangjin from "../../../Assets/Companies/bangjin.png";
+import palmal from "../../../Assets/Companies/palmal.png";
+import green from "../../../Assets/Companies/green.png";
+import summit from "../../../Assets/Companies/summit.png";
 
 const Companies = () => {
-  const companies = [buet, bfidc, sAlomGroup, ict, ilo, pwd, who, bsmrmu];
+  const companies = [
+    buet,
+    ict,
+    bfidc,
+    pwd,
+    bsmrmu,
+    green,
+    who,
+    ilo,
+    summit,
+    sAlomGroup,
+    palmal,
+    bangjin,
+  ];
 
   return (
     <div className="mt-16 mb-24 container mx-auto">

@@ -13,8 +13,8 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
   return (
     <div className="bg-white">
       <div className="flex items-center font-medium justify-around">
-        <div className=" p-3 pl-2 md:w-auto w-full flex items-center justify-between md:hidden">
-          <img src={logo} alt="logo" className="md:cursor-pointer h-8" />
+        <div className=" p-3 pl-2 lg:w-auto w-full flex items-center justify-between lg:hidden">
+          <Link to={"/"} ><img src={logo} alt="logo" className="md:cursor-pointer h-8" /></Link>
 
           <div className="flex items-center">
             <div>
@@ -36,7 +36,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
             </div>
             <div
               onClick={() => setOpen(true)}
-              className="text-2xl transition-all duration-100 md:hidden"
+              className="text-2xl transition-all duration-100 lg:hidden"
             >
               <RxHamburgerMenu className="cursor-pointer" />
             </div>
@@ -44,22 +44,25 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
         </div>
 
         <div className="z-20">
-          <ul className="md:flex hidden uppercase items-center poppins">
+          <ul className="lg:flex lg:flex-wrap items-center hidden uppercase poppins">
             <li>
               <Link
-                to="/"
-                className="py-3 px-4 inline-block text-md text-slate-700 "
+                to="/all-collection"
+                className="py-3 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
               >
-                Home
+                All Collection
               </Link>
             </li>
             <NavLinks />
           </ul>
         </div>
+
+
+
         {/*========== Mobile Navbar ============*/}
         <ul
           className={`
-        md:hidden bg-white absolute w-full h-full bottom-0 py-2 pl-4 duration-500 z-50 ${
+        lg:hidden bg-white  w-full overflow-y-auto h-full bottom-0 py-2 pl-4 duration-500 z-50 fixed ${
           open ? "left-0" : "left-[-100%]"
         }`}
         >
@@ -70,16 +73,21 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
             />
           </li>
           <li>
-            <Link to="/" className="py-4 px-4 inline-block text-md">
-              Home
+            <Link
+            
+              to="/all-collection"
+              className="py-4 px-4 inline-block text-sm whitespace-nowrap"
+            >
+              All Collection
             </Link>
           </li>
           <div className="border-b border-gray-200 mr-4"></div>
-          <NavLinks />
+          <NavLinks setOpen={setOpen}/>
           <li>
             <Link
+            onClick={() => setOpen(false)}
               to="/account/login"
-              className="py-4 px-4 inline-block text-md text-slate-700 "
+              className="py-4 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
             >
               Login
             </Link>
@@ -88,7 +96,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
         </ul>
       </div>
 
-      {/* Mobile Searchbar */}
+      {/* Searchbar */}
       <div
         className={`absolute w-full top-0 left-0 duration-300 ease-in-out z-50 shadow-2xl bg-white ${
           searchOpen ? "top-0" : "top-[-100%]"

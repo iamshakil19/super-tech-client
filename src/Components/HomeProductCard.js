@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomeProductCard = ({ product }) => {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
+  const navigate = useNavigate();
 
-
-  const { name, price, primaryImage, image2 } = product;
+  const { _id, name, price, primaryImage, image2 } = product;
   return (
     <div className="mx-3 relative pb-16 pt-8">
       <div
@@ -14,6 +15,7 @@ const HomeProductCard = ({ product }) => {
       >
         <figure className="cursor-pointer">
           <img
+            onClick={() => navigate(`product-details/${_id}`)}
             className="w-72 px-2"
             src={primaryImage}
             alt={name}
@@ -24,7 +26,7 @@ const HomeProductCard = ({ product }) => {
           />
         </figure>
         <div className="p-5 mb-4">
-          <h2 className="card-title poppins cursor-pointer overflow-hidden whitespace-nowrap">
+          <h2 className="card-title poppins cursor-pointer overflow-hidden whitespace-nowrap" onClick={() => navigate(`product-details/${_id}`)}>
             {name}
           </h2>
           <p className="poppins mt-2">

@@ -9,7 +9,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 const Topbar = ({ setSearchOpen }) => {
   return (
-    <div className="md:block hidden">
+    <div className="lg:block hidden">
       <div className="grid grid-cols-2 md:grid-cols-3 ">
         <div className="hidden md:block">
           <span className="flex items-center poppins mb-2">

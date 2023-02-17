@@ -3,6 +3,7 @@ import Main from "../../Layout/Main/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/LoginGroup/Login/Login";
 import SignUp from "../../Pages/LoginGroup/SignUp/SignUp";
+import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
 
 const routes = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/product-details/:id",
+        element: <ProductDetails />,
       },
       {
         path: "/account/login",

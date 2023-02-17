@@ -1,645 +1,308 @@
 export const links = [
-    {
-      name: "Living",
-      submenu: true,
-      subLinks: [
-        {
-          Head: "Topwear 1",
-          subLink: [
-            {
-              name: "T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Casual Shirt",
-              link: "/",
-            },
-            {
-              name: "Formal Shirt",
-              link: "/",
-            },
-            {
-              name: "Full Sleeve T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Half Sleeve T-Shirt",
-              link: "/",
-            },
-          ],
-        },
-        {
-          Head: "Bottomwear",
-          subLink: [
-            {
-              name: "T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Casual Shirt",
-              link: "/",
-            },
-            {
-              name: "Formal Shirt",
-              link: "/",
-            },
-            {
-              name: "Full Sleeve T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Half Sleeve T-Shirt",
-              link: "/",
-            },
-          ],
-        },
-        {
-          Head: "Innerwear",
-          subLink: [
-            {
-              name: "T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Casual Shirt",
-              link: "/",
-            },
-            {
-              name: "Formal Shirt",
-              link: "/",
-            },
-            {
-              name: "Full Sleeve T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Half Sleeve T-Shirt",
-              link: "/",
-            },
-          ],
-        },
-        {
-          Head: "Sleepwear",
-          subLink: [
-            {
-              name: "T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Casual Shirt",
-              link: "/",
-            },
-            {
-              name: "Formal Shirt",
-              link: "/",
-            },
-            {
-              name: "Full Sleeve T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Half Sleeve T-Shirt",
-              link: "/",
-            },
-          ],
-        },
-        {
-          Head: "Footerwear",
-          subLink: [
-            {
-              name: "T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Casual Shirt",
-              link: "/",
-            },
-            {
-              name: "Formal Shirt",
-              link: "/",
-            },
-            {
-              name: "Full Sleeve T-Shirt",
-              link: "/",
-            },
-            {
-              name: "Half Sleeve T-Shirt",
-              link: "/",
-            },
-          ],
-        },
-      ],
-    },
-    { name: "Bedroom",submenu: true,
+  {
+    name: "Home",
+    submenu: true,
     subLinks: [
       {
-        Head: "Topwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "Bed",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "Dressing Table",
             link: "/",
           },
           {
-            name: "Formal Shirt",
+            name: "Cup Board",
             link: "/",
           },
           {
-            name: "Full Sleeve T-Shirt",
+            name: "Wardrobe",
             link: "/",
           },
           {
-            name: "Half Sleeve T-Shirt",
+            name: "Reading Table",
+            link: "/",
+          },
+          {
+            name: "TV Trolley",
+            link: "/",
+          },
+          {
+            name: "Book Shelf",
+            link: "/",
+          },
+          {
+            name: "Showcase & Corner Shelf",
+            link: "/",
+          },
+          {
+            name: "Dinner Wagon",
+            link: "/",
+          },
+          {
+            name: "Dinning Table & Chair",
+            link: "/",
+          },
+          {
+            name: "Shoe Rack",
             link: "/",
           },
         ],
       },
-      {
-        Head: "Bottomwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Innerwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Sleepwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Footerwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-    ], },
-    { name: "Dining",submenu: true,
+    ],
+  },
+  {
+    name: "Table",
+    submenu: true,
     subLinks: [
       {
-        Head: "Topwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "Director Table",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "Executive Table",
             link: "/",
           },
           {
-            name: "Formal Shirt",
+            name: "Manager Table",
             link: "/",
           },
           {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
+            name: "Computer Table",
             link: "/",
           },
         ],
       },
-      {
-        Head: "Bottomwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Innerwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Sleepwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Footerwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-    ], },
-    { name: "Kitchen",submenu: true,
+    ],
+  },
+  {
+    name: "Storage",
+    submenu: true,
     subLinks: [
       {
-        Head: "Topwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "Drawer",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "Side Cabinet",
             link: "/",
           },
           {
-            name: "Formal Shirt",
+            name: "File Cabinet",
             link: "/",
           },
           {
-            name: "Full Sleeve T-Shirt",
+            name: "Multipurpose Shelf",
             link: "/",
           },
           {
-            name: "Half Sleeve T-Shirt",
+            name: "Shoe Rack",
             link: "/",
           },
         ],
       },
-      {
-        Head: "Bottomwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Innerwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Sleepwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-      {
-        Head: "Footerwear",
-        subLink: [
-          {
-            name: "T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Casual Shirt",
-            link: "/",
-          },
-          {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
-            link: "/",
-          },
-        ],
-      },
-    ], },
-    { name: "Kid's Room",submenu: true,
+    ],
+  },
+  {
+    name: "Steel Furniture",
+    submenu: true,
     subLinks: [
       {
-        Head: "Topwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "Almirah",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "4 Drawer",
             link: "/",
           },
           {
-            name: "Formal Shirt",
+            name: "3 Drawer",
             link: "/",
           },
           {
-            name: "Full Sleeve T-Shirt",
+            name: "Drawer Cum File Cabinet",
             link: "/",
           },
           {
-            name: "Half Sleeve T-Shirt",
+            name: "Slotted Angle Rack",
+            link: "/",
+          },
+          {
+            name: "Heavy Duty Rack",
             link: "/",
           },
         ],
       },
+    ],
+  },
+  {
+    name: "Chair",
+    submenu: true,
+    subLinks: [
       {
-        Head: "Bottomwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "High Back",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "Medium Back",
             link: "/",
           },
           {
-            name: "Formal Shirt",
+            name: "Low Back",
             link: "/",
           },
           {
-            name: "Full Sleeve T-Shirt",
+            name: "Fixed/Visitor",
             link: "/",
           },
           {
-            name: "Half Sleeve T-Shirt",
+            name: "Tool",
+            link: "/",
+          },
+          {
+            name: "Auditorium Chair",
+            link: "/",
+          },
+          {
+            name: "Group Chair",
             link: "/",
           },
         ],
       },
+    ],
+  },
+  {
+    name: "Sofa",
+    submenu: true,
+    subLinks: [
       {
-        Head: "Innerwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "Sofa",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "Center Table",
             link: "/",
           },
           {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
+            name: "Divan",
             link: "/",
           },
         ],
       },
+    ],
+  },
+  {
+    name: "WorkStation",
+    submenu: true,
+    subLinks: [
       {
-        Head: "Sleepwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "Fabric",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "Metal",
             link: "/",
           },
           {
-            name: "Formal Shirt",
-            link: "/",
-          },
-          {
-            name: "Full Sleeve T-Shirt",
-            link: "/",
-          },
-          {
-            name: "Half Sleeve T-Shirt",
+            name: "Others",
             link: "/",
           },
         ],
       },
+    ],
+  },
+  {
+    name: "Garments",
+    submenu: true,
+    subLinks: [
       {
-        Head: "Footerwear",
         subLink: [
           {
-            name: "T-Shirt",
+            name: "QC Table",
             link: "/",
           },
           {
-            name: "Casual Shirt",
+            name: "Center/Cutting/Packing Table",
             link: "/",
           },
           {
-            name: "Formal Shirt",
+            name: "Input/Loading Table",
             link: "/",
           },
           {
-            name: "Full Sleeve T-Shirt",
+            name: "Tagging Poly Table",
             link: "/",
           },
           {
-            name: "Half Sleeve T-Shirt",
+            name: "Cut Part Inspection Table",
+            link: "/",
+          },
+          {
+            name: "Fabric Relaxing Multi Level Rack",
+            link: "/",
+          },
+          {
+            name: "Inspection Table",
+            link: "/",
+          },
+          {
+            name: "Measurement Table",
+            link: "/",
+          },
+          {
+            name: "Iron Table",
+            link: "/",
+          },
+          {
+            name: "Worker Chair",
             link: "/",
           },
         ],
       },
-    ], },
-  ];
+    ],
+  },
+  {
+    name: "Interior",
+    submenu: true,
+    subLinks: [
+      {
+        subLink: [
+          {
+            name: "Living",
+            link: "/",
+          },
+          {
+            name: "Kitchen",
+            link: "/",
+          },
+          {
+            name: "Office",
+            link: "/",
+          },
+          {
+            name: "Restaurant",
+            link: "/",
+          },
+          {
+            name: "Others",
+            link: "/",
+          },
+        ],
+      },
+    ],
+  },
+];

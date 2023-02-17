@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import HomeProductCard from "../../../../Components/HomeProductCard";
 const responsive = {
   superLargeDesktop: {
+    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
@@ -20,14 +21,13 @@ const responsive = {
     items: 1,
   },
 };
-
 const productData = [
   {
     _id: 1,
-    name: "GRID Lite Desk - 32 Inch",
+    name: "GRID Newon Chair",
     price: "84000",
     primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/914B38WMGUL._AC_SL1500_720x.jpg?v=1652878803",
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
     image2:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
   },
@@ -36,16 +36,16 @@ const productData = [
     name: "GRID Newon Chair",
     price: "84000",
     primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
     image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/914B38WMGUL._AC_SL1500_720x.jpg?v=1652878803",
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
   },
   {
     _id: 3,
     name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
     price: "84000",
     primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-1_1080x.webp?v=1672562358",
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
     image2:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
   },
@@ -76,33 +76,23 @@ const productData = [
     image2:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
   },
-  {
-    _id: 7,
-    name: "GRID Newon Chair",
-    price: "84000",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
 ];
-
-const RecentProductSlider = () => {
+const NewArrivalProductSlider = () => {
   return (
     <Carousel
-      className="mt-10"
+      className="mt-10 z-20"
       responsive={responsive}
       draggable={false}
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={3000}
+      autoPlaySpeed={2000}
       arrows={true}
     >
       {productData.map((product) => (
-        <HomeProductCard key={product._id} product={product} />
+        <HomeProductCard product={product} key={product._id} />
       ))}
     </Carousel>
   );
 };
 
-export default RecentProductSlider;
+export default NewArrivalProductSlider;
