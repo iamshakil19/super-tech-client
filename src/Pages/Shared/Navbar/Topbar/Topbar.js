@@ -6,6 +6,7 @@ import { TfiUser } from "react-icons/tfi";
 import { MdCall, MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
+import { HiOutlineViewGridAdd } from "react-icons/hi";
 
 const Topbar = ({ setSearchOpen }) => {
   return (
@@ -29,7 +30,7 @@ const Topbar = ({ setSearchOpen }) => {
         </div>
 
         <div className="mx-auto">
-          <Link to="/"><img className="w-32 inline-block" src={logo} alt="" /></Link>
+          <Link to="/"><img className="w-44 inline-block" src={logo} alt="" /></Link>
         </div>
 
         <div className="flex items-center justify-end">
@@ -54,8 +55,8 @@ const Topbar = ({ setSearchOpen }) => {
 
           <div className="pl-7">
             <span>
-              <Link to={"/account"}>
-                <TfiUser className="text-2xl cursor-pointer" />
+              <Link to={"/dashboard"}>
+                <HiOutlineViewGridAdd className="text-[26px] cursor-pointer text-slate-700" />
               </Link>
             </span>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../../Assets/Others/logo.png";
 import { BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { black } from "tailwindcss/colors";
 
 const footerLinks = [
   [
@@ -78,10 +79,17 @@ const Footer = () => {
     <div className="bg-black py-24">
       <div className="container mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="md:mx-auto">
-          <img className="w-32 mt-1" src={logo} alt="" />
+          <img
+            className="w-36 mt-1 bg-white py-1 px-2 rounded-sm"
+            src={logo}
+            alt=""
+          />
 
           <div className="text-3xl flex items-center text-white mt-5">
-            <Link to="#">
+            <Link
+              target={black}
+              to="https://www.facebook.com/supertechfurniture01?mibextid=ZbWKwL"
+            >
               <BsFacebook className="mr-5 cursor-pointer" />
             </Link>
             <Link to="#">

@@ -44,7 +44,7 @@ const SignUp = () => {
     }
     if (isSuccess) {
       toast.success("Signup successful", { id: "postUser" });
-      navigate("/account/login");
+      navigate("/dashboard/login");
     }
     if (isError) {
       toast.error(`${error?.data?.error.message}`, { id: "postUser" });
@@ -226,7 +226,7 @@ const SignUp = () => {
             value="Sign up"
           />
           <Link
-            to="/account/login"
+            to="/login"
             className="mt-7 block poppins cursor-pointer hover:underline"
           >
             Login

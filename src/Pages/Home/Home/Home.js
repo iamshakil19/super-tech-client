@@ -26,7 +26,7 @@ const Home = () => {
       <FeaturedCategory />
       <HomeProduct />
       <Policy />
-      <Reviews />
+      {/* <Reviews /> */}
       <Companies />
       <AboutProduct />
       <WhySuperTech />

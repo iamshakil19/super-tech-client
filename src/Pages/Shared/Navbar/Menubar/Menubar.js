@@ -54,6 +54,14 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
               </Link>
             </li>
             <NavLinks />
+            <li>
+              <Link
+                to="/login"
+                className="py-3 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
+              >
+                Login
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -86,7 +94,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           <li>
             <Link
             onClick={() => setOpen(false)}
-              to="/account/login"
+              to="/login"
               className="py-4 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
             >
               Login

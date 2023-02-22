@@ -109,7 +109,7 @@ const Login = () => {
             value="Login"
           />
           <Link
-            to="/account/signup"
+            to="/signup"
             className="mt-7 block poppins cursor-pointer hover:underline"
           >
             Create account

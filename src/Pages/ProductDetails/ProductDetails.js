@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { toast } from "react-hot-toast";
+import WhySuperTech from "../Shared/WhySuperTech/WhySuperTech";
 
 const ProductDetails = () => {
   const id = useParams();
@@ -40,8 +41,12 @@ const ProductDetails = () => {
     (Number(product.price) + Number(colorExtraPrice) + Number(sizeExtraPrice)) *
     Number(quantity);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
+
   return (
-    <div className="container mx-auto my-10 md:mt-16 min-h-screen">
+    <div className="container mx-auto my-10 md:mt-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="pb-0 md:p-5 px-5">
           <Carousel
@@ -167,13 +172,12 @@ const ProductDetails = () => {
                   ))}
                 </select>
               </form>
-              <div className="border-b border-gray-300 my-2 md:my-3 cursor-pointer"></div>
             </div>
           )}
 
           <div className="mt-5">
             <p className="font-semibold text-lg mb-3">Quantity</p>
-            <div className="flex items-center mb-5">
+            <div className="flex items-center mb-10">
               <span
                 onClick={() =>
                   setQuantity(quantity === 1 ? quantity : quantity - 1)
@@ -206,8 +210,37 @@ const ProductDetails = () => {
               </button>
             </div>
           </div>
+          <div className="border-b border-gray-300 my-2 md:my-6 cursor-pointer"></div>
+          <p className="font-semibold text-lg mb-3">Description</p>
+          <p className="text-justify">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+            itaque voluptates cupiditate commodi eos, quae repellat tenetur illo
+            velit vitae fugiat natus assumenda consequatur sed explicabo
+            provident ut inventore maiores quidem facere dignissimos nam
+            placeat? Labore, earum optio? Id, temporibus libero maiores modi
+            animi blanditiis debitis pariatur consequatur natus quae rerum
+            repudiandae ipsam corporis hic aliquam deserunt quis! Magnam
+            reprehenderit eaque adipisci. Molestiae quas quia at sunt, velit
+            modi quisquam, pariatur quae ullam vero quasi laboriosam saepe sint
+            magnam quibusdam nemo quam laudantium dolores sequi iusto.
+            Praesentium tenetur deleniti quidem deserunt iste consectetur,
+            commodi aut enim fuga accusantium. Excepturi a quas nobis, quasi
+            harum placeat illo deserunt fugiat voluptate quo eaque non
+            perspiciatis! Quidem voluptas odit maxime inventore aut labore iure
+            quas illo nostrum amet ipsam, soluta ut, recusandae ab cupiditate
+            consequuntur reiciendis reprehenderit eveniet ratione eaque? Et ex
+            natus iusto harum explicabo quaerat nisi accusantium veniam,
+            exercitationem dolores sint cupiditate sequi facilis dolor quo odit
+            eum! Neque minus accusamus fugiat beatae laudantium laboriosam hic
+            officiis, accusantium ab blanditiis doloribus, atque error totam!
+            Dignissimos nulla sit sint deleniti recusandae velit voluptatum
+            soluta accusamus quas laborum veritatis nemo pariatur ab provident
+            dolores ut nesciunt, facere repudiandae ratione error aliquid.
+            Aliquid, qui.
+          </p>
         </div>
       </div>
+      <WhySuperTech />
     </div>
   );
 };
