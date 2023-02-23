@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 
 const ManageOrders = () => {
-    return (
-        <div>
-            This is manage orders page
-        </div>
-    );
+
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default ManageOrders;

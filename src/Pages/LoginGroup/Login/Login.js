@@ -49,13 +49,9 @@ const Login = () => {
               })}
             />
             {errors.email && (
-              <label className="label">
-                {errors.email && (
-                  <span className="label-text-alt text-red-500 text-sm">
-                    {errors.email.message}
-                  </span>
-                )}
-              </label>
+              <span className="label-text-alt text-red-500 text-sm">
+                {errors.email.message}
+              </span>
             )}
           </div>
           <div>
@@ -88,13 +84,9 @@ const Login = () => {
               />
             </div>
             {errors.password && (
-              <label className="label">
-                {errors.password && (
-                  <span className="label-text-alt text-red-500 text-sm">
-                    {errors.password.message}
-                  </span>
-                )}
-              </label>
+              <span className="label-text-alt text-red-500 text-sm">
+                {errors.password.message}
+              </span>
             )}
           </div>
           <Link

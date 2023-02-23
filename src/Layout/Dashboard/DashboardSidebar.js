@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { BsTruck } from "react-icons/bs";
 import { SlLocationPin } from "react-icons/sl";
 import { BiMessageSquareAdd } from "react-icons/bi";
-import { AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
@@ -58,6 +58,12 @@ const sidebarMenus = [
     name: "settings",
     path: "/dashboard/settings",
     icon: AiOutlineSetting,
+    margin: true,
+  },
+  {
+    name: "back to home",
+    path: "/",
+    icon: AiOutlineHome,
     margin: true,
   }
 ];

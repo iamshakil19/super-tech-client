@@ -45,10 +45,6 @@ export const links = [
             name: "Dinning Table & Chair",
             link: "/",
           },
-          {
-            name: "Shoe Rack",
-            link: "/",
-          },
         ],
       },
     ],

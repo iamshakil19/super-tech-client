@@ -13,12 +13,12 @@ const Home = () => {
   const { data, isError, isSuccess, isLoading, error } = useGetUsersQuery();
   const users = data?.data;
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-  if (isError) {
-    return error
-  }
+  // if (isLoading) {
+  //   return <p>Loading...</p>;
+  // }
+  // if (isError) {
+  //   return error
+  // }
   console.log(users);
   return (
     <div className="">
