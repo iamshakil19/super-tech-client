@@ -1,74 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { HiMenuAlt3, HiOutlineViewGridAdd } from "react-icons/hi";
-import { RiDashboardLine, RiFileSettingsLine } from "react-icons/ri";
-import { CgProfile } from "react-icons/cg";
-import { BsTruck } from "react-icons/bs";
-import { SlLocationPin } from "react-icons/sl";
-import { BiMessageSquareAdd } from "react-icons/bi";
-import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
-import { FaUsers } from "react-icons/fa";
-import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { HiMenuAlt3 } from "react-icons/hi";
+import { userSidebarMenus } from "../../Utils/LocalData";
 
-
-const sidebarMenus = [
-  {
-    name: "profile",
-    path: "/dashboard/profile",
-    icon: CgProfile,
-  },
-  {
-    name: "my orders",
-    path: "/dashboard/orders",
-    icon: BsTruck,
-    margin: true,
-  },
-  {
-    name: "dashboard",
-    path: "/dashboard",
-    icon: HiOutlineViewGridAdd,
-
-  },
-  {
-    name: "manage orders",
-    path: "/dashboard/manage-orders",
-    icon: SlLocationPin,
-  },
-  {
-    name: "add products",
-    path: "/dashboard/add-products",
-    icon: BiMessageSquareAdd,
-  },
-  {
-    name: "manage products",
-    path: "/dashboard/manage-products",
-    icon: RiFileSettingsLine,
-  },
-  {
-    name: "users",
-    path: "/dashboard/users",
-    icon: FaUsers,
-  },
-  {
-    name: "admin",
-    path: "/dashboard/admin",
-    icon: MdOutlineAdminPanelSettings,
-  },
-  {
-    name: "settings",
-    path: "/dashboard/settings",
-    icon: AiOutlineSetting,
-    margin: true,
-  },
-  {
-    name: "back to home",
-    path: "/",
-    icon: AiOutlineHome,
-    margin: true,
-  }
-];
-
-const DashboardSidebar = () => {
+const UserDashboardSidebar = () => {
   const [open, setOpen] = useState(true);
   const location = useLocation();
   return (
@@ -84,7 +19,7 @@ const DashboardSidebar = () => {
         />
       </div>
       <div className="mt-4 flex  flex-col gap-4 relative">
-        {sidebarMenus?.map((menu, i) => (
+        {userSidebarMenus?.map((menu, i) => (
           <Link
             to={menu?.path}
             key={i}
@@ -119,4 +54,4 @@ const DashboardSidebar = () => {
   );
 };
 
-export default DashboardSidebar;
+export default UserDashboardSidebar;

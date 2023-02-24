@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Outlet } from "react-router-dom";
-import DashboardSidebar from "./DashboardSidebar";
+import AdminDashboardSidebar from "./AdminDashboardSidebar";
 
-const DashboardLayout = () => {
+const AdminDashboardLayout = () => {
   return (
     <div>
       <section className="flex gap-3">
         <div>
-          <DashboardSidebar />
+          <AdminDashboardSidebar />
         </div>
         <div className="m-3 w-full">
           <Outlet />
@@ -17,4 +17,4 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default AdminDashboardLayout;

@@ -6,6 +6,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
 import { BsCart3 } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
+import { TfiUser } from "react-icons/tfi";
+import { HiOutlineViewGridAdd } from "react-icons/hi";
 
 const Menubar = ({ setSearchOpen, searchOpen }) => {
   const [open, setOpen] = useState(false);
@@ -14,7 +16,9 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
     <div className="bg-white">
       <div className="flex items-center font-medium justify-around">
         <div className=" p-3 pl-2 lg:w-auto w-full flex items-center justify-between lg:hidden">
-          <Link to={"/"} ><img src={logo} alt="logo" className="md:cursor-pointer h-8" /></Link>
+          <Link to={"/"}>
+            <img src={logo} alt="logo" className="md:cursor-pointer h-8" />
+          </Link>
 
           <div className="flex items-center">
             <div>
@@ -34,6 +38,18 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
                 </span>
               </div>
             </div>
+
+            <div className="text-2xl mr-5 transition-all duration-100 lg:hidden">
+              <Link to="/dashboard">
+                <HiOutlineViewGridAdd className="cursor-pointer" />
+              </Link>
+            </div>
+            <div className="text-xl mr-5 transition-all duration-100 lg:hidden">
+              <Link to="/account">
+                <TfiUser className="cursor-pointer" />
+              </Link>
+            </div>
+
             <div
               onClick={() => setOpen(true)}
               className="text-2xl transition-all duration-100 lg:hidden"
@@ -65,8 +81,6 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           </ul>
         </div>
 
-
-
         {/*========== Mobile Navbar ============*/}
         <ul
           className={`
@@ -82,7 +96,6 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           </li>
           <li>
             <Link
-            
               to="/all-collection"
               className="py-4 px-4 inline-block text-sm whitespace-nowrap"
             >
@@ -90,10 +103,10 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
             </Link>
           </li>
           <div className="border-b border-gray-200 mr-4"></div>
-          <NavLinks setOpen={setOpen}/>
+          <NavLinks setOpen={setOpen} />
           <li>
             <Link
-            onClick={() => setOpen(false)}
+              onClick={() => setOpen(false)}
               to="/login"
               className="py-4 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
             >

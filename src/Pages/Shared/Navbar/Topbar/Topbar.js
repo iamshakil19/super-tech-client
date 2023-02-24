@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../../../../Assets/Others/logo.png";
-import { FaSearch } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 import { TfiUser } from "react-icons/tfi";
 import { MdCall, MdEmail } from "react-icons/md";
@@ -30,7 +29,9 @@ const Topbar = ({ setSearchOpen }) => {
         </div>
 
         <div className="mx-auto">
-          <Link to="/"><img className="w-44 inline-block" src={logo} alt="" /></Link>
+          <Link to="/">
+            <img className="w-44 inline-block" src={logo} alt="" />
+          </Link>
         </div>
 
         <div className="flex items-center justify-end">
@@ -42,7 +43,7 @@ const Topbar = ({ setSearchOpen }) => {
               />
             </span>
           </div>
-          <div className="pl-7 pr-2 mt-2">
+          <div className="px-5 mt-2">
             <div className="indicator">
               <span className="cursor-pointer">
                 <BsCart3 className="text-2xl text-slate-700 " />
@@ -52,14 +53,20 @@ const Topbar = ({ setSearchOpen }) => {
               </span>
             </div>
           </div>
-
-          <div className="pl-7">
-            <span>
-              <Link to={"/dashboard"}>
+          <Link to={"/account"}>
+            <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer mx-3">
+              <span>
+                <TfiUser className="text-2xl text-slate-700" />
+              </span>
+            </div>
+          </Link>
+          <Link to={"/dashboard"}>
+            <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer ml-3">
+              <span>
                 <HiOutlineViewGridAdd className="text-[26px] cursor-pointer text-slate-700" />
-              </Link>
-            </span>
-          </div>
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
