@@ -10,8 +10,7 @@ import ManageOrders from "../../Pages/DashboardPages/AdminPage/ManageOrders";
 import ManageProducts from "../../Pages/DashboardPages/AdminPage/ManageProducts";
 import Settings from "../../Pages/DashboardPages/AdminPage/Settings";
 import Users from "../../Pages/DashboardPages/AdminPage/Users";
-import Address from "../../Pages/DashboardPages/UserPage/Address";
-import MyOrders from "../../Pages/DashboardPages/UserPage/MyOrders";
+import MyOrders from "../../Pages/DashboardPages/UserPage/Orders/MyOrders";
 import Profile from "../../Pages/DashboardPages/UserPage/Profile/Profile";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/LoginGroup/Login/Login";
@@ -52,10 +51,6 @@ const routes = createBrowserRouter([
       {
         path: "orders",
         element: <MyOrders />,
-      },
-      {
-        path: "address",
-        element: <Address />,
       },
     ],
   },

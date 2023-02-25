@@ -97,11 +97,6 @@ export const userSidebarMenus = [
     name: "my orders",
     path: "/account/orders",
     icon: BsTruck,
-  },
-  {
-    name: "Address",
-    path: "/account/address",
-    icon: SlLocationPin,
     margin: true,
   },
   {

@@ -1,31 +1,61 @@
 import React from "react";
-
+const user = {
+  name: "Shakil Ahmed",
+  email: "shakilahmed@gmail.com",
+  phoneNumber: "01877018851",
+  birthday: "1999-01-09",
+  profession: "",
+  gender: "male",
+};
 const ProfileInfo = () => {
   return (
-    <div className="flex flex-wrap gap-5 justify-between">
+    <div className="flex flex-wrap gap-5 justify-between mt-3">
+      <div className="w-full">
+        <h3 className="font-semibold mb-1 text-lg">Basic Info</h3>
+      </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Name</h3>
-        <p>Shakil Ahmed</p>
+        <p className="capitalize">{user.name}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold  mb-1">Email</h3>
-        <p>sakil@gmail.com</p>
+        <p>{user.email}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold  mb-1">Mobile Number</h3>
-        <p>01877018851</p>
+        <p>{user.phoneNumber}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Profession</h3>
-        <p>Developer</p>
+        <p>{user.profession}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Birthday</h3>
-        <p>1999-01-09</p>
+        <p>{user.birthday}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Gender</h3>
-        <p>Male</p>
+        <p className="capitalize">{user.gender}</p>
+      </div>
+      <div className="border-b border-gray-300 w-full"></div>
+      <div className="w-full">
+        <h3 className="font-semibold mb-1 text-lg">Address</h3>
+      </div>
+      <div className="flex flex-col w-full max-w-xs">
+        <h3 className="font-semibold mb-1">Division</h3>
+        <p className="capitalize">Dhaka</p>
+      </div>
+      <div className="flex flex-col w-full max-w-xs">
+        <h3 className="font-semibold mb-1">Postal Code</h3>
+        <p className="capitalize">1216</p>
+      </div>
+      <div className="flex flex-col w-full max-w-xs">
+        <h3 className="font-semibold mb-1">Area</h3>
+        <p className="capitalize">Mirpur</p>
+      </div>
+      <div className="flex flex-col w-full max-w-xs">
+        <h3 className="font-semibold mb-1">Street Address</h3>
+        <p className="capitalize">Mirpur 13, Block B, Road 9</p>
       </div>
     </div>
   );

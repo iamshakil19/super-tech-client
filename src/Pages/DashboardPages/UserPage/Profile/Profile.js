@@ -7,8 +7,8 @@ const Profile = () => {
   const [isEditable, setEditable] = useState(false);
   return (
     <div>
-      <div className="flex justify-center items-center overflow-auto p-10 poppins mt-20">
-        <div className="bg-slate-100 border border-gray-200 shadow-lg p-10 rounded-2xl max-w-3xl">
+      <div className="flex justify-center items-center overflow-auto p-8 poppins">
+        <div className="bg-slate-100 border border-gray-200 shadow-lg p-8 rounded-2xl max-w-3xl">
           <h2 className=" text-xl mb-5 font-semibold">My Profile</h2>
           <div className="flex flex-wrap gap-3 justify-between">
             <div className="md:flex w-full">
@@ -34,7 +34,7 @@ const Profile = () => {
                 onClick={() => setEditable(!isEditable)}
                 className="flex items-center my-3 font-semibold"
               >
-                Basic Info <FiEdit className="text-lg mx-3" />{" "}
+                Update Info <FiEdit className="text-lg mx-3" />{" "}
               </button>
             </div>
           </div>

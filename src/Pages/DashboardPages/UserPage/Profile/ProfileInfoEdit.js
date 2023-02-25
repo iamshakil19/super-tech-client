@@ -19,11 +19,14 @@ const ProfileInfoEdit = ({ setEditable }) => {
     email: "shakilahmed@gmail.com",
     // phoneNumber: "01877018851",
     birthday: "1999-01-09",
-    gender: "male"
+    gender: "male",
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-wrap gap-5 justify-between">
+      <div className="flex flex-wrap gap-5 justify-between mt-3">
+        <div className="w-full">
+          <h3 className="font-semibold mb-1 text-lg">Basic Info</h3>
+        </div>
         <div className="flex flex-col w-full max-w-xs">
           <h3 className="font-semibold mb-1">Name</h3>
           <input
@@ -131,6 +134,96 @@ const ProfileInfoEdit = ({ setEditable }) => {
             </div>
           </div>
         </div>
+        <div className="border-b border-gray-300 w-full"></div>
+        <div className="w-full">
+          <h3 className="font-semibold mb-1 text-lg">Address</h3>
+        </div>
+
+        <div className="flex flex-col w-full max-w-xs">
+          <h3 className="font-semibold mb-1">Division</h3>
+          <input
+            type="text"
+            placeholder="Type your division"
+            defaultValue={user.division && user.division}
+            className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+              errors.division
+                ? " border-red-500 focus:border-red-500"
+                : "focus:border-slate-700 border-slate-300"
+            }`}
+            {...register("division", {
+              required: {
+                value: true,
+                message: "Division is required",
+              },
+            })}
+          />
+          {errors.division && (
+            <span className="label-text-alt text-red-500 text-sm ">
+              {errors.division.message}
+            </span>
+          )}
+        </div>
+        <div className="flex flex-col w-full max-w-xs">
+          <h3 className="font-semibold mb-1">Postal Code</h3>
+          <input
+            type="number"
+            placeholder="Type you postal code"
+            defaultValue={user.postalCode && user.postalCode}
+            className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none focus:border-slate-700 border-slate-300`}
+            {...register("postalCode")}
+          />
+        </div>
+        <div className="flex flex-col w-full max-w-xs">
+          <h3 className="font-semibold mb-1">Area</h3>
+          <input
+            type="text"
+            placeholder="Type your area"
+            defaultValue={user.area && user.area}
+            className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+              errors.area
+                ? " border-red-500 focus:border-red-500"
+                : "focus:border-slate-700 border-slate-300"
+            }`}
+            {...register("area", {
+              required: {
+                value: true,
+                message: "Area is required",
+              },
+            })}
+          />
+          {errors.area && (
+            <span className="label-text-alt text-red-500 text-sm ">
+              {errors.area.message}
+            </span>
+          )}
+        </div>
+        <div className="flex flex-col w-full max-w-xs">
+          <h3 className="font-semibold mb-1">Street Address</h3>
+          <input
+            type="text"
+            placeholder="Type your street address"
+            defaultValue={user.streetAddress && user.streetAddress}
+            className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+              errors.streetAddress
+                ? " border-red-500 focus:border-red-500"
+                : "focus:border-slate-700 border-slate-300"
+            }`}
+            {...register("streetAddress", {
+              required: {
+                value: true,
+                message: "Street address is required",
+              },
+            })}
+          />
+          {errors.streetAddress && (
+            <span className="label-text-alt text-red-500 text-sm ">
+              {errors.streetAddress.message}
+            </span>
+          )}
+        </div>
+
+
+
         <div className="w-full mt-5">
           <button
             onClick={() => setEditable(false)}
