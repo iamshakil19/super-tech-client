@@ -7,7 +7,7 @@ export const links = [
         subLink: [
           {
             name: "Bed",
-            link: "/",
+            link: "/collections/home-furniture/bed",
           },
           {
             name: "Dressing Table",

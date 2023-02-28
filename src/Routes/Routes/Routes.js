@@ -2,6 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AdminDashboardLayout from "../../Layout/AdminDashboard/AdminDashboardLayout";
 import MainLayout from "../../Layout/Main/MainLayout";
+import ProductFilterLayout from "../../Layout/ProductFilter/ProductFilterLayout";
 import UserDashboardLayout from "../../Layout/UserDashboard/UserDashboardLayout";
 import AddProducts from "../../Pages/DashboardPages/AdminPage/AddProducts";
 import Admin from "../../Pages/DashboardPages/AdminPage/Admin";
@@ -15,6 +16,8 @@ import Profile from "../../Pages/DashboardPages/UserPage/Profile/Profile";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/LoginGroup/Login/Login";
 import SignUp from "../../Pages/LoginGroup/SignUp/SignUp";
+import NotFound from "../../Pages/NotFound/NotFound";
+import Product from "../../Pages/Product/Product";
 import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
 
 const routes = createBrowserRouter([
@@ -88,6 +91,56 @@ const routes = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/collections",
+    element: <ProductFilterLayout />,
+    children: [
+      {
+        path: "/collections",
+        element: <Product />,
+      },
+      {
+        path: "/collections/homeFurniture",
+        element: <Product />,
+      },
+      {
+        path: "/collections/table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/storage",
+        element: <Product />,
+      },
+      {
+        path: "/collections/steelFurniture",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair",
+        element: <Product />,
+      },
+      {
+        path: "/collections/sofa",
+        element: <Product />,
+      },
+      {
+        path: "/collections/workStation",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments",
+        element: <Product />,
+      },
+      {
+        path: "/collections/interior",
+        element: <Product />,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound/>
+  }
 ]);
 
 export default routes;

@@ -2,10 +2,7 @@ import React from "react";
 import all from "../../../Assets/Main-Category/all.png";
 import table from "../../../Assets/Main-Category/table.png";
 import chair from "../../../Assets/Main-Category/chair.png";
-import drawer from "../../../Assets/Main-Category/drawer.png";
 import cabinet from "../../../Assets/Main-Category/cabinet.png";
-import multipurpose from "../../../Assets/Main-Category/shelf.png";
-import shoe_rack from "../../../Assets/Main-Category/shoe-rack.png";
 import work_station from "../../../Assets/Main-Category/work-station.png";
 import steel_furniture from "../../../Assets/Main-Category/steel-furniture.png";
 import sofa from "../../../Assets/Main-Category/sofa.png";
@@ -15,19 +12,16 @@ import interior from "../../../Assets/Main-Category/interior.png";
 import CategoryCard from "../../../Components/CategoryCard";
 
 const categoryData = [
-  { image: all, name: "all collection", path: "/all-collection" },
-  { image: home, name: "home", path: "/home-furniture" },
-  { image: table, name: "table", path: "/table" },
-  { image: cabinet, name: "cabinet", path: "/cabinet" },
-  { image: drawer, name: "drawer", path: "/drawer" },
-  { image: shoe_rack, name: "shoe rack", path: "/shoe-rack" },
-  { image: multipurpose, name: "multipurpose", path: "/multipurpose" },
-  { image: steel_furniture, name: "steel furniture", path: "/steel-furniture" },
-  { image: chair, name: "chair", path: "/chair" },
-  { image: sofa, name: "sofa", path: "/sofa" },
-  { image: work_station, name: "work station", path: "/work-station" },
-  { image: garments, name: "garments", path: "/garments" },
-  { image: interior, name: "interior", path: "/interior" },
+  { image: all, name: "all collection", path: "/collections" },
+  { image: home, name: "home", path: "/collections/homeFurniture" },
+  { image: table, name: "table", path: "/collections/table" },
+  { image: cabinet, name: "storage", path: "/collections/storage" },
+  { image: steel_furniture, name: "steel furniture", path: "/collections/steelFurniture" },
+  { image: chair, name: "chair", path: "/collections/chair" },
+  { image: sofa, name: "sofa", path: "/collections/sofa" },
+  { image: work_station, name: "work station", path: "/collections/workStation" },
+  { image: garments, name: "garments", path: "/collections/garments" },
+  { image: interior, name: "interior", path: "/collections/interior" },
 ];
 
 const FeaturedCategory = () => {

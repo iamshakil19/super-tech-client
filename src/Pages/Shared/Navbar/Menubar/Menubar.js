@@ -63,7 +63,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           <ul className="lg:flex lg:flex-wrap items-center hidden uppercase poppins">
             <li>
               <Link
-                to="/all-collection"
+                to="/collections"
                 className="py-3 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
               >
                 All Collection

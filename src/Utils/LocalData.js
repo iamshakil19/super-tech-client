@@ -106,6 +106,7 @@ export const userSidebarMenus = [
     margin: true,
   },
 ];
+
 export const adminSidebarMenus = [
   {
     name: "dashboard",
