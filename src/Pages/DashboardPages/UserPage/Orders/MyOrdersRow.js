@@ -1,5 +1,6 @@
 import React from "react";
 import { BiDotsVertical } from "react-icons/bi";
+import { BsEyeFill } from "react-icons/bs";
 const MyOrdersRow = ({ myOrder, i }) => {
   const {
     name,
@@ -16,6 +17,7 @@ const MyOrdersRow = ({ myOrder, i }) => {
   return (
     <tr class="bg-white border-b border-gray-300 hover:bg-gray-300">
       <td class="px-6 py-4 whitespace-nowrap">{i}</td>
+      <td class="px-6 py-4 whitespace-nowrap xl:hidden"><BsEyeFill size={24} className="cursor-pointer"/></td>
       <td class="px-6 py-4 whitespace-nowrap capitalize">{name}</td>
       <td class="px-6 py-4 whitespace-nowrap">{number}</td>
       <td class="px-6 py-4 whitespace-nowrap">{date}</td>
@@ -32,6 +34,7 @@ const MyOrdersRow = ({ myOrder, i }) => {
           : streetAddress}
       </td>
       <td class="px-6 py-4 whitespace-nowrap">{quantity}</td>
+      <td class="px-6 py-4 whitespace-nowrap">{45000}</td>
       <td class="px-6 py-4 whitespace-nowrap capitalize">{status}</td>
       <td class="px-6 py-4 whitespace-nowrap dropdown dropdown-bottom dropdown-left">
         {" "}

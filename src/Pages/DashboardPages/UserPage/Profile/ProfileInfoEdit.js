@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { IoMdStar } from "react-icons/io"
 
 const ProfileInfoEdit = ({ setEditable }) => {
   const {
@@ -28,7 +29,7 @@ const ProfileInfoEdit = ({ setEditable }) => {
           <h3 className="font-semibold mb-1 text-lg">Basic Info</h3>
         </div>
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1">Name</h3>
+          <h3 className="font-semibold mb-1 flex">Name <IoMdStar className="text-red-500"size={11}/> </h3>
           <input
             type="text"
             defaultValue={user.name}
@@ -62,7 +63,7 @@ const ProfileInfoEdit = ({ setEditable }) => {
         </div>
 
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold  mb-1">Mobile Number</h3>
+          <h3 className="font-semibold flex mb-1">Mobile Number <IoMdStar className="text-red-500"size={11}/></h3>
           <input
             type="text"
             placeholder="Type your phone number"
@@ -140,7 +141,7 @@ const ProfileInfoEdit = ({ setEditable }) => {
         </div>
 
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1">Division</h3>
+          <h3 className="font-semibold mb-1 flex">Division <IoMdStar className="text-red-500"size={11}/></h3>
           <input
             type="text"
             placeholder="Type your division"
@@ -174,7 +175,7 @@ const ProfileInfoEdit = ({ setEditable }) => {
           />
         </div>
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1">Area</h3>
+          <h3 className="font-semibold mb-1 flex">Area <IoMdStar className="text-red-500"size={11}/></h3>
           <input
             type="text"
             placeholder="Type your area"
@@ -198,7 +199,7 @@ const ProfileInfoEdit = ({ setEditable }) => {
           )}
         </div>
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1">Street Address</h3>
+          <h3 className="font-semibold mb-1 flex">Street Address <IoMdStar className="text-red-500"size={11}/></h3>
           <input
             type="text"
             placeholder="Type your street address"

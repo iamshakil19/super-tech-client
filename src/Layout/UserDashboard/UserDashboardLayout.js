@@ -1,20 +1,27 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import UserDashboardSidebar from './UserDashboardSidebar';
-
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import UserDashboardSidebar from "./UserDashboardSidebar";
+import { HiMenuAlt3 } from "react-icons/hi";
 const UserDashboardLayout = () => {
-    return (
+  const [open, setOpen] = useState(true);
+  return (
+    <div>
+      <section className="lg:flex gap-3">
         <div>
-      <section className="flex gap-3">
-        <div>
-          <UserDashboardSidebar />
+          <UserDashboardSidebar setOpen={setOpen} open={open} />
         </div>
-        <div className="m-3 w-full">
+        <div className=" w-full">
+          <div className="py-3 ml-4 lg:hidden">
+            <HiMenuAlt3
+              className="text-3xl cursor-pointer"
+              onClick={() => setOpen(!open)}
+            />
+          </div>
           <Outlet />
         </div>
       </section>
     </div>
-    );
+  );
 };
 
 export default UserDashboardLayout;

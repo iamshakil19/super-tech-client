@@ -7,7 +7,7 @@ const Profile = () => {
   const [isEditable, setEditable] = useState(false);
   return (
     <div>
-      <div className="flex justify-center items-center overflow-auto p-8 poppins">
+      <div className="flex justify-center items-center overflow-auto poppins p-5">
         <div className="bg-slate-100 border border-gray-200 shadow-lg p-8 rounded-2xl max-w-3xl">
           <h2 className=" text-xl mb-5 font-semibold">My Profile</h2>
           <div className="flex flex-wrap gap-3 justify-between">
