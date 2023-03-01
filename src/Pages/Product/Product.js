@@ -1,12 +1,147 @@
-import React from 'react';
+import React, { useState } from "react";
+import ProductCard from "../../Components/ProductCard";
+
+const productData = [
+  {
+    _id: 1,
+    name: "GRID Newon Chair",
+    price: "84000",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Solutaadipisicing elit. Soluta",
+    primaryImage:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+  },
+  {
+    _id: 2,
+    name: "GRID Newon Chair",
+    price: "84000",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
+    primaryImage:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+  },
+  {
+    _id: 3,
+    name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
+    price: "84000",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta adipisicing elit. Soluta",
+    primaryImage:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+  },
+  {
+    _id: 4,
+    name: "GRID Newon Chair",
+    price: "84000",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
+    primaryImage:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+  },
+  {
+    _id: 5,
+    name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
+    price: "84000",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
+    primaryImage:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+  },
+  {
+    _id: 6,
+    name: "GRID Newon Chair",
+    price: "84000",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
+    primaryImage:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
+    image2:
+      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
+  },
+];
 
 const Product = () => {
-    return (
-        <div className='text-justify'>
-            <h2>This is product page</h2>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore, eos dicta. Incidunt nisi ipsa praesentium maxime similique doloribus labore! Laudantium odio, magnam in fuga quas officia possimus sit harum. Odio modi autem necessitatibus quam. Doloremque repellendus saepe corporis iure. Earum blanditiis commodi accusamus doloribus iure! Totam consequuntur atque nobis, minus voluptates maiores ducimus, illo, quasi enim ipsam placeat? Odio, quo vel exercitationem consequuntur aliquam omnis totam deleniti qui tenetur! Eius suscipit voluptate doloribus. Qui reiciendis, cupiditate ex recusandae, quod dignissimos voluptatum eaque iusto alias animi est quos aperiam, maxime odio aliquam amet doloribus nam aut! Vitae cupiditate quas optio deleniti mollitia tenetur consequuntur voluptate ea, aspernatur atque sint sapiente voluptates adipisci exercitationem accusantium dolor obcaecati voluptatem laborum veniam a? Itaque obcaecati, molestias quibusdam nulla eius odio aliquid illo autem tempora perferendis soluta temporibus maiores similique quaerat dolorum nihil neque quod, voluptatum velit fugiat officiis incidunt nemo. Dolorum culpa harum, iusto saepe aliquam commodi corrupti possimus facilis porro incidunt laboriosam sapiente, doloribus voluptas fugiat iure minus, sunt deserunt nulla temporibus sequi necessitatibus ipsum maiores dolore? Tenetur magnam qui porro modi nostrum corrupti aliquid laudantium soluta dolore ullam repellendus, nihil veritatis doloribus natus impedit obcaecati. Dolorem odio corrupti numquam illo eveniet dolore fuga itaque quibusdam qui optio, expedita excepturi? Quasi culpa pariatur, explicabo placeat rerum debitis ipsum in sapiente qui, consequatur harum expedita similique aliquam eligendi eos reprehenderit sed magni asperiores? Asperiores, dolor enim. Nisi, perferendis nam. Nesciunt eveniet iure nostrum alias consectetur officiis ad! Quidem nemo velit quae quaerat rerum distinctio et eaque repellendus minima, quos omnis dignissimos laudantium dolorem. Possimus vitae sit dolorem id labore, corporis facere optio libero expedita odio, quibusdam, fugiat sequi. Ad porro minima quas? Sapiente, nulla? Iure, rerum. Accusantium molestias maiores mollitia, iure deleniti rerum doloribus reiciendis perferendis ullam tempora? Animi hic veniam a eum provident necessitatibus ad suscipit obcaecati alias, expedita, quibusdam blanditiis nostrum consequuntur! Ipsum mollitia magni aut, odio corrupti repellat atque dolore delectus est consequuntur sequi laborum, ut nihil iste a libero corporis explicabo soluta laboriosam, voluptatem quod in omnis. Autem magnam suscipit in magni temporibus obcaecati! Eius ex, minus a cumque voluptatum, dolores neque ut est error nemo perspiciatis maxime ipsa illum omnis vel, accusantium tenetur quas dolorem. Vitae libero voluptatum iure, cupiditate sunt optio aliquid. Corporis incidunt sed explicabo earum expedita distinctio est. Dolorum iste harum voluptatibus rerum possimus iure repudiandae, cum saepe. Suscipit eligendi mollitia vero nobis architecto maxime, enim adipisci! Nesciunt aut, vel accusantium reiciendis ad debitis! Blanditiis placeat recusandae est officia architecto quas quis, amet omnis nemo dolore facilis veritatis nisi, qui in! Illum laudantium sed praesentium assumenda eaque saepe sint sequi officiis, optio blanditiis incidunt itaque, dolorum totam hic aliquid quos iusto rerum quibusdam? Perferendis, enim. Esse quidem illo dolor, itaque sapiente iure, fugiat minus quibusdam, temporibus accusantium libero praesentium? Quas, aliquam quo? Aut vel tempora illo explicabo quo nam debitis deleniti cumque inventore ad qui, sapiente repudiandae nulla ipsa doloremque eos exercitationem voluptas fugit, deserunt, consequuntur iusto neque ratione dignissimos quibusdam! Exercitationem ut voluptatibus quaerat accusantium!
+  const [limit, setLimit] = useState(10);
+  const [price, setPrice] = useState(10);
+  return (
+    <div className="">
+      <div className="mb-5 flex justify-end items-center gap-3">
+        <div className="block sm:ml-5 sm:mt-0">
+          <select
+            onChange={(e) => setPrice(e.target.value)}
+            defaultValue={price}
+            className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 border-slate-300"
+          >
+            <option selected className="font-medium text-md" value="latest">
+              Default
+            </option>
+            <option className=" font-medium text-md" value="lowToHigh">
+              Price (Low → High)
+            </option>
+            <option className=" font-medium text-md" value="highToLow">
+              Price (High → Low)
+            </option>
+            <option className=" font-medium text-md" value="popular">
+              Popular
+            </option>
+            <option className=" font-medium text-md" value="alphabeticallyAToZ">
+              Alphabetically (A → Z)
+            </option>
+            <option className=" font-medium text-md" value="alphabeticallyZToA">
+              Alphabetically (Z → A)
+            </option>
+            <option className=" font-medium text-md" value="dateOldToNew">
+              Date (Old → New)
+            </option>
+            <option className=" font-medium text-md" value="dateNewToOld">
+              Date (New → Old)
+            </option>
+          </select>
         </div>
-    );
+        <div className="block">
+          <select
+            onChange={(e) => setLimit(e.target.value)}
+            defaultValue={limit}
+            className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-28 border-slate-300"
+          >
+            <option selected className="font-medium" value="10">
+              10
+            </option>
+            <option className="font-medium" value="15">
+              15
+            </option>
+            <option className="font-medium" value="25">
+              25
+            </option>
+            <option className="font-medium" value="50">
+              50
+            </option>
+            <option className="font-medium" value="100">
+              100
+            </option>
+          </select>
+        </div>
+      </div>
+
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {productData.map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))}
+        </div>
+
+    </div>
+  );
 };
 
 export default Product;

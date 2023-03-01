@@ -20,7 +20,7 @@ const ProductFilterSidebar = () => {
   console.log(location.pathname);
   return (
     <div className="">
-      <div className="shadow-xl border border-gray-300 rounded-md p-2">
+      <div className="shadow-xl border border-gray-300 rounded-md p-3 bg-white">
         <div className="border-b border-gray-300 pb-3">
           <p className="font-semibold mb-2 poppins">Price Range</p>
 
