@@ -7,11 +7,11 @@ const AdminDashboardLayout = () => {
   const [open, setOpen] = useState(true);
   return (
     <div>
-      <section className="flex gap-3">
+      <section className="lg:flex gap-5 bg-[#F2F3F8]">
         <div>
           <AdminDashboardSidebar open={open} setOpen={setOpen} />
         </div>
-        <div className="w-full">
+        <div className="w-full p-5">
           <div className="py-3 ml-4 lg:hidden">
             <HiMenuAlt3
               className="text-3xl cursor-pointer"

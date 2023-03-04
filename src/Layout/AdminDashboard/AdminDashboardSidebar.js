@@ -8,7 +8,7 @@ const AdminDashboardSidebar = ({open, setOpen}) => {
   return (
     <div
       className={`
-     bg-black w-72 overflow-y-auto h-full lg:min-h-screen bottom-0 p-3 duration-500 transition-all ease-in-out z-50 fixed lg:static text-white ${
+      bg-black w-72 overflow-y-auto h-screen fixed lg:sticky top-0 p-3 duration-500 transition-all ease-in-out z-50 text-white ${
        !open ? "left-0" : "left-[-100%]"
      }`}
     >
@@ -21,7 +21,7 @@ const AdminDashboardSidebar = ({open, setOpen}) => {
         </div>
       </div>
       <h2 className="text-xl lg:mt-5 mb-5 font-bold text-center font-serif">
-        Shakil Ahmed
+        Super Tech Dashboard
       </h2>
       <div className="mt-4 flex  flex-col gap-4 relative">
         {adminSidebarMenus?.map((menu, i) => (

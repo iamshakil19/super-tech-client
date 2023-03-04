@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import LatestOrders from "./Analytics/LatestOrders";
+import TotalCount from "./Analytics/TotalCount";
 
 const Dashboard = () => {
-    return (
-        <div>
-            This is dashboard page
-        </div>
-    );
+  return (
+    <div className="">
+      <TotalCount />
+      <LatestOrders />
+    </div>
+  );
 };
 
 export default Dashboard;

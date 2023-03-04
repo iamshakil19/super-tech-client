@@ -9,8 +9,9 @@ const UserDashboardSidebar = ({ open, setOpen }) => {
   const location = useLocation();
   return (
     <div
+      /* bg-black w-72 overflow-y-auto h-full lg:min-h-screen bottom-0 p-3 duration-500 transition-all ease-in-out z-5 fixed lg:static text-white  */
       className={`
-     bg-black w-72 overflow-y-auto h-full lg:min-h-screen bottom-0 p-3 duration-500 transition-all ease-in-out z-50 fixed lg:static text-white ${
+     bg-black w-72 overflow-y-auto h-screen fixed lg:sticky top-0 p-3 duration-500 transition-all ease-in-out z-50 text-white ${
        !open ? "left-0" : "left-[-100%]"
      }`}
     >
@@ -22,7 +23,7 @@ const UserDashboardSidebar = ({ open, setOpen }) => {
           />
         </div>
       </div>
-      <h2 className="text-xl lg:mt-5 mb-5 font-bold text-center font-serif">
+      <h2 className="text-xl lg:mt-5 mb-5 font-bold text-center font-serif ">
         Shakil Ahmed
       </h2>
       <div className="mt-4 flex  flex-col gap-4 relative">

@@ -7,7 +7,7 @@ const UserDashboardLayout = () => {
   return (
     <div>
       <section className="lg:flex gap-3">
-        <div>
+        <div className="relative">
           <UserDashboardSidebar setOpen={setOpen} open={open} />
         </div>
         <div className=" w-full">
