@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import { categories, subCategories } from "../../../Utils/LocalData";
+import { categories, subCategories } from "../../../../Utils/LocalData";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoMdCloudUpload } from "react-icons/io";
 const product = {

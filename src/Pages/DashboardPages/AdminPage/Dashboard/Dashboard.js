@@ -1,8 +1,8 @@
 import React from "react";
-import LatestOrders from "./Analytics/LatestOrders";
-import LatestProducts from "./Analytics/LatestProducts";
-import Statistics from "./Analytics/Statistics";
-import TotalCount from "./Analytics/TotalCount";
+import LatestOrders from "./LatestOrders";
+import LatestProducts from "./LatestProducts";
+import Statistics from "./Statistics";
+import TotalCount from "./TotalCount";
 
 const Dashboard = () => {
   return (

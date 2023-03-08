@@ -1,16 +1,15 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import AdminDashboardLayout from "../../Layout/AdminDashboard/AdminDashboardLayout";
 import MainLayout from "../../Layout/Main/MainLayout";
 import ProductFilterLayout from "../../Layout/ProductFilter/ProductFilterLayout";
 import UserDashboardLayout from "../../Layout/UserDashboard/UserDashboardLayout";
-import AddProducts from "../../Pages/DashboardPages/AdminPage/AddProducts";
-import Admin from "../../Pages/DashboardPages/AdminPage/Admin";
-import Dashboard from "../../Pages/DashboardPages/AdminPage/Dashboard";
-import ManageOrders from "../../Pages/DashboardPages/AdminPage/ManageOrders";
-import ManageProducts from "../../Pages/DashboardPages/AdminPage/ManageProducts";
-import Settings from "../../Pages/DashboardPages/AdminPage/Settings";
-import Users from "../../Pages/DashboardPages/AdminPage/Users";
+import AddProducts from "../../Pages/DashboardPages/AdminPage/AddProduct/AddProducts";
+import Admin from "../../Pages/DashboardPages/AdminPage/Admin/Admin";
+import Dashboard from "../../Pages/DashboardPages/AdminPage/Dashboard/Dashboard";
+import ManageOrders from "../../Pages/DashboardPages/AdminPage/ManageOrders/ManageOrders";
+import ManageProducts from "../../Pages/DashboardPages/AdminPage/ManageProducts/ManageProducts";
+import Settings from "../../Pages/DashboardPages/AdminPage/Settings/Settings";
+import Users from "../../Pages/DashboardPages/AdminPage/Users/Users";
 import MyOrders from "../../Pages/DashboardPages/UserPage/Orders/MyOrders";
 import Profile from "../../Pages/DashboardPages/UserPage/Profile/Profile";
 import Home from "../../Pages/Home/Home/Home";
@@ -139,8 +138,8 @@ const routes = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound/>
-  }
+    element: <NotFound />,
+  },
 ]);
 
 export default routes;
