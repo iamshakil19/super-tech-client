@@ -5,7 +5,7 @@ import { BsFillCartCheckFill, BsFillBagCheckFill } from "react-icons/bs";
 const TotalCount = () => {
   return (
     <div className="poppins my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
-      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300">
+      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300 border border-gray-200">
         <div className="bg-orange-500 h-10 w-10 flex items-center justify-center rounded-full text-white ring-8 ring-orange-200/70">
           <TbCurrencyTaka size={25} />
         </div>
@@ -18,7 +18,7 @@ const TotalCount = () => {
           </p>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300">
+      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300 border border-gray-200">
         <div className="bg-green-500 h-10 w-10 flex items-center justify-center rounded-full text-white ring-8 ring-green-200/70">
           <BsFillCartCheckFill size={20} />
         </div>
@@ -27,7 +27,7 @@ const TotalCount = () => {
           <p className="flex items-center font-semibold ">445</p>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300">
+      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300 border border-gray-200">
         <div className="bg-blue-500 h-10 w-10 flex items-center justify-center rounded-full text-white ring-8 ring-blue-200/70">
           <BsFillBagCheckFill size={18} />
         </div>
@@ -36,7 +36,7 @@ const TotalCount = () => {
           <p className="flex items-center font-semibold ">45</p>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300">
+      <div className="flex items-center justify-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-300 border border-gray-200">
         <div className="bg-rose-500 h-10 w-10 flex items-center justify-center rounded-full text-white ring-8 ring-rose-200/70">
           <FaUser size={18} />
         </div>
