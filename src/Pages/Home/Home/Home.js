@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FeaturedCategory from "./../FeaturedCategory/FeaturedCategory";
 import HomeProduct from "../HomeProduct/HomeProduct";
 import MainSlider from "../MainSlider/MainSlider";
@@ -13,12 +13,9 @@ const Home = () => {
   const { data, isError, isSuccess, isLoading, error } = useGetUsersQuery();
   const users = data?.data;
 
-  // if (isLoading) {
-  //   return <p>Loading...</p>;
-  // }
-  // if (isError) {
-  //   return error
-  // }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   console.log(users);
   return (
     <div className="">

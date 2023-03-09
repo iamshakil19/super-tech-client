@@ -99,7 +99,7 @@ const routes = createBrowserRouter([
         element: <Product />,
       },
       {
-        path: "/collections/homeFurniture",
+        path: "/collections/home-furniture",
         element: <Product />,
       },
       {
@@ -111,7 +111,7 @@ const routes = createBrowserRouter([
         element: <Product />,
       },
       {
-        path: "/collections/steelFurniture",
+        path: "/collections/steel-furniture",
         element: <Product />,
       },
       {
@@ -123,7 +123,7 @@ const routes = createBrowserRouter([
         element: <Product />,
       },
       {
-        path: "/collections/workStation",
+        path: "/collections/work-station",
         element: <Product />,
       },
       {
@@ -132,6 +132,218 @@ const routes = createBrowserRouter([
       },
       {
         path: "/collections/interior",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/bed",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/dressing-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/cup-board",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/wardrobe",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/reading-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/tv-trolley",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/book-shelf",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/showcase-corner-shelf",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/dinner-wagon",
+        element: <Product />,
+      },
+      {
+        path: "/collections/home-furniture/dinning-table-chair",
+        element: <Product />,
+      },
+      {
+        path: "/collections/table/director-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/table/executive-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/table/manager-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/table/computer-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/storage/drawer",
+        element: <Product />,
+      },
+      {
+        path: "/collections/storage/side-cabinet",
+        element: <Product />,
+      },
+      {
+        path: "/collections/storage/file-cabinet",
+        element: <Product />,
+      },
+      {
+        path: "/collections/storage/multipurpose-shelf",
+        element: <Product />,
+      },
+      {
+        path: "/collections/storage/shoe-rack",
+        element: <Product />,
+      },
+      {
+        path: "/collections/steel-furniture/almirah",
+        element: <Product />,
+      },
+      {
+        path: "/collections/steel-furniture/four-drawer",
+        element: <Product />,
+      },
+      {
+        path: "/collections/steel-furniture/three-drawer",
+        element: <Product />,
+      },
+      {
+        path: "/collections/steel-furniture/drawer-cum-file-cabinet",
+        element: <Product />,
+      },
+      {
+        path: "/collections/steel-furniture/slotted-angle-rack",
+        element: <Product />,
+      },
+      {
+        path: "/collections/steel-furniture/heavy-duty-rack",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair/high-back",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair/medium-back",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair/low-back",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair/fixed-visitor",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair/tool",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair/auditorium-chair",
+        element: <Product />,
+      },
+      {
+        path: "/collections/chair/group-chair",
+        element: <Product />,
+      },
+      {
+        path: "/collections/sofa/sofa",
+        element: <Product />,
+      },
+      {
+        path: "/collections/sofa/center-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/sofa/divan",
+        element: <Product />,
+      },
+      {
+        path: "/collections/work-station/fabric",
+        element: <Product />,
+      },
+      {
+        path: "/collections/work-station/metal",
+        element: <Product />,
+      },
+      {
+        path: "/collections/work-station/others",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/qc-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/center-cutting-packing-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/input-loading-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/tagging-poly-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/cut-part-inspection-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/fabric-relaxing-multi-level-rack",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/inspection-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/measurement-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/iron-table",
+        element: <Product />,
+      },
+      {
+        path: "/collections/garments/worker-chair",
+        element: <Product />,
+      },
+      {
+        path: "/collections/interior/living",
+        element: <Product />,
+      },
+      {
+        path: "/collections/interior/kitchen",
+        element: <Product />,
+      },
+      {
+        path: "/collections/interior/office",
+        element: <Product />,
+      },
+      {
+        path: "/collections/interior/restaurant",
+        element: <Product />,
+      },
+      {
+        path: "/collections/interior/others",
         element: <Product />,
       },
     ],

@@ -152,3 +152,272 @@ export const adminSidebarMenus = [
     margin: true,
   },
 ];
+
+export const forAllCollectionFilterData = [
+  {
+    name: "home",
+    value: "home",
+  },
+  {
+    name: "table",
+    value: "table",
+  },
+  {
+    name: "storage",
+    value: "storage",
+  },
+  {
+    name: "steel Furniture",
+    value: "steelFurniture",
+  },
+  {
+    name: "chair",
+    value: "chair",
+  },
+  {
+    name: "sofa",
+    value: "sofa",
+  },
+  {
+    name: "work Station",
+    value: "workStation",
+  },
+  {
+    name: "Garments",
+    value: "Garments",
+  },
+  {
+    name: "interior",
+    value: "interior",
+  },
+];
+export const forHomeFilterData = [
+  {
+    name: "bed",
+    value: "bed",
+  },
+  {
+    name: "Dressing Table",
+    value: "dressingTable",
+  },
+  {
+    name: "cup Board",
+    value: "cupBoard",
+  },
+  {
+    name: "wardrobe",
+    value: "wardrobe",
+  },
+  {
+    name: "reading table",
+    value: "readingTable",
+  },
+  {
+    name: "TV trolley",
+    value: "tvTrolley",
+  },
+  {
+    name: "book shelf",
+    value: "bookShelf",
+  },
+  {
+    name: "Showcase & Corner Shelf",
+    value: "showcaseCornerShelf",
+  },
+  {
+    name: "dinner wagon",
+    value: "dinnerWagon",
+  },
+  {
+    name: "Dinning Table & Chair",
+    value: "dinningTableChair",
+  },
+];
+export const forTableFilterData = [
+  {
+    name: "director Table",
+    value: "directorTable",
+  },
+  {
+    name: "executive Table",
+    value: "executiveTable",
+  },
+  {
+    name: "manager Table",
+    value: "managerTable",
+  },
+  {
+    name: "computer Table",
+    value: "computerTable",
+  },
+];
+export const forStorageFilterData = [
+  {
+    name: "drawer",
+    value: "drawer",
+  },
+  {
+    name: "side Cabinet",
+    value: "sideCabinet",
+  },
+  {
+    name: "file Cabinet",
+    value: "fileCabinet",
+  },
+  {
+    name: "multipurpose shelf",
+    value: "multipurposeShelf",
+  },
+  {
+    name: "shoe Rack",
+    value: "shoeRack",
+  },
+];
+export const forSteelFurnitureFilterData = [
+  {
+    name: "almirah",
+    value: "almirah",
+  },
+  {
+    name: "4 Drawer",
+    value: "fourDrawer",
+  },
+  {
+    name: "3 Drawer",
+    value: "threeDrawer",
+  },
+  {
+    name: "drawer cum file cabinet",
+    value: "drawerCumFileCabinet",
+  },
+  {
+    name: "slotted angle rack",
+    value: "slottedAngelRack",
+  },
+  {
+    name: "heavy duty rack",
+    value: "heavyDutyRack",
+  },
+];
+export const forChairFilterData = [
+  {
+    name: "high Back",
+    value: "highBack",
+  },
+  {
+    name: "medium Back",
+    value: "mediumBack",
+  },
+  {
+    name: "low Back",
+    value: "lowBack",
+  },
+  {
+    name: "fixed/Visitor",
+    value: "fixedVisitor",
+  },
+  {
+    name: "tool",
+    value: "tool",
+  },
+  {
+    name: "auditorium chair",
+    value: "auditoriumChair",
+  },
+  {
+    name: "group chair",
+    value: "groupChair",
+  },
+];
+export const forSofaFilterData = [
+  {
+    name: "sofa",
+    value: "sofa",
+  },
+  {
+    name: "center Table",
+    value: "centerTable",
+  },
+  {
+    name: "divan",
+    value: "divan",
+  },
+];
+export const forWorkStationFilterData = [
+  {
+    name: "fabric",
+    value: "fabric",
+  },
+  {
+    name: "metal",
+    value: "metal",
+  },
+  {
+    name: "others",
+    value: "others",
+  },
+];
+export const forGarmentsFilterData = [
+  {
+    name: "QC table",
+    value: "qcTable",
+  },
+  {
+    name: "center/Cutting/Packing/ Table",
+    value: "centerCuttingPackingTable",
+  },
+  {
+    name: "input/Loading Table",
+    value: "inputLoadingTable",
+  },
+  {
+    name: "tagging poly table",
+    value: "taggingPolyTable",
+  },
+  {
+    name: "cut part inspection table",
+    value: "cutPartInspectionTable",
+  },
+  {
+    name: "fabric Relaxing Multi Level Rack",
+    value: "fabricRelaxingMultiLevelRack",
+  },
+  {
+    name: "inspection Table",
+    value: "inspectionTable",
+  },
+  {
+    name: "measurement Table",
+    value: "measurementTable",
+  },
+  {
+    name: "iron table",
+    value: "ironTable",
+  },
+  {
+    name: "worker Chair",
+    value: "workerChair",
+  }
+];
+export const forInteriorFilterData = [
+  {
+    name: "living",
+    value: "living",
+  },
+  {
+    name: "kitchen",
+    value: "kitchen",
+  },
+  {
+    name: "office",
+    value: "office",
+  },
+  {
+    name: "restaurant",
+    value: "restaurant",
+  },
+  {
+    name: "others",
+    value: "others",
+  }
+];

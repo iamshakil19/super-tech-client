@@ -13,13 +13,13 @@ import CategoryCard from "../../../Components/CategoryCard";
 
 const categoryData = [
   { image: all, name: "all collection", path: "/collections" },
-  { image: home, name: "home", path: "/collections/homeFurniture" },
+  { image: home, name: "home", path: "/collections/home-furniture" },
   { image: table, name: "table", path: "/collections/table" },
   { image: cabinet, name: "storage", path: "/collections/storage" },
-  { image: steel_furniture, name: "steel furniture", path: "/collections/steelFurniture" },
+  { image: steel_furniture, name: "steel furniture", path: "/collections/steel-furniture" },
   { image: chair, name: "chair", path: "/collections/chair" },
   { image: sofa, name: "sofa", path: "/collections/sofa" },
-  { image: work_station, name: "work station", path: "/collections/workStation" },
+  { image: work_station, name: "work station", path: "/collections/work-station" },
   { image: garments, name: "garments", path: "/collections/garments" },
   { image: interior, name: "interior", path: "/collections/interior" },
 ];

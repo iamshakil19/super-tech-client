@@ -11,39 +11,39 @@ export const links = [
           },
           {
             name: "Dressing Table",
-            link: "/",
+            link: "/collections/home-furniture/dressing-table",
           },
           {
             name: "Cup Board",
-            link: "/",
+            link: "/collections/home-furniture/cup-board",
           },
           {
             name: "Wardrobe",
-            link: "/",
+            link: "/collections/home-furniture/wardrobe",
           },
           {
             name: "Reading Table",
-            link: "/",
+            link: "/collections/home-furniture/reading-table",
           },
           {
             name: "TV Trolley",
-            link: "/",
+            link: "/collections/home-furniture/tv-trolley",
           },
           {
             name: "Book Shelf",
-            link: "/",
+            link: "/collections/home-furniture/book-shelf",
           },
           {
             name: "Showcase & Corner Shelf",
-            link: "/",
+            link: "/collections/home-furniture/showcase-corner-shelf",
           },
           {
             name: "Dinner Wagon",
-            link: "/",
+            link: "/collections/home-furniture/dinner-wagon",
           },
           {
             name: "Dinning Table & Chair",
-            link: "/",
+            link: "/collections/home-furniture/dinning-table-chair",
           },
         ],
       },
@@ -57,19 +57,19 @@ export const links = [
         subLink: [
           {
             name: "Director Table",
-            link: "/",
+            link: "/collections/table/director-table",
           },
           {
             name: "Executive Table",
-            link: "/",
+            link: "/collections/table/executive-table",
           },
           {
             name: "Manager Table",
-            link: "/",
+            link: "/collections/table/manager-table",
           },
           {
             name: "Computer Table",
-            link: "/",
+            link: "/collections/table/computer-table",
           },
         ],
       },
@@ -83,23 +83,23 @@ export const links = [
         subLink: [
           {
             name: "Drawer",
-            link: "/",
+            link: "/collections/storage/drawer",
           },
           {
             name: "Side Cabinet",
-            link: "/",
+            link: "/collections/storage/side-cabinet",
           },
           {
             name: "File Cabinet",
-            link: "/",
+            link: "/collections/storage/file-cabinet",
           },
           {
             name: "Multipurpose Shelf",
-            link: "/",
+            link: "/collections/storage/multipurpose-shelf",
           },
           {
             name: "Shoe Rack",
-            link: "/",
+            link: "/collections/storage/shoe-rack",
           },
         ],
       },
@@ -113,27 +113,27 @@ export const links = [
         subLink: [
           {
             name: "Almirah",
-            link: "/",
+            link: "/collections/steel-furniture/almirah",
           },
           {
             name: "4 Drawer",
-            link: "/",
+            link: "/collections/steel-furniture/four-drawer",
           },
           {
             name: "3 Drawer",
-            link: "/",
+            link: "/collections/steel-furniture/three-drawer",
           },
           {
             name: "Drawer Cum File Cabinet",
-            link: "/",
+            link: "/collections/steel-furniture/drawer-cum-file-cabinet",
           },
           {
             name: "Slotted Angle Rack",
-            link: "/",
+            link: "/collections/steel-furniture/slotted-angle-rack",
           },
           {
             name: "Heavy Duty Rack",
-            link: "/",
+            link: "/collections/steel-furniture/heavy-duty-rack",
           },
         ],
       },
@@ -147,31 +147,31 @@ export const links = [
         subLink: [
           {
             name: "High Back",
-            link: "/",
+            link: "/collections/chair/high-back",
           },
           {
             name: "Medium Back",
-            link: "/",
+            link: "/collections/chair/medium-back",
           },
           {
             name: "Low Back",
-            link: "/",
+            link: "/collections/chair/low-back",
           },
           {
             name: "Fixed/Visitor",
-            link: "/",
+            link: "/collections/chair/fixed-visitor",
           },
           {
             name: "Tool",
-            link: "/",
+            link: "/collections/chair/tool",
           },
           {
             name: "Auditorium Chair",
-            link: "/",
+            link: "/collections/chair/auditorium-chair",
           },
           {
             name: "Group Chair",
-            link: "/",
+            link: "/collections/chair/group-chair",
           },
         ],
       },
@@ -185,15 +185,15 @@ export const links = [
         subLink: [
           {
             name: "Sofa",
-            link: "/",
+            link: "/collections/sofa/sofa",
           },
           {
             name: "Center Table",
-            link: "/",
+            link: "/collections/sofa/center-table",
           },
           {
             name: "Divan",
-            link: "/",
+            link: "/collections/sofa/divan",
           },
         ],
       },
@@ -207,15 +207,15 @@ export const links = [
         subLink: [
           {
             name: "Fabric",
-            link: "/",
+            link: "/collections/work-station/fabric",
           },
           {
             name: "Metal",
-            link: "/",
+            link: "/collections/work-station/metal",
           },
           {
             name: "Others",
-            link: "/",
+            link: "/collections/work-station/others",
           },
         ],
       },
@@ -229,43 +229,43 @@ export const links = [
         subLink: [
           {
             name: "QC Table",
-            link: "/",
+            link: "/collections/garments/qc-table",
           },
           {
             name: "Center/Cutting/Packing Table",
-            link: "/",
+            link: "/collections/garments/center-cutting-packing-table",
           },
           {
             name: "Input/Loading Table",
-            link: "/",
+            link: "/collections/garments/input-loading-table",
           },
           {
             name: "Tagging Poly Table",
-            link: "/",
+            link: "/collections/garments/tagging-poly-table",
           },
           {
             name: "Cut Part Inspection Table",
-            link: "/",
+            link: "/collections/garments/cut-part-inspection-table",
           },
           {
             name: "Fabric Relaxing Multi Level Rack",
-            link: "/",
+            link: "/collections/garments/fabric-relaxing-multi-level-rack",
           },
           {
             name: "Inspection Table",
-            link: "/",
+            link: "/collections/garments/inspection-table",
           },
           {
             name: "Measurement Table",
-            link: "/",
+            link: "/collections/garments/measurement-table",
           },
           {
             name: "Iron Table",
-            link: "/",
+            link: "/collections/garments/iron-table",
           },
           {
             name: "Worker Chair",
-            link: "/",
+            link: "/collections/garments/worker-chair",
           },
         ],
       },
@@ -279,23 +279,23 @@ export const links = [
         subLink: [
           {
             name: "Living",
-            link: "/",
+            link: "/collections/interior/living",
           },
           {
             name: "Kitchen",
-            link: "/",
+            link: "/collections/interior/kitchen",
           },
           {
             name: "Office",
-            link: "/",
+            link: "/collections/interior/office",
           },
           {
             name: "Restaurant",
-            link: "/",
+            link: "/collections/interior/restaurant",
           },
           {
             name: "Others",
-            link: "/",
+            link: "/collections/interior/others",
           },
         ],
       },

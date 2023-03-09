@@ -158,7 +158,7 @@ const ProductDetails = () => {
                 <select
                   name=""
                   id=""
-                  className="border-2 border-black p-1 px-2 md:p-2 mb-5"
+                  className="border-2 border-black p-1 px-2 md:p-2 mb-5 cursor-pointer"
                   onChange={(e) => setSizeExtraPrice(e.target.value)}
                 >
                   {product.sizes.map((size) => (
