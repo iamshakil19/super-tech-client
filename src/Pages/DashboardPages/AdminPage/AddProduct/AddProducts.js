@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { categories, subCategories } from "../../../../Utils/LocalData";
 import { MdDeleteOutline } from "react-icons/md";
@@ -56,6 +56,10 @@ const AddProducts = () => {
     (subCategory) =>
       Number(subCategory.id) === Number(selectedCategory.split(",")[0])
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="">

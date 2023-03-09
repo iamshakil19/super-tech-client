@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from "react";
 
 const ManageProducts = () => {
-    return (
-        <div>
-            This is manage products
-        </div>
-    );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return <div>This is manage products</div>;
 };
 
 export default ManageProducts;

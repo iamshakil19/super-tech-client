@@ -2,14 +2,16 @@ import React, { useState } from "react";
 
 const ManageOrderFilter = () => {
   const [limit, setLimit] = useState(10);
-  const [price, setPrice] = useState(10);
+  const [sortBy, setSortby] = useState("");
+  const [filter, setFilter] = useState("");
   return (
-    <div className="my-5 sm:flex justify-between items-center gap-3">
+    <div className="my-5 sm:flex justify-between items-center gap-3 poppins">
       <div>
-        <div className="block mb-5 sm:mb-0">
+        <div className=" mb-5 sm:mb-0 flex items-center">
+          <p className="hidden md:block mr-2">Filter :</p>
           <select
-            onChange={(e) => setPrice(e.target.value)}
-            defaultValue={price}
+            onChange={(e) => setFilter(e.target.value)}
+            defaultValue={filter}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
           >
             <option selected className="font-medium text-md" value="">
@@ -28,13 +30,14 @@ const ManageOrderFilter = () => {
         </div>
       </div>
       <div className="flex items-center gap-5">
-        <div className="block sm:ml-5 sm:mt-0">
+        <div className="sm:ml-5 sm:mt-0 flex items-center">
+          <p className="hidden md:block mr-2">Sort By :</p>
           <select
-            onChange={(e) => setPrice(e.target.value)}
-            defaultValue={price}
+            onChange={(e) => setSortby(e.target.value)}
+            defaultValue={sortBy}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
           >
-            <option selected className="font-medium text-md" value="latest">
+            <option selected className="font-medium text-md" value="">
               Default
             </option>
             <option className=" font-medium text-md" value="dateOldToNew">
@@ -54,7 +57,8 @@ const ManageOrderFilter = () => {
             </option>
           </select>
         </div>
-        <div className="block">
+        <div className="flex items-center">
+          <p className="hidden md:block mr-2">Show :</p>
           <select
             onChange={(e) => setLimit(e.target.value)}
             defaultValue={limit}
