@@ -18,6 +18,7 @@ import SignUp from "../../Pages/LoginGroup/SignUp/SignUp";
 import NotFound from "../../Pages/NotFound/NotFound";
 import Product from "../../Pages/Product/Product";
 import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
+import Search from "../../Pages/Search/Search";
 
 const routes = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
     ],
   },

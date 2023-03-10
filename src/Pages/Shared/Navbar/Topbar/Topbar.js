@@ -36,12 +36,12 @@ const Topbar = ({ setSearchOpen }) => {
 
         <div className="flex items-center justify-end">
           <div>
-            <span>
+            <label htmlFor="searchBar">
               <AiOutlineSearch
                 onClick={() => setSearchOpen(true)}
                 className="text-3xl cursor-pointer text-slate-700 "
               />
-            </span>
+            </label>
           </div>
           <div className="px-5 mt-2">
             <div className="indicator">

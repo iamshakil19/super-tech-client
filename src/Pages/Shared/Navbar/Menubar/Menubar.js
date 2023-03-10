@@ -21,12 +21,12 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           </Link>
 
           <div className="flex items-center">
-            <div>
+            <label htmlFor="searchBar">
               <AiOutlineSearch
                 onClick={() => setSearchOpen(true)}
                 className="text-2xl mr-5 text-slate-700 cursor-pointer"
               />
-            </div>
+            </label>
 
             <div className="pr-2 mt-2 mr-5 z-0">
               <div className="indicator">
@@ -126,24 +126,25 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
         <div
           className={`container flex justify-between items-center py-5 md:py-7 mx-auto`}
         >
-          <div className="flex items-center">
+          <div className="flex items-center w-full">
             <span>
               <AiOutlineSearch className="text-2xl mx-5 cursor-pointer" />
             </span>
-            <form action="" className="">
+            <form action="" className="w-full">
               <input
                 autoComplete="off"
                 type="text"
                 placeholder="Search here"
                 name=""
-                className=" poppins bg-transparent text-black outline-none text-lg h-10"
+                id="searchBar"
+                className=" poppins bg-transparent w-full text-black outline-none text-lg h-10"
               />
             </form>
           </div>
-          <span>
+          <span className="w-12">
             <MdClose
               onClick={() => setSearchOpen(false)}
-              className="text-2xl mr-3 cursor-pointer"
+              className="text-2xl mx-3 cursor-pointer"
             />
           </span>
         </div>
