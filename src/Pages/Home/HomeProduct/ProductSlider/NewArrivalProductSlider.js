@@ -26,6 +26,8 @@ const productData = [
     _id: 1,
     name: "GRID Newon Chair",
     price: "84000",
+    category: "home",
+    subCategory: "bed",
     primaryImage:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
     image2:
@@ -35,6 +37,8 @@ const productData = [
     _id: 2,
     name: "GRID Newon Chair",
     price: "84000",
+    category: "home",
+    subCategory: "bed",
     primaryImage:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
     image2:
@@ -44,6 +48,8 @@ const productData = [
     _id: 3,
     name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
     price: "84000",
+    category: "home",
+    subCategory: "bed",
     primaryImage:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
     image2:
@@ -53,6 +59,8 @@ const productData = [
     _id: 4,
     name: "GRID Newon Chair",
     price: "84000",
+    category: "home",
+    subCategory: "bed",
     primaryImage:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
     image2:
@@ -62,6 +70,8 @@ const productData = [
     _id: 5,
     name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
     price: "84000",
+    category: "home",
+    subCategory: "bed",
     primaryImage:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
     image2:
@@ -71,6 +81,8 @@ const productData = [
     _id: 6,
     name: "GRID Newon Chair",
     price: "84000",
+    category: "home",
+    subCategory: "bed",
     primaryImage:
       "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
     image2:

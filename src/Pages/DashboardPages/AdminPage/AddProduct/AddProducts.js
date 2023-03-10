@@ -66,7 +66,7 @@ const AddProducts = () => {
       <div className="flex justify-center items-center overflow-auto p-10 poppins">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-slate-200 shadow-lg p-10 rounded-2xl max-w-3xl "
+          className="bg-slate-200 border border-gray-300/75 shadow-lg p-10 rounded-2xl max-w-3xl "
         >
           <h2 className=" text-2xl font-semibold mb-5 font-serif">
             Add New Product
