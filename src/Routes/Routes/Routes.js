@@ -1,8 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import AdminDashboardLayout from "../../Layout/AdminDashboard/AdminDashboardLayout";
 import MainLayout from "../../Layout/Main/MainLayout";
+import OrderLayout from "../../Layout/OrderLayout/OrderLayout";
 import ProductFilterLayout from "../../Layout/ProductFilter/ProductFilterLayout";
 import UserDashboardLayout from "../../Layout/UserDashboard/UserDashboardLayout";
+import Cart from "../../Pages/CheckOut/Cart/Cart";
+import Information from "../../Pages/CheckOut/Information/Information";
+import Payment from "../../Pages/CheckOut/Payment/Payment";
+import Shipping from "../../Pages/CheckOut/Shipping/Shipping";
 import AddProducts from "../../Pages/DashboardPages/AdminPage/AddProduct/AddProducts";
 import Admin from "../../Pages/DashboardPages/AdminPage/Admin/Admin";
 import Dashboard from "../../Pages/DashboardPages/AdminPage/Dashboard/Dashboard";
@@ -45,6 +50,10 @@ const routes = createBrowserRouter([
         path: "/search",
         element: <Search />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
   },
   {
@@ -58,6 +67,24 @@ const routes = createBrowserRouter([
       {
         path: "orders",
         element: <MyOrders />,
+      },
+    ],
+  },
+  {
+    path: "/checkouts",
+    element: <OrderLayout />,
+    children: [
+      {
+        path: "/checkouts",
+        element: <Information />,
+      },
+      {
+        path: "/checkouts/shipping",
+        element: <Shipping />,
+      },
+      {
+        path: "/checkouts/payment",
+        element: <Payment />,
       },
     ],
   },

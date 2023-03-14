@@ -17,3 +17,8 @@
 .multi-range-slider .caption {
   display: none !important;
 }
+
+.react-multiple-carousel__arrow {
+  background-color: rgba(0, 0, 0, 0.598) !important ;
+}
+
