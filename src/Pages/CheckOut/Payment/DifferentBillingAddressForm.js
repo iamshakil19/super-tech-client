@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { divisions } from "../../../Utils/LocalData";
 import { IoMdStar } from "react-icons/io";
-import { RiArrowLeftSLine } from "react-icons/ri";
-const Information = () => {
-  const [isSaveInfo, setSaveInfo] = useState(false);
+import { useNavigate } from "react-router-dom";
+import { divisions } from "../../../Utils/LocalData";
+
+const DifferentBillingAddressForm = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -18,8 +16,7 @@ const Information = () => {
     navigate("/checkouts/shipping");
   };
   return (
-    <div className="my-5 poppins">
-      <h2 className="font-semibold mb-5 text-lg">Contact Information</h2>
+    <div className="mt-2">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="">
           <div className="w-full mb-3">
@@ -44,7 +41,6 @@ const Information = () => {
               <input
                 id="name"
                 type="text"
-                defaultValue="Shakil Ahmed"
                 placeholder="Enter Name"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                   errors.name
@@ -71,7 +67,6 @@ const Information = () => {
               <input
                 id="phoneNumber"
                 type="text"
-                defaultValue="01877018851"
                 placeholder="Enter Number"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                   errors.phoneNumber
@@ -100,7 +95,6 @@ const Information = () => {
               <input
                 id="company"
                 type="text"
-                defaultValue="super tech furniture"
                 placeholder="Enter Company Name"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md focus:border-slate-700 border-slate-300`}
                 {...register("company")}
@@ -113,7 +107,6 @@ const Information = () => {
               <input
                 id="postalCode"
                 type="text"
-                defaultValue="1216"
                 placeholder="Enter Post Code"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md focus:border-slate-700 border-slate-300`}
                 {...register("postalCode")}
@@ -165,7 +158,6 @@ const Information = () => {
               <input
                 id="area"
                 type="text"
-                defaultValue="Mirpur"
                 placeholder="Enter Area"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                   errors.area
@@ -193,7 +185,6 @@ const Information = () => {
             <input
               id="streetAddress"
               type="text"
-              defaultValue="mirpur 13, block B, road 9, house 13"
               placeholder="Enter Street Address"
               className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                 errors.streetAddress
@@ -213,39 +204,10 @@ const Information = () => {
               </span>
             )}
           </div>
-          <div className="flex items-center gap-4 mb-3">
-            <input
-              type="checkbox"
-              id="saveInformation"
-              checked={isSaveInfo}
-              className="checkbox checkbox-sm"
-              onChange={() => setSaveInfo(!isSaveInfo)}
-            />
-            <label className="text-sm cursor-pointer" htmlFor="saveInformation">
-              Save this information for next time
-            </label>
-          </div>
-
-          <div className="py-2 sm:flex justify-between items-center flex-row-reverse">
-            <div>
-              <input
-                type="submit"
-                className="bg-black lg:bg-slate-700 lg:hover:bg-black text-white font-semibold w-full py-3 px-5 rounded-md transition-all ease-in-out duration-200 cursor-pointer text-sm"
-                value="Continue To Shipping"
-              />
-            </div>
-            <Link
-              to="/cart"
-              className="flex items-center justify-center mt-5 sm:mt-0"
-            >
-              <RiArrowLeftSLine size={25} />
-              <p className="text-sm ml-2 whitespace-nowrap">Return to cart</p>
-            </Link>
-          </div>
         </div>
       </form>
     </div>
   );
 };
 
-export default Information;
+export default DifferentBillingAddressForm;

@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 const ProductCard = ({ product }) => {
   const { _id, name, price, primaryImage, description, image2 } = product;
   const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    navigate("/checkouts")
+  }
   return (
     <div className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-300 rounded-md mx-auto ">
       <section>
@@ -41,7 +45,7 @@ const ProductCard = ({ product }) => {
           <button className="whitespace-nowrap text-black border border-black hover:text-white hover:bg-black px-2 py-1.5 w-full font-medium rounded-full transition-all duration-200 ease-in-out mb-3 xl:mb-0">
             Add To Cart
           </button>
-          <button className=" whitespace-nowrap text-white  border border-black bg-black px-2 py-1.5 w-full font-medium rounded-full  transition-all duration-200 ease-in-out">
+          <button onClick={handleBuyNow}  className=" whitespace-nowrap text-white  border border-black bg-black px-2 py-1.5 w-full font-medium rounded-full  transition-all duration-200 ease-in-out">
             Buy Now
           </button>
         </div>

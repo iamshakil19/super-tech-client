@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { categories, subCategories } from "../../../../Utils/LocalData";
 import { MdDeleteOutline } from "react-icons/md";
-import { IoMdCloudUpload } from "react-icons/io";
+import { IoMdCloudUpload, IoMdStar } from "react-icons/io";
 const product = {
   _id: 1,
   name: "GRID Newon Chair",
@@ -63,243 +63,239 @@ const AddProducts = () => {
 
   return (
     <div className="">
-      <div className="flex justify-center items-center overflow-auto p-10 poppins">
+      <div className=" poppins mx-auto w-full">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-slate-200 border border-gray-300/75 shadow-lg p-10 rounded-2xl max-w-3xl "
+          className="bg-slate-200 border border-gray-300/75 shadow-lg p-10 rounded-2xl max-w-3xl mx-auto"
         >
-          <h2 className=" text-2xl font-semibold mb-5 font-serif">
-            Add New Product
-          </h2>
-          <div className="flex flex-wrap gap-3 justify-between">
-            <div className="flex flex-col w-full max-w-xs">
-              <label className=" font-serif mb-2 text-lg" htmlFor="name">
-                Product Name
-              </label>
-              <input
-                id="name"
-                type="text"
-                placeholder="Type Product Name"
-                className={`border block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                  errors.name
-                    ? " border-red-500 focus:border-red-500"
-                    : "focus:border-slate-700 border-slate-300"
-                }`}
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "Name is required",
-                  },
-                })}
-              />
-              {errors.name && (
-                <span className="label-text-alt text-red-500 text-sm ">
-                  {errors.name.message}
-                </span>
-              )}
-            </div>
+          <h2 className=" text-2xl font-semibold mb-5 ">Add New Product</h2>
+          <div className="">
+            <section className="sm:flex items-center justify-between gap-5 mb-4">
+              <div className="flex flex-col w-full mb-4 sm:mb-0">
+                <label
+                  className="mb-2 text-base font-semibold flex"
+                  htmlFor="name"
+                >
+                  Product Name <IoMdStar className="text-red-500" size={11} />
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Type Product Name"
+                  className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    errors.name
+                      ? " border-red-500 focus:border-red-500"
+                      : "focus:border-slate-700 border-slate-300"
+                  }`}
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "Name is required",
+                    },
+                  })}
+                />
+                {errors.name && (
+                  <span className="label-text-alt text-red-500 text-sm ">
+                    {errors.name.message}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col w-full">
+                <label
+                  className="mb-2 text-base font-semibold flex"
+                  htmlFor="price"
+                >
+                  Price <IoMdStar className="text-red-500" size={11} />
+                </label>
+                <input
+                  id="price"
+                  type="number"
+                  placeholder="Type Product Price"
+                  className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    errors.price
+                      ? " border-red-500 focus:border-red-500"
+                      : "focus:border-slate-700 border-slate-300"
+                  }`}
+                  {...register(
+                    "price",
+                    {
+                      required: {
+                        value: true,
+                        message: "Price is required",
+                      },
+                      min: {
+                        value: 0,
+                        message: "Price can't be negative",
+                      },
+                      valueAsNumber: true,
+                    }
+                  )}
+                />
+                {errors.price && (
+                  <span className="label-text-alt text-red-500 text-sm ">
+                    {errors.price.message}
+                  </span>
+                )}
+              </div>
+            </section>
 
-            <div className="flex flex-col w-full max-w-xs">
-              <label className=" font-serif mb-2 text-lg" htmlFor="price">
-                Price
-              </label>
-              <input
-                id="price"
-                type="number"
-                placeholder="Type Product Price"
-                className={`border block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                  errors.price
-                    ? " border-red-500 focus:border-red-500"
-                    : "focus:border-slate-700 border-slate-300"
-                }`}
-                {...register("price", {
-                  required: {
-                    value: true,
-                    message: "Price is required",
-                  },
-                  min: {
-                    value: 0,
-                    message: "Price can't be negative",
-                  },
-                })}
-              />
-              {errors.price && (
-                <span className="label-text-alt text-red-500 text-sm ">
-                  {errors.price.message}
-                </span>
-              )}
-            </div>
-
-            <div className="flex flex-col w-full max-w-xs">
-              <label className=" font-serif mb-2 text-lg" htmlFor="category">
-                Product Category
-              </label>
-              <select
-                defaultValue={selectedCategory}
-                id="category"
-                type="text"
-                placeholder="Type Product Name"
-                className={`border capitalize cursor-pointer block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                  errors.category
-                    ? " border-red-500 focus:border-red-500"
-                    : "focus:border-slate-700 border-slate-300"
-                }`}
-                {...register("category", {
-                  required: {
-                    value: true,
-                    message: "Category is required",
-                  },
-                  onChange: (e) => setSelectedCategory(e.target.value),
-                })}
-              >
-                <option className="" disabled selected value={""}>
-                  Select Category
-                </option>
-                {categories.map((category) => (
-                  <option
-                    value={[category.id, category.value]}
-                    className="capitalize"
-                  >
-                    {category.name}
+            <section className="sm:flex items-center justify-between gap-5 mb-4">
+              <div className="flex flex-col w-full mb-4 sm:mb-0">
+                <label
+                  className="mb-2 text-base font-semibold flex"
+                  htmlFor="category"
+                >
+                  Product Category{" "}
+                  <IoMdStar className="text-red-500" size={11} />
+                </label>
+                <select
+                  defaultValue={selectedCategory}
+                  id="category"
+                  type="text"
+                  placeholder="Type Product Name"
+                  className={`border capitalize cursor-pointer block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    errors.category
+                      ? " border-red-500 focus:border-red-500"
+                      : "focus:border-slate-700 border-slate-300"
+                  }`}
+                  {...register("category", {
+                    required: {
+                      value: true,
+                      message: "Category is required",
+                    },
+                    onChange: (e) => setSelectedCategory(e.target.value),
+                  })}
+                >
+                  <option className="" disabled selected value={""}>
+                    Select Category
                   </option>
-                ))}
-              </select>
-              {errors.category && (
-                <span className="label-text-alt text-red-500 text-sm ">
-                  {errors.category.message}
-                </span>
-              )}
-            </div>
-
-            <div className="flex flex-col w-full max-w-xs">
-              <label className=" font-serif mb-2 text-lg" htmlFor="subCategory">
-                Product Sub Category
-              </label>
-              <select
-                id="subCategory"
-                placeholder="Type Product Name"
-                className={`border capitalize cursor-pointer block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                  errors.subCategory
-                    ? " border-red-500 focus:border-red-500"
-                    : "focus:border-slate-700 border-slate-300"
-                }`}
-                {...register("subCategory", {
-                  required: {
-                    value: true,
-                    message: "Sub Category is required",
-                  },
-                })}
-              >
-                <option className="" disabled selected value={""}>
-                  Select Sub Category
-                </option>
-                {subCategoryFilter?.map((subCategory) => (
-                  <option value={subCategory.value} className="capitalize">
-                    {subCategory.name}
+                  {categories.map((category) => (
+                    <option
+                      value={[category.id, category.value]}
+                      className="capitalize"
+                    >
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.category && (
+                  <span className="label-text-alt text-red-500 text-sm ">
+                    {errors.category.message}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col w-full">
+                <label
+                  className="mb-2 text-base font-semibold flex"
+                  htmlFor="subCategory"
+                >
+                  Product Sub Category{" "}
+                  <IoMdStar className="text-red-500" size={11} />
+                </label>
+                <select
+                  id="subCategory"
+                  placeholder="Type Product Name"
+                  className={`border capitalize cursor-pointer block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    errors.subCategory
+                      ? " border-red-500 focus:border-red-500"
+                      : "focus:border-slate-700 border-slate-300"
+                  }`}
+                  {...register("subCategory", {
+                    required: {
+                      value: true,
+                      message: "Sub Category is required",
+                    },
+                  })}
+                >
+                  <option className="" disabled selected value={""}>
+                    Select Sub Category
                   </option>
-                ))}
-              </select>
-              {errors.subCategory && (
-                <span className="label-text-alt text-red-500 text-sm ">
-                  {errors.subCategory.message}
-                </span>
-              )}
-            </div>
-            <div className="flex flex-col w-full max-w-xs ">
-              <label className=" font-serif mb-2 text-lg" htmlFor="unit">
-                Primary Image
-              </label>
-              <input
-                type="file"
-                name="primaryImage"
-                id="primaryImage"
-                className="hidden"
-                accept="image/jpg, image/jpeg, image/png"
-                {...register("primaryImage", {
-                  required: {
-                    value: true,
-                    message: "Primary Image is required",
-                  },
-                })}
-              />
-              <label
-                htmlFor="primaryImage"
-                className="cursor-pointer text-white bg-green-500 hover:bg-green-600 transition-all duration-200 ease-in-out flex items-center justify-center py-2 px-4 rounded-md shadow-xl shadow-green-200"
-              >
-                {" "}
-                <span className="text-2xl mr-3">
-                  <IoMdCloudUpload />
-                </span>{" "}
-                Upload Image
-              </label>
-              {errors.primaryImage && (
-                <span className="label-text-alt text-red-500 text-sm lg:ml-7">
-                  {errors.primaryImage.message}
-                </span>
-              )}
-            </div>
-            <div className="flex flex-col w-full max-w-xs">
-              <label className=" font-serif mb-2 text-lg" htmlFor="unit">
-                Unit Type
-              </label>
-              <select
-                id="unit"
-                placeholder="Type Product Name"
-                className={`border block outline-none py-2 px-3 max-w-sm w-full capitalize cursor-pointer rounded-md drop-shadow-md focus:drop-shadow-none ${
-                  errors.unit
-                    ? " border-red-500 focus:border-red-500"
-                    : "focus:border-slate-700 border-slate-300"
-                }`}
-                {...register("unit", {
-                  required: {
-                    value: true,
-                    message: "Unit Type is required",
-                  },
-                })}
-              >
-                <option className="" disabled selected value="">
-                  Select Unit Type
-                </option>
-                <option className="capitalize" value="pcs">
-                  piece
-                </option>
-              </select>
-              {errors.unit && (
-                <span className="label-text-alt text-red-500 text-sm ">
-                  {errors.unit.message}
-                </span>
-              )}
-            </div>
-            <div className="flex flex-col w-full max-w-xs ">
-              <label className=" font-serif mb-2 text-lg" htmlFor="unit">
-                Extra Multiple Images ( Optional )
-              </label>
-              <input
-                multiple
-                type="file"
-                name="extraImages"
-                id="extraImages"
-                className="hidden"
-                accept="image/jpg, image/jpeg, image/png"
-                {...register("extraImages")}
-              />
-              <label
-                htmlFor="extraImages"
-                className="cursor-pointer text-white bg-[#12B0E8] hover:bg-[#0499cf] duration-200 transition-all ease-in-out flex items-center justify-center py-2 px-4 rounded-md shadow-xl shadow-[#12afe83e]"
-              >
-                {" "}
-                <span className="text-2xl mr-3">
-                  <IoMdCloudUpload />
-                </span>{" "}
-                Upload Images
-              </label>
-            </div>
+                  {subCategoryFilter?.map((subCategory) => (
+                    <option value={subCategory.value} className="capitalize">
+                      {subCategory.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.subCategory && (
+                  <span className="label-text-alt text-red-500 text-sm ">
+                    {errors.subCategory.message}
+                  </span>
+                )}
+              </div>
+            </section>
+
+            <section className="sm:flex items-center justify-between gap-5 mb-4">
+              <div className="flex flex-col w-full mb-4 sm:mb-0">
+                <label
+                  className="mb-2 text-base font-semibold flex"
+                  htmlFor="unit"
+                >
+                  Primary Image <IoMdStar className="text-red-500" size={11} />
+                </label>
+                <input
+                  type="file"
+                  name="primaryImage"
+                  id="primaryImage"
+                  className="hidden"
+                  accept="image/jpg, image/jpeg, image/png"
+                  {...register("primaryImage", {
+                    required: {
+                      value: true,
+                      message: "Primary Image is required",
+                    },
+                  })}
+                />
+                <label
+                  htmlFor="primaryImage"
+                  className="cursor-pointer text-white bg-green-500 hover:bg-green-600 transition-all duration-200 ease-in-out flex items-center justify-center py-2 px-4 rounded-md shadow-xl shadow-green-200"
+                >
+                  {" "}
+                  <span className="text-2xl mr-3">
+                    <IoMdCloudUpload />
+                  </span>{" "}
+                  Upload Image
+                </label>
+                {errors.primaryImage && (
+                  <span className="label-text-alt text-red-500 text-sm lg:ml-7">
+                    {errors.primaryImage.message}
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col w-full ">
+                <label className="mb-2 text-base font-semibold" htmlFor="unit">
+                  Extra Multiple Images{" "}
+                  <span className="text-sm">(optional)</span>
+                </label>
+                <input
+                  multiple
+                  type="file"
+                  name="extraImages"
+                  id="extraImages"
+                  className="hidden"
+                  accept="image/jpg, image/jpeg, image/png"
+                  {...register("extraImages")}
+                />
+                <label
+                  htmlFor="extraImages"
+                  className="cursor-pointer text-white bg-[#12B0E8] hover:bg-[#0499cf] duration-200 transition-all ease-in-out flex items-center justify-center py-2 px-4 rounded-md shadow-xl shadow-[#12afe83e]"
+                >
+                  {" "}
+                  <span className="text-2xl mr-3">
+                    <IoMdCloudUpload />
+                  </span>{" "}
+                  Upload Images
+                </label>
+              </div>
+            </section>
 
             <div className="border-b border-gray-300 mt-5 mb-3"></div>
 
             <div className="flex flex-col w-full">
-              <label className=" font-serif mb-2 text-lg" htmlFor="description">
-                Description
+              <label
+                className="mb-2 text-base font-semibold flex"
+                htmlFor="description"
+              >
+                Description <IoMdStar className="text-red-500" size={11} />
               </label>
               <textarea
                 className={`border outline-none py-2 px-3 rounded-md drop-shadow-md focus:drop-shadow-none ${
@@ -327,13 +323,18 @@ const AddProducts = () => {
           </div>
           {colorFields.map((color, index) => {
             return (
-              <div className="flex mt-3 flex-wrap gap-3 justify-between">
-                <div key={color.key} className="flex flex-col w-full max-w-xs">
-                  <label className=" font-serif mb-2 text-lg">Color Name</label>
+              <div className="sm:flex mt-3 gap-3 justify-between">
+                <div
+                  key={color.key}
+                  className="flex flex-col w-full  mb-4 sm:mb-0"
+                >
+                  <label className="mb-2 text-base font-semibold">
+                    Color Name
+                  </label>
                   <input
                     type="text"
                     placeholder="Type Product Color Name"
-                    className={`border block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
                       errors?.colors?.[index]?.colorName?.message
                         ? " border-red-500 focus:border-red-500"
                         : "focus:border-slate-700 border-slate-300"
@@ -352,34 +353,34 @@ const AddProducts = () => {
                   )}
                 </div>
 
-                <div className="flex flex-col w-full max-w-xs">
-                  <label className=" font-serif mb-2 text-lg">
+                <div className="flex flex-col w-full">
+                  <label className="mb-2 text-base font-semibold">
                     Extra Price
                   </label>
-                  <section className="flex justify-between items-center">
-                    <div>
-                      <input
-                        type="number"
-                        defaultValue={0}
-                        placeholder="Type Extra Price"
-                        className={`border block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                          errors?.colors?.[index]?.extraPrice
-                            ? " border-red-500 focus:border-red-500"
-                            : "focus:border-slate-700 border-slate-300"
-                        }`}
-                        {...register(`colors[${index}].extraPrice`, {
-                          min: {
-                            value: 0,
-                            message: "Price can't be negative",
-                          },
-                        })}
-                      />
-                      {errors?.colors?.[index]?.extraPrice?.message && (
-                        <span className="label-text-alt text-red-500 text-sm ">
-                          {errors?.colors?.[index]?.extraPrice?.message}
-                        </span>
-                      )}
-                    </div>
+
+                  <div className="flex items-center">
+                    <input
+                      type="number"
+                      defaultValue={0}
+                      placeholder="Type Extra Price"
+                      className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                        errors?.colors?.[index]?.extraPrice
+                          ? " border-red-500 focus:border-red-500"
+                          : "focus:border-slate-700 border-slate-300"
+                      }`}
+                      {...register(`colors[${index}].extraPrice`, {
+                        min: {
+                          value: 0,
+                          message: "Price can't be negative",
+                        },
+                        valueAsNumber: true,
+                      })}
+                    />
+                    {errors?.colors?.[index]?.extraPrice?.message && (
+                      <span className="label-text-alt text-red-500 text-sm ">
+                        {errors?.colors?.[index]?.extraPrice?.message}
+                      </span>
+                    )}
                     <button
                       type="button"
                       onClick={() => colorRemove(index)}
@@ -390,7 +391,7 @@ const AddProducts = () => {
                         size="20"
                       />
                     </button>
-                  </section>
+                  </div>
                 </div>
               </div>
             );
@@ -405,16 +406,20 @@ const AddProducts = () => {
               Add Color
             </button>
           </div>
-
           {sizeFields.map((size, index) => {
             return (
-              <div className="flex mt-3 flex-wrap gap-3 justify-between">
-                <div key={size.key} className="flex flex-col w-full max-w-xs">
-                  <label className=" font-serif mb-2 text-lg">Size Name</label>
+              <div className="sm:flex mt-3 gap-3 justify-between">
+                <div
+                  key={size.key}
+                  className="flex flex-col w-full  mb-4 sm:mb-0"
+                >
+                  <label className="mb-2 text-base font-semibold">
+                    Size Name
+                  </label>
                   <input
                     type="text"
                     placeholder="Type Product Color Name"
-                    className={`border block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
                       errors?.sizes?.[index]?.sizeName?.message
                         ? " border-red-500 focus:border-red-500"
                         : "focus:border-slate-700 border-slate-300"
@@ -433,34 +438,34 @@ const AddProducts = () => {
                   )}
                 </div>
 
-                <div className="flex flex-col w-full max-w-xs">
-                  <label className=" font-serif mb-2 text-lg">
+                <div className="flex flex-col w-full">
+                  <label className="mb-2 text-base font-semibold">
                     Extra Price
                   </label>
-                  <section className="flex justify-between items-center">
-                    <div>
-                      <input
-                        type="number"
-                        defaultValue={0}
-                        placeholder="Type Extra Price"
-                        className={`border block outline-none py-2 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                          errors?.sizes?.[index]?.extraPrice
-                            ? " border-red-500 focus:border-red-500"
-                            : "focus:border-slate-700 border-slate-300"
-                        }`}
-                        {...register(`sizes[${index}].extraPrice`, {
-                          min: {
-                            value: 0,
-                            message: "Price can't be negative",
-                          },
-                        })}
-                      />
-                      {errors?.sizes?.[index]?.extraPrice?.message && (
-                        <span className="label-text-alt text-red-500 text-sm ">
-                          {errors?.sizes?.[index]?.extraPrice?.message}
-                        </span>
-                      )}
-                    </div>
+
+                  <div className="flex items-center">
+                    <input
+                      type="number"
+                      defaultValue={0}
+                      placeholder="Type Extra Price"
+                      className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                        errors?.sizes?.[index]?.extraPrice
+                          ? " border-red-500 focus:border-red-500"
+                          : "focus:border-slate-700 border-slate-300"
+                      }`}
+                      {...register(`sizes[${index}].extraPrice`, {
+                        min: {
+                          value: 0,
+                          message: "Price can't be negative",
+                        },
+                        valueAsNumber: true,
+                      })}
+                    />
+                    {errors?.sizes?.[index]?.extraPrice?.message && (
+                      <span className="label-text-alt text-red-500 text-sm ">
+                        {errors?.sizes?.[index]?.extraPrice?.message}
+                      </span>
+                    )}
                     <button
                       type="button"
                       onClick={() => sizeRemove(index)}
@@ -471,7 +476,7 @@ const AddProducts = () => {
                         size="20"
                       />
                     </button>
-                  </section>
+                  </div>
                 </div>
               </div>
             );

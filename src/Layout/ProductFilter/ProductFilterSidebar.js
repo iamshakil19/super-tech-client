@@ -91,7 +91,7 @@ const ProductFilterSidebar = () => {
           </div>
         )}
         <div>
-          <button className="bg-[#f9a51a] w-full poppins text-white py-1 rounded-sm mt-3 mb-1 shadow-lg">
+          <button className="bg-black w-full poppins text-white py-1 rounded-sm mt-3 mb-1 shadow-lg">
             Reset Filters
           </button>
         </div>

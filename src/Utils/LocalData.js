@@ -8,6 +8,17 @@ import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
+export const divisions = [
+  "dhaka",
+  "sylhet",
+  "barishal",
+  "chattogram",
+  "rajshahi",
+  "khulna",
+  "mymensingh",
+  "rangpur",
+];
+
 export const categories = [
   { id: 1, name: "home", value: "home" },
   { id: 2, name: "table", value: "table" },
@@ -397,7 +408,7 @@ export const forGarmentsFilterData = [
   {
     name: "worker Chair",
     value: "workerChair",
-  }
+  },
 ];
 export const forInteriorFilterData = [
   {
@@ -419,5 +430,5 @@ export const forInteriorFilterData = [
   {
     name: "others",
     value: "others",
-  }
+  },
 ];
