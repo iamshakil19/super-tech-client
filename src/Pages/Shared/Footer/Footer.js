@@ -30,7 +30,7 @@ const Footer = () => {
               <IoLocationSharp size={21} className="mr-3" />
 
               <span className="w-full">
-                Plot # 31/B, Avenue # 05, Road # 15/1, Block # C, Mirpur - 11,
+                Plot 31/B, Avenue 05, Road 15/1, Block C, Mirpur - 11,
                 Dhaka-1216, Bangladesh
               </span>
             </div>

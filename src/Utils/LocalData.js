@@ -66,8 +66,8 @@ export const footerLinks = [
   ],
   [
     {
-      name: "About Us",
-      path: "/about-us",
+      name: "Contact Us",
+      path: "/contact-us",
     },
     {
       name: "License & Certificates",
