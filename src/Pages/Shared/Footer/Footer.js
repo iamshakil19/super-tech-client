@@ -1,82 +1,15 @@
 import React from "react";
 import logo from "../../../Assets/Others/logo.png";
 import { BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
+import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { black } from "tailwindcss/colors";
-
-const footerLinks = [
-  [
-    {
-      name: "search",
-      path: "/search",
-    },
-    {
-      name: "Terms of Service",
-      path: "/terms-of-service",
-    },
-    {
-      name: "Return & Warranty Policy",
-      path: "/return-warranty-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-  ],
-  [
-    {
-      name: "About Us",
-      path: "/about-us",
-    },
-    {
-      name: "License & Certificates",
-      path: "/license-certificates",
-    },
-    {
-      name: "Return & Warranty Policy",
-      path: "/return-warranty-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-  ],
-  [
-    {
-      name: "About Us",
-      path: "/about-us",
-    },
-    {
-      name: "License & Certificates",
-      path: "/license-certificates",
-    },
-    {
-      name: "Return & Warranty Policy",
-      path: "/return-warranty-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-  ],
-];
-
+import { footerLinks } from "../../../Utils/LocalData";
+import { MdCall, MdEmail } from "react-icons/md";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <div className="bg-black py-24">
+    <div className="bg-black py-24 poppins">
       <div className="container mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="md:mx-auto">
           <img
@@ -84,6 +17,23 @@ const Footer = () => {
             src={logo}
             alt=""
           />
+
+          <div className="mt-5 text-white">
+            <div className="flex items-center">
+              <MdCall size={19} className="mr-3" /> <span>01716-926040</span>
+            </div>
+            <div className="flex items-center mt-2">
+              <MdEmail size={19} className="mr-3" />{" "}
+              <span>super.tech767@gmail.com</span>
+            </div>
+            <div className="flex mt-2">
+              <IoLocationSharp size={21} className="mr-3" />
+
+              <span className="w-full">
+                Dhaka Mirpur 13, Block B, Road 9, House 13, Flor 2nd
+              </span>
+            </div>
+          </div>
 
           <div className="text-3xl flex items-center text-white mt-5">
             <Link
@@ -102,7 +52,7 @@ const Footer = () => {
           <div className="border-b mt-5 md:hidden border-slate-600"></div>
         </div>
         <div className="md:mx-auto">
-          {footerLinks[0]?.map((link) => (
+          {footerLinks?.[0]?.map((link) => (
             <div>
               <Link
                 to={link.path}
@@ -116,7 +66,7 @@ const Footer = () => {
           <div className="border-b mt-5 md:hidden border-slate-600"></div>
         </div>
         <div className="md:mx-auto">
-          {footerLinks[1]?.map((link) => (
+          {footerLinks?.[1]?.map((link) => (
             <div>
               <Link
                 to={link.path}
@@ -130,7 +80,7 @@ const Footer = () => {
           <div className="border-b mt-5 md:hidden border-slate-600"></div>
         </div>
         <div className="md:mx-auto">
-          {footerLinks[2]?.map((link) => (
+          {footerLinks?.[2]?.map((link) => (
             <div>
               <Link
                 to={link.path}

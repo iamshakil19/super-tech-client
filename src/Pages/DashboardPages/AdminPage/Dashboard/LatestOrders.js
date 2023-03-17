@@ -1,6 +1,4 @@
 import React from "react";
-import { TbCurrencyTaka } from "react-icons/tb";
-import { BsFire } from "react-icons/bs";
 import { TbActivityHeartbeat } from "react-icons/tb";
 const LatestOrders = () => {
   const orderData = [
@@ -65,7 +63,7 @@ const LatestOrders = () => {
   const newLatestOrders = orderData.slice(0, 5)
   return (
     <div>
-      <div className="my-10 border poppins border-gray-200 bg-white p-5 rounded-md shadow-lg shadow-gray-300">
+      <div className="my-10 border poppins border-gray-200 bg-white p-5 rounded-md shadow-lg shadow-gray-200">
         <h2 className="text-xl font-bold my-5 flex items-center text-red-500"> <TbActivityHeartbeat size={26} className="mr-2"/> Latest Orders</h2>
         <div className="grid grid-cols-4 lg:grid-cols-5 gap-3">
           <p className="font-bold lg:block hidden text-red-500">ID</p>
@@ -83,9 +81,9 @@ const LatestOrders = () => {
                 {order.name}
               </p>
               <p className="overflow-hidden border-l border-gray-300 pl-2">{order.number}</p>
-              <p className="flex items-center border-l border-gray-300 pl-2">
+              <p className="border-l border-gray-300 pl-2">
                 {" "}
-                <TbCurrencyTaka size={20} /> 456
+                ৳ 456
               </p>
               <p
                 className={`capitalize w-24 text-center rounded-full px-2 py-0.5 shadow-md text-sm font-medium ${

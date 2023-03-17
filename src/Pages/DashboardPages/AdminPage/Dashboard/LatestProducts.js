@@ -78,7 +78,7 @@ const LatestProducts = () => {
   const newLatestProducts = productData.slice(0, 5);
   return (
     <div>
-      <div className="my-10 poppins border border-gray-200 bg-white p-5 rounded-md shadow-lg shadow-gray-300">
+      <div className="my-10 poppins border border-gray-200 bg-white p-5 rounded-md shadow-lg shadow-gray-200">
         <h2 className="text-xl font-bold my-5 flex items-center text-red-500">
           {" "}
           <FaBoxOpen size={19} className="mr-2" />

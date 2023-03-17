@@ -1,5 +1,4 @@
 import React from "react";
-import { TbCurrencyTaka } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
@@ -7,10 +6,10 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   const handleBuyNow = () => {
-    navigate("/checkouts")
-  }
+    navigate("/checkouts");
+  };
   return (
-    <div className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-300 rounded-md mx-auto ">
+    <div className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto ">
       <section>
         <section>
           <img
@@ -37,15 +36,16 @@ const ProductCard = ({ product }) => {
       </section>
       <section className="w-full">
         <div className="border-b border-gray-200 my-3"></div>
-        <p className="flex justify-center items-center text-lg text-red-500 font-bold">
-          {price} <TbCurrencyTaka size={25} className="mb-1" />{" "}
-        </p>
+        <p className="text-center text-lg text-red-500 font-bold">৳ {price}</p>
 
         <div className="xl:flex gap-5 mt-3">
           <button className="whitespace-nowrap text-black border border-black hover:text-white hover:bg-black px-2 py-1.5 w-full font-medium rounded-full transition-all duration-200 ease-in-out mb-3 xl:mb-0">
             Add To Cart
           </button>
-          <button onClick={handleBuyNow}  className=" whitespace-nowrap text-white  border border-black bg-black px-2 py-1.5 w-full font-medium rounded-full  transition-all duration-200 ease-in-out">
+          <button
+            onClick={handleBuyNow}
+            className=" whitespace-nowrap text-white  border border-black bg-black px-2 py-1.5 w-full font-medium rounded-full  transition-all duration-200 ease-in-out"
+          >
             Buy Now
           </button>
         </div>

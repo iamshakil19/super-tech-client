@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TbCurrencyTaka } from "react-icons/tb";
 
 const HomeProductCard = ({ product }) => {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
@@ -33,9 +32,8 @@ const HomeProductCard = ({ product }) => {
           >
             {name}
           </h2>
-          <p className="poppins mt-2 flex">
-            <TbCurrencyTaka className="text-red-500  text-2xl" />{" "}
-            <span className="text-lg text-red-500 font-semibold">{price}</span>
+          <p className="poppins mt-2 text-lg text-red-500 font-semibold">
+            ৳ {price}
           </p>
         </div>
         <div

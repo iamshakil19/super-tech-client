@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { TbCurrencyTaka } from "react-icons/tb";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 import WhySuperTech from "../Shared/WhySuperTech/WhySuperTech";
@@ -42,7 +41,7 @@ const ProductDetails = () => {
     Number(quantity);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -117,13 +116,10 @@ const ProductDetails = () => {
           <h2 className="text-black text-3xl font-semibold ">{product.name}</h2>
 
           <p className="mt-5 flex items-center text-xl">
-            {" "}
-            Price :{" "}
+            Price :
             <span className="font-semibold text-red-500 ml-2">
-              {" "}
-              {totalPrice}{" "}
-            </span>{" "}
-            <TbCurrencyTaka className="text-red-500  text-2xl" />
+              ৳ {totalPrice}
+            </span>
           </p>
 
           <div className="border-b border-gray-300 my-2 md:my-3"></div>
@@ -202,11 +198,11 @@ const ProductDetails = () => {
               </span>
             </div>
             <div className="md:flex items-center">
-              <button className="max-w-xs w-full border py-2 mb-5 md:mb-0 md:mr-3 bg-black text-white font-semibold">
-                Buy Now
-              </button>
-              <button className="max-w-xs w-full border py-2 md:ml-3 bg-black text-white font-semibold">
+              <button className="max-w-xs w-full border py-2 md:mr-3 bg-black text-white font-semibold">
                 Add To Cart
+              </button>
+              <button className="max-w-xs w-full border py-2 mb-5 md:mb-0 md:ml-3 bg-black text-white font-semibold">
+                Buy Now
               </button>
             </div>
           </div>

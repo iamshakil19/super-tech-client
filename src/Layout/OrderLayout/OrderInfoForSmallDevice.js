@@ -34,7 +34,7 @@ const OrderInfoForSmallDevice = () => {
         <OrderCard />
         <OrderCard />
         <div className="border-b border-gray-300 my-5"></div>
-        {location.pathname !== "/checkouts/thank_you" && (
+        {location.pathname !== "/checkouts/thank-you" && (
           <>
             <div className="flex items-center gap-5">
               <input

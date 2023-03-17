@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import BillingSection from "./BillingSection";
@@ -7,8 +8,11 @@ const Payment = () => {
   const navigate = useNavigate();
   const handleCompleteOrder = () => {
     console.log("handleCompleteOrder");
-    navigate("/checkouts/thank_you");
+    navigate("/checkouts/thank-you");
   };
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <div className="my-5 lg:my-10 poppins">
       <div className="border border-gray-300 rounded-md p-3 text-[15px]">

@@ -1,6 +1,5 @@
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
-import { TbCurrencyTaka } from "react-icons/tb";
 
 const ManageProductCard = ({ product }) => {
   const { _id, name, primaryImage, price, category, subCategory } = product;
@@ -22,7 +21,7 @@ const ManageProductCard = ({ product }) => {
             <div className="flex xl:flex-col items-center xl:items-start justify-between xl:justify-around">
               <p className="flex items-center font-semibold text-red-500">
                 {" "}
-                <TbCurrencyTaka size={22} className="mb-1" /> {price}
+                ৳ {price}
               </p>
               <p className="capitalize inline-block bg-slate-700 xl:bg-teal-500 px-2 py-0.5 text-white rounded-full text-sm shadow-md shadow-gray-300 xl:mt-3">
                 {category}

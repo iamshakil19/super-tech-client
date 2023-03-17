@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BankTransfer from "./BankTransfer";
 import bkashLogo from "../../../Assets/Others/bkash.png";
 import nagadLogo from "../../../Assets/Others/nagad.png";
 const PaymentSection = () => {
   const [paymentOpen, setPaymentOpen] = useState(1);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <div className="mt-5">
       <h2 className="text-lg">Payment</h2>

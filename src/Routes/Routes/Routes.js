@@ -7,7 +7,7 @@ import UserDashboardLayout from "../../Layout/UserDashboard/UserDashboardLayout"
 import Cart from "../../Pages/CheckOut/Cart/Cart";
 import Information from "../../Pages/CheckOut/Information/Information";
 import Payment from "../../Pages/CheckOut/Payment/Payment";
-import ThankYou from "../../Pages/CheckOut/Payment/ThankYou";
+import ThankYou from "../../Pages/CheckOut/ThankYou/ThankYou";
 import Shipping from "../../Pages/CheckOut/Shipping/Shipping";
 import AddProducts from "../../Pages/DashboardPages/AdminPage/AddProduct/AddProducts";
 import Admin from "../../Pages/DashboardPages/AdminPage/Admin/Admin";
@@ -25,6 +25,7 @@ import Product from "../../Pages/Product/Product";
 import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
 import Search from "../../Pages/Search/Search";
 import NotFound from "../../Pages/Shared/NotFound/NotFound";
+import ContactUs from "../../Pages/Shared/ContactUs/ContactUs";
 
 const routes = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const routes = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
       },
     ],
   },
@@ -88,7 +93,7 @@ const routes = createBrowserRouter([
         element: <Payment />,
       },
       {
-        path: "/checkouts/thank_you",
+        path: "/checkouts/thank-you",
         element: <ThankYou />,
       },
     ],

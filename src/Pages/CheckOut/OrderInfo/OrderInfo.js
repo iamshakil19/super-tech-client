@@ -1,18 +1,22 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import OrderCard from "./OrderCard";
 
 const OrderInfo = () => {
   const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <div className="p-2 poppins max-w-lg hidden lg:block">
-      {location.pathname === "/checkouts/thank_you" && (
+      {location.pathname === "/checkouts/thank-you" && (
         <p className="mb-5 font-medium text-lg">Order Summary</p>
       )}
       <OrderCard />
       <OrderCard />
       <OrderCard />
       <div className="border-b border-gray-300 my-5"></div>
-      {location.pathname !== "/checkouts/thank_you" && (
+      {location.pathname !== "/checkouts/thank-you" && (
         <>
           <div className="flex items-center gap-5">
             <input

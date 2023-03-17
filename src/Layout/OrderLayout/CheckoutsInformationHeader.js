@@ -15,7 +15,7 @@ const CheckoutsInformationHeader = () => {
 
       <OrderInfoForSmallDevice />
 
-      {location.pathname !== "/checkouts/thank_you" && <div className="flex items-center gap-1 mt-5">
+      {location.pathname !== "/checkouts/thank-you" && <div className="flex items-center gap-1 mt-5">
         <span className="text-sm cursor-pointer">
           <Link to="/cart">Cart</Link>
         </span>{" "}

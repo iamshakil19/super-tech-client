@@ -247,7 +247,7 @@ const AddProducts = () => {
                 />
                 <label
                   htmlFor="primaryImage"
-                  className="cursor-pointer text-white bg-green-500 hover:bg-green-600 transition-all duration-200 ease-in-out flex items-center justify-center py-2 px-4 rounded-md shadow-xl shadow-green-200"
+                  className="cursor-pointer text-white bg-green-500 hover:bg-green-600 border border-dashed border-green-700 transition-all duration-200 ease-in-out flex items-center justify-center py-2 px-4 rounded-full shadow-xl shadow-green-200"
                 >
                   {" "}
                   <span className="text-2xl mr-3">
@@ -277,7 +277,7 @@ const AddProducts = () => {
                 />
                 <label
                   htmlFor="extraImages"
-                  className="cursor-pointer text-white bg-[#12B0E8] hover:bg-[#0499cf] duration-200 transition-all ease-in-out flex items-center justify-center py-2 px-4 rounded-md shadow-xl shadow-[#12afe83e]"
+                  className="cursor-pointer text-white bg-[#12B0E8] hover:bg-[#0499cf] duration-200 transition-all ease-in-out flex items-center justify-center py-2 px-4 rounded-full border border-dashed border-[#067ca7] shadow-xl shadow-[#12afe83e]"
                 >
                   {" "}
                   <span className="text-2xl mr-3">

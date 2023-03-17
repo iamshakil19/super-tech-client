@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { divisions } from "../../../Utils/LocalData";
@@ -17,6 +17,9 @@ const Information = () => {
   const onSubmit = (data) => {
     navigate("/checkouts/shipping");
   };
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
   return (
     <div className="my-5 poppins">
       <h2 className="font-semibold mb-5 text-lg">Contact Information</h2>

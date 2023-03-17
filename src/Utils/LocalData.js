@@ -19,6 +19,75 @@ export const divisions = [
   "rangpur",
 ];
 
+export const footerLinks = [
+  [
+    {
+      name: "search",
+      path: "/search",
+    },
+    {
+      name: "Terms of Service",
+      path: "/terms-of-service",
+    },
+    {
+      name: "Return & Warranty Policy",
+      path: "/return-warranty-policy",
+    },
+    {
+      name: "privacy policy",
+      path: "/privacy-policy",
+    },
+    {
+      name: "privacy policy",
+      path: "/privacy-policy",
+    },
+  ],
+  [
+    {
+      name: "About Us",
+      path: "/about-us",
+    },
+    {
+      name: "License & Certificates",
+      path: "/license-certificates",
+    },
+    {
+      name: "Return & Warranty Policy",
+      path: "/return-warranty-policy",
+    },
+    {
+      name: "privacy policy",
+      path: "/privacy-policy",
+    },
+    {
+      name: "privacy policy",
+      path: "/privacy-policy",
+    },
+  ],
+  [
+    {
+      name: "About Us",
+      path: "/about-us",
+    },
+    {
+      name: "License & Certificates",
+      path: "/license-certificates",
+    },
+    {
+      name: "Return & Warranty Policy",
+      path: "/return-warranty-policy",
+    },
+    {
+      name: "privacy policy",
+      path: "/privacy-policy",
+    },
+    {
+      name: "privacy policy",
+      path: "/privacy-policy",
+    },
+  ],
+];
+
 export const categories = [
   { id: 1, name: "home", value: "home" },
   { id: 2, name: "table", value: "table" },
