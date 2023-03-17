@@ -14,8 +14,12 @@ const ContactUs = () => {
           backgroundImage: `url(${aboutUsImg})`,
         }}
       >
-        <h2 className="text-white text-center font-serif text-2xl lg:text-3xl font-bold pt-5 lg:pt-10">Contact Us</h2>
-        <p className="text-white text-center mt-2 font-serif text-lg">HOME / <span className="text-red-500">contact-us</span></p>
+        <h2 className="text-white text-center font-serif text-2xl lg:text-3xl font-bold pt-5 lg:pt-10">
+          Contact Us
+        </h2>
+        <p className="text-white text-center mt-2 font-serif text-lg">
+          HOME / <span className="text-red-500">contact-us</span>
+        </p>
       </div>
       <div className="bg-white w-full md:max-w-3xl lg:shadow-lg lg:shadow-black/20 rounded-md md:h-80 lg:border border-gray-300 lg:absolute lg:top-56 lg:left-[50%] lg:-translate-x-2/4 mx-auto my-3 lg:my-0 p-5 lg:p-7 grid grid-cols-1 md:grid-cols-2 gap-3">
         <div>
@@ -78,11 +82,11 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <div className="border border-gray-300">
+      <div className="border border-gray-300 h-72 md:h-96 lg:h-[500px]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d542.6037762539812!2d90.37740285555182!3d23.811892918760847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7ecc8eb6009%3A0xb50c2f65c4076bde!2sSuper%20Tech%20Furniture%20%26%20Interior!5e0!3m2!1sen!2sbd!4v1679045382849!5m2!1sen!2sbd"
           width="100%"
-          height="500"
+          height="100%"
           style={{ border: 0 }}
           allowfullscreen=""
           loading="lazy"
