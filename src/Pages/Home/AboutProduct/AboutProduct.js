@@ -1,12 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import image from "../../../Assets/Others/chair.jpg";
 
 const AboutProduct = () => {
+  const navigate = useNavigate();
   return (
     <div className="container mx-auto px-5 mb-20">
       <div className="md:grid grid-cols-2 gap-5">
         <div>
-          <img className="w-[500px] mx-auto md:float-right" src={image} alt="" />
+          <img
+            className="w-[500px] mx-auto md:float-right"
+            src={image}
+            alt=""
+          />
         </div>
         <div className="my-auto md:ml-5 py-5">
           <h1 className="text-3xl text-slate-600 font-bold poppins py-5">
@@ -33,7 +39,10 @@ const AboutProduct = () => {
             which ensure 100% durability.
           </p>
 
-          <button className="py-2 px-4 text-white bg-black poppins font-semibold whitespace-nowrap flex justify-center items-center rounded-md custom-shadow">
+          <button
+            onClick={() => navigate("/collections")}
+            className="py-2 px-4 text-white bg-black poppins font-semibold whitespace-nowrap flex justify-center items-center rounded-md custom-shadow"
+          >
             Shop Now
           </button>
         </div>
