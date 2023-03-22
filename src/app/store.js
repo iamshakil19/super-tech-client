@@ -1,14 +1,14 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import homeProductBuyNowButtonSlice from "../features/homeProductBuyNowButton/homeProductBuyNowButton";
-import { userApi } from "../features/api/apiSlice";
-
+import { apiSlice } from "../features/api/apiSlice";
+import authSliceReducer from "../features/auth/authSlice";
 const store = configureStore({
   reducer: {
-    [userApi.reducerPath]: userApi.reducer,
-    homeProductBuyNowButton: homeProductBuyNowButtonSlice,
+    [apiSlice.reducerPath]: apiSlice.reducer,
+    auth: authSliceReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(userApi.middleware),
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddlewares) =>
+    getDefaultMiddlewares().concat(apiSlice.middleware),
 });
 
 export default store;

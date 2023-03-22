@@ -86,15 +86,15 @@ const LatestOrders = () => {
                 ৳ 456
               </p>
               <p
-                className={`capitalize w-24 text-center rounded-full px-2 py-0.5 shadow-md text-sm font-medium ${
+                className={`capitalize w-24 text-center rounded-full px-2 py-0.5 text-sm font-medium ${
                   order.status === "pending" &&
-                  "text-orange-500 bg-orange-200 border border-orange-400"
+                  "text-orange-500 bg-orange-200 border"
                 } ${
                   order.status === "cancelled" &&
-                  "text-red-600 bg-red-200 border border-red-400"
+                  "text-red-600 bg-red-200 border"
                 } ${
                   order.status === "delivered" &&
-                  "text-green-600 bg-green-200 border border-green-400"
+                  "text-green-600 bg-green-200 border"
                 }`}
               >
                 {order.status}

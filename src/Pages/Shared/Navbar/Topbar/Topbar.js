@@ -6,8 +6,14 @@ import { MdCall, MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
+import useAuth from "../../../../hooks/useAuth";
+import { useGetCurrentUserQuery } from "../../../../features/user/usersApi";
 
 const Topbar = ({ setSearchOpen }) => {
+  const isLoggedIn = useAuth();
+const {data: user, isError, isLoading, error} = useGetCurrentUserQuery()
+  const { role } = user?.data || {};
+  console.log(role);
   return (
     <div className="lg:block hidden">
       <div className="grid grid-cols-2 md:grid-cols-3 ">
@@ -53,20 +59,28 @@ const Topbar = ({ setSearchOpen }) => {
               </span>
             </div>
           </div>
-          <Link to={"/account"}>
-            <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer mx-3">
-              <span>
-                <TfiUser className="text-2xl text-slate-700" />
-              </span>
-            </div>
-          </Link>
-          <Link to={"/dashboard"}>
-            <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer ml-3">
-              <span>
-                <HiOutlineViewGridAdd className="text-[26px] cursor-pointer text-slate-700" />
-              </span>
-            </div>
-          </Link>
+          {isLoggedIn && (
+            <>
+              {role === "user" && (
+                <Link to={"/account"}>
+                  <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer mx-3">
+                    <span>
+                      <TfiUser className="text-2xl text-slate-700" />
+                    </span>
+                  </div>
+                </Link>
+              )}
+              {(role === "admin" || role === "moderator") && (
+                <Link to={"/dashboard"}>
+                  <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer ml-3">
+                    <span>
+                      <HiOutlineViewGridAdd className="text-[26px] cursor-pointer text-slate-700" />
+                    </span>
+                  </div>
+                </Link>
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

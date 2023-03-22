@@ -7,7 +7,8 @@ const user = {
   profession: "",
   gender: "male",
 };
-const ProfileInfo = () => {
+const ProfileInfo = ({user}) => {
+  const {name, email, contactNumber, profession, birthday, gender, division, postalCode, area, streetAddress} = user || {}
   return (
     <div className="flex flex-wrap gap-5 justify-between mt-3">
       <div className="w-full">
@@ -15,27 +16,27 @@ const ProfileInfo = () => {
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Name</h3>
-        <p className="capitalize">{user.name}</p>
+        <p className="capitalize">{name}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold  mb-1">Email</h3>
-        <p>{user.email}</p>
+        <p>{email}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold  mb-1">Mobile Number</h3>
-        <p>{user.phoneNumber}</p>
+        <p>{contactNumber}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Profession</h3>
-        <p>{user.profession}</p>
+        <p>{profession}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Birthday</h3>
-        <p>{user.birthday}</p>
+        <p>{birthday}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Gender</h3>
-        <p className="capitalize">{user.gender}</p>
+        <p className="capitalize">{gender}</p>
       </div>
       <div className="border-b border-gray-300 w-full"></div>
       <div className="w-full">
@@ -43,19 +44,19 @@ const ProfileInfo = () => {
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Division</h3>
-        <p className="capitalize">Dhaka</p>
+        <p className="capitalize">{division}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Postal Code</h3>
-        <p className="capitalize">1216</p>
+        <p className="capitalize">{postalCode}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Area</h3>
-        <p className="capitalize">Mirpur</p>
+        <p className="capitalize">{area}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Street Address</h3>
-        <p className="capitalize">Mirpur 13, Block B, Road 9</p>
+        <p className="capitalize">{streetAddress}</p>
       </div>
     </div>
   );

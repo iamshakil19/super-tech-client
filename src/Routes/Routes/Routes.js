@@ -26,6 +26,11 @@ import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
 import Search from "../../Pages/Search/Search";
 import NotFound from "../../Pages/Shared/NotFound/NotFound";
 import ContactUs from "../../Pages/Shared/ContactUs/ContactUs";
+import PrivateRoute from "../../Utils/Private/PrivateRoute";
+import PublicRoute from "../../Utils/PublicRoute/PublicRoute";
+import AboutUs from "../../Pages/AboutUs/AboutUs";
+import NotForAdmin from "../../Utils/NotForAdmin/NotForAdmin";
+import RequireAdmin from "../../Utils/RequireAdmin/RequireAdmin";
 
 const routes = createBrowserRouter([
   {
@@ -42,11 +47,19 @@ const routes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          // <PublicRoute>
+            <Login />
+          // </PublicRoute>
+        ),
       },
       {
         path: "/signup",
-        element: <SignUp />,
+        element: (
+          // <PublicRoute>
+            <SignUp />
+          // </PublicRoute>
+        ),
       },
       {
         path: "/search",
@@ -60,11 +73,21 @@ const routes = createBrowserRouter([
         path: "/contact-us",
         element: <ContactUs />,
       },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
     ],
   },
   {
     path: "/account",
-    element: <UserDashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <NotForAdmin>
+          <UserDashboardLayout />
+        </NotForAdmin>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/account",
@@ -78,7 +101,11 @@ const routes = createBrowserRouter([
   },
   {
     path: "/checkouts",
-    element: <OrderLayout />,
+    element: (
+      <PrivateRoute>
+        <OrderLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/checkouts",
@@ -100,7 +127,13 @@ const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <AdminDashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <RequireAdmin>
+          <AdminDashboardLayout />
+        </RequireAdmin>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",

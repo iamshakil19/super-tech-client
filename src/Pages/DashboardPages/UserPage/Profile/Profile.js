@@ -3,8 +3,21 @@ import localAvatar from "../../../../Assets/Others/avatar.png";
 import { FiEdit } from "react-icons/fi";
 import ProfileInfo from "./ProfileInfo";
 import ProfileInfoEdit from "./ProfileInfoEdit";
+import { useSelector } from "react-redux";
+import {
+  useGetCurrentUserQuery,
+  useUpdateAvatarMutation,
+} from "../../../../features/user/usersApi";
 const Profile = () => {
   const [isEditable, setEditable] = useState(false);
+  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
+  const { _id } = user?.data || {};
+  const [updateAvatar, { isSuccess }] = useUpdateAvatarMutation();
+  const handleAvatar = (e) => {
+    const formData = new FormData();
+    formData.append("avatar", e.target.files[0]);
+    updateAvatar({ id: _id, formData });
+  };
   return (
     <div>
       <div className="flex justify-center items-center overflow-auto poppins p-5">
@@ -12,8 +25,17 @@ const Profile = () => {
           <h2 className=" text-xl mb-5 font-semibold">My Profile</h2>
           <div className="flex flex-wrap gap-3 justify-between">
             <div className="md:flex w-full">
-              <img src={localAvatar} alt="" className="w-20" />
+              <img
+                src={
+                  user?.data?.avatar
+                    ? `${process.env.REACT_APP_IMG_URL + user?.data?.avatar}`
+                    : localAvatar
+                }
+                alt=""
+                className="w-20 h-20 rounded-full object-cover"
+              />
               <input
+                onChange={(e) => handleAvatar(e)}
                 type="file"
                 id="avatar"
                 name="avatar"
@@ -39,7 +61,11 @@ const Profile = () => {
             </div>
           </div>
 
-          {isEditable ? <ProfileInfoEdit setEditable={setEditable} /> : <ProfileInfo />}
+          {isEditable ? (
+            <ProfileInfoEdit user={user?.data} setEditable={setEditable} />
+          ) : (
+            <ProfileInfo user={user?.data} />
+          )}
         </div>
       </div>
     </div>

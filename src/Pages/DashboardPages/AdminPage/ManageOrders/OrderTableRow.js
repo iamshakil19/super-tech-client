@@ -33,8 +33,21 @@ const OrderTableRow = ({ i, order }) => {
       <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">{city}</td>
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{quantity}</td>
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{45000}</td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
-        {status}
+      <td class={`px-6 py-4 whitespace-nowrap capitalize`}>
+        <span
+          className={`block text-center ${
+            status === "pending" &&
+            "text-orange-500 bg-orange-200 px-3 py-1 rounded-full font-medium text-sm"
+          } ${
+            status === "cancelled" &&
+            "text-red-500 bg-red-200 px-3 py-1 rounded-full font-medium text-sm"
+          } ${
+            status === "delivered" &&
+            "text-green-500 bg-green-200 px-3 py-1 rounded-full font-medium text-sm"
+          }`}
+        >
+          {status}
+        </span>
       </td>
       <td class="px-6 py-4 whitespace-nowrap dropdown dropdown-bottom dropdown-left">
         {" "}

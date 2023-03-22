@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { IoMdStar } from "react-icons/io"
+import { toast } from "react-hot-toast";
+import { IoMdStar } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { useUpdateUserMutation } from "../../../../features/user/usersApi";
+import { divisions } from "../../../../Utils/LocalData";
 
-const ProfileInfoEdit = ({ setEditable }) => {
+const ProfileInfoEdit = ({ setEditable, user }) => {
+  const [updateUser, { isError, isLoading, isSuccess }] =
+    useUpdateUserMutation();
+  const {
+    name,
+    email,
+    contactNumber,
+    profession,
+    birthday,
+    gender,
+    division,
+    postalCode,
+    area,
+    streetAddress,
+    _id,
+  } = user || {};
   const {
     register,
     formState: { errors },
@@ -11,17 +30,17 @@ const ProfileInfoEdit = ({ setEditable }) => {
     control,
   } = useForm();
 
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Your info updated");
+      setEditable(false);
+    }
+  }, [isError, isSuccess, setEditable]);
+
   const onSubmit = (data) => {
-    console.log(data);
+    updateUser({ id: _id, data });
   };
 
-  const user = {
-    name: "Shakil Ahmed",
-    email: "shakilahmed@gmail.com",
-    // phoneNumber: "01877018851",
-    birthday: "1999-01-09",
-    gender: "male",
-  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap gap-5 justify-between mt-3">
@@ -29,10 +48,12 @@ const ProfileInfoEdit = ({ setEditable }) => {
           <h3 className="font-semibold mb-1 text-lg">Basic Info</h3>
         </div>
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1 flex">Name <IoMdStar className="text-red-500"size={11}/> </h3>
+          <h3 className="font-semibold mb-1 flex">
+            Name <IoMdStar className="text-red-500" size={11} />{" "}
+          </h3>
           <input
             type="text"
-            defaultValue={user.name}
+            defaultValue={name}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
               errors.name
                 ? " border-red-500 focus:border-red-500"
@@ -57,32 +78,42 @@ const ProfileInfoEdit = ({ setEditable }) => {
           <input
             type="text"
             disabled
-            value={user.email}
+            value={email}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md shadow-md cursor-not-allowed`}
           />
         </div>
 
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold flex mb-1">Mobile Number <IoMdStar className="text-red-500"size={11}/></h3>
+          <h3 className="font-semibold flex mb-1">
+            Mobile Number <IoMdStar className="text-red-500" size={11} />
+          </h3>
           <input
             type="text"
             placeholder="Type your phone number"
-            defaultValue={user.phoneNumber && user.phoneNumber}
+            defaultValue={contactNumber}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-              errors.phoneNumber
+              errors.contactNumber
                 ? " border-red-500 focus:border-red-500"
                 : "focus:border-slate-700 border-slate-300"
             }`}
-            {...register("phoneNumber", {
+            {...register("contactNumber", {
               required: {
                 value: true,
-                message: "Phone Number is required",
+                message: "Contact Number is required",
+              },
+              maxLength: {
+                value: 11,
+                message: "Must be 11 characters",
+              },
+              minLength: {
+                value: 11,
+                message: "Must be 11 characters",
               },
             })}
           />
-          {errors.phoneNumber && (
+          {errors.contactNumber && (
             <span className="label-text-alt text-red-500 text-sm ">
-              {errors.phoneNumber.message}
+              {errors.contactNumber.message}
             </span>
           )}
         </div>
@@ -91,7 +122,7 @@ const ProfileInfoEdit = ({ setEditable }) => {
           <input
             type="text"
             placeholder="Type you profession"
-            defaultValue={user.profession && user.profession}
+            defaultValue={profession}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none focus:border-slate-700 border-slate-300`}
             {...register("profession")}
           />
@@ -99,7 +130,7 @@ const ProfileInfoEdit = ({ setEditable }) => {
         <div className="flex flex-col w-full max-w-xs">
           <h3 className="font-semibold mb-1">Birthday</h3>
           <input
-            defaultValue={user?.birthday && user?.birthday}
+            defaultValue={birthday}
             type="date"
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none focus:border-slate-700 border-slate-300`}
             {...register("birthday")}
@@ -112,7 +143,8 @@ const ProfileInfoEdit = ({ setEditable }) => {
               <input
                 type="radio"
                 id="male"
-                checked
+                name="gender"
+                defaultChecked={gender === "male"}
                 value="male"
                 className="radio radio-success"
                 {...register("gender")}
@@ -125,6 +157,8 @@ const ProfileInfoEdit = ({ setEditable }) => {
               <input
                 type="radio"
                 id="female"
+                name="gender"
+                defaultChecked={gender === "female"}
                 value="female"
                 className="radio radio-success"
                 {...register("gender")}
@@ -141,12 +175,15 @@ const ProfileInfoEdit = ({ setEditable }) => {
         </div>
 
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1 flex">Division <IoMdStar className="text-red-500"size={11}/></h3>
-          <input
+          <h3 className="font-semibold mb-1 flex">
+            Division <IoMdStar className="text-red-500" size={11} />
+          </h3>
+          <select
             type="text"
+            selected={division}
             placeholder="Type your division"
-            defaultValue={user.division && user.division}
-            className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+            defaultValue={division}
+            className={`border capitalize block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
               errors.division
                 ? " border-red-500 focus:border-red-500"
                 : "focus:border-slate-700 border-slate-300"
@@ -157,7 +194,16 @@ const ProfileInfoEdit = ({ setEditable }) => {
                 message: "Division is required",
               },
             })}
-          />
+          >
+            <option className="" disabled value={""}>
+              Select Division
+            </option>
+            {divisions.map((division) => (
+              <option value={division} className="capitalize">
+                {division}
+              </option>
+            ))}
+          </select>
           {errors.division && (
             <span className="label-text-alt text-red-500 text-sm ">
               {errors.division.message}
@@ -169,17 +215,19 @@ const ProfileInfoEdit = ({ setEditable }) => {
           <input
             type="number"
             placeholder="Type you postal code"
-            defaultValue={user.postalCode && user.postalCode}
+            defaultValue={postalCode}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none focus:border-slate-700 border-slate-300`}
             {...register("postalCode")}
           />
         </div>
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1 flex">Area <IoMdStar className="text-red-500"size={11}/></h3>
+          <h3 className="font-semibold mb-1 flex">
+            Area <IoMdStar className="text-red-500" size={11} />
+          </h3>
           <input
             type="text"
             placeholder="Type your area"
-            defaultValue={user.area && user.area}
+            defaultValue={area}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
               errors.area
                 ? " border-red-500 focus:border-red-500"
@@ -199,11 +247,13 @@ const ProfileInfoEdit = ({ setEditable }) => {
           )}
         </div>
         <div className="flex flex-col w-full max-w-xs">
-          <h3 className="font-semibold mb-1 flex">Street Address <IoMdStar className="text-red-500"size={11}/></h3>
+          <h3 className="font-semibold mb-1 flex">
+            Street Address <IoMdStar className="text-red-500" size={11} />
+          </h3>
           <input
             type="text"
             placeholder="Type your street address"
-            defaultValue={user.streetAddress && user.streetAddress}
+            defaultValue={streetAddress}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
               errors.streetAddress
                 ? " border-red-500 focus:border-red-500"
@@ -222,8 +272,6 @@ const ProfileInfoEdit = ({ setEditable }) => {
             </span>
           )}
         </div>
-
-
 
         <div className="w-full mt-5">
           <button

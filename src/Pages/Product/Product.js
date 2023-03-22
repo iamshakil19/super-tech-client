@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import ProductCard from "../../Components/ProductCard";
+import { useGetAllProductsQuery } from "../../features/products/productsApi";
+import Error from "../Shared/Error/Error";
+import Loading from "../Shared/Loading/Loading";
 
 const productData = [
   {
@@ -72,75 +75,102 @@ const productData = [
 
 const Product = () => {
   const [limit, setLimit] = useState(10);
-  const [price, setPrice] = useState(10);
-  return (
-    <div className="">
-      <div className="mb-5 flex justify-end items-center gap-3">
-        <div className="block sm:ml-5 sm:mt-0">
-          <select
-            onChange={(e) => setPrice(e.target.value)}
-            defaultValue={price}
-            className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 border-slate-300"
-          >
-            <option selected className="font-medium text-md" value="latest">
-              Default
-            </option>
-            <option className=" font-medium text-md" value="lowToHigh">
-              Price (Low → High)
-            </option>
-            <option className=" font-medium text-md" value="highToLow">
-              Price (High → Low)
-            </option>
-            <option className=" font-medium text-md" value="popular">
-              Popular
-            </option>
-            <option className=" font-medium text-md" value="alphabeticallyAToZ">
-              Alphabetically (A → Z)
-            </option>
-            <option className=" font-medium text-md" value="alphabeticallyZToA">
-              Alphabetically (Z → A)
-            </option>
-            <option className=" font-medium text-md" value="dateOldToNew">
-              Date (Old → New)
-            </option>
-            <option className=" font-medium text-md" value="dateNewToOld">
-              Date (New → Old)
-            </option>
-          </select>
+  const [price, setPrice] = useState("latest");
+
+  const {
+    data: allProducts,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllProductsQuery();
+  console.log(allProducts);
+
+  const { success, data, pageCount, totalProduct } = allProducts || {}
+  let content = null;
+
+  if (isLoading) {
+    content = <Loading />;
+  } else if (!isLoading && isError) {
+    content = <Error message={error?.data?.message} />;
+  } else if (!isLoading && !isError && data?.products?.length === 0) {
+    content = <div>No product found</div>;
+  } else if (!isLoading && !isError && data?.products?.length > 0) {
+    content = (
+      <>
+        <div className="mb-5 flex justify-end items-center gap-3">
+          <div className="block sm:ml-5 sm:mt-0">
+            <select
+              onChange={(e) => setPrice(e.target.value)}
+              defaultValue={price}
+              className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 border-slate-300"
+            >
+              <option selected className="font-medium text-md" value="latest">
+                Default
+              </option>
+              <option className=" font-medium text-md" value="lowToHigh">
+                Price (Low → High)
+              </option>
+              <option className=" font-medium text-md" value="highToLow">
+                Price (High → Low)
+              </option>
+              <option className=" font-medium text-md" value="popular">
+                Popular
+              </option>
+              <option
+                className=" font-medium text-md"
+                value="alphabeticallyAToZ"
+              >
+                Alphabetically (A → Z)
+              </option>
+              <option
+                className=" font-medium text-md"
+                value="alphabeticallyZToA"
+              >
+                Alphabetically (Z → A)
+              </option>
+              <option className=" font-medium text-md" value="dateOldToNew">
+                Date (Old → New)
+              </option>
+              <option className=" font-medium text-md" value="dateNewToOld">
+                Date (New → Old)
+              </option>
+            </select>
+          </div>
+          <div className="block">
+            <select
+              onChange={(e) => setLimit(e.target.value)}
+              defaultValue={limit}
+              className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-28 border-slate-300"
+            >
+              <option selected className="font-medium" value="10">
+                10
+              </option>
+              <option className="font-medium" value="15">
+                15
+              </option>
+              <option className="font-medium" value="25">
+                25
+              </option>
+              <option className="font-medium" value="50">
+                50
+              </option>
+              <option className="font-medium" value="100">
+                100
+              </option>
+            </select>
+          </div>
         </div>
-        <div className="block">
-          <select
-            onChange={(e) => setLimit(e.target.value)}
-            defaultValue={limit}
-            className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-28 border-slate-300"
-          >
-            <option selected className="font-medium" value="10">
-              10
-            </option>
-            <option className="font-medium" value="15">
-              15
-            </option>
-            <option className="font-medium" value="25">
-              25
-            </option>
-            <option className="font-medium" value="50">
-              50
-            </option>
-            <option className="font-medium" value="100">
-              100
-            </option>
-          </select>
-        </div>
-      </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
-          {productData.map((product) => (
+          {data?.products?.map((product) => (
             <ProductCard product={product} key={product._id} />
           ))}
         </div>
+      </>
+    );
+  }
 
-    </div>
-  );
+  return <div className="">{content}</div>;
 };
 
 export default Product;

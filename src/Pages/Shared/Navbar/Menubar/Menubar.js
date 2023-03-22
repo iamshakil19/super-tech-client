@@ -8,9 +8,20 @@ import { BsCart3 } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
 import { TfiUser } from "react-icons/tfi";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
+import useAuth from "../../../../hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { userLoggedOut } from "../../../../features/auth/authSlice";
 
 const Menubar = ({ setSearchOpen, searchOpen }) => {
   const [open, setOpen] = useState(false);
+  const isLoggedIn = useAuth();
+
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(userLoggedOut());
+    localStorage.removeItem('auth')
+  };
 
   return (
     <div className="bg-white">
@@ -70,14 +81,25 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
               </Link>
             </li>
             <NavLinks />
-            <li>
-              <Link
-                to="/login"
-                className="py-3 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
-              >
-                Login
-              </Link>
-            </li>
+            {isLoggedIn ? (
+              <li>
+                <span
+                  onClick={logout}
+                  className="py-1.5 px-3 inline-block text-xs whitespace-nowrap bg-black/80 text-white rounded-full cursor-pointer"
+                >
+                  Log Out
+                </span>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/login"
+                  className="py-1.5 px-3 inline-block text-xs whitespace-nowrap bg-black/80 text-white rounded-full cursor-pointer"
+                >
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
 

@@ -2,9 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { _id, name, price, primaryImage, description, image2 } = product;
+  const { _id, name, price, description } = product;
   const navigate = useNavigate();
-
+  const primaryImage =
+    "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358";
+  const image2 =
+    "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756";
   const handleBuyNow = () => {
     navigate("/checkouts");
   };
@@ -31,7 +34,11 @@ const ProductCard = ({ product }) => {
           >
             {name}
           </h2>
-          <p className="text-sm">{description}</p>
+          <p className="text-sm">
+            {description?.length > 60
+              ? description.slice(0, 60) + "..."
+              : description}
+          </p>
         </section>
       </section>
       <section className="w-full">

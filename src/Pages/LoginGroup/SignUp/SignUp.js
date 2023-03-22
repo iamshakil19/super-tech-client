@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import { useSignUpUserMutation } from "../../../features/api/apiSlice";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
 import { BsEyeSlash } from "react-icons/bs";
+import { useSignUpMutation } from "../../../features/auth/authApi";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [disabled, setDisabled] = useState(true);
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
   const {
@@ -20,42 +19,33 @@ const SignUp = () => {
     watch,
     control,
   } = useForm();
-  // const password = useWatch({ control, name: "password" });
-  // const confirmPassword = useWatch({ control, name: "confirmPassword" });
 
-  const [postUser, { isLoading, isError, error, isSuccess }] =
-    useSignUpUserMutation();
-
+  const [signUp, { data, isLoading, error: resError }] = useSignUpMutation();
   useEffect(() => {
-    // if (
-    //   password !== undefined &&
-    //   password !== "" &&
-    //   confirmPassword !== undefined &&
-    //   confirmPassword !== "" &&
-    //   password === confirmPassword
-    // ) {
-    //   setDisabled(false);
-    // } else {
-    //   setDisabled(true);
-    // }
+    if (resError) {
+      toast.error(resError?.data?.error?.errors?.confirmPassword?.message, {
+        id: "signup",
+      });
+    }
+    if (resError?.data?.error?.keyPattern?.email === 1) {
+      toast.error("Email is already in use", { id: "signup" });
+    }
 
-    if (isLoading) {
-      toast.loading("Posting...", { id: "postUser" });
+    if (data?.success) {
+      toast.success(data?.message);
+      navigate("/");
     }
-    if (isSuccess) {
-      toast.success("Signup successful", { id: "postUser" });
-      navigate("/dashboard/login");
-    }
-    if (isError) {
-      toast.error(`${error?.data?.error.message}`, { id: "postUser" });
-      // console.log(error?.data?.error.message);
-      console.log(error);
-    }
-  }, [isLoading, isSuccess, isError]);
+  }, [
+    navigate,
+    data?.success,
+    data?.message,
+    resError?.data?.error?.keyPattern?.email,
+    resError?.data?.error?.errors?.confirmPassword?.message,
+    resError,
+  ]);
 
   const onSubmit = (data) => {
-    console.log(data);
-    postUser(data);
+    signUp(data);
   };
   return (
     <div className="container mx-auto pt-10 px-5">
@@ -118,7 +108,7 @@ const SignUp = () => {
             <h3 className="poppins text-lg font-semibold mb-2 mt-2">Number</h3>
             <input
               placeholder="Type your number"
-              type="number"
+              type="text"
               className={`border w-full outline-none py-2 px-3 ${
                 errors.contactNumber
                   ? " border-red-500 focus:border-red-500"
@@ -221,6 +211,7 @@ const SignUp = () => {
             )}
           </div>
           <input
+            disabled={isLoading}
             className="bg-black text-white mt-7 w-full py-2 text-lg poppins font-semibold cursor-pointer uppercase disabled:bg-gray-300 disabled:cursor-not-allowed"
             type="submit"
             value="Sign up"

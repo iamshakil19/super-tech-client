@@ -1,24 +1,28 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { userLoggedOut } from "../auth/authSlice";
 
-export const userApi = createApi({
-  reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/v1",
-  }),
-  endpoints: (builder) => ({
-    getUsers: builder.query({
-      query: () => ({
-        url: "/user",
-      }),
-    }),
-    signUpUser: builder.mutation({
-      query: (data) => ({
-        url: "/user/signup",
-        method: "POST",
-        body: data,
-      }),
-    }),
-  }),
+const baseQuery = fetchBaseQuery({
+  baseUrl: process.env.REACT_APP_API_URL,
+  prepareHeaders: async (headers, { getState, endpoint }) => {
+    const token = getState()?.auth?.accessToken;
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+    return headers;
+  },
 });
 
-export const { useGetUsersQuery, useSignUpUserMutation } = userApi;
+export const apiSlice = createApi({
+  reducerPath: "api",
+  baseQuery: async (args, api, extraOptions) => {
+    let result = await baseQuery(args, api, extraOptions);
+    console.log(result);
+    if (result?.error?.status === 403) {
+      api.dispatch(userLoggedOut());
+      localStorage.removeItem("auth");
+    }
+    return result;
+  },
+  tagTypes: ["user"],
+  endpoints: (builder) => ({}),
+});

@@ -3,6 +3,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { categories, subCategories } from "../../../../Utils/LocalData";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoMdCloudUpload, IoMdStar } from "react-icons/io";
+import { useAddProductMutation } from "../../../../features/products/productsApi";
 const product = {
   _id: 1,
   name: "GRID Newon Chair",
@@ -26,7 +27,7 @@ const product = {
 
 const AddProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
-
+  const [addProduct, { isError, isLoading, error }] = useAddProductMutation();
   const {
     register,
     formState: { errors },
@@ -48,8 +49,12 @@ const AddProducts = () => {
 
   const onSubmit = (data) => {
     const category = data?.category.split(",")[1];
-    const finalData = { ...data, category };
-    console.log(finalData);
+    const formData = new FormData();
+    const { primaryImage, extraImages, ...others } = data;
+    formData.append("primaryImage", primaryImage[0]);
+    formData.append("extraImages", extraImages);
+    formData.append("others", JSON.stringify({ category, ...others }));
+    addProduct(formData);
   };
 
   const subCategoryFilter = subCategories?.filter(
@@ -116,20 +121,17 @@ const AddProducts = () => {
                       ? " border-red-500 focus:border-red-500"
                       : "focus:border-slate-700 border-slate-300"
                   }`}
-                  {...register(
-                    "price",
-                    {
-                      required: {
-                        value: true,
-                        message: "Price is required",
-                      },
-                      min: {
-                        value: 0,
-                        message: "Price can't be negative",
-                      },
-                      valueAsNumber: true,
-                    }
-                  )}
+                  {...register("price", {
+                    required: {
+                      value: true,
+                      message: "Price is required",
+                    },
+                    min: {
+                      value: 0,
+                      message: "Price can't be negative",
+                    },
+                    valueAsNumber: true,
+                  })}
                 />
                 {errors.price && (
                   <span className="label-text-alt text-red-500 text-sm ">

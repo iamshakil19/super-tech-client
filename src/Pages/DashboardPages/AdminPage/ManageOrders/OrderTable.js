@@ -25,7 +25,7 @@ const myOrdersData = [
     streetAddress:
       "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
     quantity: 6,
-    status: "pending",
+    status: "delivered",
   },
   {
     _id: "507f1f77bcf86cd799439011",
@@ -51,7 +51,7 @@ const myOrdersData = [
     streetAddress:
       "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
     quantity: 6,
-    status: "pending",
+    status: "cancelled",
   },
   {
     _id: "507f1f77bcf86cd799439011",

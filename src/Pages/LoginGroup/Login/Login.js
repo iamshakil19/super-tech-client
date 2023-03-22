@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { BsEyeSlash } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../../features/auth/authApi";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
 
 const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
+
 
   const {
     register,
@@ -16,8 +19,36 @@ const Login = () => {
     watch,
   } = useForm();
 
+  let location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+
+  const [login, { data, isLoading, error: resError, isSuccess }] =
+    useLoginMutation();
+  useEffect(() => {
+    if (resError) {
+      toast.error(resError?.data?.error, { id: "login" });
+    }
+    // if (data?.data?.token && data?.data?.user) {
+    //   // navigate("/about-us");
+    //   console.log(from, 33);
+    // }
+  }, [
+    resError?.data?.error,
+    resError,
+    data?.data?.token,
+    data?.data?.user,
+    navigate,
+    from,
+  ]);
+  useEffect(() => {
+    if (isSuccess) {
+      navigate(from);
+      console.log(from, 46);
+    }
+  }, [from, isSuccess, navigate]);
   const onSubmit = (data) => {
-    console.log(data);
+    login(data);
   };
 
   return (
@@ -96,6 +127,7 @@ const Login = () => {
             Forgot password ?
           </Link>
           <input
+            disabled={isLoading}
             className="bg-black text-white mt-5 w-full py-2 text-lg poppins font-semibold cursor-pointer uppercase"
             type="submit"
             value="Login"
