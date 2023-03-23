@@ -35,7 +35,6 @@ const AddProducts = () => {
     reset,
     control,
   } = useForm();
-
   const {
     fields: colorFields,
     append: colorAppend,
@@ -48,12 +47,14 @@ const AddProducts = () => {
   } = useFieldArray({ control, name: "sizes" });
 
   const onSubmit = (data) => {
-    const category = data?.category.split(",")[1];
     const formData = new FormData();
-    const { primaryImage, extraImages, ...others } = data;
+    const { primaryImage, category, ...others } = data;
+    const finalCategory = category.split(",")[1];
     formData.append("primaryImage", primaryImage[0]);
-    formData.append("extraImages", extraImages);
-    formData.append("others", JSON.stringify({ category, ...others }));
+    formData.append(
+      "others",
+      JSON.stringify({ category: finalCategory, ...others })
+    );
     addProduct(formData);
   };
 
@@ -263,7 +264,7 @@ const AddProducts = () => {
                   </span>
                 )}
               </div>
-              <div className="flex flex-col w-full ">
+              {/* <div className="flex flex-col w-full ">
                 <label className="mb-2 text-base font-semibold" htmlFor="unit">
                   Extra Multiple Images{" "}
                   <span className="text-sm">(optional)</span>
@@ -287,7 +288,7 @@ const AddProducts = () => {
                   </span>{" "}
                   Upload Images
                 </label>
-              </div>
+              </div> */}
             </section>
 
             <div className="border-b border-gray-300 mt-5 mb-3"></div>

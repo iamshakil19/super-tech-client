@@ -22,12 +22,13 @@ const ProductDetails = () => {
     sizes,
     category,
     subCategory,
+    primaryImage,
   } = product?.data || {};
 
-  console.log(colors);
-  console.log(colors);
+  const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
+
   const [firstColor] = colors || [];
-  const [firstSize] = colors || [];
+  const [firstSize] = sizes || [];
   console.log(firstColor?.extraPrice);
   const [isColorSelected, setIsColorSelected] = useState(0);
   const [colorExtraPrice, setColorExtraPrice] = useState(0);
@@ -39,7 +40,7 @@ const ProductDetails = () => {
     Number(quantity);
   useEffect(() => {
     setColorExtraPrice(firstColor?.extraPrice);
-    setSizeExtraPrice(firstSize?.extraPrice)
+    setSizeExtraPrice(firstSize?.extraPrice);
   }, [firstColor?.extraPrice, firstSize?.extraPrice]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,7 +62,7 @@ const ProductDetails = () => {
             <Carousel
               autoPlay={true}
               infiniteLoop={true}
-              // stopOnHover={false}
+              stopOnHover={false}
               showThumbs={true}
               swipeable={true}
               useKeyboardArrows={true}
@@ -74,7 +75,7 @@ const ProductDetails = () => {
               <div className="">
                 <img
                   className="object-cover h-auto"
-                  src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  src={finalPrimaryImage}
                   alt=""
                 />
               </div>

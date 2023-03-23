@@ -18,6 +18,7 @@ const Profile = () => {
     formData.append("avatar", e.target.files[0]);
     updateAvatar({ id: _id, formData });
   };
+  console.log(process.env.REACT_APP_IMG_URL + user?.data?.avatar);
   return (
     <div>
       <div className="flex justify-center items-center overflow-auto poppins p-5">

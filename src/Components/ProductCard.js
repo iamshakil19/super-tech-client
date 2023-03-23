@@ -2,27 +2,29 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { _id, name, price, description } = product;
+  const { _id, name, price, description, primaryImage } = product;
   const navigate = useNavigate();
-  const primaryImage =
-    "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358";
   const image2 =
     "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756";
   const handleBuyNow = () => {
     navigate("/checkouts");
   };
+
+  console.log();
+
+  const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
   return (
     <div className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto ">
       <section>
         <section>
           <img
             onClick={() => navigate(`/product-details/${_id}`)}
-            className="w-full object-cover mx-auto block cursor-pointer"
-            src={primaryImage}
+            className="w-full h-60 lg:h-64 object-cover mx-auto block cursor-pointer"
+            src={finalPrimaryImage}
             onMouseOver={(e) =>
-              (e.currentTarget.src = image2 ? image2 : primaryImage)
+              (e.currentTarget.src = image2 ? image2 : finalPrimaryImage)
             }
-            onMouseOut={(e) => (e.currentTarget.src = primaryImage)}
+            onMouseOut={(e) => (e.currentTarget.src = finalPrimaryImage)}
             alt=""
           />
           <div className="border-b border-gray-200 mt-3"></div>

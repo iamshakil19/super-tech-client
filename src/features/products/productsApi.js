@@ -18,4 +18,8 @@ export const productsApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetAllProductsQuery, useGetProductQuery, useAddProductMutation } = productsApi;
+export const {
+  useGetAllProductsQuery,
+  useGetProductQuery,
+  useAddProductMutation,
+} = productsApi;
