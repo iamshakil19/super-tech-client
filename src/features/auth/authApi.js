@@ -20,7 +20,7 @@ export const authApi = apiSlice.injectEndpoints({
           );
           dispatch(
             userLoggedIn({
-              accessToken: result?.data?.data?.token
+              accessToken: result?.data?.data?.token,
             })
           );
         } catch (error) {
@@ -34,10 +34,15 @@ export const authApi = apiSlice.injectEndpoints({
         method: "POST",
         body: userData,
       }),
-      invalidatesTags: ["user"],
+
+      //getCurrentUser
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
+          if (result.error) {
+            return;
+          }
+          console.log(result?.data?.data?.user, "result");
           localStorage.setItem(
             "auth",
             JSON.stringify({
@@ -45,8 +50,11 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
           dispatch(
-            userLoggedIn({
-              accessToken: result?.data?.data?.token,
+            // userLoggedIn({
+            //   accessToken: result?.data?.data?.token,
+            // }),
+            apiSlice.util.updateQueryData("login", undefined, (draft) => {
+              console.log(draft, "draft");
             })
           );
         } catch (error) {

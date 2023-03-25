@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { _id, name, price, description, primaryImage } = product;
+  const { _id, name, price, description, primaryImage, extraImages } = product;
   const navigate = useNavigate();
   const image2 =
     "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756";
@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
             className="w-full h-60 lg:h-64 object-cover mx-auto block cursor-pointer"
             src={finalPrimaryImage}
             onMouseOver={(e) =>
-              (e.currentTarget.src = image2 ? image2 : finalPrimaryImage)
+              (e.currentTarget.src = extraImages.length > 0 ? process.env.REACT_APP_IMG_URL + extraImages[0] : finalPrimaryImage)
             }
             onMouseOut={(e) => (e.currentTarget.src = finalPrimaryImage)}
             alt=""

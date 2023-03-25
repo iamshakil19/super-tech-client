@@ -2,6 +2,11 @@ import { apiSlice } from "../api/apiSlice";
 
 export const userApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    getAllUser: builder.query({
+      query: () => ({
+        url: `/api/v1/user`,
+      }),
+    }),
     updateUser: builder.mutation({
       query: ({ id, data }) => ({
         url: `/api/v1/user/${id}`,
@@ -20,7 +25,6 @@ export const userApi = apiSlice.injectEndpoints({
       query: () => ({
         url: `/api/v1/user/me`,
       }),
-      providesTags: ["user"],
     }),
   }),
 });
@@ -29,4 +33,5 @@ export const {
   useUpdateUserMutation,
   useUpdateAvatarMutation,
   useGetCurrentUserQuery,
+  useGetAllUserQuery,
 } = userApi;

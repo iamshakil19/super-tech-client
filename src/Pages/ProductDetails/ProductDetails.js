@@ -23,13 +23,14 @@ const ProductDetails = () => {
     category,
     subCategory,
     primaryImage,
+    extraImages,
   } = product?.data || {};
 
   const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
 
   const [firstColor] = colors || [];
   const [firstSize] = sizes || [];
-  console.log(firstColor?.extraPrice);
+
   const [isColorSelected, setIsColorSelected] = useState(0);
   const [colorExtraPrice, setColorExtraPrice] = useState(0);
   const [sizeExtraPrice, setSizeExtraPrice] = useState(0);
@@ -38,10 +39,16 @@ const ProductDetails = () => {
   const totalPrice =
     (Number(price) + Number(colorExtraPrice) + Number(sizeExtraPrice)) *
     Number(quantity);
+
   useEffect(() => {
-    setColorExtraPrice(firstColor?.extraPrice);
-    setSizeExtraPrice(firstSize?.extraPrice);
+    if (firstColor?.extraPrice) {
+      setColorExtraPrice(firstColor?.extraPrice);
+    }
+    if (firstSize?.extraPrice) {
+      setSizeExtraPrice(firstSize?.extraPrice);
+    }
   }, [firstColor?.extraPrice, firstSize?.extraPrice]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -74,36 +81,24 @@ const ProductDetails = () => {
             >
               <div className="">
                 <img
-                  className="object-cover h-auto"
+                  className="object-cover max-w-lg"
                   src={finalPrimaryImage}
                   alt=""
                 />
               </div>
-              <div className="">
-                <img
-                  className="object-cover h-auto"
-                  src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  alt=""
-                />
-              </div>
-              <div className="">
-                <img
-                  className="object-cover h-auto"
-                  src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  alt=""
-                />
-              </div>
-              <div className="">
-                <img
-                  className="object-cover h-auto"
-                  src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                  alt=""
-                />
-              </div>
+              {extraImages.map((imageUrl) => (
+                <div key={imageUrl} className="">
+                  <img
+                    className="object-cover  max-w-lg"
+                    src={`${process.env.REACT_APP_IMG_URL + imageUrl}`}
+                    alt=""
+                  />
+                </div>
+              ))}
             </Carousel>
           </div>
           <div className="pt-0 px-5 md:p-5 poppins">
-            <h2 className="text-black text-3xl font-semibold ">{name}</h2>
+            <h2 className="text-black text-3xl font-semibold leading-relaxed">{name}</h2>
 
             <p className="mt-5 flex items-center text-xl">
               Price :

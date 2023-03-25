@@ -1,91 +1,29 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../Components/ProductCard";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
+import {
+  handleSetLimitToState,
+  handleSetSortToState,
+} from "../../features/products/productsSlice";
 import Error from "../Shared/Error/Error";
 import Loading from "../Shared/Loading/Loading";
 
-const productData = [
-  {
-    _id: 1,
-    name: "GRID Newon Chair",
-    price: "84000",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Solutaadipisicing elit. Soluta",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: 2,
-    name: "GRID Newon Chair",
-    price: "84000",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: 3,
-    name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
-    price: "84000",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta adipisicing elit. Soluta",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: 4,
-    name: "GRID Newon Chair",
-    price: "84000",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: 5,
-    name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
-    price: "84000",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: 6,
-    name: "GRID Newon Chair",
-    price: "84000",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-];
-
 const Product = () => {
-  const [limit, setLimit] = useState(10);
-  const [price, setPrice] = useState("latest");
+  const { page, sort, limit } = useSelector((state) => state.productsFilter);
 
+  // console.log("page", page, "sort", sort, "limit", limit);
+
+  const dispatch = useDispatch();
   const {
     data: allProducts,
     isLoading,
     isError,
     error,
-  } = useGetAllProductsQuery();
-  console.log(allProducts);
+  } = useGetAllProductsQuery({ page, limit, sort });
 
-  const { success, data, pageCount, totalProduct } = allProducts || {}
+  const { success, data, pageCount, totalProduct } = allProducts || {};
+
   let content = null;
 
   if (isLoading) {
@@ -100,45 +38,43 @@ const Product = () => {
         <div className="mb-5 flex justify-end items-center gap-3">
           <div className="block sm:ml-5 sm:mt-0">
             <select
-              onChange={(e) => setPrice(e.target.value)}
-              defaultValue={price}
+              onChange={(e) => dispatch(handleSetSortToState(e.target.value))}
+              defaultValue={sort}
               className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 border-slate-300"
             >
-              <option selected className="font-medium text-md" value="latest">
+              <option
+                selected
+                className="font-medium text-md"
+                value="-createdAt"
+              >
                 Default
               </option>
-              <option className=" font-medium text-md" value="lowToHigh">
+              <option className=" font-medium text-md" value="price">
                 Price (Low → High)
               </option>
-              <option className=" font-medium text-md" value="highToLow">
+              <option className=" font-medium text-md" value="-price">
                 Price (High → Low)
               </option>
-              <option className=" font-medium text-md" value="popular">
+              <option className=" font-medium text-md" value="-views">
                 Popular
               </option>
-              <option
-                className=" font-medium text-md"
-                value="alphabeticallyAToZ"
-              >
+              <option className=" font-medium text-md" value="name">
                 Alphabetically (A → Z)
               </option>
-              <option
-                className=" font-medium text-md"
-                value="alphabeticallyZToA"
-              >
+              <option className=" font-medium text-md" value="-name">
                 Alphabetically (Z → A)
               </option>
-              <option className=" font-medium text-md" value="dateOldToNew">
+              <option className=" font-medium text-md" value="updatedAt">
                 Date (Old → New)
               </option>
-              <option className=" font-medium text-md" value="dateNewToOld">
+              <option className=" font-medium text-md" value="-updatedAt">
                 Date (New → Old)
               </option>
             </select>
           </div>
           <div className="block">
             <select
-              onChange={(e) => setLimit(e.target.value)}
+              onChange={(e) => dispatch(handleSetLimitToState(e.target.value))}
               defaultValue={limit}
               className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-28 border-slate-300"
             >

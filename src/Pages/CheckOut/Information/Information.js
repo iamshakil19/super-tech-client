@@ -4,21 +4,63 @@ import { Link, useNavigate } from "react-router-dom";
 import { divisions } from "../../../Utils/LocalData";
 import { IoMdStar } from "react-icons/io";
 import { RiArrowLeftSLine } from "react-icons/ri";
+import { useGetCurrentUserQuery } from "../../../features/user/usersApi";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
+import { handleContactInformation } from "../../../features/orders/ordersSlice";
 const Information = () => {
   const [isSaveInfo, setSaveInfo] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
+  const { email } = user?.data || {};
+
+  const {
+    name: initialName,
+    phoneNumber: initialPhoneNumber,
+    company: initialCompany,
+    postalCode: initialPostalCode,
+    division: initialDivision,
+    area: initialArea,
+    streetAddress: initialStreetAddress,
+    cart,
+  } = useSelector((state) => state.orders);
+
+  useEffect(() => {
+    if (cart.length < 1) {
+      toast.error("There are no products in your cart", { id: "cart" });
+      navigate("/");
+    }
+  }, [cart?.length, navigate]);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
     control,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      name: initialName,
+      phoneNumber: initialPhoneNumber,
+      company: initialCompany,
+      postalCode: initialPostalCode,
+      division: initialDivision,
+      area: initialArea,
+      streetAddress: initialStreetAddress,
+    },
+    values: {
+      email: email,
+    },
+  });
+
   const onSubmit = (data) => {
+    console.log(data);
+    dispatch(handleContactInformation(data));
     navigate("/checkouts/shipping");
   };
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, []);
   return (
     <div className="my-5 poppins">
@@ -33,7 +75,6 @@ const Information = () => {
               id="email"
               readOnly
               type="text"
-              value={"shakil@gmail.com"}
               placeholder="Email"
               className={`bg-slate-200/70 border block mt-1 text-[15px] outline-none py-1.5 lg:py-2.5 px-3 w-full rounded-md cursor-not-allowed`}
               {...register("email")}
@@ -47,7 +88,6 @@ const Information = () => {
               <input
                 id="name"
                 type="text"
-                defaultValue="Shakil Ahmed"
                 placeholder="Enter Name"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                   errors.name
@@ -74,7 +114,6 @@ const Information = () => {
               <input
                 id="phoneNumber"
                 type="text"
-                defaultValue="01877018851"
                 placeholder="Enter Number"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                   errors.phoneNumber
@@ -103,7 +142,6 @@ const Information = () => {
               <input
                 id="company"
                 type="text"
-                defaultValue="super tech furniture"
                 placeholder="Enter Company Name"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md focus:border-slate-700 border-slate-300`}
                 {...register("company")}
@@ -116,7 +154,6 @@ const Information = () => {
               <input
                 id="postalCode"
                 type="text"
-                defaultValue="1216"
                 placeholder="Enter Post Code"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md focus:border-slate-700 border-slate-300`}
                 {...register("postalCode")}
@@ -130,7 +167,6 @@ const Information = () => {
                 Division <IoMdStar className="text-red-500" size={11} />
               </label>
               <select
-                defaultValue=""
                 id="division"
                 type="text"
                 placeholder="division"
@@ -146,7 +182,7 @@ const Information = () => {
                   },
                 })}
               >
-                <option className="" disabled selected value={""}>
+                <option className="" disabled value={""}>
                   Select Division
                 </option>
                 {divisions.map((division) => (
@@ -168,7 +204,6 @@ const Information = () => {
               <input
                 id="area"
                 type="text"
-                defaultValue="Mirpur"
                 placeholder="Enter Area"
                 className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                   errors.area
@@ -196,7 +231,6 @@ const Information = () => {
             <input
               id="streetAddress"
               type="text"
-              defaultValue="mirpur 13, block B, road 9, house 13"
               placeholder="Enter Street Address"
               className={`border block outline-none mt-1 text-[15px] py-1.5 lg:py-2.5 px-3 w-full rounded-md  ${
                 errors.streetAddress

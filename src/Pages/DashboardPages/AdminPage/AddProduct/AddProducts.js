@@ -4,6 +4,7 @@ import { categories, subCategories } from "../../../../Utils/LocalData";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoMdCloudUpload, IoMdStar } from "react-icons/io";
 import { useAddProductMutation } from "../../../../features/products/productsApi";
+import { toast } from "react-hot-toast";
 const product = {
   _id: 1,
   name: "GRID Newon Chair",
@@ -34,6 +35,7 @@ const AddProducts = () => {
     handleSubmit,
     reset,
     control,
+    watch,
   } = useForm();
   const {
     fields: colorFields,
@@ -46,16 +48,30 @@ const AddProducts = () => {
     remove: sizeRemove,
   } = useFieldArray({ control, name: "sizes" });
 
+  const galleryImage = watch("galleryImage");
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error?.data?.message);
+    }
+  }, [isError, error?.data?.message]);
+
   const onSubmit = (data) => {
     const formData = new FormData();
-    const { primaryImage, category, ...others } = data;
+    const { primaryImage, extraImages, category, ...others } = data;
     const finalCategory = category.split(",")[1];
     formData.append("primaryImage", primaryImage[0]);
+    [...data?.extraImages].forEach((image) => {
+      formData.append("extraImages", image);
+    });
+
     formData.append(
       "others",
       JSON.stringify({ category: finalCategory, ...others })
     );
     addProduct(formData);
+
+    console.log(formData.get("extraImages"));
   };
 
   const subCategoryFilter = subCategories?.filter(
@@ -264,7 +280,7 @@ const AddProducts = () => {
                   </span>
                 )}
               </div>
-              {/* <div className="flex flex-col w-full ">
+              <div className="flex flex-col w-full ">
                 <label className="mb-2 text-base font-semibold" htmlFor="unit">
                   Extra Multiple Images{" "}
                   <span className="text-sm">(optional)</span>
@@ -288,7 +304,7 @@ const AddProducts = () => {
                   </span>{" "}
                   Upload Images
                 </label>
-              </div> */}
+              </div>
             </section>
 
             <div className="border-b border-gray-300 mt-5 mb-3"></div>

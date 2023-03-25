@@ -1,5 +1,8 @@
 import React from "react";
 import { FaBoxOpen } from "react-icons/fa";
+import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
+import Error from "../../../Shared/Error/Error";
+import Loading from "../../../Shared/Loading/Loading";
 const productData = [
   {
     _id: "507f1f77bcf86cd799439011",
@@ -75,6 +78,51 @@ const productData = [
   },
 ];
 const LatestProducts = () => {
+  const sort = "-createdAt";
+  const limit = 5;
+  const { data, isError, isLoading, error } = useGetAllProductsQuery({
+    sort,
+    limit,
+  });
+  const productsData = data?.data;
+
+  const { products } = productsData || {};
+console.log(productsData);
+  let content = null;
+
+  if (isLoading) {
+    content = <Loading />;
+  } else if (!isLoading && isError) {
+    content = <Error message="There was an error" />;
+  } else if (!isLoading && !isError && products?.length === 0) {
+    <div>No product found</div>;
+  } else if (!isLoading && !isError && products?.length > 0) {
+    content = products?.map((product) => (
+      <div key={product._id}>
+        <div className="grid grid-cols-5 lg:grid-cols-6 gap-3">
+          <p className="hidden lg:block border-l border-gray-300 pl-2">
+            {product._id}
+          </p>
+          <p className="capitalize whitespace-nowrap overflow-hidden border-l border-gray-300 pl-2">
+            {product.name}
+          </p>
+
+          <p className="flex items-center border-l border-gray-300 pl-2">456</p>
+          <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2">
+            {product.category}
+          </p>
+          <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2">
+            {product.subCategory}
+          </p>
+          <p className="overflow-hidden border-l border-gray-300 pl-2">
+            {product.views}
+          </p>
+        </div>
+        <div className="border-b my-3 border-gray-300"></div>
+      </div>
+    ));
+  }
+
   const newLatestProducts = productData.slice(0, 5);
   return (
     <div>
@@ -93,32 +141,7 @@ const LatestProducts = () => {
           <p className="font-bold text-red-500">Views</p>
         </div>
         <div className="border-b my-3 border-gray-300"></div>
-        {newLatestProducts.map((product) => (
-          <div key={product._id}>
-            <div className="grid grid-cols-5 lg:grid-cols-6 gap-3">
-              <p className="hidden lg:block border-l border-gray-300 pl-2">
-                {product._id}
-              </p>
-              <p className="capitalize whitespace-nowrap overflow-hidden border-l border-gray-300 pl-2">
-                {product.name}
-              </p>
-
-              <p className="flex items-center border-l border-gray-300 pl-2">
-                456
-              </p>
-              <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2">
-                {product.category}
-              </p>
-              <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2">
-                {product.subCategory}
-              </p>
-              <p className="overflow-hidden border-l border-gray-300 pl-2">
-                {product.views}
-              </p>
-            </div>
-            <div className="border-b my-3 border-gray-300"></div>
-          </div>
-        ))}
+        {content}
       </div>
     </div>
   );

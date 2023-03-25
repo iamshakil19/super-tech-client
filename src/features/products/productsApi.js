@@ -2,8 +2,11 @@ import { apiSlice } from "../api/apiSlice";
 
 export const productsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    //
     getAllProducts: builder.query({
-      query: () => `/api/v1/product`,
+      query: ({ page, sort, limit, minPriceValue, initialMaxPrice }) => ({
+        url: `/api/v1/product?page=${page}&limit=${limit}&sort=${sort}`,
+      }),
     }),
     getProduct: builder.query({
       query: (id) => `/api/v1/product/${id}`,

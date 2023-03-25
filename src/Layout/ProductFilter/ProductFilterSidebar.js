@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { useLocation } from "react-router-dom";
@@ -12,18 +12,48 @@ import ForSofa from "./ConditionalSidebar/ForSofa";
 import ForWorkStation from "./ConditionalSidebar/ForWorkStation";
 import ForGarments from "./ConditionalSidebar/ForGarments";
 import ForInterior from "./ConditionalSidebar/ForInterior";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetAllProductsQuery } from "../../features/products/productsApi";
+import { handleSetMaxPriceToState } from "../../features/products/productsSlice";
 
 const ProductFilterSidebar = () => {
-  const max = 5000;
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(max);
+  const [maxValue, setMaxValue] = useState(0);
+  const { minPriceValue, maxPriceValue } = useSelector(
+    (state) => state.productsFilter
+  );
+  console.log(maxPriceValue);
+
+
+  const {
+    data: allProducts,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllProductsQuery({ minPriceValue, maxPriceValue });
+
+  // const [max, setMaxPriceValue] = useState();
+  const dispatch = useDispatch();
+  const { success, products, pageCount, totalProduct } =
+    allProducts?.data || {};
+
+  useEffect(() => {
+    if (!isLoading && !isError && products.length > 0) {
+      const prices = products?.map((object) => {
+        return object.price;
+      });
+      const maxPrice = Math?.max(...prices);
+      dispatch(handleSetMaxPriceToState(maxPrice));
+    }
+  }, [isLoading, isError, products, dispatch]);
+
   const handleInput = (e) => {
     setMinValue(e.minValue);
     setMaxValue(e.maxValue);
   };
 
   const [categoryOpen, setCategoryOpen] = useState(true);
-  const [subcategoryOpen, setSubCategoryOpen] = useState(true);
+  // const [subcategoryOpen, setSubCategoryOpen] = useState(true);
 
   const location = useLocation();
   console.log(location.pathname);
@@ -37,20 +67,23 @@ const ProductFilterSidebar = () => {
             <span>BDT {minValue}</span> <span>BDT {maxValue}</span>
           </p>
 
-          <MultiRangeSlider
-            className="mb-2 mx-5"
-            barInnerColor={"#000000"}
-            ruler={false}
-            label={false}
-            min={0}
-            max={max}
-            step={1}
-            minValue={minValue}
-            maxValue={maxValue}
-            onInput={(e) => {
-              handleInput(e);
-            }}
-          />
+          {isLoading && <p>Loading...</p>}
+          {!isLoading && (
+            <MultiRangeSlider
+              className="mb-2 mx-5"
+              barInnerColor={"#000000"}
+              ruler={false}
+              label={false}
+              min={0}
+              max={maxPriceValue}
+              step={1}
+              minValue={minValue}
+              maxValue={maxPriceValue}
+              onInput={(e) => {
+                handleInput(e);
+              }}
+            />
+          )}
         </div>
 
         {(location.pathname === "/collections" ||

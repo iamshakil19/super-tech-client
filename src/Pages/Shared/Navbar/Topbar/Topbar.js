@@ -13,7 +13,6 @@ const Topbar = ({ setSearchOpen }) => {
   const isLoggedIn = useAuth();
 const {data: user, isError, isLoading, error} = useGetCurrentUserQuery()
   const { role } = user?.data || {};
-  console.log(role);
   return (
     <div className="lg:block hidden">
       <div className="grid grid-cols-2 md:grid-cols-3 ">

@@ -44,7 +44,6 @@ const Login = () => {
   useEffect(() => {
     if (isSuccess) {
       navigate(from);
-      console.log(from, 46);
     }
   }, [from, isSuccess, navigate]);
   const onSubmit = (data) => {
