@@ -1,20 +1,29 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import numberWithComma from "../../../Utils/numberWithComa";
 import OrderCard from "./OrderCard";
 
 const OrderInfo = () => {
+  const { shippingCost, cart, cartTotalAmount } = useSelector(
+    (state) => state.orders
+  );
+  console.log(cart);
+  const total = cartTotalAmount + shippingCost;
+
   const location = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, []);
   return (
     <div className="p-2 poppins max-w-lg hidden lg:block">
       {location.pathname === "/checkouts/thank-you" && (
         <p className="mb-5 font-medium text-lg">Order Summary</p>
       )}
-      <OrderCard />
-      <OrderCard />
-      <OrderCard />
+      {cart?.map((cartProduct) => (
+        <OrderCard cartProduct={cartProduct} key={cartProduct._id} />
+      ))}
+
       <div className="border-b border-gray-300 my-5"></div>
       {location.pathname !== "/checkouts/thank-you" && (
         <>
@@ -36,17 +45,17 @@ const OrderInfo = () => {
       <div>
         <div className="flex items-center justify-between mb-3">
           <p>Subtotal</p>
-          <p className="font-medium">৳ 145,000.00</p>
+          <p className="font-medium">৳ {numberWithComma(cartTotalAmount)}</p>
         </div>
         <div className="flex items-center justify-between">
           <p>Shipping</p>
-          <p className="font-medium">Free</p>
+          <p className="font-medium">৳ {shippingCost}</p>
         </div>
       </div>
       <div className="border-b border-gray-300 my-5"></div>
       <div className="flex items-center justify-between mb-3">
         <p className="text-lg font-semibold">Total</p>
-        <p className="text-xl font-bold">৳ 145,000.00</p>
+        <p className="text-xl font-bold">৳ {numberWithComma(total)}</p>
       </div>
     </div>
   );

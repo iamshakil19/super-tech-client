@@ -1,16 +1,74 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { RiArrowLeftSLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { handleShippingMethod } from "../../../features/orders/ordersSlice";
 
 const Shipping = () => {
-  const [shippingMethod, setShippingMethod] = useState("");
+  const {
+    email,
+    name,
+    phoneNumber,
+    company,
+    postalCode,
+    division,
+    area,
+    streetAddress,
+    cart,
+    shippingMethod: shippingMethodFromState,
+    shippingCost: shippingCostFromState,
+  } = useSelector((state) => state.orders);
+
+  const [shippingMethod, setShippingMethod] = useState(shippingMethodFromState);
+  const [shippingCost, setShippingCost] = useState(shippingCostFromState);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (
+      email === "" &&
+      name === "" &&
+      phoneNumber === "" &&
+      division === "" &&
+      area === "" &&
+      streetAddress === ""
+    ) {
+      toast.error("Please fill the previous form first", { id: "shipping" });
+      navigate("/");
+    } else if (cart.length < 1) {
+      toast.error("Please add items first", { id: "shipping" });
+      navigate("/");
+    }
+  }, [
+    cart.length,
+    email,
+    name,
+    phoneNumber,
+    company,
+    postalCode,
+    division,
+    area,
+    streetAddress,
+    navigate,
+  ]);
+
+  useEffect(() => {
+    if (shippingMethod === "insideDhaka") {
+      setShippingCost(250);
+    } else if (shippingMethod === "outsideDhaka") {
+      setShippingCost(450);
+    }
+  }, [shippingMethod]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(handleShippingMethod({ shippingCost, shippingMethod }));
     console.log(shippingMethod);
+    console.log(shippingCost);
     navigate("/checkouts/payment");
   };
-
+  console.log(shippingMethodFromState);
   return (
     <div className="my-5 lg:my-10 poppins">
       <div className="border border-gray-300 rounded-md p-3 text-[15px]">
@@ -56,6 +114,7 @@ const Shipping = () => {
                   id="insideDhaka"
                   name="shippingMethod"
                   className="radio radio-sm"
+                  // defaultValue="insideDhaka"
                   checked={shippingMethod === "insideDhaka"}
                   onChange={() => setShippingMethod("insideDhaka")}
                 />

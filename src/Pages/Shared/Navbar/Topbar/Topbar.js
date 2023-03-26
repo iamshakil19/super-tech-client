@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../../../Assets/Others/logo.png";
 import { BsCart3 } from "react-icons/bs";
 import { TfiUser } from "react-icons/tfi";
@@ -8,10 +8,13 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
 import useAuth from "../../../../hooks/useAuth";
 import { useGetCurrentUserQuery } from "../../../../features/user/usersApi";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotals } from "../../../../features/orders/ordersSlice";
 
 const Topbar = ({ setSearchOpen }) => {
   const isLoggedIn = useAuth();
-const {data: user, isError, isLoading, error} = useGetCurrentUserQuery()
+  const { cartTotalQuantity } = useSelector((state) => state.orders);
+  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
   const { role } = user?.data || {};
   return (
     <div className="lg:block hidden">
@@ -50,11 +53,11 @@ const {data: user, isError, isLoading, error} = useGetCurrentUserQuery()
           </div>
           <div className="px-5 mt-2">
             <div className="indicator">
-              <span className="cursor-pointer">
+              <Link to="/cart" className="cursor-pointer">
                 <BsCart3 className="text-2xl text-slate-700 " />
-              </span>
+              </Link>
               <span className="badge badge-sm indicator-item bg-red-500 border-0 text-white">
-                8
+                {cartTotalQuantity}
               </span>
             </div>
           </div>

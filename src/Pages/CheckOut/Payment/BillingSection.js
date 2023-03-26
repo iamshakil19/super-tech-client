@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { handleBillingAddress } from "../../../features/orders/ordersSlice";
 import DifferentBillingAddressForm from "./DifferentBillingAddressForm";
 
 const BillingSection = () => {
-  const [billingAddress, setBillingAddress] = useState(1);
+  const dispatch = useDispatch();
+  const { billingAddress: billingAddressFromState } = useSelector(
+    (state) => state.orders
+  );
+  const [billingAddress, setBillingAddress] = useState(
+    billingAddressFromState?.sameAsShippingAddress
+  );
+
+  useEffect(() => {
+    dispatch(handleBillingAddress({ sameAsShippingAddress: billingAddress }));
+  }, [billingAddress, dispatch]);
+
   return (
     <div>
       <h2 className="text-xl mt-7">Billing address</h2>
@@ -20,8 +33,8 @@ const BillingSection = () => {
               type="radio"
               id="sameAsShipping"
               className="radio radio-sm"
-              checked={billingAddress === 1}
-              onChange={() => setBillingAddress(1)}
+              checked={billingAddress}
+              onChange={() => setBillingAddress(true)}
             />
             <label
               htmlFor="sameAsShipping"
@@ -34,7 +47,7 @@ const BillingSection = () => {
 
         <section
           className={`${
-            billingAddress === 2 ? "" : "h-12"
+            billingAddress === false ? "" : "h-12"
           } overflow-hidden transition-all duration-500 ease-in-out`}
         >
           <label
@@ -46,8 +59,8 @@ const BillingSection = () => {
               type="radio"
               id="differentBillingAddress"
               className="radio radio-sm"
-              checked={billingAddress === 2}
-              onChange={() => setBillingAddress(2)}
+              checked={!billingAddress}
+              onChange={() => setBillingAddress(false)}
             />
             <label
               htmlFor="differentBillingAddress"

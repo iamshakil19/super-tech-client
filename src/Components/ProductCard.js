@@ -1,13 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addToCart, getTotals } from "../features/orders/ordersSlice";
 
 const ProductCard = ({ product }) => {
   const { _id, name, price, description, primaryImage, extraImages } = product;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const image2 =
     "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756";
   const handleBuyNow = () => {
     navigate("/checkouts");
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    dispatch(getTotals());
   };
 
   console.log();
@@ -22,7 +30,10 @@ const ProductCard = ({ product }) => {
             className="w-full h-60 lg:h-64 object-cover mx-auto block cursor-pointer"
             src={finalPrimaryImage}
             onMouseOver={(e) =>
-              (e.currentTarget.src = extraImages.length > 0 ? process.env.REACT_APP_IMG_URL + extraImages[0] : finalPrimaryImage)
+              (e.currentTarget.src =
+                extraImages.length > 0
+                  ? process.env.REACT_APP_IMG_URL + extraImages[0]
+                  : finalPrimaryImage)
             }
             onMouseOut={(e) => (e.currentTarget.src = finalPrimaryImage)}
             alt=""
@@ -48,7 +59,10 @@ const ProductCard = ({ product }) => {
         <p className="text-center text-lg text-red-500 font-bold">৳ {price}</p>
 
         <div className="xl:flex gap-5 mt-3">
-          <button className="whitespace-nowrap text-black border border-black hover:text-white hover:bg-black px-2 py-1.5 w-full font-medium rounded-full transition-all duration-200 ease-in-out mb-3 xl:mb-0">
+          <button
+            onClick={handleAddToCart}
+            className="whitespace-nowrap text-black border border-black hover:text-white hover:bg-black px-2 py-1.5 w-full font-medium rounded-full transition-all duration-200 ease-in-out mb-3 xl:mb-0"
+          >
             Add To Cart
           </button>
           <button

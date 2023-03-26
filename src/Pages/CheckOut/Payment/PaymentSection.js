@@ -2,10 +2,24 @@ import React, { useEffect, useState } from "react";
 import BankTransfer from "./BankTransfer";
 import bkashLogo from "../../../Assets/Others/bkash.png";
 import nagadLogo from "../../../Assets/Others/nagad.png";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { handlePaymentMethod } from "../../../features/orders/ordersSlice";
 const PaymentSection = () => {
-  const [paymentOpen, setPaymentOpen] = useState(1);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { paymentMethod: paymentMethodFromState } = useSelector(
+    (state) => state.orders
+  );
+
+  const [paymentMethod, setPaymentMethod] = useState(paymentMethodFromState);
+
   useEffect(() => {
-    window.scrollTo(0, 0)
+    dispatch(handlePaymentMethod(paymentMethod));
+  }, [dispatch, paymentMethod]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
   return (
     <div className="mt-5">
@@ -14,7 +28,7 @@ const PaymentSection = () => {
       <div className="border border-gray-300 rounded-md mt-3">
         <section
           className={`${
-            paymentOpen === 1 ? "" : "h-12"
+            paymentMethod === "codInsideDhaka" ? "" : "h-12"
           } overflow-hidden transition-all duration-300 ease-in-out`}
         >
           <label
@@ -24,10 +38,11 @@ const PaymentSection = () => {
             <input
               required
               type="radio"
+              name="payment"
               id="codInsideDhaka"
               className="radio radio-sm"
-              checked={paymentOpen === 1}
-              onChange={() => setPaymentOpen(1)}
+              checked={paymentMethod === "codInsideDhaka"}
+              onChange={() => setPaymentMethod("codInsideDhaka")}
             />
             <label
               htmlFor="codInsideDhaka"
@@ -43,9 +58,12 @@ const PaymentSection = () => {
             </p>
           </div>
         </section>
+
         <section
           className={`${
-            paymentOpen === 2 ? "max-h-[1000px] w-[100%]" : "h-12"
+            paymentMethod === "bankTransfer"
+              ? "max-h-[1000px] w-[100%]"
+              : "h-12"
           } overflow-hidden transition-all duration-700 ease-in-out`}
         >
           <label
@@ -55,10 +73,11 @@ const PaymentSection = () => {
             <input
               required
               type="radio"
+              name="payment"
               id="bankTransfer"
               className="radio radio-sm"
-              checked={paymentOpen === 2}
-              onChange={() => setPaymentOpen(2)}
+              checked={paymentMethod === "bankTransfer"}
+              onChange={() => setPaymentMethod("bankTransfer")}
             />
             <label
               htmlFor="bankTransfer"
@@ -82,26 +101,27 @@ const PaymentSection = () => {
         </section>
         <section
           className={`${
-            paymentOpen === 3 ? "" : "h-12"
+            paymentMethod === "bKashorNagad" ? "" : "h-12"
           } overflow-hidden transition-all duration-300 ease-out`}
         >
           <label
-            htmlFor="bkashManual"
+            htmlFor="bKashorNagad"
             className="flex items-center gap-5 lg:gap-7 cursor-pointer px-3 h-12 border-b border-gray-300"
           >
             <input
               required
               type="radio"
-              id="bkashManual"
+              name="payment"
+              id="bKashorNagad"
               className="radio radio-sm"
-              checked={paymentOpen === 3}
-              onChange={() => setPaymentOpen(3)}
+              checked={paymentMethod === "bKashorNagad"}
+              onChange={() => setPaymentMethod("bKashorNagad")}
             />
             <label
-              htmlFor="bkashManual"
+              htmlFor="bKashorNagad"
               className="text-[15px] font-medium cursor-pointer"
             >
-              Mobile Banking - Manual
+              bKash or Nagad - Manual
             </label>
           </label>
           <div className="bg-slate-100/60 px-3 min-h-12 border-b border-gray-300 py-2 text-center">
@@ -130,7 +150,7 @@ const PaymentSection = () => {
         </section>
         <section
           className={`${
-            paymentOpen === 4 ? "" : "h-12"
+            paymentMethod === "codOutsideDhaka" ? "" : "h-12"
           } overflow-hidden transition-all duration-300 ease-out`}
         >
           <label
@@ -140,10 +160,11 @@ const PaymentSection = () => {
             <input
               required
               type="radio"
+              name="payment"
               id="codOutsideDhaka"
               className="radio radio-sm"
-              checked={paymentOpen === 4}
-              onChange={() => setPaymentOpen(4)}
+              checked={paymentMethod === "codOutsideDhaka"}
+              onChange={() => setPaymentMethod("codOutsideDhaka")}
             />
             <label
               htmlFor="codOutsideDhaka"

@@ -1,10 +1,17 @@
 import { useForm } from "react-hook-form";
 import { IoMdStar } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { RiArrowLeftSLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { handleDifferentBillingAddress } from "../../../features/orders/ordersSlice";
+import { useGetCurrentUserQuery } from "../../../features/user/usersApi";
 import { divisions } from "../../../Utils/LocalData";
 
 const DifferentBillingAddressForm = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
+  const { email } = user?.data || {};
   const {
     register,
     formState: { errors },
@@ -13,8 +20,10 @@ const DifferentBillingAddressForm = () => {
     control,
   } = useForm();
   const onSubmit = (data) => {
-    navigate("/checkouts/shipping");
+    dispatch(handleDifferentBillingAddress(data));
+    navigate("/checkouts/thank-you");
   };
+
   return (
     <div className="mt-2">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -27,7 +36,7 @@ const DifferentBillingAddressForm = () => {
               id="email"
               readOnly
               type="text"
-              value={"shakil@gmail.com"}
+              value={email}
               placeholder="Email"
               className={`bg-slate-200/70 border block mt-1 text-[15px] outline-none py-1.5 lg:py-2.5 px-3 w-full rounded-md cursor-not-allowed`}
               {...register("email")}
@@ -204,6 +213,22 @@ const DifferentBillingAddressForm = () => {
               </span>
             )}
           </div>
+        </div>
+        <div className="my-5 sm:flex justify-between items-center flex-row-reverse">
+          <div>
+            <input
+              type="submit"
+              className="bg-black lg:bg-slate-700 lg:hover:bg-black text-white font-semibold w-full py-3 px-5 rounded-md transition-all ease-in-out duration-200 cursor-pointer text-sm"
+              value="Complete Order"
+            />
+          </div>
+          <Link
+            to="/checkouts/shipping"
+            className="flex items-center justify-center mt-5 sm:mt-0"
+          >
+            <RiArrowLeftSLine size={25} />
+            <p className="text-sm ml-2 whitespace-nowrap">Return to shipping</p>
+          </Link>
         </div>
       </form>
     </div>
