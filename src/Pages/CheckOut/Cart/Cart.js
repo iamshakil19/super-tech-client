@@ -41,7 +41,7 @@ const Cart = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="mt-10 poppins container mx-auto">
+    <div className="mt-10 poppins container mx-auto px-5">
       <h2 className="text-3xl font-bold font-serif text-center mb-5">Cart</h2>
       <p className="text-center hover:underline underline-offset-2 hover:text-blue-500 transition-all duration-200 ease-in-out">
         <Link to="/collections" className="">
@@ -51,7 +51,7 @@ const Cart = () => {
 
       {cart?.length > 0 && (
         <>
-          <section className=" mt-5">
+          <section className=" mt-5 hidden lg:block">
             <table className="w-full text-left">
               <thead className="border-b border-gray-300 pb-5">
                 <tr>
@@ -69,7 +69,10 @@ const Cart = () => {
                       <div className="flex gap-5 items-center">
                         <div>
                           <img
-                            className="w-36 py-2"
+                            onClick={() =>
+                              navigate(`/product-details/${cartProduct._id}`)
+                            }
+                            className="w-32 cursor-pointer py-2"
                             src={`${
                               process.env.REACT_APP_IMG_URL +
                               cartProduct.primaryImage
@@ -78,13 +81,20 @@ const Cart = () => {
                           />
                         </div>
                         <div>
-                          <p className="text-lg font-medium mb-2 max-w-sm">
+                          <p
+                            onClick={() =>
+                              navigate(`/product-details/${cartProduct._id}`)
+                            }
+                            className="text-base md:text-lg font-medium mb-2 max-w-sm cursor-pointer"
+                          >
                             {cartProduct.name}
                           </p>
                           {cartProduct?.color && (
                             <p>Color : {cartProduct?.color}</p>
                           )}
-                          {cartProduct?.size && <p>{cartProduct?.size}</p>}
+                          {cartProduct?.size && (
+                            <p>Size : {cartProduct?.size}</p>
+                          )}
                           <button
                             onClick={() => handleRemoveFormCart(cartProduct)}
                             className="text-sm mt-1 font-medium"
@@ -132,13 +142,115 @@ const Cart = () => {
                     <td>
                       ৳{" "}
                       {numberWithComma(
-                        (cartProduct.price + cartProduct.colorCost + cartProduct.sizeCost) * cartProduct.quantity
+                        (cartProduct.price +
+                          cartProduct.colorCost +
+                          cartProduct.sizeCost) *
+                          cartProduct.quantity
                       )}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+          </section>
+          <section className="lg:hidden">
+            {cart?.map((cartProduct) => (
+              <div className="border-b border-gray-300 pb-2 mt-5">
+                <p
+                  onClick={() =>
+                    navigate(`/product-details/${cartProduct._id}`)
+                  }
+                  className="text-base md:text-lg font-medium mb-2 max-w-sm whitespace-nowrap overflow-hidden cursor-pointer"
+                >
+                  {cartProduct.name}
+                </p>
+                <div className="flex justify-between items-center gap-5">
+                  <div className="flex gap-5 items-center">
+                    <div>
+                      <img
+                        onClick={() =>
+                          navigate(`/product-details/${cartProduct._id}`)
+                        }
+                        className="w-20 cursor-pointer"
+                        src={`${
+                          process.env.REACT_APP_IMG_URL +
+                          cartProduct.primaryImage
+                        }`}
+                        alt={cartProduct.name}
+                      />
+                    </div>
+
+                    <div>
+                      <div>
+                        {cartProduct?.color && (
+                          <p className="text-sm">{cartProduct?.color}</p>
+                        )}
+                        {cartProduct?.size && (
+                          <p className="text-sm">{cartProduct?.size}</p>
+                        )}
+                        <button
+                          onClick={() => handleRemoveFormCart(cartProduct)}
+                          className="text-sm mt-1 font-medium"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm">
+                      Price : ৳ {numberWithComma(cartProduct.price)}
+                    </p>
+                    {cartProduct?.colorCost > 0 && (
+                      <p className="text-sm">
+                        Color Cost : ৳ {cartProduct?.colorCost}
+                      </p>
+                    )}
+                    {cartProduct?.sizeCost > 0 && (
+                      <p className="text-sm">
+                        Size Cost : ৳ {cartProduct?.sizeCost}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center justify-between mt-2">
+                  <div className="border border-gray-400 inline-block">
+                    <button
+                      onClick={() => handleDecreaseCartQuantity(cartProduct)}
+                      className=" text-black py-0.5 text-xl w-8"
+                    >
+                      -
+                    </button>
+                    <input
+                      readOnly
+                      type="text"
+                      className="text-center outline-none text-lg w-12"
+                      value={cartProduct.quantity}
+                    />
+                    <button
+                      onClick={() => handleIncreaseCartQuantity(cartProduct)}
+                      className=" text-black text-xl w-8 py-0.5"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div>
+                    <p>
+                      Total : ৳{" "}
+                      <span className="font-medium">
+                        {" "}
+                        {numberWithComma(
+                          (cartProduct.price +
+                            cartProduct.colorCost +
+                            cartProduct.sizeCost) *
+                            cartProduct.quantity
+                        )}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </section>
 
           <section className="flex justify-between items-center gap-5 py-3 mt-3">

@@ -9,9 +9,16 @@ const OrderInfoForSmallDevice = () => {
   const [isOpen, setOpen] = useState(false);
   const location = useLocation();
 
-  const { shippingCost, cart, cartTotalAmount } = useSelector(
+  const { shippingCost, cart, cartTotalAmount, orderResponse } = useSelector(
     (state) => state.orders
   );
+
+  const {
+    shippingCost: shippingCostFromOrderRes,
+    cart: cartFromOrderRes,
+    totalPrice,
+    subTotal,
+  } = orderResponse || {};
 
   const total = cartTotalAmount + shippingCost;
 
@@ -35,48 +42,93 @@ const OrderInfoForSmallDevice = () => {
             }`}
           />
         </div>
-        <p className="font-semibold">৳ 145,000</p>
-      </div>
-      <div className="p-2 poppins border-b border-gray-300">
-        {cart?.map((cartProduct) => (
-          <OrderCard cartProduct={cartProduct} key={cartProduct._id} />
-        ))}
-        <div className="border-b border-gray-300 my-5"></div>
-        {location.pathname !== "/checkouts/thank-you" && (
-          <>
-            <div className="flex items-center gap-5">
-              <input
-                className="outline-none border border-gray-300 px-3 py-1 rounded-md w-full focus:border-gray-700 transition-all duration-200"
-                placeholder="Promo Code"
-                type="text"
-                name=""
-                id=""
-              />
-              <button className="bg-slate-400 text-white px-4 py-1 rounded-md font-semibold">
-                Apply
-              </button>
-            </div>
-            <div className="border-b border-gray-300 my-5"></div>
-          </>
+        {location.pathname !== "/checkouts/thank-you" ? (
+          <p className="font-semibold">৳ {numberWithComma(total)}</p>
+        ) : (
+          <p className="font-semibold">৳ {numberWithComma(totalPrice)}</p>
         )}
-        <div className="text-[15px]">
-          <div className="flex items-center justify-between mb-3">
-            <p>Subtotal</p>
-            <p className="font-semibold">
-              ৳ {numberWithComma(cartTotalAmount)}
-            </p>
-          </div>
-          <div className="flex items-center justify-between">
-            <p>Shipping</p>
-            <p className="font-semibold">৳ {shippingCost}</p>
-          </div>
-        </div>
-        <div className="border-b border-gray-300 my-5"></div>
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-lg font-semibold">Total</p>
-          <p className="text-lg font-bold">৳ {numberWithComma(total)}</p>
-        </div>
       </div>
+      {location.pathname !== "/checkouts/thank-you" ? (
+        <div className="p-2 poppins border-b border-gray-300">
+          {cart?.map((cartProduct) => (
+            <OrderCard cartProduct={cartProduct} key={cartProduct._id} />
+          ))}
+          <div className="border-b border-gray-300 my-5"></div>
+          {location.pathname !== "/checkouts/thank-you" && (
+            <>
+              <div className="flex items-center gap-5">
+                <input
+                  className="outline-none border border-gray-300 px-3 py-1 rounded-md w-full focus:border-gray-700 transition-all duration-200"
+                  placeholder="Promo Code"
+                  type="text"
+                  name=""
+                  id=""
+                />
+                <button className="bg-slate-400 text-white px-4 py-1 rounded-md font-semibold">
+                  Apply
+                </button>
+              </div>
+              <div className="border-b border-gray-300 my-5"></div>
+            </>
+          )}
+          <div className="text-[15px]">
+            <div className="flex items-center justify-between mb-3">
+              <p>Subtotal</p>
+              <p className="font-semibold">
+                ৳ {numberWithComma(cartTotalAmount)}
+              </p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p>Shipping</p>
+              <p className="font-semibold">৳ {shippingCost}</p>
+            </div>
+          </div>
+          <div className="border-b border-gray-300 my-5"></div>
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-lg font-semibold">Total</p>
+            <p className="text-lg font-bold">৳ {numberWithComma(total)}</p>
+          </div>
+        </div>
+      ) : (
+        <div className="p-2 poppins border-b border-gray-300">
+          {cartFromOrderRes?.map((cartProduct) => (
+            <OrderCard cartProduct={cartProduct} key={cartProduct._id} />
+          ))}
+          <div className="border-b border-gray-300 my-5"></div>
+          {location.pathname !== "/checkouts/thank-you" && (
+            <>
+              <div className="flex items-center gap-5">
+                <input
+                  className="outline-none border border-gray-300 px-3 py-1 rounded-md w-full focus:border-gray-700 transition-all duration-200"
+                  placeholder="Promo Code"
+                  type="text"
+                  name=""
+                  id=""
+                />
+                <button className="bg-slate-400 text-white px-4 py-1 rounded-md font-semibold">
+                  Apply
+                </button>
+              </div>
+              <div className="border-b border-gray-300 my-5"></div>
+            </>
+          )}
+          <div className="text-[15px]">
+            <div className="flex items-center justify-between mb-3">
+              <p>Subtotal</p>
+              <p className="font-semibold">৳ {numberWithComma(subTotal)}</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p>Shipping</p>
+              <p className="font-semibold">৳ {shippingCostFromOrderRes}</p>
+            </div>
+          </div>
+          <div className="border-b border-gray-300 my-5"></div>
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-lg font-semibold">Total</p>
+            <p className="text-lg font-bold">৳ {numberWithComma(totalPrice)}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -7,8 +7,6 @@ const ProductCard = ({ product }) => {
   const { _id, name, price, description, primaryImage, extraImages } = product;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const image2 =
-    "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756";
   const handleBuyNow = () => {
     navigate("/checkouts");
   };

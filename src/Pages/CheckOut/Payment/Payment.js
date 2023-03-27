@@ -84,6 +84,7 @@ const Payment = () => {
       shippingCost,
       billingAddress,
       orderId,
+      subTotal: cartTotalAmount,
       totalPrice: cartTotalAmount + shippingCost,
     });
   };

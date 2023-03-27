@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import OrderInfo from "../../Pages/CheckOut/OrderInfo/OrderInfo";
 import CheckoutsInformationHeader from "./CheckoutsInformationHeader";
 const OrderLayout = () => {
