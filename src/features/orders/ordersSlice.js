@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
 const initialState = {
+  orderResponse: {},
   email: "",
+  orderId: 0,
   name: "",
   phoneNumber: "",
   company: "",
@@ -69,18 +71,27 @@ const ordersSlice = createSlice({
     },
     addToCart: (state, action) => {
       const itemIndex = state.cart.findIndex(
-        (item) => item._id === action.payload._id
+        (item) => item._id === action.payload.product._id
       );
       if (itemIndex >= 0) {
-        state.cart[itemIndex].quantity += 1;
+        state.cart[itemIndex].quantity += action.payload.quantity;
         toast.success(`Increase ${state.cart[itemIndex].name} cart quantity`, {
           id: "cartSlice",
+          position: "bottom-center",
         });
       } else {
-        const tempProduct = { ...action.payload, quantity: 1 };
+        const tempProduct = {
+          ...action.payload.product,
+          quantity: action.payload.quantity > 1 ? action.payload.quantity : 1,
+          color: action.payload.color,
+          colorCost: action.payload.colorCost,
+          size: action.payload.size,
+          sizeCost: action.payload.sizeCost,
+        };
         state.cart.push(tempProduct);
-        toast.success(`${action.payload.name} added to cart`, {
+        toast.success(`${action.payload.product.name} added to cart`, {
           id: "cartSlice",
+          position: "bottom-center",
         });
       }
 
@@ -95,6 +106,7 @@ const ordersSlice = createSlice({
 
       toast.error(`${action.payload.name} remove from cart`, {
         id: "cartSlice",
+        position: "bottom-center",
       });
     },
     decreaseCartQuantity: (state, action) => {
@@ -105,6 +117,7 @@ const ordersSlice = createSlice({
         state.cart[itemIndex].quantity -= 1;
         toast.error(`Decreased ${action.payload.name} cart quantity`, {
           id: "cartSlice",
+          position: "bottom-center",
         });
       } else if (state.cart[itemIndex].quantity === 1) {
         const nextCart = state.cart.filter(
@@ -114,6 +127,7 @@ const ordersSlice = createSlice({
 
         toast.error(`${action.payload.name} remove from cart`, {
           id: "cartSlice",
+          position: "bottom-center",
         });
       }
       localStorage.setItem("cart", JSON.stringify(state.cart));
@@ -122,14 +136,15 @@ const ordersSlice = createSlice({
       state.cart = [];
       toast.error(`Cart cleared`, {
         id: "cartSlice",
+        position: "bottom-center",
       });
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     getTotals: (state, action) => {
       let { total, quantity } = state.cart.reduce(
         (cartTotal, cartItem) => {
-          const { price, quantity } = cartItem;
-          const itemTotal = price * quantity;
+          const { price, quantity, colorCost, sizeCost } = cartItem;
+          const itemTotal = (price + colorCost + sizeCost) * quantity;
           cartTotal.total += itemTotal;
           cartTotal.quantity += quantity;
 
@@ -142,6 +157,41 @@ const ordersSlice = createSlice({
       );
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
+    },
+    createOrderId: (state, action) => {
+      state.orderId = action.payload;
+    },
+    handleOrderResponse: (state, action) => {
+      state.orderResponse = action.payload;
+    },
+    clearAll: (state, action) => {
+      state.email = "";
+      state.orderId = 0;
+      state.name = "";
+      state.phoneNumber = "";
+      state.company = "";
+      state.postalCode = "";
+      state.division = "";
+      state.area = "";
+      state.streetAddress = "";
+      state.cart = [];
+      state.shippingMethod = "";
+      state.shippingCost = 0;
+      state.paymentMethod = "codInsideDhaka";
+      state.billingAddress = {
+        sameAsShippingAddress: true,
+        email: "",
+        name: "",
+        phoneNumber: "",
+        company: "",
+        postalCode: "",
+        division: "",
+        area: "",
+        streetAddress: "",
+      };
+      state.cartTotalQuantity = 0;
+      state.cartTotalAmount = 0;
+      localStorage.removeItem("cart");
     },
   },
 });
@@ -157,5 +207,8 @@ export const {
   decreaseCartQuantity,
   clearCart,
   getTotals,
+  createOrderId,
+  handleOrderResponse,
+  clearAll,
 } = ordersSlice.actions;
 export default ordersSlice.reducer;

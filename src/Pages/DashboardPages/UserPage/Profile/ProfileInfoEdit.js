@@ -12,7 +12,7 @@ const ProfileInfoEdit = ({ setEditable, user }) => {
   const {
     name,
     email,
-    contactNumber,
+    phoneNumber,
     profession,
     birthday,
     gender,
@@ -90,13 +90,13 @@ const ProfileInfoEdit = ({ setEditable, user }) => {
           <input
             type="text"
             placeholder="Type your phone number"
-            defaultValue={contactNumber}
+            defaultValue={phoneNumber}
             className={`border block outline-none py-1.5 px-3 max-w-sm w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-              errors.contactNumber
+              errors.phoneNumber
                 ? " border-red-500 focus:border-red-500"
                 : "focus:border-slate-700 border-slate-300"
             }`}
-            {...register("contactNumber", {
+            {...register("phoneNumber", {
               required: {
                 value: true,
                 message: "Contact Number is required",
@@ -111,9 +111,9 @@ const ProfileInfoEdit = ({ setEditable, user }) => {
               },
             })}
           />
-          {errors.contactNumber && (
+          {errors.phoneNumber && (
             <span className="label-text-alt text-red-500 text-sm ">
-              {errors.contactNumber.message}
+              {errors.phoneNumber.message}
             </span>
           )}
         </div>

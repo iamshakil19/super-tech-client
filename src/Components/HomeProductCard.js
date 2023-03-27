@@ -1,11 +1,44 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addToCart, getTotals } from "../features/orders/ordersSlice";
 
 const HomeProductCard = ({ product }) => {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { _id, name, price, primaryImage, extraImages } = product;
 
-  const { _id, name, price, primaryImage, image2 } = product;
+  const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity: 1,
+        color: "",
+        colorCost: 0,
+        size: "",
+        sizeCost: 0,
+      })
+    );
+    dispatch(getTotals());
+  };
+
+  const handleBuyNow = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity: 1,
+        color: "",
+        colorCost: 0,
+        size: "",
+        sizeCost: 0,
+      })
+    );
+    dispatch(getTotals());
+    navigate("/checkouts");
+  };
   return (
     <div className="mx-3 relative pb-16 pt-8">
       <div
@@ -16,13 +49,16 @@ const HomeProductCard = ({ product }) => {
         <figure className="cursor-pointer">
           <img
             onClick={() => navigate(`product-details/${_id}`)}
-            className="w-72 px-2"
-            src={primaryImage}
+            className="w-72 px-2 h-72 object-cover"
+            src={finalPrimaryImage}
             alt={name}
             onMouseOver={(e) =>
-              (e.currentTarget.src = image2 ? image2 : primaryImage)
+              (e.currentTarget.src =
+                extraImages.length > 0
+                  ? process.env.REACT_APP_IMG_URL + extraImages[0]
+                  : finalPrimaryImage)
             }
-            onMouseOut={(e) => (e.currentTarget.src = primaryImage)}
+            onMouseOut={(e) => (e.currentTarget.src = finalPrimaryImage)}
           />
         </figure>
         <div className="p-5 mb-4">
@@ -41,10 +77,18 @@ const HomeProductCard = ({ product }) => {
             isButtonOpen ? "block" : "hidden"
           } `}
         >
-          <p className="text-white text-center poppins text-sm">Buy Now</p>
+          <p
+            onClick={handleBuyNow}
+            className="text-white text-center poppins text-sm"
+          >
+            Buy Now
+          </p>
         </div>
         <div className="mx-auto">
-          <button className="bg-black w-36 custom-shadow rounded-full text-white poppins py-2 font-semibold text-sm absolute -bottom-4 -translate-x-2/4">
+          <button
+            onClick={handleAddToCart}
+            className="bg-black w-36 custom-shadow rounded-full text-white poppins py-2 font-semibold text-sm absolute -bottom-4 -translate-x-2/4"
+          >
             ADD TO CART
           </button>
         </div>

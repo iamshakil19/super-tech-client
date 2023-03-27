@@ -8,7 +8,7 @@ const OrderInfo = () => {
   const { shippingCost, cart, cartTotalAmount } = useSelector(
     (state) => state.orders
   );
-  console.log(cart);
+
   const total = cartTotalAmount + shippingCost;
 
   const location = useLocation();

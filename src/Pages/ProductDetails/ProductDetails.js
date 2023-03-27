@@ -8,10 +8,12 @@ import WhySuperTech from "../Shared/WhySuperTech/WhySuperTech";
 import { useGetProductQuery } from "../../features/products/productsApi";
 import Loading from "../Shared/Loading/Loading";
 import Error from "../Shared/Error/Error";
+import { useDispatch } from "react-redux";
+import { addToCart, getTotals } from "../../features/orders/ordersSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
-
+  const dispatch = useDispatch();
   const { data: product, isLoading, isError, error } = useGetProductQuery(id);
   const {
     _id,
@@ -33,7 +35,9 @@ const ProductDetails = () => {
 
   const [isColorSelected, setIsColorSelected] = useState(0);
   const [colorExtraPrice, setColorExtraPrice] = useState(0);
+  const [colorName, setColorName] = useState("");
   const [sizeExtraPrice, setSizeExtraPrice] = useState(0);
+  const [sizeName, setSizeName] = useState("");
   const [quantity, setQuantity] = useState(1);
 
   const totalPrice =
@@ -44,14 +48,56 @@ const ProductDetails = () => {
     if (firstColor?.extraPrice) {
       setColorExtraPrice(firstColor?.extraPrice);
     }
+    if (firstColor?.colorName) {
+      setColorName(firstColor?.colorName);
+    }
     if (firstSize?.extraPrice) {
       setSizeExtraPrice(firstSize?.extraPrice);
     }
-  }, [firstColor?.extraPrice, firstSize?.extraPrice]);
+    if (firstSize?.sizeName) {
+      setSizeName(firstSize?.sizeName);
+    }
+  }, [
+    firstColor?.extraPrice,
+    firstSize?.extraPrice,
+    firstColor?.colorName,
+    firstColor,
+    firstSize?.sizeName,
+  ]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleColor = (color, index) => {
+    setColorExtraPrice(Number(color.extraPrice));
+    setIsColorSelected(index);
+    setColorName(color.colorName);
+  };
+  const handleSize = (e) => {
+    setSizeName(e.target.value);
+  };
+
+  useEffect(() => {
+    if (sizeName) {
+      const sizeCost = sizes?.find((size) => size.sizeName === sizeName);
+      setSizeExtraPrice(sizeCost.extraPrice);
+    }
+  }, [sizes, sizeName]);
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        product: product?.data,
+        quantity,
+        color: colorName,
+        colorCost: colorExtraPrice,
+        size: sizeName,
+        sizeCost: sizeExtraPrice,
+      })
+    );
+    dispatch(getTotals());
+  };
 
   let content = null;
 
@@ -98,7 +144,9 @@ const ProductDetails = () => {
             </Carousel>
           </div>
           <div className="pt-0 px-5 md:p-5 poppins">
-            <h2 className="text-black text-3xl font-semibold leading-relaxed">{name}</h2>
+            <h2 className="text-black text-xl lg:text-3xl font-semibold leading-relaxed">
+              {name}
+            </h2>
 
             <p className="mt-5 flex items-center text-xl">
               Price :
@@ -114,11 +162,7 @@ const ProductDetails = () => {
                 <p className="font-semibold text-lg mb-3">Color</p>
                 {colors?.map((color, index) => (
                   <button
-                    onClick={() =>
-                      setColorExtraPrice(Number(color.extraPrice))(
-                        setIsColorSelected(index)
-                      )
-                    }
+                    onClick={() => handleColor(color, index)}
                     className={`mr-5 mb-5 capitalize p-1 border-2 md:p-2 px-3 md:px-4 ${
                       isColorSelected === index
                         ? "border-black"
@@ -140,13 +184,13 @@ const ProductDetails = () => {
                     name=""
                     id=""
                     className="border-2 border-black p-1 px-2 md:p-2 mb-5 cursor-pointer"
-                    onChange={(e) => setSizeExtraPrice(e.target.value)}
+                    onChange={(e) => handleSize(e)}
                   >
                     {sizes?.map((size, index) => (
                       <option
                         selected={index === 0}
                         className="pt-2"
-                        value={size.extraPrice}
+                        value={size.sizeName}
                       >
                         {size.sizeName}
                       </option>
@@ -182,11 +226,14 @@ const ProductDetails = () => {
                   <AiOutlinePlus className="text-4xl text-white bg-black p-1 cursor-pointer" />
                 </span>
               </div>
-              <div className="md:flex items-center">
-                <button className="max-w-xs w-full border py-2 md:mr-3 bg-black text-white font-semibold">
+              <div className="sm:flex items-center gap-3 text-center">
+                <button
+                  onClick={handleAddToCart}
+                  className="max-w-xs w-full mb-3 sm:mb-0 border py-2 md:mr-3 bg-black text-white font-semibold"
+                >
                   Add To Cart
                 </button>
-                <button className="max-w-xs w-full border py-2 mb-5 md:mb-0 md:ml-3 bg-black text-white font-semibold">
+                <button className="max-w-xs w-full border py-2  md:mb-0 md:ml-3 bg-black text-white font-semibold">
                   Buy Now
                 </button>
               </div>

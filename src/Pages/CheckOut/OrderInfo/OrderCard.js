@@ -19,12 +19,23 @@ const OrderCard = ({ cartProduct }) => {
           <h2 className="font-medium text-sm lg:text-base overflow-hidden max-w-xs">
             {cartProduct?.name}
           </h2>
-          <p className="text-xs lg:text-sm">Black Fabric</p>
+          {cartProduct?.color && (
+            <p className="text-xs lg:text-sm">{cartProduct?.color}</p>
+          )}
+          {cartProduct?.size && (
+            <p className="text-xs lg:text-sm">{cartProduct?.size}</p>
+          )}
         </div>
       </div>
       <div>
         <p className="font-semibold whitespace-nowrap text-sm lg:text-base">
-          ৳ {numberWithComma(cartProduct?.price * cartProduct?.quantity)}
+          ৳{" "}
+          {numberWithComma(
+            (cartProduct?.price +
+              cartProduct?.colorCost +
+              cartProduct?.sizeCost) *
+              cartProduct?.quantity
+          )}
         </p>
       </div>
     </div>

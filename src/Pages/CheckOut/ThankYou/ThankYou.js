@@ -1,16 +1,21 @@
 import { useEffect } from "react";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bkashLogo from "../../../Assets/Others/bkash.png";
 import nagadLogo from "../../../Assets/Others/nagad.png";
 import qrCode from "../../../Assets/Others/qr-code.png";
+import { clearAll } from "../../../features/orders/ordersSlice";
 import numberWithComma from "../../../Utils/numberWithComa";
 const ThankYou = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { orderResponse } = useSelector((state) => state?.orders);
 
   const {
+    orderId,
     paymentMethod,
     email,
     name,
@@ -19,12 +24,27 @@ const ThankYou = () => {
     area,
     streetAddress,
     shippingMethod,
-    shippingCost,
     billingAddress,
-    cartTotalQuantity,
-    cartTotalAmount,
-  } = useSelector((state) => state.orders);
-  console.log(paymentMethod);
+    totalPrice,
+  } = orderResponse || {};
+  console.log(
+    orderId,
+    paymentMethod,
+    email,
+    name,
+    phoneNumber,
+    division,
+    area,
+    streetAddress,
+    shippingMethod,
+    billingAddress,
+    totalPrice
+  );
+  useEffect(() => {
+    if (orderResponse === {}) {
+      navigate("/");
+    }
+  }, [orderResponse, navigate]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,7 +63,7 @@ const ThankYou = () => {
           Your Order Is Confirmed!
         </p>
         <p className="text-center leading-9">
-          Order Id : <span className="font-medium">#44374593</span>
+          Order Id : <span className="font-medium">#{orderId}</span>
         </p>
         <p className="text-sm text-center mb-3">
           You will be receive a confirmation email with order number shortly
@@ -178,7 +198,7 @@ const ThankYou = () => {
                 "Bank Transfer - BEFTN/NPSB"}{" "}
               -
               <span className="text-sm font-semibold whitespace-nowrap">
-                ৳ {numberWithComma(cartTotalAmount + shippingCost)}
+                ৳ {numberWithComma(totalPrice)}
               </span>
             </p>
           </div>
@@ -206,7 +226,11 @@ const ThankYou = () => {
           </div>
           <div>
             <h3 className="font-medium mb-2">Shipping Method</h3>
-            <p className="text-sm">{shippingMethod === "insideDhaka" ? "Inside Dhaka City" : "Outside Dhaka City"}</p>
+            <p className="text-sm">
+              {shippingMethod === "insideDhaka"
+                ? "Inside Dhaka City"
+                : "Outside Dhaka City"}
+            </p>
           </div>
         </div>
       </div>
@@ -219,9 +243,9 @@ const ThankYou = () => {
             Continue Shopping
           </Link>
         </div>
-        <p className="flex items-center text-sm">
+        <p className="flex items-center text-sm mt-5 sm:mt-0">
           Need help?{" "}
-          <Link to="/contact-us" className=" mt-5 sm:mt-0">
+          <Link to="/contact-us" className="">
             <span className=" ml-2 whitespace-nowrap font-medium">
               Contact Us
             </span>

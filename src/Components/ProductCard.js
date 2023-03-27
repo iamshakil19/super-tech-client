@@ -14,7 +14,16 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    dispatch(
+      addToCart({
+        product,
+        quantity: 1,
+        color: "",
+        colorCost: 0,
+        size: "",
+        sizeCost: 0,
+      })
+    );
     dispatch(getTotals());
   };
 

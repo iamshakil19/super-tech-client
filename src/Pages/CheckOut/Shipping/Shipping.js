@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { handleShippingMethod } from "../../../features/orders/ordersSlice";
+import { getTotals, handleShippingMethod } from "../../../features/orders/ordersSlice";
 
 const Shipping = () => {
   const {
@@ -64,6 +64,7 @@ const Shipping = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleShippingMethod({ shippingCost, shippingMethod }));
+    dispatch(getTotals())
     console.log(shippingMethod);
     console.log(shippingCost);
     navigate("/checkouts/payment");

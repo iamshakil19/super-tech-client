@@ -3,10 +3,18 @@ import OrderCard from "../../Pages/CheckOut/OrderInfo/OrderCard";
 import { BsCart3 } from "react-icons/bs";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import numberWithComma from "../../Utils/numberWithComa";
 const OrderInfoForSmallDevice = () => {
   const [isOpen, setOpen] = useState(false);
   const location = useLocation();
-  console.log(isOpen);
+
+  const { shippingCost, cart, cartTotalAmount } = useSelector(
+    (state) => state.orders
+  );
+
+  const total = cartTotalAmount + shippingCost;
+
   return (
     <div
       className={`${
@@ -30,9 +38,9 @@ const OrderInfoForSmallDevice = () => {
         <p className="font-semibold">৳ 145,000</p>
       </div>
       <div className="p-2 poppins border-b border-gray-300">
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
+        {cart?.map((cartProduct) => (
+          <OrderCard cartProduct={cartProduct} key={cartProduct._id} />
+        ))}
         <div className="border-b border-gray-300 my-5"></div>
         {location.pathname !== "/checkouts/thank-you" && (
           <>
@@ -54,17 +62,19 @@ const OrderInfoForSmallDevice = () => {
         <div className="text-[15px]">
           <div className="flex items-center justify-between mb-3">
             <p>Subtotal</p>
-            <p className="font-semibold">৳ 145,000.00</p>
+            <p className="font-semibold">
+              ৳ {numberWithComma(cartTotalAmount)}
+            </p>
           </div>
           <div className="flex items-center justify-between">
             <p>Shipping</p>
-            <p className="font-semibold">Free</p>
+            <p className="font-semibold">৳ {shippingCost}</p>
           </div>
         </div>
         <div className="border-b border-gray-300 my-5"></div>
         <div className="flex items-center justify-between mb-3">
           <p className="text-lg font-semibold">Total</p>
-          <p className="text-lg font-bold">৳ 145,000.00</p>
+          <p className="text-lg font-bold">৳ {numberWithComma(total)}</p>
         </div>
       </div>
     </div>

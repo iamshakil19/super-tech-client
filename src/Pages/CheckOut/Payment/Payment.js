@@ -1,14 +1,20 @@
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { useCreateOrderMutation } from "../../../features/orders/ordersApi";
+import {
+  clearAll,
+  createOrderId,
+  handleOrderResponse,
+} from "../../../features/orders/ordersSlice";
 import BillingSection from "./BillingSection";
 import PaymentSection from "./PaymentSection";
 
 const Payment = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const {
     email,
     name,
@@ -23,6 +29,7 @@ const Payment = () => {
     paymentMethod,
     shippingCost,
     billingAddress,
+    cartTotalAmount,
   } = useSelector((state) => state.orders);
   const { sameAsShippingAddress } = billingAddress || {};
 
@@ -56,12 +63,40 @@ const Payment = () => {
     shippingMethod,
   ]);
 
-  console.log(shippingMethod);
-
+  const [createOrder, { data, isSuccess, isError, isLoading, error }] =
+    useCreateOrderMutation();
+  console.log(data?.data);
   const handleCompleteOrder = () => {
-    console.log("handleCompleteOrder");
-    navigate("/checkouts/thank-you");
+    const orderId = Math.floor(10000000 + Math.random() * 90000000);
+    dispatch(createOrderId(orderId));
+    createOrder({
+      email,
+      name,
+      phoneNumber,
+      company,
+      postalCode,
+      division,
+      area,
+      streetAddress,
+      cart,
+      shippingMethod,
+      paymentMethod,
+      shippingCost,
+      billingAddress,
+      orderId,
+      totalPrice: cartTotalAmount + shippingCost,
+    });
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Order completed successfully", { id: "payment" });
+      dispatch(handleOrderResponse(data?.data));
+      dispatch(clearAll());
+      navigate("/checkouts/thank-you");
+    }
+  }, [isSuccess, navigate, data?.data, dispatch]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -115,10 +150,11 @@ const Payment = () => {
       <PaymentSection />
       <BillingSection />
 
-      { sameAsShippingAddress &&
+      {sameAsShippingAddress && (
         <div className="my-5 sm:flex justify-between items-center flex-row-reverse">
           <div>
             <button
+              disabled={isLoading}
               onClick={handleCompleteOrder}
               className="bg-black lg:bg-slate-700 lg:hover:bg-black text-white font-semibold w-full py-3 px-5 rounded-md transition-all ease-in-out duration-200 cursor-pointer text-sm"
             >
@@ -133,7 +169,7 @@ const Payment = () => {
             <p className="text-sm ml-2 whitespace-nowrap">Return to shipping</p>
           </Link>
         </div>
-      }
+      )}
     </div>
   );
 };

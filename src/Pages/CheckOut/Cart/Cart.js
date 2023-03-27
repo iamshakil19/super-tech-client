@@ -30,8 +30,8 @@ const Cart = () => {
   const handleDecreaseCartQuantity = (cartProduct) => {
     dispatch(decreaseCartQuantity(cartProduct));
   };
-  const hanldeIncreaseCartQuantity = (cartProduct) => {
-    dispatch(addToCart(cartProduct));
+  const handleIncreaseCartQuantity = (cartProduct) => {
+    dispatch(addToCart({ product: cartProduct, quantity: 1 }));
   };
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -81,8 +81,10 @@ const Cart = () => {
                           <p className="text-lg font-medium mb-2 max-w-sm">
                             {cartProduct.name}
                           </p>
-                          <p>Black</p>
-                          <p>6" By 10"</p>
+                          {cartProduct?.color && (
+                            <p>Color : {cartProduct?.color}</p>
+                          )}
+                          {cartProduct?.size && <p>{cartProduct?.size}</p>}
                           <button
                             onClick={() => handleRemoveFormCart(cartProduct)}
                             className="text-sm mt-1 font-medium"
@@ -92,7 +94,15 @@ const Cart = () => {
                         </div>
                       </div>
                     </td>
-                    <td>৳ {numberWithComma(cartProduct.price)}</td>
+                    <td>
+                      <p>Price : ৳ {numberWithComma(cartProduct.price)}</p>
+                      {cartProduct?.colorCost > 0 && (
+                        <p>Color Cost : ৳ {cartProduct?.colorCost}</p>
+                      )}
+                      {cartProduct?.sizeCost > 0 && (
+                        <p>Size Cost : ৳ {cartProduct?.sizeCost}</p>
+                      )}
+                    </td>
                     <td>
                       <div className="border border-black inline-block">
                         <button
@@ -111,7 +121,7 @@ const Cart = () => {
                         />
                         <button
                           onClick={() =>
-                            hanldeIncreaseCartQuantity(cartProduct)
+                            handleIncreaseCartQuantity(cartProduct)
                           }
                           className="bg-black text-white text-xl w-7 py-0.5"
                         >
@@ -122,7 +132,7 @@ const Cart = () => {
                     <td>
                       ৳{" "}
                       {numberWithComma(
-                        cartProduct.price * cartProduct.quantity
+                        (cartProduct.price + cartProduct.colorCost + cartProduct.sizeCost) * cartProduct.quantity
                       )}
                     </td>
                   </tr>

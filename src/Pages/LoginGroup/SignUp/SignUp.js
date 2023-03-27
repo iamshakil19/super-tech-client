@@ -110,11 +110,11 @@ const SignUp = () => {
               placeholder="Type your number"
               type="text"
               className={`border w-full outline-none py-2 px-3 ${
-                errors.contactNumber
+                errors.phoneNumber
                   ? " border-red-500 focus:border-red-500"
                   : "focus:border-slate-700 border-slate-300"
               }`}
-              {...register("contactNumber", {
+              {...register("phoneNumber", {
                 required: {
                   value: true,
                   message: "Number is required",
@@ -129,9 +129,9 @@ const SignUp = () => {
                 },
               })}
             />
-            {errors.contactNumber && (
+            {errors.phoneNumber && (
               <span className="label-text-alt text-red-500 text-sm">
-                {errors.contactNumber.message}
+                {errors.phoneNumber.message}
               </span>
             )}
           </div>

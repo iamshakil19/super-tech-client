@@ -7,8 +7,19 @@ const user = {
   profession: "",
   gender: "male",
 };
-const ProfileInfo = ({user}) => {
-  const {name, email, contactNumber, profession, birthday, gender, division, postalCode, area, streetAddress} = user || {}
+const ProfileInfo = ({ user }) => {
+  const {
+    name,
+    email,
+    phoneNumber,
+    profession,
+    birthday,
+    gender,
+    division,
+    postalCode,
+    area,
+    streetAddress,
+  } = user || {};
   return (
     <div className="flex flex-wrap gap-5 justify-between mt-3">
       <div className="w-full">
@@ -24,7 +35,7 @@ const ProfileInfo = ({user}) => {
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold  mb-1">Mobile Number</h3>
-        <p>{contactNumber}</p>
+        <p>{phoneNumber}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Profession</h3>
