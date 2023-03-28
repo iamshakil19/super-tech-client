@@ -39,7 +39,6 @@ const TotalCount = () => {
     (accum, item) => accum + item.totalPrice,
     0
   );
-  console.log(totalSales);
   const pendingOrder = allOrders?.data?.orders?.filter(
     (order) => order.status === "pending"
   );

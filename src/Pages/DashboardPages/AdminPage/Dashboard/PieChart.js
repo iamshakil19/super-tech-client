@@ -1,9 +1,46 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
+  const {
+    data: allProducts,
+    isError,
+    isLoading,
+    error,
+  } = useGetAllProductsQuery();
+  const { products } = allProducts?.data || {};
+
+  const homeProducts = products?.filter(
+    (product) => product.category === "home"
+  );
+  const tableProducts = products?.filter(
+    (product) => product.category === "table"
+  );
+  const storageProducts = products?.filter(
+    (product) => product.category === "storage"
+  );
+  const steelFurnitureProducts = products?.filter(
+    (product) => product.category === "steelFurniture"
+  );
+  const chairProducts = products?.filter(
+    (product) => product.category === "chair"
+  );
+  const sofaProducts = products?.filter(
+    (product) => product.category === "sofa"
+  );
+  const workStationProducts = products?.filter(
+    (product) => product.category === "workStation"
+  );
+  const garmentsProducts = products?.filter(
+    (product) => product.category === "garments"
+  );
+  const interiorProducts = products?.filter(
+    (product) => product.category === "interior"
+  );
+
   const options = {
     responsive: true,
     plugins: {
@@ -27,7 +64,17 @@ const PieChart = () => {
     datasets: [
       {
         label: "Products Count",
-        data: [12, 19, 9, 13, 10, 32, 8, 54, 19],
+        data: [
+          Number(homeProducts?.length),
+          Number(tableProducts?.length),
+          Number(storageProducts?.length),
+          Number(steelFurnitureProducts?.length),
+          Number(chairProducts?.length),
+          Number(sofaProducts?.length),
+          Number(workStationProducts?.length),
+          Number(garmentsProducts?.length),
+          Number(interiorProducts?.length),
+        ],
         backgroundColor: [
           "rgb(227, 52, 47, 0.8)",
           "rgb(246, 153, 63, 0.8)",

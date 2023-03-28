@@ -87,7 +87,7 @@ const LatestProducts = () => {
   const productsData = data?.data;
 
   const { products } = productsData || {};
-console.log(productsData);
+
   let content = null;
 
   if (isLoading) {
