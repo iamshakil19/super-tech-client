@@ -5,6 +5,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { IoMdCloudUpload, IoMdStar } from "react-icons/io";
 import { useAddProductMutation } from "../../../../features/products/productsApi";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const product = {
   _id: 1,
   name: "GRID Newon Chair",
@@ -28,7 +29,8 @@ const product = {
 
 const AddProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [addProduct, { isError, isLoading, error }] = useAddProductMutation();
+  const [addProduct, { isError, isLoading, error, isSuccess }] =
+    useAddProductMutation();
   const {
     register,
     formState: { errors },
@@ -48,13 +50,15 @@ const AddProducts = () => {
     remove: sizeRemove,
   } = useFieldArray({ control, name: "sizes" });
 
-  const galleryImage = watch("galleryImage");
-
   useEffect(() => {
     if (isError) {
-      toast.error(error?.data?.message);
+      toast.error(error?.data?.message, { id: "addProducts" });
     }
-  }, [isError, error?.data?.message]);
+    if (isSuccess) {
+      toast.success("Products added", { id: "addProducts" });
+      reset();
+    }
+  }, [isError, error?.data?.message, isSuccess, reset]);
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -70,8 +74,6 @@ const AddProducts = () => {
       JSON.stringify({ category: finalCategory, ...others })
     );
     addProduct(formData);
-
-    console.log(formData.get("extraImages"));
   };
 
   const subCategoryFilter = subCategories?.filter(

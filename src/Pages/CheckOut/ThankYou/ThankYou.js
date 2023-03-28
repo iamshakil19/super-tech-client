@@ -27,19 +27,6 @@ const ThankYou = () => {
     billingAddress,
     totalPrice,
   } = orderResponse || {};
-  console.log(
-    orderId,
-    paymentMethod,
-    email,
-    name,
-    phoneNumber,
-    division,
-    area,
-    streetAddress,
-    shippingMethod,
-    billingAddress,
-    totalPrice
-  );
   useEffect(() => {
     if (orderResponse === {}) {
       navigate("/");

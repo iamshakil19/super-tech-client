@@ -25,8 +25,6 @@ const ProductCard = ({ product }) => {
     dispatch(getTotals());
   };
 
-  console.log();
-
   const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
   return (
     <div className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto ">

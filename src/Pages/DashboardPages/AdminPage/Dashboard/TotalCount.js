@@ -49,7 +49,7 @@ const TotalCount = () => {
   return (
     <div className="poppins my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
       <div className="flex items-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-200 border border-gray-200">
-        <div className="bg-orange-500 h-10 w-10 mx-3 flex items-center justify-center rounded-full text-white ring-8 ring-orange-200/70">
+        <div className="bg-orange-500 h-10 w-10 ml-3 flex items-center justify-center rounded-full text-white ring-8 ring-orange-200/70">
           <span className="font-semibold mt-1">৳</span>
         </div>
         <div>
@@ -63,7 +63,7 @@ const TotalCount = () => {
         </div>
       </div>
       <div className="flex items-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-200 border border-gray-200">
-        <div className="bg-green-500 h-10 w-10 mx-3 flex items-center justify-center rounded-full text-white ring-8 ring-green-200/70">
+        <div className="bg-green-500 h-10 w-10 ml-3 flex items-center justify-center rounded-full text-white ring-8 ring-green-200/70">
           <BsFillCartCheckFill size={20} />
         </div>
         <div>
@@ -77,7 +77,7 @@ const TotalCount = () => {
         </div>
       </div>
       <div className="flex items-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-200 border border-gray-200">
-        <div className="bg-blue-500 h-10 w-10 mx-3 flex items-center justify-center rounded-full text-white ring-8 ring-blue-200/70">
+        <div className="bg-blue-500 h-10 w-10 ml-3 flex items-center justify-center rounded-full text-white ring-8 ring-blue-200/70">
           <BsFillBagCheckFill size={18} />
         </div>
         <div>

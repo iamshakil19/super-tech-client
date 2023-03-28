@@ -8,6 +8,8 @@ const initialState = {
   subCategory: "",
   minPriceValue: 0,
   maxPriceValue: 0,
+  deleteProductModal: false,
+  deletingId: "",
 };
 
 const productsSlice = createSlice({
@@ -32,6 +34,10 @@ const productsSlice = createSlice({
     handleSetMaxPriceToState: (state, action) => {
       state.maxPriceValue = action.payload;
     },
+    handleDeleteProductModal: (state, action) => {
+      state.deleteProductModal = action.payload.isOpen;
+      state.deletingId = action.payload._id;
+    },
   },
 });
 
@@ -42,5 +48,6 @@ export const {
   handleAllCollectionFilter,
   handleSetMinPriceToState,
   handleSetMaxPriceToState,
+  handleDeleteProductModal,
 } = productsSlice.actions;
 export default productsSlice.reducer;

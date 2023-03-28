@@ -55,7 +55,6 @@ const Information = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(handleContactInformation(data));
     navigate("/checkouts/shipping");
   };

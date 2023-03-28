@@ -56,7 +56,6 @@ const ProductFilterSidebar = () => {
   // const [subcategoryOpen, setSubCategoryOpen] = useState(true);
 
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <div className="">
       <div className="shadow-xl border border-gray-300 rounded-md p-3 bg-white">

@@ -33,7 +33,6 @@ const NewArrivalProductSlider = () => {
     error,
   } = useGetAllProductsQuery();
   const { products } = allProducts?.data || {};
-  console.log(products);
 
   let content = null;
 

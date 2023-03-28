@@ -32,7 +32,6 @@ const BarChart = () => {
     ),
   ];
   const amount = [...new Set(completedOrder?.map((item) => item.totalPrice))];
-  console.log(amount);
 
   const options = {
     responsive: true,

@@ -31,6 +31,7 @@ import PublicRoute from "../../Utils/PublicRoute/PublicRoute";
 import AboutUs from "../../Pages/AboutUs/AboutUs";
 import NotForAdmin from "../../Utils/NotForAdmin/NotForAdmin";
 import RequireAdmin from "../../Utils/RequireAdmin/RequireAdmin";
+import UpdateProduct from "../../Pages/DashboardPages/AdminPage/ManageProducts/UpdateProduct";
 
 const routes = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const routes = createBrowserRouter([
         path: "/login",
         element: (
           // <PublicRoute>
-            <Login />
+          <Login />
           // </PublicRoute>
         ),
       },
@@ -57,7 +58,7 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: (
           // <PublicRoute>
-            <SignUp />
+          <SignUp />
           // </PublicRoute>
         ),
       },
@@ -150,6 +151,10 @@ const routes = createBrowserRouter([
       {
         path: "manage-products",
         element: <ManageProducts />,
+      },
+      {
+        path: "update-product/:id",
+        element: <UpdateProduct />,
       },
       {
         path: "users",

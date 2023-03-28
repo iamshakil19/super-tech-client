@@ -65,7 +65,6 @@ const Payment = () => {
 
   const [createOrder, { data, isSuccess, isError, isLoading, error }] =
     useCreateOrderMutation();
-  console.log(data?.data);
   const handleCompleteOrder = () => {
     const orderId = Math.floor(10000000 + Math.random() * 90000000);
     dispatch(createOrderId(orderId));

@@ -65,11 +65,8 @@ const Shipping = () => {
     e.preventDefault();
     dispatch(handleShippingMethod({ shippingCost, shippingMethod }));
     dispatch(getTotals())
-    console.log(shippingMethod);
-    console.log(shippingCost);
     navigate("/checkouts/payment");
   };
-  console.log(shippingMethodFromState);
   return (
     <div className="my-5 lg:my-10 poppins">
       <div className="border border-gray-300 rounded-md p-3 text-[15px]">
