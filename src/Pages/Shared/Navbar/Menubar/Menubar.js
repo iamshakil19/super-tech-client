@@ -11,16 +11,25 @@ import { HiOutlineViewGridAdd } from "react-icons/hi";
 import useAuth from "../../../../hooks/useAuth";
 import { useDispatch } from "react-redux";
 import { userLoggedOut } from "../../../../features/auth/authSlice";
+import { useSelector } from "react-redux";
 
 const Menubar = ({ setSearchOpen, searchOpen }) => {
   const [open, setOpen] = useState(false);
   const isLoggedIn = useAuth();
-
   const dispatch = useDispatch();
 
   const logout = () => {
     dispatch(userLoggedOut());
-    localStorage.removeItem('auth')
+    localStorage.removeItem("auth");
+  };
+  const { cartTotalQuantity } = useSelector((state) => state.orders);
+  const { user } = useSelector((state) => state.auth) || {};
+  const { role } = user || {};
+
+  const handleLogout = () => {
+    dispatch(userLoggedOut());
+    localStorage.removeItem("auth");
+    setOpen(false);
   };
 
   return (
@@ -45,21 +54,28 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
                   <BsCart3 className="text-xl text-slate-700 " />
                 </span>
                 <span className="badge badge-xs indicator-item bg-red-500 border-0 text-white">
-                  8
+                  {cartTotalQuantity}
                 </span>
               </div>
             </div>
-
-            <div className="text-2xl mr-5 transition-all duration-100 lg:hidden">
-              <Link to="/dashboard">
-                <HiOutlineViewGridAdd className="cursor-pointer" />
-              </Link>
-            </div>
-            <div className="text-xl mr-5 transition-all duration-100 lg:hidden">
-              <Link to="/account">
-                <TfiUser className="cursor-pointer" />
-              </Link>
-            </div>
+            {isLoggedIn && (
+              <>
+                {(role === "admin" || role === "moderator") && (
+                  <div className="text-2xl mr-5 transition-all duration-100 lg:hidden">
+                    <Link to="/dashboard">
+                      <HiOutlineViewGridAdd className="cursor-pointer" />
+                    </Link>
+                  </div>
+                )}
+                {role === "user" && (
+                  <div className="text-xl mr-5 transition-all duration-100 lg:hidden">
+                    <Link to="/account">
+                      <TfiUser className="cursor-pointer" />
+                    </Link>
+                  </div>
+                )}
+              </>
+            )}
 
             <div
               onClick={() => setOpen(true)}
@@ -126,15 +142,25 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           </li>
           <div className="border-b border-gray-200 mr-4"></div>
           <NavLinks setOpen={setOpen} />
-          <li>
-            <Link
-              onClick={() => setOpen(false)}
-              to="/login"
-              className="py-4 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
+          {isLoggedIn ? (
+            <li
+              onClick={handleLogout}
+              className="py-4 px-4 inline-block text-sm text-slate-700
+            whitespace-nowrap"
             >
-              Login
-            </Link>
-          </li>
+              Log Out
+            </li>
+          ) : (
+            <li>
+              <Link
+                onClick={() => setOpen(false)}
+                to="/login"
+                className="py-4 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
+              >
+                Login
+              </Link>
+            </li>
+          )}
           <div className="border-b border-gray-200 mr-4"></div>
         </ul>
       </div>

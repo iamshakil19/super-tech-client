@@ -6,8 +6,8 @@ import useAuth from "../../hooks/useAuth";
 
 export default function RequireAdmin({ children }) {
   const isLoggedIn = useAuth();
-  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
-  const { role } = user?.data || {};
+  const { user } = useSelector((state) => state.auth) || {};
+  const { role } = user || {};
   const dispatch = useDispatch();
   if (isLoggedIn && role === "user") {
     dispatch(userLoggedOut());

@@ -11,10 +11,11 @@ const useAuthCheck = () => {
 
     if (localAuth) {
       const auth = JSON.parse(localAuth);
-      if (auth?.accessToken) {
+      if (auth?.accessToken && auth?.user) {
         dispatch(
           userLoggedIn({
             accessToken: auth?.accessToken,
+            user: auth.user,
           })
         );
       }

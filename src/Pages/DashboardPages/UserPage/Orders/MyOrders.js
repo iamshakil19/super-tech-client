@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-
+import { useGetOrderByEmailQuery } from "../../../../features/orders/ordersApi";
+import { useGetCurrentUserQuery } from "../../../../features/user/usersApi";
+import Error from "../../../Shared/Error/Error";
+import Loading from "../../../Shared/Loading/Loading";
+import emptyOrderImg from "../../../../Assets/Others/emptyOrder.gif";
 import MyOrdersRow from "./MyOrdersRow";
 
 const myOrdersData = [
@@ -198,40 +202,77 @@ const myOrdersData = [
 ];
 
 const MyOrders = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const [limit, setLimit] = useState(10);
-  return (
-    <div className="bg-[#F2F3F8] p-3">
-      <h2 className="text-xl font-serif font-semibold my-5">All Orders</h2>
-      <div className="my-5 sm:flex">
-        <div className="flex items-center">
-          <p className="mr-2">Show :</p>
-          <select
-            onChange={(e) => setLimit(e.target.value)}
-            defaultValue={limit}
-            className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
-          >
-            <option selected className="font-medium" value="10">
-              10
-            </option>
-            <option className="font-medium" value="15">
-              15
-            </option>
-            <option className="font-medium" value="25">
-              25
-            </option>
-            <option className="font-medium" value="50">
-              50
-            </option>
-            <option className="font-medium" value="100">
-              100
-            </option>
-          </select>
+  const {
+    data: user,
+    isError: isCurrentUserError,
+    isLoading: currentUserLoading,
+    error: currentError,
+  } = useGetCurrentUserQuery();
+  const { email } = user?.data || {};
+
+  const {
+    data: ordersData,
+    isError,
+    isLoading,
+    error,
+  } = useGetOrderByEmailQuery(email);
+
+  const orders = ordersData?.data || [];
+
+  let content = null;
+
+  if (isLoading && currentUserLoading) {
+    content = <Loading />;
+  } else if (
+    !isLoading &&
+    !currentUserLoading &&
+    isError &&
+    isCurrentUserError
+  ) {
+    content = <Error error="There was an error" />;
+  } else if (!isLoading && !isError && orders?.length === 0) {
+    content = (
+      <div className="flex justify-center items-center min-h-screen poppins">
+        <div>
+          <img className="block mx-auto w-44" src={emptyOrderImg} alt="" />
+          <p className="text-center font-semibold text-slate-800 text-xl">
+            No Orders Yet
+          </p>
         </div>
       </div>
-      {myOrdersData.length > 0 ? (
+    );
+  } else if (!isLoading && !isError && orders?.length > 0) {
+    content = (
+      <div className="bg-[#F2F3F8] p-3">
+        <h2 className="text-xl font-serif font-semibold my-5">All Orders</h2>
+        <div className="my-5 sm:flex">
+          <div className="flex items-center">
+            <p className="mr-2">Show :</p>
+            <select
+              onChange={(e) => setLimit(e.target.value)}
+              defaultValue={limit}
+              className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
+            >
+              <option selected className="font-medium" value="10">
+                10
+              </option>
+              <option className="font-medium" value="15">
+                15
+              </option>
+              <option className="font-medium" value="25">
+                25
+              </option>
+              <option className="font-medium" value="50">
+                50
+              </option>
+              <option className="font-medium" value="100">
+                100
+              </option>
+            </select>
+          </div>
+        </div>
+
         <div class="overflow-x-auto z-10 shadow-lg sm:rounded-lg poppins pb-20">
           <table class="w-full text-left">
             <thead class="text-sm text-white uppercase bg-slate-900">
@@ -252,19 +293,20 @@ const MyOrders = () => {
               </tr>
             </thead>
             <tbody className="">
-              {myOrdersData.map((myOrder, i) => (
+              {orders?.map((myOrder, i) => (
                 <MyOrdersRow myOrder={myOrder} key={i} i={i + 1} />
               ))}
             </tbody>
           </table>
         </div>
-      ) : (
-        <div>
-          <h2 className="text-center font-medium">No Order Found</h2>
-        </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return content;
 };
 
 export default MyOrders;

@@ -7,15 +7,13 @@ import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
 import useAuth from "../../../../hooks/useAuth";
-import { useGetCurrentUserQuery } from "../../../../features/user/usersApi";
-import { useDispatch, useSelector } from "react-redux";
-import { getTotals } from "../../../../features/orders/ordersSlice";
+import { useSelector } from "react-redux";
 
 const Topbar = ({ setSearchOpen }) => {
   const isLoggedIn = useAuth();
   const { cartTotalQuantity } = useSelector((state) => state.orders);
-  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
-  const { role } = user?.data || {};
+  const { user } = useSelector((state) => state.auth) || {};
+  const { role } = user || {};
   return (
     <div className="lg:block hidden">
       <div className="grid grid-cols-2 md:grid-cols-3 ">
@@ -65,18 +63,18 @@ const Topbar = ({ setSearchOpen }) => {
             <>
               {role === "user" && (
                 <Link to={"/account"}>
-                  <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer mx-3">
+                  <div className="p-1.5 border border-slate-500 rounded-2xl cursor-pointer mx-3">
                     <span>
-                      <TfiUser className="text-2xl text-slate-700" />
+                      <TfiUser className="text-xl text-slate-700" />
                     </span>
                   </div>
                 </Link>
               )}
               {(role === "admin" || role === "moderator") && (
                 <Link to={"/dashboard"}>
-                  <div className="p-1.5 border border-slate-400 rounded-2xl cursor-pointer ml-3">
+                  <div className="p-1.5 border border-slate-500 rounded-2xl cursor-pointer ml-3">
                     <span>
-                      <HiOutlineViewGridAdd className="text-[26px] cursor-pointer text-slate-700" />
+                      <HiOutlineViewGridAdd className="text-[21px] cursor-pointer text-slate-700" />
                     </span>
                   </div>
                 </Link>

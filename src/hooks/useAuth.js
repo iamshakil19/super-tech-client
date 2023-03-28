@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 const useAuth = () => {
   const auth = useSelector((state) => state.auth);
-  if (auth?.accessToken) {
+  if (auth?.accessToken  && auth?.user) {
     return true;
   } else {
     return false;
