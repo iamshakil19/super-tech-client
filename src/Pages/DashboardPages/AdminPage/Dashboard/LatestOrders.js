@@ -1,5 +1,6 @@
 import React from "react";
 import { TbActivityHeartbeat } from "react-icons/tb";
+import { useGetAllOrderQuery } from "../../../../features/orders/ordersApi";
 const LatestOrders = () => {
   const orderData = [
     {
@@ -61,6 +62,9 @@ const LatestOrders = () => {
   ];
 
   const newLatestOrders = orderData.slice(0, 5)
+
+  const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
+  const { orders } = allOrders?.data || {};
   return (
     <div>
       <div className="my-10 border poppins border-gray-200 bg-white p-5 rounded-md shadow-lg shadow-gray-200">
@@ -73,14 +77,14 @@ const LatestOrders = () => {
           <p className="font-bold text-red-500">Status</p>
         </div>
         <div className="border-b my-3 border-gray-300"></div>
-        {newLatestOrders.map((order) => (
+        {orders?.map((order) => (
           <div key={order._id}>
             <div className="grid grid-cols-4 lg:grid-cols-5 gap-3">
-              <p className="hidden lg:block border-l border-gray-300 pl-2">{order._id}</p>
+              <p className="hidden lg:block border-l border-gray-300 pl-2">{order.orderId}</p>
               <p className="capitalize whitespace-nowrap overflow-hidden border-l border-gray-300 pl-2">
                 {order.name}
               </p>
-              <p className="overflow-hidden border-l border-gray-300 pl-2">{order.number}</p>
+              <p className="overflow-hidden border-l border-gray-300 pl-2">{order.phoneNumber}</p>
               <p className="border-l border-gray-300 pl-2">
                 {" "}
                 ৳ 456
@@ -90,10 +94,10 @@ const LatestOrders = () => {
                   order.status === "pending" &&
                   "text-orange-500 bg-orange-200 border"
                 } ${
-                  order.status === "cancelled" &&
+                  order.status === "canceled" &&
                   "text-red-600 bg-red-200 border"
                 } ${
-                  order.status === "delivered" &&
+                  order.status === "completed" &&
                   "text-green-600 bg-green-200 border"
                 }`}
               >

@@ -100,7 +100,7 @@ const LatestProducts = () => {
     content = products?.map((product) => (
       <div key={product._id}>
         <div className="grid grid-cols-5 lg:grid-cols-6 gap-3">
-          <p className="hidden lg:block border-l border-gray-300 pl-2">
+          <p className="hidden lg:block border-l border-gray-300 pl-2 overflow-hidden">
             {product._id}
           </p>
           <p className="capitalize whitespace-nowrap overflow-hidden border-l border-gray-300 pl-2">
