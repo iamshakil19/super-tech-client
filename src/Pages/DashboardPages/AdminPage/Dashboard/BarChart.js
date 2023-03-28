@@ -9,6 +9,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useGetAllOrderQuery } from "../../../../features/orders/ordersApi";
+import moment from "moment/moment";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -18,6 +20,20 @@ ChartJS.register(
   Legend
 );
 const BarChart = () => {
+  const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
+  const { orders } = allOrders?.data || {};
+
+  const completedOrder = orders?.filter(
+    (order) => order.status === "completed"
+  );
+  const time = [
+    ...new Set(
+      completedOrder?.map((item) => moment(item.createdAt).format("lll"))
+    ),
+  ];
+  const amount = [...new Set(completedOrder?.map((item) => item.totalPrice))];
+  console.log(amount);
+
   const options = {
     responsive: true,
     plugins: {
@@ -26,26 +42,13 @@ const BarChart = () => {
       },
     },
   };
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const labels = time;
   const data = {
     labels,
     datasets: [
       {
         label: "Sales Amount",
-        data: [2, 5, 8, 34, 87, 2, 87, 4, 90, 34, 134, 83],
+        data: amount,
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
