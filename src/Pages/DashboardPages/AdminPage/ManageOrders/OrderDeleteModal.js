@@ -1,28 +1,26 @@
 import React, { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useDeleteProductMutation } from "../../../../features/products/productsApi";
-import { handleDeleteProductModal } from "../../../../features/products/productsSlice";
+import { useDeleteOrderMutation } from "../../../../features/orders/ordersApi";
+import { handleDeleteOrderModal } from "../../../../features/orders/ordersSlice";
 
-const ProductDeleteModal = () => {
+const OrderDeleteModal = () => {
   const dispatch = useDispatch();
-  const { deleteProductModal, deletingId } = useSelector(
-    (state) => state.productsFilter
-  );
-  const [deleteProduct, { isSuccess }] = useDeleteProductMutation();
+  const { deleteOrderModal, deletingId } = useSelector((state) => state.orders);
+  const [deleteOrder, { isSuccess }] = useDeleteOrderMutation();
 
   const dandleDelete = () => {
-    deleteProduct(deletingId);
+    deleteOrder(deletingId);
   };
 
   useEffect(() => {
     if (isSuccess) {
       toast.success("Successfully deleted");
-      dispatch(handleDeleteProductModal({ isOpen: false, _id: "" }));
+      dispatch(handleDeleteOrderModal({ isOpen: false, _id: "" }));
     }
   }, [dispatch, isSuccess]);
   return (
-    deleteProductModal && (
+    deleteOrderModal && (
       <div className="fixed w-full h-full inset-0 z-50 bg-black/70 poppins">
         <div className="rounded w-full max-w-lg space-y-8 bg-white p-10 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
           <div>
@@ -43,7 +41,7 @@ const ProductDeleteModal = () => {
               </button>
               <button
                 onClick={() =>
-                  dispatch(handleDeleteProductModal({ isOpen: false, _id: "" }))
+                  dispatch(handleDeleteOrderModal({ isOpen: false, _id: "" }))
                 }
                 className="py-2 px-4 bg-slate-800 text-white rounded-md font-medium"
               >
@@ -57,4 +55,4 @@ const ProductDeleteModal = () => {
   );
 };
 
-export default ProductDeleteModal;
+export default OrderDeleteModal;

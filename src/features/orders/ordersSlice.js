@@ -32,6 +32,10 @@ const initialState = {
     : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
+
+  deleteOrderModal: false,
+  deletingId: "",
+  orderForDetails: {},
 };
 
 const ordersSlice = createSlice({
@@ -193,6 +197,13 @@ const ordersSlice = createSlice({
       state.cartTotalAmount = 0;
       localStorage.removeItem("cart");
     },
+    handleDeleteOrderModal: (state, action) => {
+      state.deleteOrderModal = action.payload.isOpen;
+      state.deletingId = action.payload._id;
+    },
+    handleOrderDetails: (state, action) => {
+      state.orderForDetails = action.payload;
+    },
   },
 });
 
@@ -210,5 +221,7 @@ export const {
   createOrderId,
   handleOrderResponse,
   clearAll,
+  handleDeleteOrderModal,
+  handleOrderDetails,
 } = ordersSlice.actions;
 export default ordersSlice.reducer;

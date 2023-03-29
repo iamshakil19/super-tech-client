@@ -5,12 +5,19 @@ import { BsEyeFill } from "react-icons/bs";
 import numberWithComma from "../../../../Utils/numberWithComa";
 import { FaCartArrowDown } from "react-icons/fa";
 import { useUpdateOrderStatusMutation } from "../../../../features/orders/ordersApi";
+import {
+  handleDeleteOrderModal,
+  handleOrderDetails,
+} from "../../../../features/orders/ordersSlice";
+import { useDispatch } from "react-redux";
 const OrderTableRow = ({ i, order }) => {
+  const dispatch = useDispatch();
   const [updateOrderStatus, { isSuccess }] = useUpdateOrderStatusMutation();
   const {
     _id,
     orderId,
     name,
+    email,
     phoneNumber,
     division,
     createdAt,
@@ -27,11 +34,17 @@ const OrderTableRow = ({ i, order }) => {
     updateOrderStatus({ id, status });
   };
 
+  const handleDetails = () => {
+    dispatch(handleOrderDetails(order));
+  };
   return (
     <tr class="bg-white border-b poppins border-gray-300 hover:bg-gray-200">
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{i}</td>
       <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
-        <button className="bg-slate-800 text-white py-0.5 px-3 rounded-full text-sm font-medium">
+        <button
+          onClick={handleDetails}
+          className="bg-slate-800 text-white py-0.5 px-3 rounded-full text-sm font-medium"
+        >
           Details
         </button>
       </td>
@@ -87,7 +100,12 @@ const OrderTableRow = ({ i, order }) => {
         </select>
       </td>
       <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
-        <button className="bg-red-500 text-white py-0.5 px-3 rounded-full text-sm font-medium">
+        <button
+          onClick={() =>
+            dispatch(handleDeleteOrderModal({ isOpen: true, _id: _id }))
+          }
+          className="bg-red-500 text-white py-0.5 px-3 rounded-full text-sm font-medium"
+        >
           Delete
         </button>
       </td>

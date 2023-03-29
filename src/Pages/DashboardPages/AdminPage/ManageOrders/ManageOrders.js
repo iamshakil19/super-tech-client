@@ -6,6 +6,8 @@ import { useGetAllOrderQuery } from "../../../../features/orders/ordersApi";
 import Loading from "../../../Shared/Loading/Loading";
 import Error from "../../../Shared/Error/Error";
 import emptyOrderImg from "../../../../Assets/Others/emptyOrder.gif";
+import OrderDeleteModal from "./OrderDeleteModal";
+import OrderDetailsModal from "./OrderDetailsModal";
 const ManageOrders = () => {
   const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
   const { orders } = allOrders?.data || {};
@@ -33,6 +35,8 @@ const ManageOrders = () => {
         <ManageOrdersHeaders />
         <ManageOrderFilter />
         <OrderTable />
+        <OrderDeleteModal />
+        <OrderDetailsModal />
       </div>
     );
   }

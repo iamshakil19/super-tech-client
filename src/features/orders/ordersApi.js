@@ -50,6 +50,30 @@ export const orderApi = apiSlice.injectEndpoints({
         }
       },
     }),
+    deleteOrder: builder.mutation({
+      query: (id) => ({
+        url: `/api/v1/order/${id}`,
+        method: "DELETE",
+      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(
+            apiSlice.util.updateQueryData("getAllOrder", undefined, (draft) => {
+              return {
+                ...draft,
+                data: {
+                  ...draft.data,
+                  orders: draft.data.orders.filter((item) => item._id !== arg),
+                },
+              };
+            })
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
   }),
 });
 
@@ -58,4 +82,5 @@ export const {
   useCreateOrderMutation,
   useGetOrderByEmailQuery,
   useUpdateOrderStatusMutation,
+  useDeleteOrderMutation
 } = orderApi;
