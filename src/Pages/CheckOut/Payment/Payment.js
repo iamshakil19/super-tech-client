@@ -30,9 +30,9 @@ const Payment = () => {
     shippingCost,
     billingAddress,
     cartTotalAmount,
+    cartTotalQuantity,
   } = useSelector((state) => state.orders);
   const { sameAsShippingAddress } = billingAddress || {};
-
   useEffect(() => {
     if (
       email === "" &&
@@ -83,6 +83,7 @@ const Payment = () => {
       shippingCost,
       billingAddress,
       orderId,
+      totalQuantity: cartTotalQuantity,
       subTotal: cartTotalAmount,
       totalPrice: cartTotalAmount + shippingCost,
     });

@@ -9,6 +9,7 @@ import emptyOrderImg from "../../../../Assets/Others/emptyOrder.gif";
 const ManageOrders = () => {
   const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
   const { orders } = allOrders?.data || {};
+
   let content = null;
 
   if (isLoading) {

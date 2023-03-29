@@ -1,73 +1,95 @@
+import moment from "moment/moment";
 import React from "react";
 import { BiDotsVertical } from "react-icons/bi";
 import { BsEyeFill } from "react-icons/bs";
-
+import numberWithComma from "../../../../Utils/numberWithComa";
+import { FaCartArrowDown } from "react-icons/fa";
+import { useUpdateOrderStatusMutation } from "../../../../features/orders/ordersApi";
 const OrderTableRow = ({ i, order }) => {
+  const [updateOrderStatus, { isSuccess }] = useUpdateOrderStatusMutation();
   const {
     _id,
+    orderId,
     name,
-    number,
-    date,
-    productName,
-    city,
+    phoneNumber,
+    division,
+    createdAt,
+    totalPrice,
     area,
     streetAddress,
-    quantity,
+    totalQuantity,
+    cart,
     status,
   } = order;
+
+  const handleStatus = (e, id) => {
+    const status = { status: e.target.value };
+    updateOrderStatus({ id, status });
+  };
+
   return (
-    <tr class="bg-white border-b border-gray-300 hover:bg-gray-300">
+    <tr class="bg-white border-b poppins border-gray-300 hover:bg-gray-200">
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{i}</td>
-      <td class="px-6 py-4 whitespace-nowrap xl:hidden">
-        <BsEyeFill size={24} className="cursor-pointer" />
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{_id}</td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">{name}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{number}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{date}</td>
       <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
-        {productName.length > 20
-          ? productName.slice(0, 20) + "..."
-          : productName}
+        <button className="bg-slate-800 text-white py-0.5 px-3 rounded-full text-sm font-medium">
+          Details
+        </button>
       </td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">{city}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{quantity}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{45000}</td>
-      <td class={`px-6 py-4 whitespace-nowrap capitalize`}>
+      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{orderId}</td>
+      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">{name}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{phoneNumber}</td>
+
+      <td class="px-6 py-4 whitespace-nowrap text-[15px]">
+        {moment(createdAt).format("lll")}
+      </td>
+
+      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+        {division}
+      </td>
+      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{totalQuantity}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-[15px] font-semibold">
+        ৳ {numberWithComma(totalPrice)}
+      </td>
+      {/* <td class={`px-6 py-4 whitespace-nowrap capitalize`}>
         <span
           className={`block text-center ${
             status === "pending" &&
-            "text-orange-500 bg-orange-200 px-3 py-1 rounded-full font-medium text-sm"
+            "text-orange-600 bg-orange-200 px-3 py-1 rounded-full font-medium text-xs"
           } ${
-            status === "cancelled" &&
-            "text-red-500 bg-red-200 px-3 py-1 rounded-full font-medium text-sm"
+            status === "canceled" &&
+            "text-red-600 bg-red-200 px-3 py-1 rounded-full font-medium text-xs"
           } ${
-            status === "delivered" &&
-            "text-green-500 bg-green-200 px-3 py-1 rounded-full font-medium text-sm"
+            status === "completed" &&
+            "text-green-600 bg-green-200 px-3 py-1 rounded-full font-medium text-xs"
           }`}
         >
           {status}
         </span>
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap dropdown dropdown-bottom dropdown-left">
-        {" "}
-        <label htmlFor="" tabIndex={2}>
-          <BiDotsVertical className="text-blue-500 cursor-pointer" size={24} />{" "}
-        </label>
-        <ul
-          tabIndex={2}
-          className="dropdown-content menu rounded-md  shadow-md shadow-gray-400 w-52"
+      </td> */}
+      <td>
+        <select
+          // disabled={status === "completed"}
+          defaultValue={status}
+          onChange={(e) => handleStatus(e, _id)}
+          className={`outline-none border rounded-full text-sm px-2 font-medium ${
+            status === "pending" &&
+            "bg-orange-200 text-orange-600 border-orange-300"
+          } ${
+            status === "completed" &&
+            "bg-green-200 text-green-600 border-green-300"
+          } ${
+            status === "canceled" && "bg-red-200 text-red-600 border-red-300"
+          }`}
         >
-          <li className="text-white text-[15px] bg-slate-900 p-2 hover:bg-slate-600 cursor-pointer font-medium">
-            Details
-          </li>
-          <li className="text-white text-[15px] bg-slate-900 p-2 hover:bg-slate-600 cursor-pointer font-medium">
-            Update Status
-          </li>
-          <li className="text-red-500 text-[15px] bg-slate-900 p-2 hover:bg-slate-600 cursor-pointer font-medium">
-            Delete
-          </li>
-        </ul>
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+          <option value="canceled">Canceled</option>
+        </select>
+      </td>
+      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+        <button className="bg-red-500 text-white py-0.5 px-3 rounded-full text-sm font-medium">
+          Delete
+        </button>
       </td>
     </tr>
   );

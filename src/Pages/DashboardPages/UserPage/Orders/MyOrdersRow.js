@@ -26,8 +26,8 @@ const MyOrdersRow = ({ myOrder, i }) => {
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{number}</td>
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{date}</td>
       <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
-        {productName.length > 20
-          ? productName.slice(0, 20) + "..."
+        {productName?.length > 20
+          ? productName?.slice(0, 20) + "..."
           : productName}
       </td>
       <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">

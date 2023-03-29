@@ -19,7 +19,43 @@ export const orderApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    updateOrderStatus: builder.mutation({
+      query: ({ id, status }) => ({
+        url: `/api/v1/order/${id}`,
+        method: "PATCH",
+        body: status,
+      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const result = await queryFulfilled;
+          console.log(result.data);
+          if (result?.data?.data?.modifiedCount > 0) {
+            dispatch(
+              apiSlice.util.updateQueryData(
+                "getAllOrder",
+                undefined,
+                (draft) => {
+                  const updatedOrder = draft.data.orders.find(
+                    (item) => item._id === arg.id
+                  );
+                  if (updatedOrder) {
+                    updatedOrder.status = arg.status.status;
+                  }
+                }
+              )
+            );
+          }
+        } catch (err) {
+          console.error("Failed to update task status in cache", err);
+        }
+      },
+    }),
   }),
 });
 
-export const { useGetAllOrderQuery, useCreateOrderMutation, useGetOrderByEmailQuery } = orderApi;
+export const {
+  useGetAllOrderQuery,
+  useCreateOrderMutation,
+  useGetOrderByEmailQuery,
+  useUpdateOrderStatusMutation,
+} = orderApi;
