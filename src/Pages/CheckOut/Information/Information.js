@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { divisions } from "../../../Utils/LocalData";
 import { IoMdStar } from "react-icons/io";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import { useGetCurrentUserQuery } from "../../../features/user/usersApi";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { handleContactInformation } from "../../../features/orders/ordersSlice";
@@ -12,8 +11,8 @@ const Information = () => {
   const [isSaveInfo, setSaveInfo] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
-  const { email } = user?.data || {};
+  const {user} = useSelector(state => state.auth)
+  const { email } = user || {};
 
   const {
     name: initialName,

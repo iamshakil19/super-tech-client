@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { toast } from "react-hot-toast";
 import { userLoggedOut } from "../auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
@@ -19,6 +20,7 @@ export const apiSlice = createApi({
     if (result?.error?.status === 403) {
       api.dispatch(userLoggedOut());
       localStorage.removeItem("auth");
+      toast.error("You are not authorized to access this")
     }
     return result;
   },

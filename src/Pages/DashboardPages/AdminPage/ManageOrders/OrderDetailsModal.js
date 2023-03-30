@@ -4,6 +4,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { handleOrderDetails } from "../../../../features/orders/ordersSlice";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
+import numberWithComma from "../../../../Utils/numberWithComa";
 const OrderDetailsModal = () => {
   const dispatch = useDispatch();
   const { orderForDetails } = useSelector((state) => state.orders);
@@ -168,15 +169,19 @@ const OrderDetailsModal = () => {
               <div className="">
                 <h3 className="mb-2 font-semibold ">Amount</h3>
                 <p className="text-sm leading-relaxed">
-                  Subtotal : <span className="font-medium">৳ {subTotal}</span>
+                  Subtotal :{" "}
+                  <span className="font-medium">
+                    ৳ {numberWithComma(subTotal)}
+                  </span>
                 </p>
                 <p className="text-sm leading-relaxed">
                   Shipping Cost :{" "}
                   <span className="font-medium">৳ {shippingCost}</span>
                 </p>
                 <p className="border-b border-gray-300 max-w-xs my-2"></p>
-                <p className="text-sm leading-relaxed font-medium">
-                  Total : <span className="">৳ {totalPrice}</span>
+                <p className="text-sm leading-relaxed font-semibold">
+                  Total :{" "}
+                  <span className="">৳ {numberWithComma(totalPrice)}</span>
                 </p>
                 <p className="text-sm leading-relaxed">
                   Payment Method :{" "}
@@ -197,7 +202,7 @@ const OrderDetailsModal = () => {
             <h3 className="mb-2 font-semibold">Products</h3>
 
             {cart?.map((product) => (
-              <div className="border-b py-2 sm:flex justify-between">
+              <div className="border-b py-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div>
                   <p className="text-sm leading-relaxed">
                     Name : <span className="font-medium">{product.name}</span>
@@ -206,11 +211,16 @@ const OrderDetailsModal = () => {
                     Quantity :{" "}
                     <span className="font-medium">{product.quantity}</span>
                   </p>
+                  <p className="text-sm leading-relaxed">
+                    Price : {""} ৳{" "}
+                    <span className="font-medium">
+                      {numberWithComma(product.price)}
+                    </span>
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm leading-relaxed">
-                    Color :{" "}
-                    <span className="font-medium">{product.color}</span>
+                    Color : <span className="font-medium">{product.color}</span>
                   </p>
                   <p className="text-sm leading-relaxed">
                     Color Cost :{" "}
@@ -219,8 +229,7 @@ const OrderDetailsModal = () => {
                 </div>
                 <div>
                   <p className="text-sm leading-relaxed">
-                    Size :{" "}
-                    <span className="font-medium">{product.size}</span>
+                    Size : <span className="font-medium">{product.size}</span>
                   </p>
                   <p className="text-sm leading-relaxed">
                     Size Cost :{" "}

@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { userLoggedOut } from "../../features/auth/authSlice";
-import { useGetCurrentUserQuery } from "../../features/user/usersApi";
 import useAuth from "../../hooks/useAuth";
 
 export default function RequireAdmin({ children }) {

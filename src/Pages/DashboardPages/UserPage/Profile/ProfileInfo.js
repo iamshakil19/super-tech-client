@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 const user = {
   name: "Shakil Ahmed",
@@ -43,7 +44,7 @@ const ProfileInfo = ({ user }) => {
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Birthday</h3>
-        <p>{birthday}</p>
+        <p>{moment(birthday).format("LL")}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Gender</h3>

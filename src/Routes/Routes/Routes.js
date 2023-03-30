@@ -84,9 +84,9 @@ const routes = createBrowserRouter([
     path: "/account",
     element: (
       <PrivateRoute>
-        <NotForAdmin>
+        {/* <NotForAdmin> */}
           <UserDashboardLayout />
-        </NotForAdmin>
+        {/* </NotForAdmin> */}
       </PrivateRoute>
     ),
     children: [

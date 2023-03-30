@@ -4,14 +4,12 @@ import { FiEdit } from "react-icons/fi";
 import ProfileInfo from "./ProfileInfo";
 import ProfileInfoEdit from "./ProfileInfoEdit";
 import { useSelector } from "react-redux";
-import {
-  useGetCurrentUserQuery,
-  useUpdateAvatarMutation,
-} from "../../../../features/user/usersApi";
+import { useUpdateAvatarMutation } from "../../../../features/user/usersApi";
 const Profile = () => {
   const [isEditable, setEditable] = useState(false);
-  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
-  const { _id } = user?.data || {};
+  const { user } = useSelector((state) => state.auth);
+  const { _id } = user || {};
+  console.log(user);
   const [updateAvatar, { isSuccess }] = useUpdateAvatarMutation();
   const handleAvatar = (e) => {
     const formData = new FormData();
@@ -27,8 +25,8 @@ const Profile = () => {
             <div className="md:flex w-full">
               <img
                 src={
-                  user?.data?.avatar
-                    ? `${process.env.REACT_APP_IMG_URL + user?.data?.avatar}`
+                  user?.avatar
+                    ? `${process.env.REACT_APP_IMG_URL + user?.avatar}`
                     : localAvatar
                 }
                 alt=""
@@ -62,9 +60,9 @@ const Profile = () => {
           </div>
 
           {isEditable ? (
-            <ProfileInfoEdit user={user?.data} setEditable={setEditable} />
+            <ProfileInfoEdit user={user} setEditable={setEditable} />
           ) : (
-            <ProfileInfo user={user?.data} />
+            <ProfileInfo user={user} />
           )}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import moment from "moment/moment";
-import React from "react";
+import React, { useEffect } from "react";
 import { BiDotsVertical } from "react-icons/bi";
 import { BsEyeFill } from "react-icons/bs";
 import numberWithComma from "../../../../Utils/numberWithComa";
@@ -10,6 +10,7 @@ import {
   handleOrderDetails,
 } from "../../../../features/orders/ordersSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
 const OrderTableRow = ({ i, order }) => {
   const dispatch = useDispatch();
   const [updateOrderStatus, { isSuccess }] = useUpdateOrderStatusMutation();
@@ -37,6 +38,13 @@ const OrderTableRow = ({ i, order }) => {
   const handleDetails = () => {
     dispatch(handleOrderDetails(order));
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Successfully updated the order", { id: "order" });
+    }
+  }, [isSuccess]);
+
   return (
     <tr class="bg-white border-b poppins border-gray-300 hover:bg-gray-200">
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{i}</td>
@@ -63,25 +71,9 @@ const OrderTableRow = ({ i, order }) => {
       <td class="px-6 py-4 whitespace-nowrap text-[15px] font-semibold">
         ৳ {numberWithComma(totalPrice)}
       </td>
-      {/* <td class={`px-6 py-4 whitespace-nowrap capitalize`}>
-        <span
-          className={`block text-center ${
-            status === "pending" &&
-            "text-orange-600 bg-orange-200 px-3 py-1 rounded-full font-medium text-xs"
-          } ${
-            status === "canceled" &&
-            "text-red-600 bg-red-200 px-3 py-1 rounded-full font-medium text-xs"
-          } ${
-            status === "completed" &&
-            "text-green-600 bg-green-200 px-3 py-1 rounded-full font-medium text-xs"
-          }`}
-        >
-          {status}
-        </span>
-      </td> */}
       <td>
         <select
-          // disabled={status === "completed"}
+          disabled={status === "completed"}
           defaultValue={status}
           onChange={(e) => handleStatus(e, _id)}
           className={`outline-none border rounded-full text-sm px-2 font-medium ${

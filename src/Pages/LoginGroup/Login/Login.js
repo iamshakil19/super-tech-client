@@ -9,7 +9,6 @@ import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
 const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
 
-
   const {
     register,
     formState: { errors },
@@ -25,22 +24,12 @@ const Login = () => {
 
   const [login, { data, isLoading, error: resError, isSuccess }] =
     useLoginMutation();
+
   useEffect(() => {
     if (resError) {
       toast.error(resError?.data?.error, { id: "login" });
     }
-    // if (data?.data?.token && data?.data?.user) {
-    //   // navigate("/about-us");
-    //   console.log(from, 33);
-    // }
-  }, [
-    resError?.data?.error,
-    resError,
-    data?.data?.token,
-    data?.data?.user,
-    navigate,
-    from,
-  ]);
+  }, [resError]);
   useEffect(() => {
     if (isSuccess) {
       navigate(from);

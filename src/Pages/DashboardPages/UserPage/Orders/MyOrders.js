@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useGetOrderByEmailQuery } from "../../../../features/orders/ordersApi";
-import { useGetCurrentUserQuery } from "../../../../features/user/usersApi";
 import Error from "../../../Shared/Error/Error";
 import Loading from "../../../Shared/Loading/Loading";
 import emptyOrderImg from "../../../../Assets/Others/emptyOrder.gif";
 import MyOrdersRow from "./MyOrdersRow";
+import { useSelector } from "react-redux";
+import OrderDetailsModal from "../../AdminPage/ManageOrders/OrderDetailsModal";
 
 const myOrdersData = [
   {
@@ -203,13 +204,9 @@ const myOrdersData = [
 
 const MyOrders = () => {
   const [limit, setLimit] = useState(10);
-  const {
-    data: user,
-    isError: isCurrentUserError,
-    isLoading: currentUserLoading,
-    error: currentError,
-  } = useGetCurrentUserQuery();
-  const { email } = user?.data || {};
+
+  const { user } = useSelector((state) => state.auth);
+  const { email } = user || {};
 
   const {
     data: ordersData,
@@ -219,17 +216,12 @@ const MyOrders = () => {
   } = useGetOrderByEmailQuery(email);
 
   const orders = ordersData?.data || [];
-
+  console.log(orders);
   let content = null;
 
-  if (isLoading && currentUserLoading) {
+  if (isLoading) {
     content = <Loading />;
-  } else if (
-    !isLoading &&
-    !currentUserLoading &&
-    isError &&
-    isCurrentUserError
-  ) {
+  } else if (!isLoading && isError) {
     content = <Error error="There was an error" />;
   } else if (!isLoading && !isError && orders?.length === 0) {
     content = (
@@ -278,18 +270,15 @@ const MyOrders = () => {
             <thead class="text-sm text-white uppercase bg-slate-900">
               <tr>
                 <th class="px-6 py-4 whitespace-nowrap">SL</th>
-                <th class="px-6 py-4 whitespace-nowrap xl:hidden">Details</th>
+                <th class="px-6 py-4 whitespace-nowrap">Details</th>
+                <th class="px-6 py-4 whitespace-nowrap">Order ID</th>
                 <th class="px-6 py-4 whitespace-nowrap">Name</th>
                 <th class="px-6 py-4 whitespace-nowrap">Number</th>
                 <th class="px-6 py-4 whitespace-nowrap">Date</th>
-                <th class="px-6 py-4 whitespace-nowrap">Product</th>
                 <th class="px-6 py-4 whitespace-nowrap">City</th>
-                <th class="px-6 py-4 whitespace-nowrap">Area</th>
-                <th class="px-6 py-4 whitespace-nowrap">Street Address</th>
                 <th class="px-6 py-4 whitespace-nowrap">Quantity</th>
                 <th class="px-6 py-4 whitespace-nowrap">Price</th>
                 <th class="px-6 py-4 whitespace-nowrap">Status</th>
-                <th class="px-6 py-4 whitespace-nowrap">Action</th>
               </tr>
             </thead>
             <tbody className="">
@@ -299,6 +288,7 @@ const MyOrders = () => {
             </tbody>
           </table>
         </div>
+        <OrderDetailsModal />
       </div>
     );
   }

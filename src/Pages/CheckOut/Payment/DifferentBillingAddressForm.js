@@ -1,17 +1,21 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { IoMdStar } from "react-icons/io";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { handleDifferentBillingAddress } from "../../../features/orders/ordersSlice";
-import { useGetCurrentUserQuery } from "../../../features/user/usersApi";
+import {
+  clearAll,
+  handleDifferentBillingAddress,
+  handleOrderResponse,
+} from "../../../features/orders/ordersSlice";
 import { divisions } from "../../../Utils/LocalData";
-
+import { useCreateOrderMutation } from "../../../features/orders/ordersApi";
 const DifferentBillingAddressForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { data: user, isError, isLoading, error } = useGetCurrentUserQuery();
-  const { email } = user?.data || {};
+  const [createOrder, { data, isSuccess }] = useCreateOrderMutation();
   const {
     register,
     formState: { errors },
@@ -19,10 +23,87 @@ const DifferentBillingAddressForm = () => {
     reset,
     control,
   } = useForm();
+
+  const {
+    email,
+    name,
+    phoneNumber,
+    company,
+    postalCode,
+    division,
+    area,
+    streetAddress,
+    cart,
+    shippingMethod,
+    paymentMethod,
+    shippingCost,
+    billingAddress,
+    cartTotalAmount,
+    cartTotalQuantity,
+  } = useSelector((state) => state.orders);
+
+  useEffect(() => {
+    if (
+      email === "" &&
+      name === "" &&
+      phoneNumber === "" &&
+      division === "" &&
+      area === "" &&
+      streetAddress === "" &&
+      shippingMethod === ""
+    ) {
+      toast.error("Please fill the previous form first", { id: "billing" });
+      navigate("/");
+    } else if (cart.length < 1) {
+      toast.error("Please add items first", { id: "billing" });
+      navigate("/");
+    }
+  }, [
+    cart.length,
+    email,
+    name,
+    phoneNumber,
+    company,
+    postalCode,
+    division,
+    area,
+    streetAddress,
+    navigate,
+    shippingMethod,
+  ]);
+
   const onSubmit = (data) => {
     dispatch(handleDifferentBillingAddress(data));
-    navigate("/checkouts/thank-you");
+    const orderId = Math.floor(10000000 + Math.random() * 90000000);
+    createOrder({
+      email,
+      name,
+      phoneNumber,
+      company,
+      postalCode,
+      division,
+      area,
+      streetAddress,
+      cart,
+      shippingMethod,
+      paymentMethod,
+      shippingCost,
+      billingAddress: data,
+      orderId,
+      totalQuantity: cartTotalQuantity,
+      subTotal: cartTotalAmount,
+      totalPrice: cartTotalAmount + shippingCost,
+    });
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Order completed successfully", { id: "payment" });
+      dispatch(handleOrderResponse(data?.data));
+      dispatch(clearAll());
+      navigate("/checkouts/thank-you");
+    }
+  }, [isSuccess, navigate, data?.data, dispatch]);
 
   return (
     <div className="mt-2">

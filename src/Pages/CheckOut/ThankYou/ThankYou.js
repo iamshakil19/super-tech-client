@@ -1,19 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import { RiArrowLeftSLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import bkashLogo from "../../../Assets/Others/bkash.png";
 import nagadLogo from "../../../Assets/Others/nagad.png";
 import qrCode from "../../../Assets/Others/qr-code.png";
-import { clearAll } from "../../../features/orders/ordersSlice";
 import numberWithComma from "../../../Utils/numberWithComa";
 const ThankYou = () => {
+  console.log("yes");
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { orderResponse } = useSelector((state) => state?.orders);
 
+  useEffect(() => {
+    if (!orderResponse._id) {
+      console.log("yes its in");
+      navigate("/");
+    }
+  }, [navigate, orderResponse]);
   const {
     orderId,
     paymentMethod,
@@ -27,11 +32,6 @@ const ThankYou = () => {
     billingAddress,
     totalPrice,
   } = orderResponse || {};
-  useEffect(() => {
-    if (orderResponse === {}) {
-      navigate("/");
-    }
-  }, [orderResponse, navigate]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

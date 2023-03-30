@@ -6,7 +6,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
-import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { MdLogout, MdOutlineAdminPanelSettings } from "react-icons/md";
 
 export const divisions = [
   "dhaka",
@@ -230,7 +230,7 @@ export const adminSidebarMenus = [
     path: "/",
     icon: AiOutlineHome,
     margin: true,
-  },
+  }
 ];
 
 export const forAllCollectionFilterData = [

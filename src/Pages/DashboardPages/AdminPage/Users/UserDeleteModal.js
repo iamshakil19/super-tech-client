@@ -1,31 +1,32 @@
 import React, { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useDeleteOrderMutation } from "../../../../features/orders/ordersApi";
-import { handleDeleteOrderModal } from "../../../../features/orders/ordersSlice";
+import { useDeleteUserMutation } from "../../../../features/user/usersApi";
+import { handleDeleteUserModal } from "../../../../features/user/usersSlice";
 
-const OrderDeleteModal = () => {
+const UserDeleteModal = () => {
   const dispatch = useDispatch();
-  const { deleteOrderModal, deletingId } = useSelector((state) => state.orders);
-  const [deleteOrder, { isSuccess }] = useDeleteOrderMutation();
-
+  const { deleteUserModal, deletingId } = useSelector((state) => state.users);
+  const [deleteUser, { isSuccess }] = useDeleteUserMutation();
+  console.log(deleteUserModal);
   const dandleDelete = () => {
-    deleteOrder(deletingId);
+    deleteUser(deletingId);
   };
 
   useEffect(() => {
     if (isSuccess) {
       toast.success("Successfully deleted");
-      dispatch(handleDeleteOrderModal({ isOpen: false, _id: "" }));
+      dispatch(handleDeleteUserModal({ isOpen: false, _id: "" }));
     }
   }, [dispatch, isSuccess]);
+
   return (
-    deleteOrderModal && (
+    deleteUserModal && (
       <div className="fixed w-full h-full inset-0 z-50 bg-black/70 poppins">
         <div className="rounded w-full max-w-lg space-y-8 bg-white p-10 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
           <div>
             <p className="text-red-500 font-semibold">
-              Are you sure you want to delete this order ?
+              Are you sure you want to delete this user ?
             </p>
 
             <p className="text-red-500 mt-3 text-sm">
@@ -41,7 +42,7 @@ const OrderDeleteModal = () => {
               </button>
               <button
                 onClick={() =>
-                  dispatch(handleDeleteOrderModal({ isOpen: false, _id: "" }))
+                  dispatch(handleDeleteUserModal({ isOpen: false, _id: "" }))
                 }
                 className="py-2 px-4 bg-slate-800 text-white rounded-md font-medium"
               >
@@ -55,4 +56,4 @@ const OrderDeleteModal = () => {
   );
 };
 
-export default OrderDeleteModal;
+export default UserDeleteModal;

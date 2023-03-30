@@ -54,9 +54,6 @@ export const authApi = apiSlice.injectEndpoints({
               accessToken: result?.data?.data?.token,
               user: result?.data?.data?.user,
             })
-            // apiSlice.util.updateQueryData("login", undefined, (draft) => {
-            //   console.log(draft, "draft");
-            // })
           );
         } catch (error) {
           // nothing

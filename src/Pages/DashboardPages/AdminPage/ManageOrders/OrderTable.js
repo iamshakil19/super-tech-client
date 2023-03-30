@@ -4,7 +4,6 @@ import OrderTableRow from "./OrderTableRow";
 const OrderTable = () => {
   const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
   const { orders } = allOrders?.data || {};
-
   return (
     <div>
       <div class="overflow-x-auto z-10  sm:rounded-lg poppins pb-36">
@@ -16,7 +15,7 @@ const OrderTable = () => {
               <th class="px-6 py-4 whitespace-nowrap">Order Id</th>
               <th class="px-6 py-4 whitespace-nowrap">Name</th>
               <th class="px-6 py-4 whitespace-nowrap">Number</th>
-              
+
               <th class="px-6 py-4 whitespace-nowrap">Date</th>
               <th class="px-6 py-4 whitespace-nowrap">City</th>
               <th class="px-6 py-4 whitespace-nowrap">Quantity</th>
