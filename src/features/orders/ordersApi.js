@@ -28,13 +28,13 @@ export const orderApi = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const result = await queryFulfilled;
-          console.log(result.data);
           if (result?.data?.data?.modifiedCount > 0) {
             dispatch(
               apiSlice.util.updateQueryData(
                 "getAllOrder",
                 undefined,
                 (draft) => {
+                  console.log(JSON.parse(JSON.stringify(draft)));
                   const updatedOrder = draft.data.orders.find(
                     (item) => item._id === arg.id
                   );

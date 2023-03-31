@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
@@ -14,6 +14,7 @@ import { addToCart, getTotals } from "../../features/orders/ordersSlice";
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { data: product, isLoading, isError, error } = useGetProductQuery(id);
   const {
     _id,
@@ -97,6 +98,20 @@ const ProductDetails = () => {
       })
     );
     dispatch(getTotals());
+  };
+  const handleBuyNow = () => {
+    dispatch(
+      addToCart({
+        product: product?.data,
+        quantity,
+        color: colorName,
+        colorCost: colorExtraPrice,
+        size: sizeName,
+        sizeCost: sizeExtraPrice,
+      })
+    );
+    dispatch(getTotals());
+    navigate("/checkouts");
   };
 
   let content = null;
@@ -233,7 +248,10 @@ const ProductDetails = () => {
                 >
                   Add To Cart
                 </button>
-                <button className="max-w-xs w-full border py-2  md:mb-0 md:ml-3 bg-black text-white font-semibold">
+                <button
+                  onClick={handleBuyNow}
+                  className="max-w-xs w-full border py-2  md:mb-0 md:ml-3 bg-black text-white font-semibold"
+                >
                   Buy Now
                 </button>
               </div>

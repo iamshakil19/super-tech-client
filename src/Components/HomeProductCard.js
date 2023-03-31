@@ -73,16 +73,12 @@ const HomeProductCard = ({ product }) => {
           </p>
         </div>
         <div
+          onClick={handleBuyNow}
           className={`bg-black flex justify-center items-center p-5 w-16 h-16 cursor-pointer hover:scale-105 rounded-full custom-shadow absolute -top-3 right-0  ${
             isButtonOpen ? "block" : "hidden"
           } `}
         >
-          <p
-            onClick={handleBuyNow}
-            className="text-white text-center poppins text-sm"
-          >
-            Buy Now
-          </p>
+          <p className="text-white text-center poppins text-sm">Buy Now</p>
         </div>
         <div className="mx-auto">
           <button

@@ -32,6 +32,8 @@ import AboutUs from "../../Pages/AboutUs/AboutUs";
 import NotForAdmin from "../../Utils/NotForAdmin/NotForAdmin";
 import RequireAdmin from "../../Utils/RequireAdmin/RequireAdmin";
 import UpdateProduct from "../../Pages/DashboardPages/AdminPage/ManageProducts/UpdateProduct";
+import TermsOfService from "../../Pages/TermsOfService/TermsOfService";
+import ReturnAndWarrantyPolicy from "../../Pages/ReturnAndWarrantyPolicy/ReturnAndWarrantyPolicy";
 
 const routes = createBrowserRouter([
   {
@@ -78,6 +80,14 @@ const routes = createBrowserRouter([
         path: "/about-us",
         element: <AboutUs />,
       },
+      {
+        path: "/terms-of-service",
+        element: <TermsOfService />,
+      },
+      {
+        path: "/return-warranty-policy",
+        element: <ReturnAndWarrantyPolicy />,
+      },
     ],
   },
   {
@@ -85,7 +95,7 @@ const routes = createBrowserRouter([
     element: (
       <PrivateRoute>
         {/* <NotForAdmin> */}
-          <UserDashboardLayout />
+        <UserDashboardLayout />
         {/* </NotForAdmin> */}
       </PrivateRoute>
     ),

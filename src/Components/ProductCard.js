@@ -8,6 +8,17 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleBuyNow = () => {
+    dispatch(
+      addToCart({
+        product,
+        quantity: 1,
+        color: "",
+        colorCost: 0,
+        size: "",
+        sizeCost: 0,
+      })
+    );
+    dispatch(getTotals());
     navigate("/checkouts");
   };
 

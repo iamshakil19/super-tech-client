@@ -1,9 +1,6 @@
 import moment from "moment/moment";
 import React, { useEffect } from "react";
-import { BiDotsVertical } from "react-icons/bi";
-import { BsEyeFill } from "react-icons/bs";
 import numberWithComma from "../../../../Utils/numberWithComa";
-import { FaCartArrowDown } from "react-icons/fa";
 import { useUpdateOrderStatusMutation } from "../../../../features/orders/ordersApi";
 import {
   handleDeleteOrderModal,

@@ -18,7 +18,7 @@ const ManageOrders = () => {
     error,
   } = useGetAllOrderQuery(queryString);
   const { orders } = allOrders?.data || {};
-
+  
   let content = null;
 
   if (isLoading) {
