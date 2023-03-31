@@ -8,8 +8,15 @@ import Error from "../../../Shared/Error/Error";
 import emptyOrderImg from "../../../../Assets/Others/emptyOrder.gif";
 import OrderDeleteModal from "./OrderDeleteModal";
 import OrderDetailsModal from "./OrderDetailsModal";
+import { useSelector } from "react-redux";
 const ManageOrders = () => {
-  const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
+  const queryString = "";
+  const {
+    data: allOrders,
+    isError,
+    isLoading,
+    error,
+  } = useGetAllOrderQuery(queryString);
   const { orders } = allOrders?.data || {};
 
   let content = null;

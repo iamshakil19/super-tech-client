@@ -1,7 +1,34 @@
 import React from "react";
 import { forInteriorFilterData } from "../../../Utils/LocalData";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { handleInteriorCollectionPageCategoryFilter } from "../../../features/products/productsSlice";
 
 const ForInterior = () => {
+  const [subCategoryFilter, setSubCategoryFilter] = useState([]);
+  const dispatch = useDispatch();
+  const handleOnchange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setSubCategoryFilter([...subCategoryFilter, value]);
+    } else {
+      setSubCategoryFilter((pre) => {
+        return [...pre.filter((category) => category !== value)];
+      });
+    }
+  };
+  useEffect(() => {
+    let categoryFilterString = "";
+    if (subCategoryFilter?.length === 1) {
+      categoryFilterString = `&subCategory=${subCategoryFilter.toString()}`;
+    } else if (subCategoryFilter?.length > 1) {
+      categoryFilterString =
+        "&subCategory=" +
+        subCategoryFilter.toString().split(",").join("&subCategory=");
+    }
+    dispatch(handleInteriorCollectionPageCategoryFilter(categoryFilterString));
+  }, [subCategoryFilter, dispatch]);
   return (
     <div>
       {forInteriorFilterData.map((data) => (
@@ -10,9 +37,10 @@ const ForInterior = () => {
           className="flex items-center hover:bg-slate-100 px-2 py-1 mb-2 rounded-sm"
         >
           <input
+            onChange={handleOnchange}
             type="checkbox"
             name=""
-            value={""}
+            value={data.value}
             id={data.value}
             className="mr-3 checkbox checkbox-success checkbox-xs"
           />

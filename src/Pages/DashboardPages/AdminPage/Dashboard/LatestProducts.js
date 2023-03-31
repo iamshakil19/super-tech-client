@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBoxOpen } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
 import Error from "../../../Shared/Error/Error";
 import Loading from "../../../Shared/Loading/Loading";
@@ -78,12 +79,9 @@ const productData = [
   },
 ];
 const LatestProducts = () => {
-  const sort = "-createdAt";
-  const limit = 5;
-  const { data, isError, isLoading, error } = useGetAllProductsQuery({
-    sort,
-    limit,
-  });
+  const queryString = `page=1&limit=5&sort=-createdAt`;
+  const { data, isError, isLoading, error } =
+    useGetAllProductsQuery(queryString);
   const productsData = data?.data;
 
   const { products } = productsData || {};

@@ -36,6 +36,12 @@ const initialState = {
   deleteOrderModal: false,
   deletingId: "",
   orderForDetails: {},
+  orderFilter: {
+    page: 1,
+    sort: "-createdAt",
+    limit: 10,
+    status: ""
+  },
 };
 
 const ordersSlice = createSlice({
@@ -204,6 +210,18 @@ const ordersSlice = createSlice({
     handleOrderDetails: (state, action) => {
       state.orderForDetails = action.payload;
     },
+    handlePagination: (state, action) => {
+      state.orderFilter.page = action.payload;
+    },
+    handleLimit: (state, action) => {
+      state.orderFilter.limit = action.payload;
+    },
+    handleSort: (state, action) => {
+      state.orderFilter.sort = action.payload;
+    },
+    handleFields: (state, action) => {
+      state.orderFilter.status = action.payload;
+    },
   },
 });
 
@@ -223,5 +241,9 @@ export const {
   clearAll,
   handleDeleteOrderModal,
   handleOrderDetails,
+  handlePagination,
+  handleLimit,
+  handleSort,
+  handleFields
 } = ordersSlice.actions;
 export default ordersSlice.reducer;

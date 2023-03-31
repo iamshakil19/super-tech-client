@@ -2,15 +2,17 @@ import React from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
+import { useSelector } from "react-redux";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
+  const { page, limit, sort } = useSelector((state) => state.productsFilter);
   const {
     data: allProducts,
     isError,
     isLoading,
     error,
-  } = useGetAllProductsQuery();
+  } = useGetAllProductsQuery({page, limit, sort});
   const { products } = allProducts?.data || {};
 
   const homeProducts = products?.filter(

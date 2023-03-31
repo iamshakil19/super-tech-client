@@ -3,8 +3,8 @@ import { apiSlice } from "../api/apiSlice";
 export const userApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllUser: builder.query({
-      query: () => ({
-        url: `/api/v1/user`,
+      query: (queryString) => ({
+        url: `/api/v1/user?${queryString}`,
       }),
     }),
     updateUser: builder.mutation({

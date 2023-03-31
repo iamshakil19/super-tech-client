@@ -215,11 +215,6 @@ export const adminSidebarMenus = [
     icon: FaUsers,
   },
   {
-    name: "admin",
-    path: "/dashboard/admin",
-    icon: MdOutlineAdminPanelSettings,
-  },
-  {
     name: "settings",
     path: "/dashboard/settings",
     icon: AiOutlineSetting,
@@ -230,7 +225,7 @@ export const adminSidebarMenus = [
     path: "/",
     icon: AiOutlineHome,
     margin: true,
-  }
+  },
 ];
 
 export const forAllCollectionFilterData = [

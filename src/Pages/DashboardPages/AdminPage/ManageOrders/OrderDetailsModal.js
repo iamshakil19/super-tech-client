@@ -8,7 +8,6 @@ import numberWithComma from "../../../../Utils/numberWithComa";
 const OrderDetailsModal = () => {
   const dispatch = useDispatch();
   const { orderForDetails } = useSelector((state) => state.orders);
-  console.log(orderForDetails);
   const {
     area,
     billingAddress,

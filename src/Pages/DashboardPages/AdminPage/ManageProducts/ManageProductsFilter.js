@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  handleProductCategory,
+  handleProductLimit,
+  handleProductSort,
+  handleProductSubCategory,
+} from "../../../../features/products/productsSlice";
 import { categories, subCategories } from "../../../../Utils/LocalData";
 
 const ManageProductsFilter = () => {
+  const dispatch = useDispatch();
+  const { limit, sort, category, subCategory } = useSelector(
+    (state) => state.productsFilter
+  );
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [limit, setLimit] = useState(10);
-  const [sortBy, setSortby] = useState("");
-  const [filter, setFilter] = useState("");
 
   const subCategoryFilter = subCategories?.filter(
     (subCategory) =>
       Number(subCategory.id) === Number(selectedCategory.split(",")[0])
   );
+  const handleCategory = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  useEffect(() => {
+    if (selectedCategory) {
+      dispatch(handleProductCategory(selectedCategory.split(",")[1]));
+    } else {
+      dispatch(handleProductCategory(""));
+    }
+  }, [dispatch, selectedCategory]);
 
   return (
     <div className="my-5 sm:flex justify-between items-center gap-3 poppins">
@@ -18,15 +37,11 @@ const ManageProductsFilter = () => {
         <div className=" mb-5 sm:mb-0 flex items-center">
           <p className="hidden xl:block mr-2">Category :</p>
           <select
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            defaultValue={filter}
+            onChange={handleCategory}
+            defaultValue={category}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 xl:w-40 border-slate-300 capitalize"
           >
-            <option
-              selected
-              className="font-medium text-md capitalize"
-              value=""
-            >
+            <option className="font-medium text-md capitalize" value="">
               Default
             </option>
             {categories.map((category) => (
@@ -42,16 +57,16 @@ const ManageProductsFilter = () => {
         <div className=" mb-5 sm:mb-0 flex items-center">
           <p className="hidden xl:block mr-2">Sub Category :</p>
           <select
-            onChange={(e) => setFilter(e.target.value)}
-            defaultValue={filter}
+            onChange={(e) => dispatch(handleProductSubCategory(e.target.value))}
+            defaultValue={subCategory}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 xl:w-40 border-slate-300"
           >
-            <option selected className="font-medium text-md" value="">
+            <option className="font-medium text-md" value="">
               Default
             </option>
             {subCategoryFilter.map((subCategory) => (
               <option
-                value={[subCategory.id, subCategory.value]}
+                value={subCategory.value}
                 className="capitalize font-medium text-md"
               >
                 {subCategory.name}
@@ -64,34 +79,40 @@ const ManageProductsFilter = () => {
         <div className="sm:ml-5 sm:mt-0 flex items-center">
           <p className="hidden xl:block mr-2">Sort By :</p>
           <select
-            onChange={(e) => setSortby(e.target.value)}
-            defaultValue={sortBy}
+            onChange={(e) => dispatch(handleProductSort(e.target.value))}
+            defaultValue={sort}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 xl:w-40 border-slate-300"
           >
-            <option selected className="font-medium text-md" value="">
+            <option selected className="font-medium text-md" value="-createdAt">
               Default
             </option>
-            <option className=" font-medium text-md" value="dateOldToNew">
+            <option className=" font-medium text-md" value="createdAt">
               Date (Old → New)
             </option>
-            <option className=" font-medium text-md" value="priceHighToLow">
-              Price (High → Low)
-            </option>
-            <option className=" font-medium text-md" value="priceLowToHigh">
+            <option className=" font-medium text-md" value="price">
               Price (Low → High)
             </option>
-            <option className=" font-medium text-md" value="quantityHighToLow">
-              Quantity (High → Low)
+            <option className=" font-medium text-md" value="-price">
+              Price (High → Low)
             </option>
-            <option className=" font-medium text-md" value="quantityLowToHigh">
-              Quantity (Low → High)
+            <option className=" font-medium text-md" value="name">
+              Alphabetically (A → Z)
+            </option>
+            <option className=" font-medium text-md" value="-name">
+              Alphabetically (Z → A)
+            </option>
+            <option className=" font-medium text-md" value="views">
+              Views (Low → High)
+            </option>
+            <option className=" font-medium text-md" value="-views">
+              Views (High → Low)
             </option>
           </select>
         </div>
         <div className="flex items-center">
           <p className="hidden xl:block mr-2">Show :</p>
           <select
-            onChange={(e) => setLimit(e.target.value)}
+            onChange={(e) => dispatch(handleProductLimit(e.target.value))}
             defaultValue={limit}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 xl:w-40 border-slate-300"
           >

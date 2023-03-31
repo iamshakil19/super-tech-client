@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetAllOrderQuery } from "../../../../features/orders/ordersApi";
+import { handlePagination } from "../../../../features/orders/ordersSlice";
 import OrderTableRow from "./OrderTableRow";
 const OrderTable = () => {
-  const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
-  const { orders } = allOrders?.data || {};
+  const dispatch = useDispatch();
+  const { orderFilter } = useSelector((state) => state.orders);
+  const { page, limit, sort, status } = orderFilter;
+  let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+  if(status){
+    queryString += `&status=${status}`;
+  }
+  const {
+    data: allOrders,
+    isError,
+    isLoading,
+    error,
+  } = useGetAllOrderQuery(queryString);
+  const { orders, pageCount } = allOrders?.data || {};
+  console.log(allOrders);
+
+  const handlePageClick = (event) => {
+    dispatch(handlePagination(event.selected + 1));
+  };
   return (
     <div>
-      <div class="overflow-x-auto z-10  sm:rounded-lg poppins pb-36">
+      <div class="overflow-x-auto z-10  sm:rounded-lg poppins mb-10">
         <table class="w-full text-left">
           <thead class="text-sm text-white uppercase bg-slate-900">
             <tr>
@@ -31,6 +51,21 @@ const OrderTable = () => {
           </tbody>
         </table>
       </div>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        containerClassName="flex justify-end gap-2"
+        pageLinkClassName="py-1.5 px-4 font-medium hover:bg-slate-800 hover:text-white"
+        previousLinkClassName="py-1.5 px-4 font-medium hover:bg-slate-800 bg-slate-300 hover:text-white"
+        nextLinkClassName="py-1.5 px-4 font-medium hover:bg-slate-800  bg-slate-300 hover:text-white"
+        activeLinkClassName="bg-slate-800 text-white"
+      />
     </div>
   );
 };

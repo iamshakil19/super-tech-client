@@ -8,13 +8,15 @@ import { useGetAllProductsQuery } from "../../../../features/products/productsAp
 import { useGetAllUserQuery } from "../../../../features/user/usersApi";
 import { useGetAllOrderQuery } from "../../../../features/orders/ordersApi";
 import numberWithComma from "../../../../Utils/numberWithComa";
+import { useSelector } from "react-redux";
 const TotalCount = () => {
+  const queryString = "";
   const {
     data: allProducts,
     isError,
     isLoading,
     error,
-  } = useGetAllProductsQuery();
+  } = useGetAllProductsQuery(queryString);
   const { totalProduct } = allProducts?.data || {};
 
   const {
@@ -22,7 +24,7 @@ const TotalCount = () => {
     isError: isUserError,
     isLoading: userLoading,
     error: userError,
-  } = useGetAllUserQuery();
+  } = useGetAllUserQuery(queryString);
   const { totalUser: totalUserCount } = allUsers?.data || {};
 
   const {
@@ -30,7 +32,7 @@ const TotalCount = () => {
     isError: isOrderError,
     isLoading: orderLoading,
     error: orderError,
-  } = useGetAllOrderQuery();
+  } = useGetAllOrderQuery(queryString);
   const { totalOrders: totalOrderCount } = allOrders?.data || {};
   const completedOrder = allOrders?.data?.orders?.filter(
     (order) => order.status === "completed"

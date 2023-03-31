@@ -20,7 +20,8 @@ ChartJS.register(
   Legend
 );
 const BarChart = () => {
-  const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
+  const queryString = ""
+  const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery(queryString);
   const { orders } = allOrders?.data || {};
 
   const completedOrder = orders?.filter(

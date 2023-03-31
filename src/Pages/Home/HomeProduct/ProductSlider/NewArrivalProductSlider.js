@@ -26,12 +26,13 @@ const responsive = {
 };
 
 const NewArrivalProductSlider = () => {
+  const queryString =  `page=1&limit=10&sort=-createdAt`
   const {
     data: allProducts,
     isError,
     isLoading,
     error,
-  } = useGetAllProductsQuery();
+  } = useGetAllProductsQuery(queryString);
   const { products } = allProducts?.data || {};
 
   let content = null;

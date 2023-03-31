@@ -2,68 +2,13 @@ import React from "react";
 import { TbActivityHeartbeat } from "react-icons/tb";
 import { useGetAllOrderQuery } from "../../../../features/orders/ordersApi";
 const LatestOrders = () => {
-  const orderData = [
-    {
-      _id: "df44545df45455",
-      name: "Samim Ahmed",
-      number: "01974354343",
-      price: 344,
-      status: "pending",
-      date: "",
-    },
-    {
-      _id: "df44545dsfds455",
-      name: "Tombel",
-      number: "01974334343",
-      price: 5676,
-      status: "cancelled",
-      date: "",
-    },
-    {
-      _id: "df44545df45455",
-      name: "Hasan Islam",
-      number: "01974354343",
-      price: 37844,
-      status: "delivered",
-      date: "",
-    },
-    {
-      _id: "df44545df45455",
-      name: "Samim Ahmed",
-      number: "01974354343",
-      price: 344,
-      status: "delivered",
-      date: "",
-    },
-    {
-      _id: "df44545df45455",
-      name: "Samim Ahmed",
-      number: "01974354343",
-      price: 344,
-      status: "pending",
-      date: "",
-    },
-    {
-      _id: "df44545df45455",
-      name: "Samim Ahmed",
-      number: "01974354343",
-      price: 344,
-      status: "cancelled",
-      date: "",
-    },
-    {
-      _id: "df44545df45455",
-      name: "Samim Ahmed",
-      number: "01974354343",
-      price: 344,
-      status: "pending",
-      date: "",
-    },
-  ];
-
-  const newLatestOrders = orderData.slice(0, 5);
-
-  const { data: allOrders, isError, isLoading, error } = useGetAllOrderQuery();
+  const queryString = `page=1&limit=5&sort=-createdAt`;
+  const {
+    data: allOrders,
+    isError,
+    isLoading,
+    error,
+  } = useGetAllOrderQuery(queryString);
   const { orders } = allOrders?.data || {};
   return (
     <div>

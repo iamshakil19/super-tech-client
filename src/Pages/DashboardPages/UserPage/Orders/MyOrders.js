@@ -5,206 +5,8 @@ import Loading from "../../../Shared/Loading/Loading";
 import emptyOrderImg from "../../../../Assets/Others/emptyOrder.gif";
 import MyOrdersRow from "./MyOrdersRow";
 import { useSelector } from "react-redux";
-import OrderDetailsModal from "../../AdminPage/ManageOrders/OrderDetailsModal";
-
-const myOrdersData = [
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-  {
-    name: "Shakil Ahmed",
-    number: "01877018851",
-    date: "2023-2-25",
-    productName: "high back chair with head rest and something",
-    city: "Dhaka",
-    area: "Mirpur",
-    streetAddress:
-      "Mirpur 13, Block B, Road 9, House 13, Floor 2, Front  Side dffd dfdf dfdf dfdf dfdf",
-    quantity: 6,
-    status: "pending",
-  },
-];
 
 const MyOrders = () => {
-  const [limit, setLimit] = useState(10);
-
   const { user } = useSelector((state) => state.auth);
   const { email } = user || {};
 
@@ -216,7 +18,7 @@ const MyOrders = () => {
   } = useGetOrderByEmailQuery(email);
 
   const orders = ordersData?.data || [];
-  console.log(orders);
+
   let content = null;
 
   if (isLoading) {
@@ -236,36 +38,9 @@ const MyOrders = () => {
     );
   } else if (!isLoading && !isError && orders?.length > 0) {
     content = (
-      <div className="bg-[#F2F3F8] p-3">
+      <div className="bg-[#F2F3F8] p-3 pb-10">
         <h2 className="text-xl font-serif font-semibold my-5">All Orders</h2>
-        <div className="my-5 sm:flex">
-          <div className="flex items-center">
-            <p className="mr-2">Show :</p>
-            <select
-              onChange={(e) => setLimit(e.target.value)}
-              defaultValue={limit}
-              className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
-            >
-              <option selected className="font-medium" value="10">
-                10
-              </option>
-              <option className="font-medium" value="15">
-                15
-              </option>
-              <option className="font-medium" value="25">
-                25
-              </option>
-              <option className="font-medium" value="50">
-                50
-              </option>
-              <option className="font-medium" value="100">
-                100
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <div class="overflow-x-auto z-10 shadow-lg sm:rounded-lg poppins pb-20">
+        <div class="overflow-x-auto z-10 sm:rounded-lg poppins mb-10">
           <table class="w-full text-left">
             <thead class="text-sm text-white uppercase bg-slate-900">
               <tr>
@@ -288,7 +63,6 @@ const MyOrders = () => {
             </tbody>
           </table>
         </div>
-        <OrderDetailsModal />
       </div>
     );
   }

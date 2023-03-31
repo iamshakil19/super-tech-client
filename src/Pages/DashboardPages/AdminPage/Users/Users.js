@@ -12,9 +12,14 @@ const Users = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { data: allUsers, isError, isLoading, error } = useGetAllUserQuery();
+  const queryString = ""
+  const {
+    data: allUsers,
+    isError,
+    isLoading,
+    error,
+  } = useGetAllUserQuery(queryString);
   const { users } = allUsers?.data || {};
-  console.log(allUsers);
 
   let content = null;
 
