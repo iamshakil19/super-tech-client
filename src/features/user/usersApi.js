@@ -1,4 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
+import { userUpdate } from "../auth/authSlice";
 
 export const userApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,6 +14,18 @@ export const userApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+
+          const localObj = JSON.parse(localStorage.getItem("auth"));
+          localObj.user = result?.data?.data?.updatedUser;
+          localStorage.setItem("auth", JSON.stringify(localObj));
+          dispatch(userUpdate(result?.data?.data?.updatedUser));
+        } catch (error) {
+          // nothing
+        }
+      },
     }),
     updateAvatar: builder.mutation({
       query: ({ id, formData }) => ({
@@ -20,6 +33,18 @@ export const userApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: formData,
       }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+
+          const localObj = JSON.parse(localStorage.getItem("auth"));
+          localObj.user = result?.data?.data?.updatedUser;
+          localStorage.setItem("auth", JSON.stringify(localObj));
+          dispatch(userUpdate(result?.data?.data?.updatedUser));
+        } catch (error) {
+          // nothing
+        }
+      },
     }),
     updateUserRole: builder.mutation({
       query: ({ id, role }) => ({
@@ -27,7 +52,12 @@ export const userApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: role,
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        const { page, limit, sort, role } = getState().users;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (role) {
+          queryString += `&role=${role}`;
+        }
         try {
           const result = await queryFulfilled;
           console.log(result.data);
@@ -35,7 +65,7 @@ export const userApi = apiSlice.injectEndpoints({
             dispatch(
               apiSlice.util.updateQueryData(
                 "getAllUser",
-                undefined,
+                queryString,
                 (draft) => {
                   const updatedUser = draft.data.users.find(
                     (item) => item._id === arg.id
@@ -48,7 +78,7 @@ export const userApi = apiSlice.injectEndpoints({
             );
           }
         } catch (err) {
-          console.error("Failed to update task role in cache", err);
+          console.error("Failed to update role in cache", err);
         }
       },
     }),
@@ -58,7 +88,12 @@ export const userApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: access,
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        const { page, limit, sort, role } = getState().users;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (role) {
+          queryString += `&role=${role}`;
+        }
         try {
           console.log(arg, "arg");
           const result = await queryFulfilled;
@@ -67,7 +102,7 @@ export const userApi = apiSlice.injectEndpoints({
             dispatch(
               apiSlice.util.updateQueryData(
                 "getAllUser",
-                undefined,
+                queryString,
                 (draft) => {
                   const updatedUser = draft.data.users.find(
                     (item) => item._id === arg.id
@@ -89,19 +124,28 @@ export const userApi = apiSlice.injectEndpoints({
         url: `/api/v1/user/${id}`,
         method: "DELETE",
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        const { page, limit, sort, role } = getState().users;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (role) {
+          queryString += `&role=${role}`;
+        }
         try {
           await queryFulfilled;
           dispatch(
-            apiSlice.util.updateQueryData("getAllUser", undefined, (draft) => {
-              return {
-                ...draft,
-                data: {
-                  ...draft.data,
-                  users: draft.data.users.filter((item) => item._id !== arg),
-                },
-              };
-            })
+            apiSlice.util.updateQueryData(
+              "getAllUser",
+              queryString,
+              (draft) => {
+                return {
+                  ...draft,
+                  data: {
+                    ...draft.data,
+                    users: draft.data.users.filter((item) => item._id !== arg),
+                  },
+                };
+              }
+            )
           );
         } catch (error) {
           console.log(error);
@@ -117,5 +161,5 @@ export const {
   useGetAllUserQuery,
   useUpdateUserRoleMutation,
   useDeleteUserMutation,
-  useUpdateUserAccessMutation
+  useUpdateUserAccessMutation,
 } = userApi;

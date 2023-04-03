@@ -61,14 +61,15 @@ const Topbar = ({ setSearchOpen }) => {
           </div>
           {isLoggedIn && (
             <>
-              <Link to={"/account"}>
-                <div className="p-1.5 border border-slate-500 rounded-2xl cursor-pointer mx-3">
-                  <span>
-                    <TfiUser className="text-xl text-slate-700" />
-                  </span>
-                </div>
-              </Link>
-
+              {role === "user" && (
+                <Link to={"/account"}>
+                  <div className="p-1.5 border border-slate-500 rounded-2xl cursor-pointer mx-3">
+                    <span>
+                      <TfiUser className="text-xl text-slate-700" />
+                    </span>
+                  </div>
+                </Link>
+              )}
               {(role === "admin" || role === "moderator") && (
                 <Link to={"/dashboard"}>
                   <div className="p-1.5 border border-slate-500 rounded-2xl cursor-pointer ml-3">

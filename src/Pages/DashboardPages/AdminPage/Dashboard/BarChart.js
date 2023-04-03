@@ -29,7 +29,7 @@ const BarChart = () => {
   );
   const time = [
     ...new Set(
-      completedOrder?.map((item) => moment(item.createdAt).format("lll"))
+      completedOrder?.map((item) => moment(item.createdAt).format('ll'))
     ),
   ];
   const amount = [...new Set(completedOrder?.map((item) => item.totalPrice))];

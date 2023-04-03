@@ -41,14 +41,26 @@ export const productsApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        const { page, limit, sort, category, subCategory, productSearchText } =
+          getState().productsFilter;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (category) {
+          queryString += `&category=${category}`;
+        }
+        if (subCategory) {
+          queryString += `&subCategory=${subCategory}`;
+        }
+        if (productSearchText) {
+          queryString += `&productSearchText=${productSearchText}`;
+        }
         try {
           const result = await queryFulfilled;
           if (result?.data?.data?.modifiedCount > 0) {
             dispatch(
               apiSlice.util.updateQueryData(
                 "getAllProducts",
-                undefined,
+                queryString,
                 (draft) => {
                   const updatedProduct = draft.data.products.find(
                     (item) => item._id == arg.id
@@ -79,13 +91,25 @@ export const productsApi = apiSlice.injectEndpoints({
         url: `/api/v1/product/${id}`,
         method: "DELETE",
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        const { page, limit, sort, category, subCategory, productSearchText } =
+          getState().productsFilter;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (category) {
+          queryString += `&category=${category}`;
+        }
+        if (subCategory) {
+          queryString += `&subCategory=${subCategory}`;
+        }
+        if (productSearchText) {
+          queryString += `&productSearchText=${productSearchText}`;
+        }
         try {
           await queryFulfilled;
           dispatch(
             apiSlice.util.updateQueryData(
               "getAllProducts",
-              undefined,
+              queryString,
               (draft) => {
                 console.log(arg);
                 console.log(JSON.parse(JSON.stringify(draft)));

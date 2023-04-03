@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PageTitle from "../../Utils/PageTitle";
 
 const ReturnAndWarrantyPolicy = () => {
   useEffect(() => {
@@ -6,6 +7,9 @@ const ReturnAndWarrantyPolicy = () => {
   }, []);
   return (
     <div className="poppins my-10 px-5">
+      <PageTitle
+        title={"Return & Warranty Policy - Super Tech Furniture & Interior"}
+      ></PageTitle>
       <div className="max-w-3xl mx-auto">
         <h3 className="lg:text-3xl text-xl text-center font-serif font-semibold text-slate-600">
           Return and Warranty Policy

@@ -66,7 +66,7 @@ const OrderTableRow = ({ i, order }) => {
       </td>
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{totalQuantity}</td>
       <td class="px-6 py-4 whitespace-nowrap text-[15px] font-semibold">
-        ৳ {numberWithComma(totalPrice)}
+        ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
       </td>
       <td>
         <select

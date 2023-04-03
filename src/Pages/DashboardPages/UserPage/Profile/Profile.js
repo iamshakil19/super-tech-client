@@ -5,6 +5,7 @@ import ProfileInfo from "./ProfileInfo";
 import ProfileInfoEdit from "./ProfileInfoEdit";
 import { useSelector } from "react-redux";
 import { useUpdateAvatarMutation } from "../../../../features/user/usersApi";
+import { AiOutlineCamera } from "react-icons/ai";
 const Profile = () => {
   const [isEditable, setEditable] = useState(false);
   const { user } = useSelector((state) => state.auth);
@@ -22,7 +23,7 @@ const Profile = () => {
         <div className="bg-slate-100 border border-gray-200 shadow-lg p-8 rounded-2xl max-w-3xl">
           <h2 className=" text-xl mb-5 font-semibold">My Profile</h2>
           <div className="flex flex-wrap gap-3 justify-between">
-            <div className="md:flex w-full">
+            <label htmlFor="avatar" className="relative group">
               <img
                 src={
                   user?.avatar
@@ -32,22 +33,18 @@ const Profile = () => {
                 alt=""
                 className="w-20 h-20 rounded-full object-cover"
               />
-              <input
-                onChange={(e) => handleAvatar(e)}
-                type="file"
-                id="avatar"
-                name="avatar"
-                className="hidden"
-                accept="image/jpg, image/jpeg, image/png"
-              />
-              <label
-                htmlFor="avatar"
-                className="flex items-center cursor-pointer md:mx-5 mt-3 md:mt-0 font-semibold"
-              >
-                {" "}
-                <FiEdit className="text-lg mr-3 md:mx-3" /> Place Image
-              </label>
-            </div>
+              <span className="bg-black/40 w-20 h-20 hidden group-hover:flex items-center justify-center cursor-pointer absolute top-0 rounded-full">
+                <AiOutlineCamera className="text-white" size={27} />{" "}
+              </span>
+            </label>
+            <input
+              onChange={(e) => handleAvatar(e)}
+              type="file"
+              id="avatar"
+              name="avatar"
+              className="hidden"
+              accept="image/jpg, image/jpeg, image/png"
+            />
 
             <div className="flex w-full">
               <button

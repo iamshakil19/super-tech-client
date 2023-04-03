@@ -59,7 +59,7 @@ const TotalCount = () => {
           {orderLoading && <p>Loading...</p>}
           {!isOrderError && !orderLoading && (
             <p className="flex items-center font-semibold ">
-              ৳ {numberWithComma(Number(totalSales))}
+              ৳ {totalSales ? numberWithComma(totalSales) : ""}
             </p>
           )}
         </div>

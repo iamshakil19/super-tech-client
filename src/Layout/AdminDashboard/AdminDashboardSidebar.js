@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { adminSidebarMenus } from "../../Utils/LocalData";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineCamera, AiOutlineCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import localAvatar from "../../Assets/Others/avatar.png";
 import { MdLogout } from "react-icons/md";
 import { userLoggedOut } from "../../features/auth/authSlice";
+import { useUpdateAvatarMutation } from "../../features/user/usersApi";
 const AdminDashboardSidebar = ({ open, setOpen }) => {
   const location = useLocation();
   const { user } = useSelector((state) => state.auth);
@@ -14,6 +15,13 @@ const AdminDashboardSidebar = ({ open, setOpen }) => {
     dispatch(userLoggedOut());
     localStorage.removeItem("auth");
     setOpen(false);
+  };
+
+  const [updateAvatar, { isSuccess }] = useUpdateAvatarMutation();
+  const handleAvatar = (e) => {
+    const formData = new FormData();
+    formData.append("avatar", e.target.files[0]);
+    updateAvatar({ id: user._id, formData });
   };
 
   return (
@@ -34,16 +42,31 @@ const AdminDashboardSidebar = ({ open, setOpen }) => {
       <h2 className="text-xl lg:mt-5 mb-4 font-bold font-serif">
         Super Tech Dashboard
       </h2>
+
       <div className="flex items-center gap-5 pb-3">
         <div className="avatar online">
           <div className="w-11 rounded-full ring ring-green-300">
-            <img
-              src={
-                user?.avatar
-                  ? `${process.env.REACT_APP_IMG_URL + user?.avatar}`
-                  : localAvatar
-              }
-              alt=""
+            <label htmlFor="avatar" className="relative group">
+              <img
+                src={
+                  user?.avatar
+                    ? `${process.env.REACT_APP_IMG_URL + user?.avatar}`
+                    : localAvatar
+                }
+                alt=""
+              />
+              <span className="bg-black/40 w-11 h-11 hidden group-hover:flex items-center justify-center cursor-pointer absolute top-0 left-0 ">
+                <AiOutlineCamera className="text-white" size={27} />{" "}
+              </span>
+            </label>
+
+            <input
+              onChange={(e) => handleAvatar(e)}
+              type="file"
+              id="avatar"
+              name="avatar"
+              className="hidden"
+              accept="image/jpg, image/jpeg, image/png"
             />
           </div>
         </div>
@@ -52,6 +75,7 @@ const AdminDashboardSidebar = ({ open, setOpen }) => {
           <p className="capitalize text-xs font-medium">{user.role}</p>
         </div>
       </div>
+
       <div className="mt-4 flex  flex-col gap-4 relative">
         {adminSidebarMenus?.map((menu, i) => (
           <Link

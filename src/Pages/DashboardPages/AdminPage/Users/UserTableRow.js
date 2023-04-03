@@ -30,15 +30,14 @@ const UserTableRow = ({ user, i }) => {
 
   const handleStatus = (e, id) => {
     const role = { role: e.target.value };
-    console.log(role);
     updateUserRole({ id, role });
   };
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Successfully updated user role");
+      toast.success("Successfully updated user role", { id: "userRole" });
     }
-  }, []);
+  }, [isSuccess]);
 
   return (
     <tr className="bg-white border-b poppins border-gray-300 hover:bg-gray-200">

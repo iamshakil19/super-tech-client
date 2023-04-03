@@ -7,14 +7,15 @@ import Reviews from "../Reviews/Reviews";
 import Companies from "../Companies/Companies";
 import AboutProduct from "../AboutProduct/AboutProduct";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
+import PageTitle from "../../../Utils/PageTitle";
 
 const Home = () => {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div className="">
+      <PageTitle title={"Super Tech Furniture & Interior"}></PageTitle>
       <MainSlider />
       <FeaturedCategory />
       <HomeProduct />

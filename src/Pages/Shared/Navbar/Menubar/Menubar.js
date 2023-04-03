@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../../../Assets/Others/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavLinks from "../NavLinks/NavLinks";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
@@ -12,11 +12,13 @@ import useAuth from "../../../../hooks/useAuth";
 import { useDispatch } from "react-redux";
 import { userLoggedOut } from "../../../../features/auth/authSlice";
 import { useSelector } from "react-redux";
+import { handleProductSearchText } from "../../../../features/products/productsSlice";
 
 const Menubar = ({ setSearchOpen, searchOpen }) => {
   const [open, setOpen] = useState(false);
   const isLoggedIn = useAuth();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logout = () => {
     dispatch(userLoggedOut());
@@ -32,6 +34,14 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
     setOpen(false);
   };
 
+  const [searchText, setSearchText] = useState("");
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    dispatch(handleProductSearchText(searchText));
+    navigate("/search");
+    setSearchOpen(false);
+    setSearchText("");
+  };
   return (
     <div className="bg-white">
       <div className="flex items-center font-medium justify-around">
@@ -50,9 +60,9 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
 
             <div className="pr-2 mt-2 mr-5 z-0">
               <div className="indicator">
-                <span className="cursor-pointer">
+                <Link to="/cart" className="cursor-pointer">
                   <BsCart3 className="text-xl text-slate-700 " />
-                </span>
+                </Link>
                 <span className="badge badge-xs indicator-item bg-red-500 border-0 text-white">
                   {cartTotalQuantity}
                 </span>
@@ -174,16 +184,22 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
         <div
           className={`container flex justify-between items-center py-5 md:py-7 mx-auto`}
         >
-          <div className="flex items-center w-full">
-            <span>
-              <AiOutlineSearch className="text-2xl mx-5 cursor-pointer" />
-            </span>
-            <form action="" className="w-full">
+          <div className=" w-full">
+            <form
+              action=""
+              className="w-full flex items-center"
+              onSubmit={handleSearchSubmit}
+            >
+              <button type="submit">
+                <AiOutlineSearch className="text-2xl mx-5 cursor-pointer" />
+              </button>
               <input
                 autoComplete="off"
                 type="text"
                 placeholder="Search here"
-                name=""
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                name="search"
                 id="searchBar"
                 className=" poppins bg-transparent w-full text-black outline-none text-lg h-10"
               />

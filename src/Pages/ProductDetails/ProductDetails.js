@@ -10,6 +10,8 @@ import Loading from "../Shared/Loading/Loading";
 import Error from "../Shared/Error/Error";
 import { useDispatch } from "react-redux";
 import { addToCart, getTotals } from "../../features/orders/ordersSlice";
+import PageTitle from "../../Utils/PageTitle";
+import numberWithComma from "../../Utils/numberWithComa";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -125,6 +127,7 @@ const ProductDetails = () => {
   if (!isLoading && !isError && product?.data?._id) {
     content = (
       <>
+        <PageTitle title={`${name} - Price in bangladesh`}></PageTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="pb-0 md:p-5 px-5">
             <Carousel
@@ -166,7 +169,7 @@ const ProductDetails = () => {
             <p className="mt-5 flex items-center text-xl">
               Price :
               <span className="font-semibold text-red-500 ml-2">
-                ৳ {totalPrice}
+                ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
               </span>
             </p>
 

@@ -34,6 +34,8 @@ import RequireAdmin from "../../Utils/RequireAdmin/RequireAdmin";
 import UpdateProduct from "../../Pages/DashboardPages/AdminPage/ManageProducts/UpdateProduct";
 import TermsOfService from "../../Pages/TermsOfService/TermsOfService";
 import ReturnAndWarrantyPolicy from "../../Pages/ReturnAndWarrantyPolicy/ReturnAndWarrantyPolicy";
+import PrivacyPolicy from "../../Pages/PrivacyPolicy/PrivacyPolicy";
+import LicenseAndCertificates from "../../Pages/LicenseAndCertificates/LicenseAndCertificates";
 
 const routes = createBrowserRouter([
   {
@@ -88,15 +90,23 @@ const routes = createBrowserRouter([
         path: "/return-warranty-policy",
         element: <ReturnAndWarrantyPolicy />,
       },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/license-certificates",
+        element: <LicenseAndCertificates />,
+      },
     ],
   },
   {
     path: "/account",
     element: (
       <PrivateRoute>
-        {/* <NotForAdmin> */}
-        <UserDashboardLayout />
-        {/* </NotForAdmin> */}
+        <NotForAdmin>
+          <UserDashboardLayout />
+        </NotForAdmin>
       </PrivateRoute>
     ),
     children: [

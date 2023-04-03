@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
 import { BsEyeSlash } from "react-icons/bs";
 import { useSignUpMutation } from "../../../features/auth/authApi";
+import PageTitle from "../../../Utils/PageTitle";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ const SignUp = () => {
   };
   return (
     <div className="container mx-auto pt-10 px-5">
+      <PageTitle title={"Signup - Super Tech Furniture & Interior"}></PageTitle>
       <h2 className="text-4xl font-bold text-slate-700 poppins text-center">
         Sign Up
       </h2>

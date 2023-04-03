@@ -3,7 +3,11 @@ import { toast } from "react-hot-toast";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { getTotals, handleShippingMethod } from "../../../features/orders/ordersSlice";
+import {
+  getTotals,
+  handleShippingMethod,
+} from "../../../features/orders/ordersSlice";
+import PageTitle from "../../../Utils/PageTitle";
 
 const Shipping = () => {
   const {
@@ -64,11 +68,14 @@ const Shipping = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleShippingMethod({ shippingCost, shippingMethod }));
-    dispatch(getTotals())
+    dispatch(getTotals());
     navigate("/checkouts/payment");
   };
   return (
     <div className="my-5 lg:my-10 poppins">
+      <PageTitle
+        title={"Shipping - Super Tech Furniture & Interior"}
+      ></PageTitle>
       <div className="border border-gray-300 rounded-md p-3 text-[15px]">
         <section className="flex justify-between">
           <div className="sm:flex gap-7 lg:gap-7">

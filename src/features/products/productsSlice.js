@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  productSearchText: "",
   page: 1,
   sort: "-createdAt",
   limit: 10,
@@ -81,6 +82,9 @@ const productsSlice = createSlice({
     handleInteriorCollectionPageCategoryFilter: (state, action) => {
       state.interiorCollectionPageCategoryFilter = action.payload;
     },
+    handleProductSearchText: (state, action) => {
+      state.productSearchText = action.payload;
+    },
   },
 });
 
@@ -103,5 +107,6 @@ export const {
   handleWorkStationCollectionPageCategoryFilter,
   handleGarmentsCollectionPageCategoryFilter,
   handleInteriorCollectionPageCategoryFilter,
+  handleProductSearchText,
 } = productsSlice.actions;
 export default productsSlice.reducer;

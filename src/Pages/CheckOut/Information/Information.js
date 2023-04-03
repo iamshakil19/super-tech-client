@@ -7,11 +7,12 @@ import { RiArrowLeftSLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { handleContactInformation } from "../../../features/orders/ordersSlice";
+import PageTitle from "../../../Utils/PageTitle";
 const Information = () => {
   const [isSaveInfo, setSaveInfo] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {user} = useSelector(state => state.auth)
+  const { user } = useSelector((state) => state.auth);
   const { email } = user || {};
 
   const {
@@ -62,6 +63,9 @@ const Information = () => {
   }, []);
   return (
     <div className="my-5 poppins">
+      <PageTitle
+        title={"Contact Information - Super Tech Furniture & Interior"}
+      ></PageTitle>
       <h2 className="font-semibold mb-5 text-lg">Contact Information</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="">

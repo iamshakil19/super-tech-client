@@ -7,10 +7,16 @@ import UserTableRow from "./UserTableRow";
 
 const UserTable = () => {
   const dispatch = useDispatch();
-  const { page, limit, sort, role } = useSelector((state) => state.users);
+  const { page, limit, sort, role, userSearchText } = useSelector(
+    (state) => state.users
+  );
+  console.log(userSearchText);
   let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
   if (role) {
     queryString += `&role=${role}`;
+  }
+  if (userSearchText) {
+    queryString += `&userSearchText=${userSearchText}`;
   }
   const {
     data: allUsers,
@@ -18,6 +24,7 @@ const UserTable = () => {
     isLoading,
     error,
   } = useGetAllUserQuery(queryString);
+
   const { users, pageCount } = allUsers?.data || {};
 
   const handlePageClick = (event) => {

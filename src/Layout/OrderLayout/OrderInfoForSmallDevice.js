@@ -43,9 +43,13 @@ const OrderInfoForSmallDevice = () => {
           />
         </div>
         {location.pathname !== "/checkouts/thank-you" ? (
-          <p className="font-semibold">৳ {numberWithComma(total)}</p>
+          <p className="font-semibold">
+            ৳ {total ? numberWithComma(total) : ""}
+          </p>
         ) : (
-          <p className="font-semibold">৳ {numberWithComma(totalPrice)}</p>
+          <p className="font-semibold">
+            ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
+          </p>
         )}
       </div>
       {location.pathname !== "/checkouts/thank-you" ? (
@@ -75,7 +79,7 @@ const OrderInfoForSmallDevice = () => {
             <div className="flex items-center justify-between mb-3">
               <p>Subtotal</p>
               <p className="font-semibold">
-                ৳ {numberWithComma(cartTotalAmount)}
+                ৳ {cartTotalAmount ? numberWithComma(cartTotalAmount) : ""}
               </p>
             </div>
             <div className="flex items-center justify-between">
@@ -86,7 +90,9 @@ const OrderInfoForSmallDevice = () => {
           <div className="border-b border-gray-300 my-5"></div>
           <div className="flex items-center justify-between mb-3">
             <p className="text-lg font-semibold">Total</p>
-            <p className="text-lg font-bold">৳ {numberWithComma(total)}</p>
+            <p className="text-lg font-bold">
+              ৳ {total ? numberWithComma(total) : ""}
+            </p>
           </div>
         </div>
       ) : (
@@ -115,7 +121,9 @@ const OrderInfoForSmallDevice = () => {
           <div className="text-[15px]">
             <div className="flex items-center justify-between mb-3">
               <p>Subtotal</p>
-              <p className="font-semibold">৳ {numberWithComma(subTotal)}</p>
+              <p className="font-semibold">
+                ৳ {subTotal ? numberWithComma(subTotal) : ""}
+              </p>
             </div>
             <div className="flex items-center justify-between">
               <p>Shipping</p>
@@ -125,7 +133,9 @@ const OrderInfoForSmallDevice = () => {
           <div className="border-b border-gray-300 my-5"></div>
           <div className="flex items-center justify-between mb-3">
             <p className="text-lg font-semibold">Total</p>
-            <p className="text-lg font-bold">৳ {numberWithComma(totalPrice)}</p>
+            <p className="text-lg font-bold">
+              ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
+            </p>
           </div>
         </div>
       )}

@@ -8,6 +8,7 @@ const initialState = {
   sort: "-createdAt",
   role: "",
   userSearchText: "",
+  queryString: "",
 };
 
 const usersSlice = createSlice({
@@ -33,6 +34,9 @@ const usersSlice = createSlice({
     handleUserSearchText: (state, action) => {
       state.userSearchText = action.payload;
     },
+    updateQueryString: (state, action) => {
+      state.queryString = action.payload;
+    },
   },
 });
 
@@ -43,5 +47,6 @@ export const {
   handleUserSort,
   handleUserRole,
   handleUserSearchText,
+  updateQueryString,
 } = usersSlice.actions;
 export default usersSlice.reducer;

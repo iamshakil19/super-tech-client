@@ -30,12 +30,14 @@ const OrderCard = ({ cartProduct }) => {
       <div>
         <p className="font-semibold whitespace-nowrap text-sm lg:text-base">
           ৳{" "}
-          {numberWithComma(
-            (cartProduct?.price +
-              cartProduct?.colorCost +
-              cartProduct?.sizeCost) *
-              cartProduct?.quantity
-          )}
+          {cartProduct?.price && cartProduct?.quantity
+            ? numberWithComma(
+                (cartProduct?.price +
+                  cartProduct?.colorCost +
+                  cartProduct?.sizeCost) *
+                  cartProduct?.quantity
+              )
+            : ""}
         </p>
       </div>
     </div>

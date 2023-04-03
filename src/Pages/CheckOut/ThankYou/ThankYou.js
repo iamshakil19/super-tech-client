@@ -6,16 +6,14 @@ import bkashLogo from "../../../Assets/Others/bkash.png";
 import nagadLogo from "../../../Assets/Others/nagad.png";
 import qrCode from "../../../Assets/Others/qr-code.png";
 import numberWithComma from "../../../Utils/numberWithComa";
+import PageTitle from "../../../Utils/PageTitle";
 const ThankYou = () => {
-  console.log("yes");
-  const location = useLocation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
   const { orderResponse } = useSelector((state) => state?.orders);
 
   useEffect(() => {
-    if (!orderResponse._id) {
-      console.log("yes its in");
+    if (orderResponse === null) {
       navigate("/");
     }
   }, [navigate, orderResponse]);
@@ -38,6 +36,9 @@ const ThankYou = () => {
   }, []);
   return (
     <div className="mt-5 poppins">
+      <PageTitle
+        title={"Thank You - Super Tech Furniture & Interior"}
+      ></PageTitle>
       <div className="border border-gray-300 rounded-md p-3">
         <AiOutlineCheckCircle className="mx-auto text-green-600" size={70} />
         <p className="text-center font-medium text-lg mt-3 font-sans">
@@ -185,7 +186,7 @@ const ThankYou = () => {
                 "Bank Transfer - BEFTN/NPSB"}{" "}
               -
               <span className="text-sm font-semibold whitespace-nowrap">
-                ৳ {numberWithComma(totalPrice)}
+                ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
               </span>
             </p>
           </div>

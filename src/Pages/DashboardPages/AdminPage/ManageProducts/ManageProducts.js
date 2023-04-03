@@ -9,7 +9,7 @@ import ManageProductsHeaders from "./ManageProductsHeaders";
 import ProductDeleteModal from "./ProductDeleteModal";
 
 const ManageProducts = () => {
-  const { page, limit, sort, category, subCategory } = useSelector(
+  const { page, limit, sort, category, subCategory, productSearchText } = useSelector(
     (state) => state.productsFilter
   );
   const dispatch = useDispatch();
@@ -19,6 +19,9 @@ const ManageProducts = () => {
   }
   if (subCategory) {
     queryString += `&subCategory=${subCategory}`;
+  }
+  if (productSearchText) {
+    queryString += `&productSearchText=${productSearchText}`;
   }
   const {
     data: allProducts,

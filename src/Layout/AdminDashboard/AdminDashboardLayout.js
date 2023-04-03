@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { Outlet } from "react-router-dom";
 import AdminDashboardSidebar from "./AdminDashboardSidebar";
+import PageTitle from "../../Utils/PageTitle";
 
 const AdminDashboardLayout = () => {
   const [open, setOpen] = useState(true);
   return (
     <div>
+      <PageTitle
+        title={"Dashboard - Super Tech Furniture & Interior"}
+      ></PageTitle>
       <section className="lg:flex gap-5 bg-[#F2F3F8]">
         <div>
           <AdminDashboardSidebar open={open} setOpen={setOpen} />

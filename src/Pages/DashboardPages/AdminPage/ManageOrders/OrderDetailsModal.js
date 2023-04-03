@@ -170,7 +170,7 @@ const OrderDetailsModal = () => {
                 <p className="text-sm leading-relaxed">
                   Subtotal :{" "}
                   <span className="font-medium">
-                    ৳ {numberWithComma(subTotal)}
+                    ৳ {subTotal ? numberWithComma(subTotal) : ""}
                   </span>
                 </p>
                 <p className="text-sm leading-relaxed">
@@ -180,7 +180,7 @@ const OrderDetailsModal = () => {
                 <p className="border-b border-gray-300 max-w-xs my-2"></p>
                 <p className="text-sm leading-relaxed font-semibold">
                   Total :{" "}
-                  <span className="">৳ {numberWithComma(totalPrice)}</span>
+                  <span className="">৳ {totalPrice ? numberWithComma(totalPrice) : ""}</span>
                 </p>
                 <p className="text-sm leading-relaxed">
                   Payment Method :{" "}
@@ -213,7 +213,7 @@ const OrderDetailsModal = () => {
                   <p className="text-sm leading-relaxed">
                     Price : {""} ৳{" "}
                     <span className="font-medium">
-                      {numberWithComma(product.price)}
+                      {product.price ? numberWithComma(product.price) : ""}
                     </span>
                   </p>
                 </div>

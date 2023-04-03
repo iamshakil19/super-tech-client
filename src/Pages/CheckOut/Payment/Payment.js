@@ -11,6 +11,7 @@ import {
 } from "../../../features/orders/ordersSlice";
 import BillingSection from "./BillingSection";
 import PaymentSection from "./PaymentSection";
+import PageTitle from "../../../Utils/PageTitle";
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ const Payment = () => {
   const [createOrder, { data, isSuccess, isError, isLoading, error }] =
     useCreateOrderMutation();
   const handleCompleteOrder = () => {
-    const orderId = Math.floor(10000000 + Math.random() * 90000000);
+    const orderId = Math.floor(10000000 + Math.random() * 90000000).toString();
     dispatch(createOrderId(orderId));
     createOrder({
       email,
@@ -103,6 +104,9 @@ const Payment = () => {
   }, []);
   return (
     <div className="my-5 lg:my-10 poppins">
+      <PageTitle
+        title={"Payment - Super Tech Furniture & Interior"}
+      ></PageTitle>
       <div className="border border-gray-300 rounded-md p-3 text-[15px]">
         <section className="flex justify-between">
           <div className="sm:flex gap-7 lg:gap-7">

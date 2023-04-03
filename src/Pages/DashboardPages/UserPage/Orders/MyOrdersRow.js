@@ -47,7 +47,7 @@ const MyOrdersRow = ({ myOrder, i }) => {
       </td>
       <td class="px-6 py-4 whitespace-nowrap text-[15px]">{totalQuantity}</td>
       <td class="px-6 py-4 whitespace-nowrap text-[15px] font-medium">
-        ৳ {numberWithComma(totalPrice)}
+        ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
       </td>
       <td
         class={`px-6 py-4 whitespace-nowrap capitalize w-24 text-center text-[15px] `}

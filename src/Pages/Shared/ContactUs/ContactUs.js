@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import aboutUsImg from "../../../Assets/Others/aboutUs-top.jpg";
 import { MdCall, MdEmail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
+import PageTitle from "../../../Utils/PageTitle";
 const ContactUs = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div className="relative poppins">
+      <PageTitle
+        title={"Contact Us - Super Tech Furniture & Interior"}
+      ></PageTitle>
       <div
         className="bg-black bg-opacity-75 object-cover bg-cover bg-center h-36 md:h-[300px] lg:h-[400px] bg-no-repeat bg-blend-overlay"
         style={{

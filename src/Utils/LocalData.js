@@ -37,10 +37,6 @@ export const footerLinks = [
       name: "privacy policy",
       path: "/privacy-policy",
     },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
   ],
   [
     {
@@ -51,39 +47,11 @@ export const footerLinks = [
       name: "License & Certificates",
       path: "/license-certificates",
     },
-    {
-      name: "Return & Warranty Policy",
-      path: "/return-warranty-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
   ],
   [
     {
       name: "Contact Us",
       path: "/contact-us",
-    },
-    {
-      name: "License & Certificates",
-      path: "/license-certificates",
-    },
-    {
-      name: "Return & Warranty Policy",
-      path: "/return-warranty-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
-    },
-    {
-      name: "privacy policy",
-      path: "/privacy-policy",
     },
   ],
 ];

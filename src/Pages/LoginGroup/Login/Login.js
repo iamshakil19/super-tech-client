@@ -5,6 +5,7 @@ import { BsEyeSlash } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../../features/auth/authApi";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
+import PageTitle from "../../../Utils/PageTitle";
 
 const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -41,6 +42,7 @@ const Login = () => {
 
   return (
     <div className="container mx-auto mt-10 px-5">
+      <PageTitle title={"Login - Super Tech Furniture & Interior"}></PageTitle>
       <h2 className="text-4xl font-bold text-slate-700 poppins text-center">
         Login
       </h2>

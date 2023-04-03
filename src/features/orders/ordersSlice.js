@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 
 const initialState = {
-  orderResponse: {},
+  orderResponse: null,
   email: "",
   orderId: 0,
   name: "",
@@ -40,7 +40,8 @@ const initialState = {
     page: 1,
     sort: "-createdAt",
     limit: 10,
-    status: ""
+    status: "",
+    orderSearchText: "",
   },
 };
 
@@ -222,6 +223,9 @@ const ordersSlice = createSlice({
     handleFields: (state, action) => {
       state.orderFilter.status = action.payload;
     },
+    handleOrderSearchText: (state, action) => {
+      state.orderFilter.orderSearchText = action.payload;
+    },
   },
 });
 
@@ -244,6 +248,7 @@ export const {
   handlePagination,
   handleLimit,
   handleSort,
-  handleFields
+  handleFields,
+  handleOrderSearchText,
 } = ordersSlice.actions;
 export default ordersSlice.reducer;

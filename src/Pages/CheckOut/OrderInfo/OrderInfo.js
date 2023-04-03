@@ -12,7 +12,7 @@ const OrderInfo = () => {
     shippingCost: shippingCostFromOrderRes,
     cart: cartFromOrderRes,
     totalPrice,
-    subTotal
+    subTotal,
   } = orderResponse || {};
 
   const total = cartTotalAmount + shippingCost;
@@ -51,7 +51,9 @@ const OrderInfo = () => {
       <div>
         <div className="flex items-center justify-between mb-3">
           <p>Subtotal</p>
-          <p className="font-medium">৳ {numberWithComma(cartTotalAmount)}</p>
+          <p className="font-medium">
+            ৳ {cartTotalAmount ? numberWithComma(cartTotalAmount) : ""}
+          </p>
         </div>
         <div className="flex items-center justify-between">
           <p>Shipping</p>
@@ -61,7 +63,9 @@ const OrderInfo = () => {
       <div className="border-b border-gray-300 my-5"></div>
       <div className="flex items-center justify-between mb-3">
         <p className="text-lg font-semibold">Total</p>
-        <p className="text-xl font-bold">৳ {numberWithComma(total)}</p>
+        <p className="text-xl font-bold">
+          ৳ {total ? numberWithComma(total) : ""}
+        </p>
       </div>
     </div>
   ) : (
@@ -94,7 +98,9 @@ const OrderInfo = () => {
       <div>
         <div className="flex items-center justify-between mb-3">
           <p>Subtotal</p>
-          <p className="font-medium">৳ {numberWithComma(subTotal)}</p>
+          <p className="font-medium">
+            ৳ {subTotal ? numberWithComma(subTotal) : ""}
+          </p>
         </div>
         <div className="flex items-center justify-between">
           <p>Shipping</p>
@@ -104,7 +110,9 @@ const OrderInfo = () => {
       <div className="border-b border-gray-300 my-5"></div>
       <div className="flex items-center justify-between mb-3">
         <p className="text-lg font-semibold">Total</p>
-        <p className="text-xl font-bold">৳ {numberWithComma(totalPrice)}</p>
+        <p className="text-xl font-bold">
+          ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
+        </p>
       </div>
     </div>
   );

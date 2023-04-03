@@ -10,6 +10,7 @@ import {
 } from "../../../features/orders/ordersSlice";
 import numberWithComma from "../../../Utils/numberWithComa";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
+import PageTitle from "../../../Utils/PageTitle";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const Cart = () => {
   }, []);
   return (
     <div className="mt-10 poppins container mx-auto px-5">
+      <PageTitle title={"Cart - Super Tech Furniture & Interior"}></PageTitle>
       <h2 className="text-3xl font-bold font-serif text-center mb-5">Cart</h2>
       <p className="text-center hover:underline underline-offset-2 hover:text-blue-500 transition-all duration-200 ease-in-out">
         <Link to="/collections" className="">
@@ -105,7 +107,12 @@ const Cart = () => {
                       </div>
                     </td>
                     <td>
-                      <p>Price : ৳ {numberWithComma(cartProduct.price)}</p>
+                      <p>
+                        Price : ৳{" "}
+                        {cartProduct.price
+                          ? numberWithComma(cartProduct.price)
+                          : ""}
+                      </p>
                       {cartProduct?.colorCost > 0 && (
                         <p>Color Cost : ৳ {cartProduct?.colorCost}</p>
                       )}
@@ -141,12 +148,14 @@ const Cart = () => {
                     </td>
                     <td>
                       ৳{" "}
-                      {numberWithComma(
-                        (cartProduct.price +
-                          cartProduct.colorCost +
-                          cartProduct.sizeCost) *
-                          cartProduct.quantity
-                      )}
+                      {cartProduct.price && cartProduct.quantity
+                        ? numberWithComma(
+                            (cartProduct.price +
+                              cartProduct.colorCost +
+                              cartProduct.sizeCost) *
+                              cartProduct.quantity
+                          )
+                        : ""}
                     </td>
                   </tr>
                 ))}
@@ -199,7 +208,10 @@ const Cart = () => {
                   </div>
                   <div>
                     <p className="text-sm">
-                      Price : ৳ {numberWithComma(cartProduct.price)}
+                      Price : ৳{" "}
+                      {cartProduct.price
+                        ? numberWithComma(cartProduct.price)
+                        : ""}
                     </p>
                     {cartProduct?.colorCost > 0 && (
                       <p className="text-sm">
@@ -239,12 +251,14 @@ const Cart = () => {
                       Total : ৳{" "}
                       <span className="font-medium">
                         {" "}
-                        {numberWithComma(
-                          (cartProduct.price +
-                            cartProduct.colorCost +
-                            cartProduct.sizeCost) *
-                            cartProduct.quantity
-                        )}
+                        {cartProduct.price && cartProduct.quantity
+                          ? numberWithComma(
+                              (cartProduct.price +
+                                cartProduct.colorCost +
+                                cartProduct.sizeCost) *
+                                cartProduct.quantity
+                            )
+                          : ""}
                       </span>
                     </p>
                   </div>
@@ -253,8 +267,8 @@ const Cart = () => {
             ))}
           </section>
 
-          <section className="flex justify-between items-center gap-5 py-3 mt-3">
-            <div>
+          <section className="md:flex justify-between items-center gap-5 py-3 mt-3">
+            <div className="mb-5 md:mb-0">
               <button
                 onClick={handleClearCart}
                 className="border border-black font-medium text-sm py-2 px-4 rounded-md hover:bg-black hover:text-white transition-all duration-300 ease-in-out"
@@ -266,7 +280,7 @@ const Cart = () => {
               <div className="flex items-center justify-between gap-5">
                 <p className="text-lg font-medium">Subtotal</p>
                 <p className="text-lg font-semibold">
-                  ৳ {numberWithComma(cartTotalAmount)}
+                  ৳ {cartTotalAmount ? numberWithComma(cartTotalAmount) : ""}
                 </p>
               </div>
               <p className="text-sm mt-3">

@@ -25,14 +25,19 @@ export const orderApi = apiSlice.injectEndpoints({
         method: "PATCH",
         body: status,
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        const { page, limit, sort, status } = getState().orders.orderFilter;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (status) {
+          queryString += `&status=${status}`;
+        }
         try {
           const result = await queryFulfilled;
           if (result?.data?.data?.modifiedCount > 0) {
             dispatch(
               apiSlice.util.updateQueryData(
                 "getAllOrder",
-                undefined,
+                queryString,
                 (draft) => {
                   console.log(JSON.parse(JSON.stringify(draft)));
                   const updatedOrder = draft.data.orders.find(
@@ -55,19 +60,30 @@ export const orderApi = apiSlice.injectEndpoints({
         url: `/api/v1/order/${id}`,
         method: "DELETE",
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        const { page, limit, sort, status } = getState().orders.orderFilter;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (status) {
+          queryString += `&status=${status}`;
+        }
         try {
           await queryFulfilled;
           dispatch(
-            apiSlice.util.updateQueryData("getAllOrder", undefined, (draft) => {
-              return {
-                ...draft,
-                data: {
-                  ...draft.data,
-                  orders: draft.data.orders.filter((item) => item._id !== arg),
-                },
-              };
-            })
+            apiSlice.util.updateQueryData(
+              "getAllOrder",
+              queryString,
+              (draft) => {
+                return {
+                  ...draft,
+                  data: {
+                    ...draft.data,
+                    orders: draft.data.orders.filter(
+                      (item) => item._id !== arg
+                    ),
+                  },
+                };
+              }
+            )
           );
         } catch (error) {
           console.log(error);

@@ -241,7 +241,7 @@ const ProductFilterSidebar = () => {
   const dispatch = useDispatch();
   const { success, products, pageCount, totalProduct } =
     allProducts?.data || {};
-  console.log(products);
+    
   useEffect(() => {
     if (!isLoading && !isError && products.length > 0) {
       const prices = products?.map((object) => {

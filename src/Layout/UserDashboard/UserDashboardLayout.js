@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import UserDashboardSidebar from "./UserDashboardSidebar";
 import { HiMenuAlt3 } from "react-icons/hi";
+import PageTitle from "../../Utils/PageTitle";
 const UserDashboardLayout = () => {
   const [open, setOpen] = useState(true);
   return (
     <div>
+      <PageTitle title={"Account - Super Tech Furniture & Interior"}></PageTitle>
       <section className="lg:flex gap-3">
         <div className="relative">
           <UserDashboardSidebar setOpen={setOpen} open={open} />

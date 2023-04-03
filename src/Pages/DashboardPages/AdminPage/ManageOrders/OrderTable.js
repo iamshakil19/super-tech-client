@@ -7,10 +7,13 @@ import OrderTableRow from "./OrderTableRow";
 const OrderTable = () => {
   const dispatch = useDispatch();
   const { orderFilter } = useSelector((state) => state.orders);
-  const { page, limit, sort, status } = orderFilter;
+  const { page, limit, sort, status, orderSearchText } = orderFilter;
   let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
-  if(status){
+  if (status) {
     queryString += `&status=${status}`;
+  }
+  if (orderSearchText) {
+    queryString += `&orderSearchText=${orderSearchText}`;
   }
   const {
     data: allOrders,

@@ -23,7 +23,7 @@ const UserDeleteModal = () => {
   return (
     deleteUserModal && (
       <div className="fixed w-full h-full inset-0 z-50 bg-black/70 poppins">
-        <div className="rounded w-full max-w-lg space-y-8 bg-white p-10 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+        <div className="rounded-lg w-full max-w-lg space-y-8 bg-[#F2F3F8] p-10 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
           <div>
             <p className="text-red-500 font-semibold">
               Are you sure you want to delete this user ?

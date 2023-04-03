@@ -44,7 +44,7 @@ const ProfileInfo = ({ user }) => {
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Birthday</h3>
-        <p>{moment(birthday).format("LL")}</p>
+        <p>{birthday ? moment(birthday).format("LL") : ""}</p>
       </div>
       <div className="flex flex-col w-full max-w-xs">
         <h3 className="font-semibold mb-1">Gender</h3>
