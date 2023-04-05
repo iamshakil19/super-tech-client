@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { addToCart, getTotals } from "../../features/orders/ordersSlice";
 import PageTitle from "../../Utils/PageTitle";
 import numberWithComma from "../../Utils/numberWithComa";
-
+import { motion } from "framer-motion";
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -128,7 +128,16 @@ const ProductDetails = () => {
     content = (
       <>
         <PageTitle title={`${name} - Price in bangladesh`}></PageTitle>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 1,
+            delay: 0.4,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+        >
           <div className="pb-0 md:p-5 px-5">
             <Carousel
               autoPlay={true}
@@ -180,6 +189,7 @@ const ProductDetails = () => {
                 <p className="font-semibold text-lg mb-3">Color</p>
                 {colors?.map((color, index) => (
                   <button
+                    key={index}
                     onClick={() => handleColor(color, index)}
                     className={`mr-5 mb-5 capitalize p-1 border-2 md:p-2 px-3 md:px-4 ${
                       isColorSelected === index
@@ -206,6 +216,7 @@ const ProductDetails = () => {
                   >
                     {sizes?.map((size, index) => (
                       <option
+                        key={index}
                         selected={index === 0}
                         className="pt-2"
                         value={size.sizeName}
@@ -263,7 +274,7 @@ const ProductDetails = () => {
             <p className="font-semibold text-lg mb-3">Description</p>
             <p className="text-justify">{description}</p>
           </div>
-        </div>
+        </motion.div>
       </>
     );
   }

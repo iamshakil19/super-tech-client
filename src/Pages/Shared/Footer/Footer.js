@@ -54,7 +54,7 @@ const Footer = () => {
         </div>
         <div className="md:mx-auto">
           {footerLinks?.[0]?.map((link) => (
-            <div>
+            <div key={link.path}>
               <Link
                 to={link.path}
                 className="text-white poppins hover:underline  inline-block mb-3 capitalize"
@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
         <div className="md:mx-auto">
           {footerLinks?.[1]?.map((link) => (
-            <div>
+            <div key={link.path}>
               <Link
                 to={link.path}
                 className="text-white poppins hover:underline  inline-block mb-3  capitalize"
@@ -82,7 +82,7 @@ const Footer = () => {
         </div>
         <div className="md:mx-auto">
           {footerLinks?.[2]?.map((link) => (
-            <div>
+            <div key={link.path}>
               <Link
                 to={link.path}
                 className="text-white poppins hover:underline  inline-block mb-3 capitalize"

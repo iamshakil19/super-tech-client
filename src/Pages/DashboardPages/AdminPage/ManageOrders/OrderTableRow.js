@@ -43,9 +43,9 @@ const OrderTableRow = ({ i, order }) => {
   }, [isSuccess]);
 
   return (
-    <tr class="bg-white border-b poppins border-gray-300 hover:bg-gray-200">
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{i}</td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+    <tr className="bg-white border-b poppins border-gray-300 hover:bg-gray-200">
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">{i}</td>
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
         <button
           onClick={handleDetails}
           className="bg-slate-800 text-white py-0.5 px-3 rounded-full text-sm font-medium"
@@ -53,19 +53,23 @@ const OrderTableRow = ({ i, order }) => {
           Details
         </button>
       </td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{orderId}</td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">{name}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{phoneNumber}</td>
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">{orderId}</td>
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+        {name}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">{phoneNumber}</td>
 
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">
         {moment(createdAt).format("lll")}
       </td>
 
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
         {division}
       </td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{totalQuantity}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px] font-semibold">
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">
+        {totalQuantity}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-[15px] font-semibold">
         ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
       </td>
       <td>
@@ -88,7 +92,7 @@ const OrderTableRow = ({ i, order }) => {
           <option value="canceled">Canceled</option>
         </select>
       </td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
         <button
           onClick={() =>
             dispatch(handleDeleteOrderModal({ isOpen: true, _id: _id }))

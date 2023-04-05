@@ -39,7 +39,6 @@ export const orderApi = apiSlice.injectEndpoints({
                 "getAllOrder",
                 queryString,
                 (draft) => {
-                  console.log(JSON.parse(JSON.stringify(draft)));
                   const updatedOrder = draft.data.orders.find(
                     (item) => item._id === arg.id
                   );

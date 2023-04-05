@@ -8,7 +8,6 @@ const UserDeleteModal = () => {
   const dispatch = useDispatch();
   const { deleteUserModal, deletingId } = useSelector((state) => state.users);
   const [deleteUser, { isSuccess }] = useDeleteUserMutation();
-  console.log(deleteUserModal);
   const dandleDelete = () => {
     deleteUser(deletingId);
   };

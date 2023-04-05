@@ -53,15 +53,17 @@ export const userApi = apiSlice.injectEndpoints({
         body: role,
       }),
       async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
-        const { page, limit, sort, role } = getState().users;
+        const { page, limit, sort, role, userSearchText } = getState().users;
         let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
         if (role) {
           queryString += `&role=${role}`;
         }
+        if (userSearchText) {
+          queryString += `&userSearchText=${userSearchText}`;
+        }
         try {
           const result = await queryFulfilled;
-          console.log(result.data);
-          if (result?.data?.data?.modifiedCount > 0) {
+          if (result?.data?.data?.result?.modifiedCount > 0) {
             dispatch(
               apiSlice.util.updateQueryData(
                 "getAllUser",
@@ -89,16 +91,17 @@ export const userApi = apiSlice.injectEndpoints({
         body: access,
       }),
       async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
-        const { page, limit, sort, role } = getState().users;
+        const { page, limit, sort, role, userSearchText } = getState().users;
         let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
         if (role) {
           queryString += `&role=${role}`;
         }
+        if (userSearchText) {
+          queryString += `&userSearchText=${userSearchText}`;
+        }
         try {
-          console.log(arg, "arg");
           const result = await queryFulfilled;
-          console.log(result);
-          if (result?.data?.data?.modifiedCount > 0) {
+          if (result?.data?.data?.result?.modifiedCount > 0) {
             dispatch(
               apiSlice.util.updateQueryData(
                 "getAllUser",

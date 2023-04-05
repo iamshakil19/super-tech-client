@@ -22,34 +22,39 @@ const OrderTable = () => {
     error,
   } = useGetAllOrderQuery(queryString);
   const { orders, pageCount } = allOrders?.data || {};
-  console.log(allOrders);
 
   const handlePageClick = (event) => {
     dispatch(handlePagination(event.selected + 1));
   };
+
+  const skipIndex = limit * (page - 1);
   return (
     <div>
-      <div class="overflow-x-auto z-10  sm:rounded-lg poppins mb-10">
-        <table class="w-full text-left">
-          <thead class="text-sm text-white uppercase bg-slate-900">
+      <div className="overflow-x-auto z-10  sm:rounded-lg poppins mb-10">
+        <table className="w-full text-left">
+          <thead className="text-sm text-white uppercase bg-slate-900">
             <tr>
-              <th class="px-6 py-4 whitespace-nowrap">SL</th>
-              <th class="px-6 py-4 whitespace-nowrap">Details</th>
-              <th class="px-6 py-4 whitespace-nowrap">Order Id</th>
-              <th class="px-6 py-4 whitespace-nowrap">Name</th>
-              <th class="px-6 py-4 whitespace-nowrap">Number</th>
+              <th className="px-6 py-4 whitespace-nowrap">SL</th>
+              <th className="px-6 py-4 whitespace-nowrap">Details</th>
+              <th className="px-6 py-4 whitespace-nowrap">Order Id</th>
+              <th className="px-6 py-4 whitespace-nowrap">Name</th>
+              <th className="px-6 py-4 whitespace-nowrap">Number</th>
 
-              <th class="px-6 py-4 whitespace-nowrap">Date</th>
-              <th class="px-6 py-4 whitespace-nowrap">City</th>
-              <th class="px-6 py-4 whitespace-nowrap">Quantity</th>
-              <th class="px-6 py-4 whitespace-nowrap">Price</th>
-              <th class="px-6 py-4 whitespace-nowrap">Status</th>
-              <th class="px-6 py-4 whitespace-nowrap">Action</th>
+              <th className="px-6 py-4 whitespace-nowrap">Date</th>
+              <th className="px-6 py-4 whitespace-nowrap">City</th>
+              <th className="px-6 py-4 whitespace-nowrap">Quantity</th>
+              <th className="px-6 py-4 whitespace-nowrap">Price</th>
+              <th className="px-6 py-4 whitespace-nowrap">Status</th>
+              <th className="px-6 py-4 whitespace-nowrap">Action</th>
             </tr>
           </thead>
           <tbody className="">
             {orders?.map((order, i) => (
-              <OrderTableRow order={order} key={i} i={i + 1} />
+              <OrderTableRow
+                order={order}
+                key={order._id}
+                i={i + skipIndex + 1}
+              />
             ))}
           </tbody>
         </table>

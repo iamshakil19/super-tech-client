@@ -9,9 +9,8 @@ import ManageProductsHeaders from "./ManageProductsHeaders";
 import ProductDeleteModal from "./ProductDeleteModal";
 
 const ManageProducts = () => {
-  const { page, limit, sort, category, subCategory, productSearchText } = useSelector(
-    (state) => state.productsFilter
-  );
+  const { page, limit, sort, category, subCategory, productSearchText } =
+    useSelector((state) => state.productsFilter);
   const dispatch = useDispatch();
   let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
   if (category) {

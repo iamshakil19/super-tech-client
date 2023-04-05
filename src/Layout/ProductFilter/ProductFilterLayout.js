@@ -34,7 +34,6 @@ const ProductFilterLayout = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(true);
-  console.log(location.pathname);
   return (
     <div className="">
       <>

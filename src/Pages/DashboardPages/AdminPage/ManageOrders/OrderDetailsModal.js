@@ -45,7 +45,7 @@ const OrderDetailsModal = () => {
                 {status === "pending" && (
                   <svg
                     aria-hidden="true"
-                    class="w-6 h-6 mr-2 text-gray-200 animate-spin dark:text-gray-300 fill-orange-600"
+                    className="w-6 h-6 mr-2 text-gray-200 animate-spin dark:text-gray-300 fill-orange-600"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +180,9 @@ const OrderDetailsModal = () => {
                 <p className="border-b border-gray-300 max-w-xs my-2"></p>
                 <p className="text-sm leading-relaxed font-semibold">
                   Total :{" "}
-                  <span className="">৳ {totalPrice ? numberWithComma(totalPrice) : ""}</span>
+                  <span className="">
+                    ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
+                  </span>
                 </p>
                 <p className="text-sm leading-relaxed">
                   Payment Method :{" "}
@@ -201,7 +203,10 @@ const OrderDetailsModal = () => {
             <h3 className="mb-2 font-semibold">Products</h3>
 
             {cart?.map((product) => (
-              <div className="border-b py-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div
+                key={product._id}
+                className="border-b py-2 grid grid-cols-1 sm:grid-cols-3 gap-4"
+              >
                 <div>
                   <p className="text-sm leading-relaxed">
                     Name : <span className="font-medium">{product.name}</span>

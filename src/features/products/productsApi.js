@@ -17,15 +17,26 @@ export const productsApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+      async onQueryStarted(arg, { queryFulfilled, getState, dispatch }) {
+        const { page, limit, sort, category, subCategory, productSearchText } =
+          getState().productsFilter;
+        let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
+        if (category) {
+          queryString += `&category=${category}`;
+        }
+        if (subCategory) {
+          queryString += `&subCategory=${subCategory}`;
+        }
+        if (productSearchText) {
+          queryString += `&productSearchText=${productSearchText}`;
+        }
         try {
           const { data } = await queryFulfilled;
           dispatch(
             apiSlice.util.updateQueryData(
               "getAllProducts",
-              undefined,
+              queryString,
               (draft) => {
-                console.log(JSON.parse(JSON.stringify(draft)));
                 draft.data.products.push(data?.data);
               }
             )
@@ -65,8 +76,6 @@ export const productsApi = apiSlice.injectEndpoints({
                   const updatedProduct = draft.data.products.find(
                     (item) => item._id == arg.id
                   );
-                  console.log(JSON.parse(JSON.stringify(updatedProduct)));
-                  console.log(JSON.parse(JSON.stringify(draft)));
                   if (updatedProduct) {
                     updatedProduct.name = arg.data.name;
                     updatedProduct.price = arg.data.price;
@@ -111,8 +120,6 @@ export const productsApi = apiSlice.injectEndpoints({
               "getAllProducts",
               queryString,
               (draft) => {
-                console.log(arg);
-                console.log(JSON.parse(JSON.stringify(draft)));
                 return {
                   ...draft,
                   data: {

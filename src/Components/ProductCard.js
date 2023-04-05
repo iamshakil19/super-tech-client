@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart, getTotals } from "../features/orders/ordersSlice";
-
+import { motion } from "framer-motion";
 const ProductCard = ({ product }) => {
   const { _id, name, price, description, primaryImage, extraImages } = product;
   const navigate = useNavigate();
@@ -37,8 +37,18 @@ const ProductCard = ({ product }) => {
   };
 
   const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
+
   return (
-    <div className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto ">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1,
+        delay: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto "
+    >
       <section>
         <section>
           <img
@@ -89,7 +99,7 @@ const ProductCard = ({ product }) => {
           </button>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

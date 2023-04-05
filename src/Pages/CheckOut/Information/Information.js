@@ -188,7 +188,11 @@ const Information = () => {
                   Select Division
                 </option>
                 {divisions.map((division) => (
-                  <option value={division} className="capitalize">
+                  <option
+                    key={division}
+                    value={division}
+                    className="capitalize"
+                  >
                     {division}
                   </option>
                 ))}

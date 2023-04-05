@@ -170,8 +170,9 @@ const UpdateProduct = () => {
                 <option className="" disabled selected value={""}>
                   Select Category
                 </option>
-                {categories.map((category) => (
+                {categories?.map((category) => (
                   <option
+                    key={category.id}
                     value={[category.id, category.value]}
                     className="capitalize"
                   >
@@ -212,7 +213,11 @@ const UpdateProduct = () => {
                   Select Sub Category
                 </option>
                 {subCategoryFilter?.map((subCategory) => (
-                  <option value={subCategory.value} className="capitalize">
+                  <option
+                    key={subCategory.id}
+                    value={subCategory.value}
+                    className="capitalize"
+                  >
                     {subCategory.name}
                   </option>
                 ))}

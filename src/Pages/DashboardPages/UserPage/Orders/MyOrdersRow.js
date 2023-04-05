@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { handleOrderDetails } from "../../../../features/orders/ordersSlice";
 import numberWithComma from "../../../../Utils/numberWithComa";
 const MyOrdersRow = ({ myOrder, i }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const {
     name,
     phoneNumber,
@@ -23,10 +23,10 @@ const MyOrdersRow = ({ myOrder, i }) => {
   };
 
   return (
-    <tr class="bg-white border-b border-gray-300 hover:bg-gray-300">
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{i}</td>
+    <tr className="bg-white border-b border-gray-300 hover:bg-gray-300">
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">{i}</td>
 
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
         <button
           onClick={handleDetails}
           className="bg-slate-800 text-white py-0.5 px-3 rounded-full text-sm font-medium"
@@ -34,23 +34,27 @@ const MyOrdersRow = ({ myOrder, i }) => {
           Details
         </button>
       </td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
         {orderId}
       </td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">{name}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{phoneNumber}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+        {name}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">{phoneNumber}</td>
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">
         {moment(createdAt).format("lll")}
       </td>
-      <td class="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
+      <td className="px-6 py-4 whitespace-nowrap capitalize text-[15px]">
         {division}
       </td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px]">{totalQuantity}</td>
-      <td class="px-6 py-4 whitespace-nowrap text-[15px] font-medium">
+      <td className="px-6 py-4 whitespace-nowrap text-[15px]">
+        {totalQuantity}
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap text-[15px] font-medium">
         ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
       </td>
       <td
-        class={`px-6 py-4 whitespace-nowrap capitalize w-24 text-center text-[15px] `}
+        className={`px-6 py-4 whitespace-nowrap capitalize w-24 text-center text-[15px] `}
       >
         <span
           className={`capitalize rounded-full block px-2 py-0.5 text-sm font-medium ${

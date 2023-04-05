@@ -36,7 +36,7 @@ const ManageProductCard = ({ product }) => {
                 {" "}
                 ৳ {price}
               </p>
-              <p className="capitalize inline-block bg-slate-700 xl:bg-teal-500 px-2 py-0.5 text-white rounded-full text-sm shadow-md shadow-gray-300 xl:mt-3">
+              <p className="capitalize inline-block bg-slate-700 xl:bg-emerald-500 px-2 py-0.5 text-white rounded-full text-sm shadow-md shadow-gray-300 xl:mt-3">
                 {category === "home" && "home"}
                 {category === "table" && "table"}
                 {category === "storage" && "storage"}
@@ -132,7 +132,7 @@ const ManageProductCard = ({ product }) => {
       <section className="hidden xl:flex flex-col justify-between">
         <label
           onClick={() => navigate(`/dashboard/update-product/${_id}`)}
-          for=""
+          htmlFor=""
           className=" w-8 h-8 text-center bg-indigo-200 text-xl text-indigo-800 border border-indigo-300 rounded-md cursor-pointer flex justify-center items-center hover:bg-indigo-500 hover:text-white hover:border-indigo-600 transition-all ease-in-out duration-200"
         >
           <span className="">
@@ -143,7 +143,7 @@ const ManageProductCard = ({ product }) => {
           onClick={() =>
             dispatch(handleDeleteProductModal({ isOpen: true, _id: _id }))
           }
-          for=""
+          htmlFor=""
           className=" w-8 h-8 text-center bg-red-200 text-xl text-red-500 border border-red-300 rounded-md cursor-pointer flex justify-center items-center hover:bg-red-500 hover:text-white hover:border-red-600 transition-all ease-in-out duration-200"
         >
           <span className="">

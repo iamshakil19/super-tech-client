@@ -11,10 +11,10 @@ const ReviewCard = ({ review }) => {
           </div>
         </div>
 
-        <div class="flex items-center justify-center pt-3">
+        <div className="flex items-center justify-center pt-3">
           <svg
             aria-hidden="true"
-            class="w-5 h-5 text-orange-400"
+            className="w-5 h-5 text-orange-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ const ReviewCard = ({ review }) => {
           </svg>
           <svg
             aria-hidden="true"
-            class="w-5 h-5 text-orange-400"
+            className="w-5 h-5 text-orange-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ const ReviewCard = ({ review }) => {
           </svg>
           <svg
             aria-hidden="true"
-            class="w-5 h-5 text-orange-400"
+            className="w-5 h-5 text-orange-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ const ReviewCard = ({ review }) => {
           </svg>
           <svg
             aria-hidden="true"
-            class="w-5 h-5 text-orange-400"
+            className="w-5 h-5 text-orange-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const ReviewCard = ({ review }) => {
           </svg>
           <svg
             aria-hidden="true"
-            class="w-5 h-5 text-gray-300 dark:text-gray-500"
+            className="w-5 h-5 text-gray-300 dark:text-gray-500"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"

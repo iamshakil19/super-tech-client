@@ -6,26 +6,6 @@ import { IoMdCloudUpload, IoMdStar } from "react-icons/io";
 import { useAddProductMutation } from "../../../../features/products/productsApi";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-const product = {
-  _id: 1,
-  name: "GRID Newon Chair",
-  colors: [
-    { id: 1, color: "black", extraPrice: 0 },
-    { id: 2, color: "red", extraPrice: 400 },
-    { id: 3, color: "gold", extraPrice: 900 },
-  ],
-  sizes: [
-    { id: 1, size: "Compact : 36”W x 24”D x 30”H", extraPrice: 0 },
-    { id: 2, size: "Regular : 48”W x 24”D x 30”H", extraPrice: 2500 },
-    { id: 3, size: "Executive : 60”W x 24”D x 30”H", extraPrice: 4000 },
-    { id: 4, size: 'Extended : 7"W x 24”D x 30”H', extraPrice: 5000 },
-  ],
-  price: "1000",
-  primaryImage:
-    "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  image2:
-    "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-};
 
 const AddProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -190,8 +170,9 @@ const AddProducts = () => {
                   <option className="" disabled selected value={""}>
                     Select Category
                   </option>
-                  {categories.map((category) => (
+                  {categories?.map((category) => (
                     <option
+                      key={category.id}
                       value={[category.id, category.value]}
                       className="capitalize"
                     >
@@ -232,7 +213,11 @@ const AddProducts = () => {
                     Select Sub Category
                   </option>
                   {subCategoryFilter?.map((subCategory) => (
-                    <option value={subCategory.value} className="capitalize">
+                    <option
+                      key={subCategory.id}
+                      value={subCategory.value}
+                      className="capitalize"
+                    >
                       {subCategory.name}
                     </option>
                   ))}
@@ -342,9 +327,9 @@ const AddProducts = () => {
             </div>
             <div className="border-b border-gray-300 mt-5 mb-3 w-full"></div>
           </div>
-          {colorFields.map((color, index) => {
+          {colorFields?.map((color, index) => {
             return (
-              <div className="sm:flex mt-3 gap-3 justify-between">
+              <div key={index} className="sm:flex mt-3 gap-3 justify-between">
                 <div
                   key={color.key}
                   className="flex flex-col w-full  mb-4 sm:mb-0"
@@ -427,9 +412,9 @@ const AddProducts = () => {
               Add Color
             </button>
           </div>
-          {sizeFields.map((size, index) => {
+          {sizeFields?.map((size, index) => {
             return (
-              <div className="sm:flex mt-3 gap-3 justify-between">
+              <div key={index} className="sm:flex mt-3 gap-3 justify-between">
                 <div
                   key={size.key}
                   className="flex flex-col w-full  mb-4 sm:mb-0"

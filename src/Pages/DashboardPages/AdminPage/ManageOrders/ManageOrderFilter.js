@@ -21,7 +21,7 @@ const ManageOrderFilter = () => {
             defaultValue={status}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
           >
-            <option selected className="font-medium text-md" value="">
+            <option className="font-medium text-md" value="">
               Default
             </option>
             <option className=" font-medium text-md" value="pending">
@@ -44,7 +44,7 @@ const ManageOrderFilter = () => {
             defaultValue={sort}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
           >
-            <option selected className="font-medium text-md" value="-createdAt">
+            <option className="font-medium text-md" value="-createdAt">
               Default
             </option>
             <option className=" font-medium text-md" value="createdAt">
@@ -71,7 +71,7 @@ const ManageOrderFilter = () => {
             defaultValue={limit}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-40 border-slate-300"
           >
-            <option selected className="font-medium" value="10">
+            <option className="font-medium" value="10">
               10
             </option>
             <option className="font-medium" value="15">

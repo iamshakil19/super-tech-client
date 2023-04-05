@@ -65,7 +65,10 @@ const Cart = () => {
               </thead>
               <tbody>
                 {cart?.map((cartProduct) => (
-                  <tr className="border-b border-gray-300 p-5">
+                  <tr
+                    key={cartProduct._id}
+                    className="border-b border-gray-300 p-5"
+                  >
                     <td>
                       {" "}
                       <div className="flex gap-5 items-center">
@@ -164,7 +167,10 @@ const Cart = () => {
           </section>
           <section className="lg:hidden">
             {cart?.map((cartProduct) => (
-              <div className="border-b border-gray-300 pb-2 mt-5">
+              <div
+                key={cartProduct._id}
+                className="border-b border-gray-300 pb-2 mt-5"
+              >
                 <p
                   onClick={() =>
                     navigate(`/product-details/${cartProduct._id}`)

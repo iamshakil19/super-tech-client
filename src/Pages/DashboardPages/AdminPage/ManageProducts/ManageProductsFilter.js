@@ -46,6 +46,7 @@ const ManageProductsFilter = () => {
             </option>
             {categories.map((category) => (
               <option
+                key={category.id}
                 value={[category.id, category.value]}
                 className="capitalize font-medium text-md"
               >
@@ -66,6 +67,7 @@ const ManageProductsFilter = () => {
             </option>
             {subCategoryFilter.map((subCategory) => (
               <option
+                key={subCategory.id}
                 value={subCategory.value}
                 className="capitalize font-medium text-md"
               >
@@ -83,7 +85,7 @@ const ManageProductsFilter = () => {
             defaultValue={sort}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 xl:w-40 border-slate-300"
           >
-            <option selected className="font-medium text-md" value="-createdAt">
+            <option className="font-medium text-md" value="-createdAt">
               Default
             </option>
             <option className=" font-medium text-md" value="createdAt">
@@ -116,7 +118,7 @@ const ManageProductsFilter = () => {
             defaultValue={limit}
             className="py-1.5 px-2 bg-slate-100  font-medium outline-none focus:border-slate-700 border rounded-md poppins cursor-pointer w-32 xl:w-40 border-slate-300"
           >
-            <option selected className="font-medium" value="10">
+            <option className="font-medium" value="10">
               10
             </option>
             <option className="font-medium" value="15">

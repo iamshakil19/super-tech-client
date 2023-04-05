@@ -4,7 +4,7 @@ const initialState = {
   productSearchText: "",
   page: 1,
   sort: "-createdAt",
-  limit: 10,
+  limit: 12,
   category: "",
   subCategory: "",
   minPriceValue: 0,

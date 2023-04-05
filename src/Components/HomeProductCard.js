@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart, getTotals } from "../features/orders/ordersSlice";
+import { motion } from "framer-motion";
 
 const HomeProductCard = ({ product }) => {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
@@ -40,7 +41,16 @@ const HomeProductCard = ({ product }) => {
     navigate("/checkouts");
   };
   return (
-    <div className="mx-3 relative pb-16 pt-8">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1,
+        delay: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      className="mx-3 relative pb-16 pt-8"
+    >
       <div
         onMouseOver={() => setIsButtonOpen(true)}
         onMouseOut={() => setIsButtonOpen(false)}
@@ -89,7 +99,7 @@ const HomeProductCard = ({ product }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

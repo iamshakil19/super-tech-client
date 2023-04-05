@@ -12,7 +12,7 @@ const UserDashboardLayout = () => {
         <div className="relative">
           <UserDashboardSidebar setOpen={setOpen} open={open} />
         </div>
-        <div className=" w-full">
+        <div className=" w-full bg-[#F2F3F8]">
           <div className="py-3 ml-4 lg:hidden">
             <HiMenuAlt3
               className="text-3xl cursor-pointer"

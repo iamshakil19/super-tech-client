@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import NewArrivalProductSlider from "./ProductSlider/NewArrivalProductSlider";
 import PopularProductSlider from "./ProductSlider/PopularProductSlider";
-
+import { motion } from "framer-motion";
 const HomeProduct = () => {
   const [isSelected, setSelected] = useState(true);
 

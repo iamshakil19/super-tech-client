@@ -229,8 +229,12 @@ const DifferentBillingAddressForm = () => {
                 <option className="" disabled selected value={""}>
                   Select Division
                 </option>
-                {divisions.map((division) => (
-                  <option value={division} className="capitalize">
+                {divisions?.map((division) => (
+                  <option
+                    key={division}
+                    value={division}
+                    className="capitalize"
+                  >
                     {division}
                   </option>
                 ))}

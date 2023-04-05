@@ -10,7 +10,6 @@ const Profile = () => {
   const [isEditable, setEditable] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const { _id } = user || {};
-  console.log(user);
   const [updateAvatar, { isSuccess }] = useUpdateAvatarMutation();
   const handleAvatar = (e) => {
     const formData = new FormData();

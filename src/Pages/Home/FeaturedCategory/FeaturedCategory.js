@@ -16,10 +16,18 @@ const categoryData = [
   { image: home, name: "home", path: "/collections/home-furniture" },
   { image: table, name: "table", path: "/collections/table" },
   { image: cabinet, name: "storage", path: "/collections/storage" },
-  { image: steel_furniture, name: "steel furniture", path: "/collections/steel-furniture" },
+  {
+    image: steel_furniture,
+    name: "steel furniture",
+    path: "/collections/steel-furniture",
+  },
   { image: chair, name: "chair", path: "/collections/chair" },
   { image: sofa, name: "sofa", path: "/collections/sofa" },
-  { image: work_station, name: "work station", path: "/collections/work-station" },
+  {
+    image: work_station,
+    name: "work station",
+    path: "/collections/work-station",
+  },
   { image: garments, name: "garments", path: "/collections/garments" },
   { image: interior, name: "interior", path: "/collections/interior" },
 ];
@@ -36,7 +44,7 @@ const FeaturedCategory = () => {
 
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 md:gap-6 mt-8 mx-auto px-5">
         {categoryData.map((data) => (
-          <CategoryCard data={data} />
+          <CategoryCard key={data.name} data={data} />
         ))}
       </div>
     </div>

@@ -11,6 +11,7 @@ import {
 } from "../../features/products/productsSlice";
 import Error from "../Shared/Error/Error";
 import Loading from "../Shared/Loading/Loading";
+import { motion } from "framer-motion";
 
 const Product = () => {
   useEffect(() => {

@@ -34,8 +34,8 @@ const Companies = () => {
         Trusted By Top Companies
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 ">
-        {companies.map((company) => (
-          <img className="w-32 mx-auto p-5" src={company} alt="" />
+        {companies.map((company, i) => (
+          <img key={i} className="w-32 mx-auto p-5" src={company} alt="" />
         ))}
       </div>
     </div>
