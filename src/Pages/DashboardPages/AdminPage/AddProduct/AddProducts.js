@@ -262,7 +262,7 @@ const AddProducts = () => {
                   Upload Image
                 </label>
                 {errors.primaryImage && (
-                  <span className="label-text-alt text-red-500 text-sm lg:ml-7">
+                  <span className="label-text-alt text-red-500 text-sm">
                     {errors.primaryImage.message}
                   </span>
                 )}
@@ -364,39 +364,45 @@ const AddProducts = () => {
                     Extra Price
                   </label>
 
-                  <div className="flex items-center">
-                    <input
-                      type="number"
-                      defaultValue={0}
-                      placeholder="Type Extra Price"
-                      className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                        errors?.colors?.[index]?.extraPrice
-                          ? " border-red-500 focus:border-red-500"
-                          : "focus:border-slate-700 border-slate-300"
-                      }`}
-                      {...register(`colors[${index}].extraPrice`, {
-                        min: {
-                          value: 0,
-                          message: "Price can't be negative",
-                        },
-                        valueAsNumber: true,
-                      })}
-                    />
+                  <div>
+                    <div className="flex items-center">
+                      <input
+                        type="number"
+                        placeholder="Type Extra Price"
+                        className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                          errors?.colors?.[index]?.extraPrice
+                            ? " border-red-500 focus:border-red-500"
+                            : "focus:border-slate-700 border-slate-300"
+                        }`}
+                        {...register(`colors[${index}].extraPrice`, {
+                          required: {
+                            value: true,
+                            message: "Color Extra price is required",
+                          },
+                          min: {
+                            value: 0,
+                            message: "Price can't be negative",
+                          },
+                          valueAsNumber: true,
+                        })}
+                      />
+
+                      <button
+                        type="button"
+                        onClick={() => colorRemove(index)}
+                        className="grid ml-2 place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-10 w-10 group transition-all hover:bg-red-500"
+                      >
+                        <MdDeleteOutline
+                          className="text-red-500 group-hover:text-white transition-all"
+                          size="20"
+                        />
+                      </button>
+                    </div>
                     {errors?.colors?.[index]?.extraPrice?.message && (
                       <span className="label-text-alt text-red-500 text-sm ">
                         {errors?.colors?.[index]?.extraPrice?.message}
                       </span>
                     )}
-                    <button
-                      type="button"
-                      onClick={() => colorRemove(index)}
-                      className="grid ml-2 place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-10 w-10 group transition-all hover:bg-red-500"
-                    >
-                      <MdDeleteOutline
-                        className="text-red-500 group-hover:text-white transition-all"
-                        size="20"
-                      />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -449,39 +455,44 @@ const AddProducts = () => {
                     Extra Price
                   </label>
 
-                  <div className="flex items-center">
-                    <input
-                      type="number"
-                      defaultValue={0}
-                      placeholder="Type Extra Price"
-                      className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
-                        errors?.sizes?.[index]?.extraPrice
-                          ? " border-red-500 focus:border-red-500"
-                          : "focus:border-slate-700 border-slate-300"
-                      }`}
-                      {...register(`sizes[${index}].extraPrice`, {
-                        min: {
-                          value: 0,
-                          message: "Price can't be negative",
-                        },
-                        valueAsNumber: true,
-                      })}
-                    />
+                  <div>
+                    <div className="flex items-center">
+                      <input
+                        type="number"
+                        placeholder="Type Extra Price"
+                        className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                          errors?.sizes?.[index]?.extraPrice
+                            ? " border-red-500 focus:border-red-500"
+                            : "focus:border-slate-700 border-slate-300"
+                        }`}
+                        {...register(`sizes[${index}].extraPrice`, {
+                          required: {
+                            value: true,
+                            message: "Size extra price is required",
+                          },
+                          min: {
+                            value: 0,
+                            message: "Price can't be negative",
+                          },
+                          valueAsNumber: true,
+                        })}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => sizeRemove(index)}
+                        className="grid ml-2 place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-10 w-10 group transition-all hover:bg-red-500"
+                      >
+                        <MdDeleteOutline
+                          className="text-red-500 group-hover:text-white transition-all"
+                          size="20"
+                        />
+                      </button>
+                    </div>
                     {errors?.sizes?.[index]?.extraPrice?.message && (
                       <span className="label-text-alt text-red-500 text-sm ">
                         {errors?.sizes?.[index]?.extraPrice?.message}
                       </span>
                     )}
-                    <button
-                      type="button"
-                      onClick={() => sizeRemove(index)}
-                      className="grid ml-2 place-items-center rounded-full flex-shrink-0 bg-red-500/20 border border-red-500 h-10 w-10 group transition-all hover:bg-red-500"
-                    >
-                      <MdDeleteOutline
-                        className="text-red-500 group-hover:text-white transition-all"
-                        size="20"
-                      />
-                    </button>
                   </div>
                 </div>
               </div>

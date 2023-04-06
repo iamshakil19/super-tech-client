@@ -73,7 +73,7 @@ const HomeProductCard = ({ product }) => {
         </figure>
         <div className="p-5 mb-4">
           <h2
-            className="card-title poppins cursor-pointer overflow-hidden whitespace-nowrap"
+            className="card-title poppins cursor-pointer text-black overflow-hidden whitespace-nowrap"
             onClick={() => navigate(`product-details/${_id}`)}
           >
             {name}

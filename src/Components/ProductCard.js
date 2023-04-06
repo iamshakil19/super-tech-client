@@ -69,7 +69,7 @@ const ProductCard = ({ product }) => {
         <section className="">
           <h2
             onClick={() => navigate(`/product-details/${_id}`)}
-            className="text-md font-semibold my-3 cursor-pointer"
+            className="text-md font-semibold my-3 cursor-pointer text-black "
           >
             {name}
           </h2>

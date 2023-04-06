@@ -21,8 +21,8 @@ const HomeProduct = () => {
               onClick={handleRecent}
               className={`w-full py-2.5 text-xl poppins font-semibold ${
                 isSelected
-                  ? " text-slate-700 border-b border-gray-500 transition-all duration-500 ease-in-out"
-                  : "text-slate-700"
+                  ? " text-black  border-b border-black transition-all duration-500 ease-in-out"
+                  : "text-black "
               }`}
             >
               New Arrival
@@ -31,8 +31,8 @@ const HomeProduct = () => {
               onClick={handlePopular}
               className={` w-full py-2.5 poppins text-xl font-semibold ${
                 !isSelected
-                  ? "text-slate-700 border-b border-gray-500 transition-all duration-500 ease-in-out"
-                  : "text-slate-700 "
+                  ? "text-black border-b border-black transition-all duration-500 ease-in-out"
+                  : "text-black"
               } `}
             >
               Popular

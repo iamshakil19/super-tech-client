@@ -11,7 +11,7 @@ const ReturnAndWarrantyPolicy = () => {
         title={"Return & Warranty Policy - Super Tech Furniture & Interior"}
       ></PageTitle>
       <div className="max-w-3xl mx-auto">
-        <h3 className="lg:text-3xl text-xl text-center font-serif font-semibold text-slate-600">
+        <h3 className="lg:text-3xl text-xl text-center font-serif font-semibold text-black">
           Return and Warranty Policy
         </h3>
         <p className="mt-10">

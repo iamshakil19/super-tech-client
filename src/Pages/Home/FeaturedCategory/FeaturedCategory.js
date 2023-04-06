@@ -35,10 +35,10 @@ const categoryData = [
 const FeaturedCategory = () => {
   return (
     <div className="container pt-2 pb-10 mx-auto">
-      <h1 className="text-center poppins mt-10 lg:mt-14 text-2xl lg:text-3xl text-slate-700 font-semibold">
+      <h1 className="text-center poppins mt-10 lg:mt-14 text-2xl lg:text-3xl text-black font-semibold">
         Featured Category
       </h1>
-      <p className="text-center text-sm md:text-[15px] poppins mt-2">
+      <p className="text-center text-sm md:text-[15px] poppins text-black mt-2">
         Get Your Desired Product From Featured Category!
       </p>
 

@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
         title={"Privacy Policy - Super Tech Furniture & Interior"}
       ></PageTitle>
       <div className="max-w-3xl mx-auto">
-        <h3 className="lg:text-3xl text-xl text-center font-serif font-semibold text-slate-600">
+        <h3 className="lg:text-3xl text-xl text-center font-serif font-semibold text-black">
           Privacy Policy
         </h3>
 

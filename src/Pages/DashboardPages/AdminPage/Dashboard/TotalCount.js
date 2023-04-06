@@ -55,7 +55,7 @@ const TotalCount = () => {
           <span className="font-semibold mt-1">৳</span>
         </div>
         <div>
-          <h2 className="text-lg font-bold text-slate-400">Total Sales</h2>
+          <h2 className="text-lg font-bold text-black ">Total Sales</h2>
           {orderLoading && <p>Loading...</p>}
           {!isOrderError && !orderLoading && (
             <p className="flex items-center font-semibold ">
@@ -69,7 +69,7 @@ const TotalCount = () => {
           <BsFillCartCheckFill size={20} />
         </div>
         <div>
-          <h2 className="text-lg font-bold text-slate-400">Total Orders</h2>
+          <h2 className="text-lg font-bold text-black ">Total Orders</h2>
           {orderLoading && <p>Loading...</p>}
           {!orderError && !orderLoading && (
             <p className="flex items-center font-semibold ">
@@ -83,7 +83,7 @@ const TotalCount = () => {
           <BsFillBagCheckFill size={18} />
         </div>
         <div>
-          <h2 className="text-lg font-bold text-slate-400">Total Products</h2>
+          <h2 className="text-lg font-bold text-black ">Total Products</h2>
           {isLoading && <p>Loading...</p>}
           {!isError && !isLoading && (
             <p className="flex items-center font-semibold ">{totalProduct}</p>
@@ -95,7 +95,7 @@ const TotalCount = () => {
           <FaUser size={18} />
         </div>
         <div>
-          <h2 className="text-lg font-bold text-slate-400">Total Users</h2>
+          <h2 className="text-lg font-bold text-black ">Total Users</h2>
           {userLoading && <p>Loading...</p>}
           {!isUserError && !userLoading && (
             <p className="flex items-center font-semibold ">{totalUserCount}</p>
@@ -107,7 +107,7 @@ const TotalCount = () => {
           <HiCheck size={20} />
         </div>
         <div>
-          <h2 className="text-lg font-bold text-slate-400">Completed Order</h2>
+          <h2 className="text-lg font-bold text-black ">Completed Order</h2>
           {orderLoading && <p>Loading...</p>}
           {!isOrderError && !orderLoading && (
             <p className="flex items-center font-semibold ">
@@ -121,7 +121,7 @@ const TotalCount = () => {
           <FiLoader size={18} />
         </div>
         <div>
-          <h2 className="text-lg font-bold text-slate-400">Pending Order</h2>
+          <h2 className="text-lg font-bold text-black ">Pending Order</h2>
           {orderLoading && <p>Loading...</p>}
           {!isOrderError && !orderLoading && (
             <p className="flex items-center font-semibold ">
@@ -135,7 +135,7 @@ const TotalCount = () => {
           <IoClose size={18} />
         </div>
         <div>
-          <h2 className="text-lg font-bold text-slate-400">Cancel Order</h2>
+          <h2 className="text-lg font-bold text-black ">Cancel Order</h2>
           {orderLoading && <p>Loading...</p>}
           {!isOrderError && !orderLoading && (
             <p className="flex items-center font-semibold ">

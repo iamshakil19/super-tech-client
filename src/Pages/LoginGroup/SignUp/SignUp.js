@@ -51,7 +51,7 @@ const SignUp = () => {
   return (
     <div className="container mx-auto pt-10 px-5">
       <PageTitle title={"Signup - Super Tech Furniture & Interior"}></PageTitle>
-      <h2 className="text-4xl font-bold text-slate-700 poppins text-center">
+      <h2 className="text-4xl font-bold text-black poppins text-center">
         Sign Up
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>

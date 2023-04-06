@@ -3,7 +3,6 @@ import FeaturedCategory from "./../FeaturedCategory/FeaturedCategory";
 import HomeProduct from "../HomeProduct/HomeProduct";
 import MainSlider from "../MainSlider/MainSlider";
 import Policy from "../Policy/Policy";
-import Reviews from "../Reviews/Reviews";
 import Companies from "../Companies/Companies";
 import AboutProduct from "../AboutProduct/AboutProduct";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
@@ -20,7 +19,6 @@ const Home = () => {
       <FeaturedCategory />
       <HomeProduct />
       <Policy />
-      {/* <Reviews /> */}
       <Companies />
       <AboutProduct />
       <WhySuperTech />

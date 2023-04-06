@@ -30,7 +30,7 @@ const ManageOrders = () => {
       <div className="flex justify-center items-center min-h-screen poppins">
         <div>
           <img className="block mx-auto w-44" src={emptyOrderImg} alt="" />
-          <p className="text-center font-semibold text-slate-800 text-xl">
+          <p className="text-center font-semibold text-black  text-xl">
             No Orders Yet
           </p>
         </div>

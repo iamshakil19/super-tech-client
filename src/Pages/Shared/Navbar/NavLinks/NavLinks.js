@@ -13,7 +13,7 @@ const NavLinks = ({ setOpen }) => {
         <div key={link.name}>
           <div className="px-2 relative xl:px-4 text-left lg:cursor-pointer group">
             <h1
-              className={`py-3 flex items-center justify-between  lg:pr-0 pr-5 text-sm px-2 whitespace-nowrap text-slate-700 `}
+              className={`py-3 flex items-center justify-between  lg:pr-0 pr-5 text-sm px-2 whitespace-nowrap text-black `}
               onClick={() => {
                 heading !== link.name ? setHeading(link.name) : setHeading("");
                 setSubHeading("");
@@ -38,10 +38,7 @@ const NavLinks = ({ setOpen }) => {
                     {link.subLinks?.map((mySubLink, i) => (
                       <div key={i}>
                         {mySubLink.subLink?.map((sLink, i) => (
-                          <li
-                            key={i}
-                            className="text-[13px] text-gray-500 my-2.5"
-                          >
+                          <li key={i} className="text-[13px] text-black my-2.5">
                             <Link
                               to={sLink.link}
                               className="hover:bg-black hover:text-white block p-2 transition-all duration-75 rounded-md ease-in-out"
@@ -69,7 +66,7 @@ const NavLinks = ({ setOpen }) => {
             {link?.subLinks.map((sLinks, i) => (
               <div key={i}>
                 {sLinks.subLink.map((sLink, i) => (
-                  <li key={i} className="py-3 pl-10 text-sm text-slate-700 ">
+                  <li key={i} className="py-3 pl-10 text-sm text-black ">
                     <Link
                       onClick={() => setOpen(false)}
                       to={sLink.link}

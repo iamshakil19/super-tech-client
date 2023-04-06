@@ -5,6 +5,8 @@ import { handleOrderDetails } from "../../../../features/orders/ordersSlice";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
 import numberWithComma from "../../../../Utils/numberWithComa";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import moment from "moment";
 const OrderDetailsModal = () => {
   const dispatch = useDispatch();
   const { orderForDetails } = useSelector((state) => state.orders);
@@ -27,6 +29,7 @@ const OrderDetailsModal = () => {
     subTotal,
     totalPrice,
     totalQuantity,
+    createdAt,
     _id,
   } = orderForDetails;
   return (
@@ -166,6 +169,13 @@ const OrderDetailsModal = () => {
                 </div>
               )}
               <div className="">
+                <h3 className="mb-1 font-semibold ">Date</h3>
+                <p className="mb-2 flex items-center gap-2">
+                  <AiOutlineClockCircle />{" "}
+                  <span className="text-sm">
+                    {moment(createdAt).format("lll")}
+                  </span>
+                </p>
                 <h3 className="mb-2 font-semibold ">Amount</h3>
                 <p className="text-sm leading-relaxed">
                   Subtotal :{" "}

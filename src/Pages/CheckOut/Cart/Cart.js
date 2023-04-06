@@ -129,7 +129,7 @@ const Cart = () => {
                           onClick={() =>
                             handleDecreaseCartQuantity(cartProduct)
                           }
-                          className="bg-black text-white py-0.5 text-xl w-7"
+                          className="text-black py-0.5 text-xl w-7"
                         >
                           -
                         </button>
@@ -143,7 +143,7 @@ const Cart = () => {
                           onClick={() =>
                             handleIncreaseCartQuantity(cartProduct)
                           }
-                          className="bg-black text-white text-xl w-7 py-0.5"
+                          className="text-black text-xl w-7 py-0.5"
                         >
                           +
                         </button>

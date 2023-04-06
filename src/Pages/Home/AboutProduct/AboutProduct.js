@@ -15,7 +15,7 @@ const AboutProduct = () => {
           />
         </div>
         <div className="my-auto md:ml-5 py-5">
-          <h1 className="text-3xl text-slate-600 font-bold poppins py-5">
+          <h1 className="text-3xl text-black  font-bold poppins py-5">
             We Create Meaningful Design
           </h1>
 

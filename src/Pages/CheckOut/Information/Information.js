@@ -8,12 +8,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { handleContactInformation } from "../../../features/orders/ordersSlice";
 import PageTitle from "../../../Utils/PageTitle";
+import { useUpdateUserMutation } from "../../../features/user/usersApi";
 const Information = () => {
   const [isSaveInfo, setSaveInfo] = useState(false);
+  console.log(isSaveInfo);
+  const [updateUser, { isError, isLoading, isSuccess }] =
+    useUpdateUserMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { email } = user || {};
+  const {
+    email,
+    name,
+    phoneNumber,
+    area,
+    streetAddress,
+    division,
+    postalCode,
+    _id,
+  } = user || {};
 
   const {
     name: initialName,
@@ -41,13 +54,15 @@ const Information = () => {
     control,
   } = useForm({
     defaultValues: {
-      name: initialName,
-      phoneNumber: initialPhoneNumber,
+      name: initialName ? initialName : name,
+      phoneNumber: initialPhoneNumber ? initialPhoneNumber : phoneNumber,
       company: initialCompany,
-      postalCode: initialPostalCode,
-      division: initialDivision,
-      area: initialArea,
-      streetAddress: initialStreetAddress,
+      postalCode: initialPostalCode ? initialPostalCode : postalCode,
+      division: initialDivision ? initialDivision : division,
+      area: initialArea ? initialArea : area,
+      streetAddress: initialStreetAddress
+        ? initialStreetAddress
+        : streetAddress,
     },
     values: {
       email: email,
@@ -57,6 +72,10 @@ const Information = () => {
   const onSubmit = (data) => {
     dispatch(handleContactInformation(data));
     navigate("/checkouts/shipping");
+    if (isSaveInfo) {
+      console.log(data);
+      updateUser({ id: _id, data });
+    }
   };
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -265,7 +284,7 @@ const Information = () => {
               onChange={() => setSaveInfo(!isSaveInfo)}
             />
             <label className="text-sm cursor-pointer" htmlFor="saveInformation">
-              Save this information for next time
+              Update existing account information for next time
             </label>
           </div>
 

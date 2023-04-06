@@ -21,16 +21,22 @@ const Topbar = ({ setSearchOpen }) => {
           <span className="flex items-center poppins mb-2">
             {" "}
             <MdCall className="text-xl mr-3" />
-            <span className="text-sm hover:text-red-500 cursor-pointer text-slate-700 ">
+            <Link
+              to={`tel:01716926040`}
+              className="text-sm hover:text-red-500 cursor-pointer text-black "
+            >
               01716-926040
-            </span>{" "}
+            </Link>{" "}
           </span>
           <span className="flex items-center poppins">
             {" "}
             <MdEmail className="text-xl mr-3" />{" "}
-            <span className="text-sm hover:text-red-500 cursor-pointer text-slate-700 ">
+            <Link
+              to="mailto:super.tech767@gmail.com"
+              className="text-sm hover:text-red-500 cursor-pointer text-black "
+            >
               super.tech767@gmail.com
-            </span>{" "}
+            </Link>{" "}
           </span>
         </div>
 
@@ -45,14 +51,14 @@ const Topbar = ({ setSearchOpen }) => {
             <label htmlFor="searchBar">
               <AiOutlineSearch
                 onClick={() => setSearchOpen(true)}
-                className="text-3xl cursor-pointer text-slate-700 "
+                className="text-3xl cursor-pointer text-black "
               />
             </label>
           </div>
           <div className="px-5 mt-2">
             <div className="indicator">
               <Link to="/cart" className="cursor-pointer">
-                <BsCart3 className="text-2xl text-slate-700 " />
+                <BsCart3 className="text-2xl text-black " />
               </Link>
               <span className="badge badge-sm indicator-item bg-red-500 border-0 text-white">
                 {cartTotalQuantity}
@@ -63,18 +69,18 @@ const Topbar = ({ setSearchOpen }) => {
             <>
               {role === "user" && (
                 <Link to={"/account"}>
-                  <div className="p-1.5 border border-slate-500 rounded-2xl cursor-pointer mx-3">
+                  <div className="p-1.5 border border-black rounded-2xl cursor-pointer mx-3">
                     <span>
-                      <TfiUser className="text-xl text-slate-700" />
+                      <TfiUser className="text-xl text-black" />
                     </span>
                   </div>
                 </Link>
               )}
               {(role === "admin" || role === "moderator") && (
                 <Link to={"/dashboard"}>
-                  <div className="p-1.5 border border-slate-500 rounded-2xl cursor-pointer ml-3">
+                  <div className="p-1.5 border border-black rounded-2xl cursor-pointer ml-3">
                     <span>
-                      <HiOutlineViewGridAdd className="text-[21px] cursor-pointer text-slate-700" />
+                      <HiOutlineViewGridAdd className="text-[21px] cursor-pointer text-black" />
                     </span>
                   </div>
                 </Link>

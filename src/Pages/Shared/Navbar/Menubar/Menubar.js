@@ -54,14 +54,14 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
             <label htmlFor="searchBar">
               <AiOutlineSearch
                 onClick={() => setSearchOpen(true)}
-                className="text-2xl mr-5 text-slate-700 cursor-pointer"
+                className="text-2xl mr-5 text-black cursor-pointer"
               />
             </label>
 
             <div className="pr-2 mt-2 mr-5 z-0">
               <div className="indicator">
                 <Link to="/cart" className="cursor-pointer">
-                  <BsCart3 className="text-xl text-slate-700 " />
+                  <BsCart3 className="text-xl text-black " />
                 </Link>
                 <span className="badge badge-xs indicator-item bg-red-500 border-0 text-white">
                   {cartTotalQuantity}
@@ -101,7 +101,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
             <li>
               <Link
                 to="/collections"
-                className="py-3 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
+                className="py-3 px-4 inline-block text-sm text-black whitespace-nowrap"
               >
                 All Collection
               </Link>
@@ -155,7 +155,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           {isLoggedIn ? (
             <li
               onClick={handleLogout}
-              className="py-4 px-4 inline-block text-sm text-slate-700
+              className="py-4 px-4 inline-block text-sm text-black
             whitespace-nowrap"
             >
               Log Out
@@ -165,7 +165,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
               <Link
                 onClick={() => setOpen(false)}
                 to="/login"
-                className="py-4 px-4 inline-block text-sm text-slate-700 whitespace-nowrap"
+                className="py-4 px-4 inline-block text-sm text-black whitespace-nowrap"
               >
                 Login
               </Link>

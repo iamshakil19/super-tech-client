@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <div className="container mx-auto mt-10 px-5">
       <PageTitle title={"Login - Super Tech Furniture & Interior"}></PageTitle>
-      <h2 className="text-4xl font-bold text-slate-700 poppins text-center">
+      <h2 className="text-4xl font-bold text-black poppins text-center">
         Login
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>

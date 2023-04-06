@@ -30,7 +30,7 @@ const Companies = () => {
 
   return (
     <div className="mt-16 mb-24 container mx-auto">
-      <h2 className="text-3xl font-bold poppins text-slate-700 text-center pb-10">
+      <h2 className="text-3xl font-bold poppins text-black  text-center pb-10">
         Trusted By Top Companies
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 ">

@@ -10,7 +10,7 @@ const WhySuperTech = () => {
             src="https://cdn.shopify.com/s/files/1/0521/4434/1176/files/Group_834_540x.png?v=1633346197"
             alt=""
           />
-          <h2 className="text-2xl font-semibold poppins text-center pt-4 pb-3 text-slate-700 max-w-md mx-auto">
+          <h2 className="text-2xl font-semibold poppins text-center pt-4 pb-3 text-black  max-w-md mx-auto">
             Exceptional Furniture For The Taskmasters
           </h2>
           <p className="poppins text-justify max-w-md mx-auto">
@@ -25,7 +25,7 @@ const WhySuperTech = () => {
             src="https://cdn.shopify.com/s/files/1/0521/4434/1176/files/ASDASDA_540x.jpg?v=1652694147"
             alt=""
           />
-          <h2 className="text-2xl font-semibold poppins text-center pt-4 pb-3 text-slate-700 max-w-md mx-auto">
+          <h2 className="text-2xl font-semibold poppins text-center pt-4 pb-3 text-black  max-w-md mx-auto">
             Ergonomic Design
           </h2>
           <p className="poppins text-justify max-w-md mx-auto">
@@ -41,7 +41,7 @@ const WhySuperTech = () => {
             src="https://cdn.shopify.com/s/files/1/0521/4434/1176/files/5A2A5635_540x.jpg?v=1613715225"
             alt=""
           />
-          <h2 className="text-2xl font-semibold poppins text-center pt-4 pb-3 text-slate-700 max-w-md mx-auto">
+          <h2 className="text-2xl font-semibold poppins text-center pt-4 pb-3 text-black  max-w-md mx-auto">
             Wherever you are, work your best.
           </h2>
           <p className="poppins text-justify max-w-md mx-auto">

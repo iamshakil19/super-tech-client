@@ -171,7 +171,7 @@ const ProductDetails = () => {
             </Carousel>
           </div>
           <div className="pt-0 px-5 md:p-5 poppins">
-            <h2 className="text-black text-xl lg:text-3xl font-semibold leading-relaxed">
+            <h2 className="text-black text-xl lg:text-2xl font-semibold leading-relaxed">
               {name}
             </h2>
 
@@ -272,7 +272,7 @@ const ProductDetails = () => {
             </div>
             <div className="border-b border-gray-300 my-2 md:my-6 cursor-pointer"></div>
             <p className="font-semibold text-lg mb-3">Description</p>
-            <p className="text-justify">{description}</p>
+            <p className="text-justify ">{description}</p>
           </div>
         </motion.div>
       </>
