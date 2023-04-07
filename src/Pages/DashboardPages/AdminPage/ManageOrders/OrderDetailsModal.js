@@ -169,13 +169,24 @@ const OrderDetailsModal = () => {
                 </div>
               )}
               <div className="">
-                <h3 className="mb-1 font-semibold ">Date</h3>
-                <p className="mb-2 flex items-center gap-2">
+                <h3 className="mb-1 font-semibold ">Order Date</h3>
+                <p className="mb-5 flex items-center gap-2">
                   <AiOutlineClockCircle />{" "}
                   <span className="text-sm">
                     {moment(createdAt).format("lll")}
                   </span>
                 </p>
+
+                <h3 className="mb-1 font-semibold ">Delivery Date</h3>
+                <p className="mb-5 flex items-center gap-2">
+                  <AiOutlineClockCircle />{" "}
+                  <span className="text-sm">
+                    {moment(createdAt).format("lll")}
+                  </span>
+                </p>
+
+
+
                 <h3 className="mb-2 font-semibold ">Amount</h3>
                 <p className="text-sm leading-relaxed">
                   Subtotal :{" "}

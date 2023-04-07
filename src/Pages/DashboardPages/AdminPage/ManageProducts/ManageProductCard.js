@@ -10,10 +10,11 @@ import {
 const ManageProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { _id, name, primaryImage, price, category, subCategory } = product;
+  const { _id, name, primaryImage, price, category, subCategory, discount } =
+    product;
   const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
   return (
-    <div className="bg-white max-w-xs w-full xl:min-w-full p-3 mx-auto xl:mx-0 rounded-md shadow-md shadow-gray-300 xl:flex justify-between gap-5">
+    <div className="bg-white max-w-xs w-full xl:min-w-full p-3 mx-auto xl:mx-0 rounded-md shadow-md shadow-gray-300 xl:flex justify-between gap-5 relative">
       <div className="flex flex-col xl:flex-row justify-between h-full gap-5">
         <section className="flex items-center overflow-hidden">
           <img
@@ -22,6 +23,11 @@ const ManageProductCard = ({ product }) => {
             src={finalPrimaryImage}
             alt=""
           />
+          {discount > 0 && (
+            <button className="absolute top-3 left-0 text-white bg-slate-800 text-sm px-3 font-medium rounded-r-full">
+              - {discount} %
+            </button>
+          )}
         </section>
         <section>
           <div>

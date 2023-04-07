@@ -27,6 +27,7 @@ const UpdateProduct = () => {
     price: initialPrice,
     description: initialDescription,
     category: initialCategory,
+    discount: initialDiscount,
   } = updateProductData?.data || {};
 
   const [updateProduct, { isSuccess }] = useUpdateProductMutation();
@@ -139,6 +140,41 @@ const UpdateProduct = () => {
                 </span>
               )}
             </div>
+          </section>
+
+          <section className="sm:flex items-center justify-between gap-5 mb-4">
+            <div className="flex flex-col w-full">
+              <label
+                className="mb-2 text-base font-semibold"
+                htmlFor="discount"
+              >
+                Discount
+              </label>
+              <input
+                id="discount"
+                type="number"
+                defaultValue={initialDiscount}
+                placeholder="Type Product discount"
+                className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                  errors.discount
+                    ? " border-red-500 focus:border-red-500"
+                    : "focus:border-slate-700 border-slate-300"
+                }`}
+                {...register("discount", {
+                  min: {
+                    value: 0,
+                    message: "Discount can't be negative",
+                  },
+                  valueAsNumber: true,
+                })}
+              />
+              {errors.discount && (
+                <span className="label-text-alt text-red-500 text-sm ">
+                  {errors.discount.message}
+                </span>
+              )}
+            </div>
+            <div className="w-full"></div>
           </section>
 
           <section className="sm:flex items-center justify-between gap-5 mb-4">

@@ -29,6 +29,7 @@ const ProductDetails = () => {
     subCategory,
     primaryImage,
     extraImages,
+    discount,
   } = product?.data || {};
 
   const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
@@ -46,6 +47,7 @@ const ProductDetails = () => {
   const totalPrice =
     (Number(price) + Number(colorExtraPrice) + Number(sizeExtraPrice)) *
     Number(quantity);
+  const finalTotalPrice = totalPrice - (discount / 100) * totalPrice;
 
   useEffect(() => {
     if (firstColor?.extraPrice) {
@@ -178,7 +180,14 @@ const ProductDetails = () => {
             <p className="mt-5 flex items-center text-xl">
               Price :
               <span className="font-semibold text-red-500 ml-2">
-                ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
+                <span className={`${discount > 0 && "line-through "}`}>
+                  ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
+                </span>
+                {discount > 0 && (
+                  <span className="ml-4">
+                    ৳ {finalTotalPrice ? numberWithComma(finalTotalPrice) : ""}
+                  </span>
+                )}
               </span>
             </p>
 

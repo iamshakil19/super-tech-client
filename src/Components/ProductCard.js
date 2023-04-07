@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addToCart, getTotals } from "../features/orders/ordersSlice";
 import { motion } from "framer-motion";
 const ProductCard = ({ product }) => {
-  const { _id, name, price, description, primaryImage, extraImages } = product;
+  const { _id, name, price, description, primaryImage, extraImages, discount } = product;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleBuyNow = () => {
@@ -47,8 +47,13 @@ const ProductCard = ({ product }) => {
         delay: 0.3,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      className="max-w-xs flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto "
+      className="max-w-xs relative flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto "
     >
+      {discount > 0 && (
+        <button className="absolute top-3 right-0 text-white bg-slate-800 text-sm px-3 py-0.5 font-medium rounded-l-full">
+          - {discount} %
+        </button>
+      )}
       <section>
         <section>
           <img

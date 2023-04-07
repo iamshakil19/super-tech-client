@@ -82,6 +82,7 @@ export const productsApi = apiSlice.injectEndpoints({
                     updatedProduct.description = arg.data.description;
                     updatedProduct.category = arg.data.category;
                     updatedProduct.subCategory = arg.data.subCategory;
+                    updatedProduct.discount = arg.data.discount;
                   }
                 }
               )

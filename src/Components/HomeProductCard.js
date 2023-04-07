@@ -8,7 +8,7 @@ const HomeProductCard = ({ product }) => {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { _id, name, price, primaryImage, extraImages } = product;
+  const { _id, name, price, primaryImage, extraImages, discount } = product;
 
   const finalPrimaryImage = process.env.REACT_APP_IMG_URL + primaryImage;
 
@@ -54,8 +54,13 @@ const HomeProductCard = ({ product }) => {
       <div
         onMouseOver={() => setIsButtonOpen(true)}
         onMouseOut={() => setIsButtonOpen(false)}
-        className="card pt-5 max-w-xs bg-white mx-auto h-[420px]"
+        className="card pt-5 max-w-xs bg-white mx-auto h-[420px] relative"
       >
+        {discount > 0 && (
+          <button className="absolute top-3 left-0 text-white bg-slate-800 text-sm px-3 py-0.5 font-medium rounded-r-full">
+            - {discount} %
+          </button>
+        )}
         <figure className="cursor-pointer">
           <img
             onClick={() => navigate(`product-details/${_id}`)}
