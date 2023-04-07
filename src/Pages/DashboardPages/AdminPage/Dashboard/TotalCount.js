@@ -4,6 +4,7 @@ import { BsFillCartCheckFill, BsFillBagCheckFill } from "react-icons/bs";
 import { HiCheck } from "react-icons/hi";
 import { FiLoader } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
+import { AiFillSetting } from "react-icons/ai";
 import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
 import { useGetAllUserQuery } from "../../../../features/user/usersApi";
 import { useGetAllOrderQuery } from "../../../../features/orders/ordersApi";
@@ -46,6 +47,9 @@ const TotalCount = () => {
   );
   const cancelOrder = allOrders?.data?.orders?.filter(
     (order) => order.status === "canceled"
+  );
+  const processingOrder = allOrders?.data?.orders?.filter(
+    (order) => order.status === "processing"
   );
 
   return (
@@ -112,6 +116,20 @@ const TotalCount = () => {
           {!isOrderError && !orderLoading && (
             <p className="flex items-center font-semibold ">
               {completedOrder?.length}
+            </p>
+          )}
+        </div>
+      </div>
+      <div className="flex items-center gap-5 bg-white p-3 py-5 rounded-md shadow-lg shadow-gray-200 border border-gray-200">
+        <div className="bg-blue-500 h-10 w-10 ml-3 flex items-center justify-center rounded-full text-white ring-8 ring-blue-200/70">
+          <AiFillSetting size={20} />
+        </div>
+        <div>
+          <h2 className="text-lg font-bold text-slate-500">Processing Order</h2>
+          {orderLoading && <p>Loading...</p>}
+          {!isOrderError && !orderLoading && (
+            <p className="flex items-center font-semibold ">
+              {processingOrder?.length}
             </p>
           )}
         </div>

@@ -8,8 +8,11 @@ import {
 } from "../../../../features/orders/ordersSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
+import { useState } from "react";
+import ProcessingModal from "./ProcessingModal";
 const OrderTableRow = ({ i, order }) => {
   const dispatch = useDispatch();
+  const [processingModal, setProcessingModal] = useState(false);
   const [updateOrderStatus, { isSuccess }] = useUpdateOrderStatusMutation();
   const {
     _id,
@@ -28,10 +31,14 @@ const OrderTableRow = ({ i, order }) => {
   } = order;
 
   const handleStatus = (e, id) => {
-    const status = { status: e.target.value };
-    updateOrderStatus({ id, status });
+    const status = e.target.value;
+    if (e.target.value === "processing") {
+      console.log("processing");
+      return setProcessingModal(true);
+    }
+    updateOrderStatus({ id, data: { status, deliveryDate: "" } });
   };
-
+  console.log(processingModal);
   const handleDetails = () => {
     dispatch(handleOrderDetails(order));
   };
@@ -81,6 +88,9 @@ const OrderTableRow = ({ i, order }) => {
             status === "pending" &&
             "bg-orange-200 text-orange-600 border-orange-300"
           } ${
+            status === "processing" &&
+            "bg-blue-200 text-blue-600 border-blue-300"
+          } ${
             status === "completed" &&
             "bg-green-200 text-green-600 border-green-300"
           } ${
@@ -88,6 +98,7 @@ const OrderTableRow = ({ i, order }) => {
           }`}
         >
           <option value="pending">Pending</option>
+          <option value="processing">Processing</option>
           <option value="completed">Completed</option>
           <option value="canceled">Canceled</option>
         </select>
@@ -102,6 +113,11 @@ const OrderTableRow = ({ i, order }) => {
           Delete
         </button>
       </td>
+      <ProcessingModal
+        processingModal={processingModal}
+        setProcessingModal={setProcessingModal}
+        _id={_id}
+      />
     </tr>
   );
 };

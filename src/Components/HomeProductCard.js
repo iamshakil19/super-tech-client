@@ -21,6 +21,7 @@ const HomeProductCard = ({ product }) => {
         colorCost: 0,
         size: "",
         sizeCost: 0,
+        discount: discount,
       })
     );
     dispatch(getTotals());
@@ -35,6 +36,7 @@ const HomeProductCard = ({ product }) => {
         colorCost: 0,
         size: "",
         sizeCost: 0,
+        discount: discount,
       })
     );
     dispatch(getTotals());

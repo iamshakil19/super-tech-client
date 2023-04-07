@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { addToCart, getTotals } from "../features/orders/ordersSlice";
 import { motion } from "framer-motion";
 const ProductCard = ({ product }) => {
-  const { _id, name, price, description, primaryImage, extraImages, discount } = product;
+  const { _id, name, price, description, primaryImage, extraImages, discount } =
+    product;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleBuyNow = () => {
@@ -16,6 +17,7 @@ const ProductCard = ({ product }) => {
         colorCost: 0,
         size: "",
         sizeCost: 0,
+        discount: discount,
       })
     );
     dispatch(getTotals());
@@ -31,6 +33,7 @@ const ProductCard = ({ product }) => {
         colorCost: 0,
         size: "",
         sizeCost: 0,
+        discount: discount,
       })
     );
     dispatch(getTotals());

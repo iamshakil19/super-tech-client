@@ -30,6 +30,7 @@ const OrderDetailsModal = () => {
     totalPrice,
     totalQuantity,
     createdAt,
+    deliveryDate,
     _id,
   } = orderForDetails;
   return (
@@ -177,15 +178,17 @@ const OrderDetailsModal = () => {
                   </span>
                 </p>
 
-                <h3 className="mb-1 font-semibold ">Delivery Date</h3>
-                <p className="mb-5 flex items-center gap-2">
-                  <AiOutlineClockCircle />{" "}
-                  <span className="text-sm">
-                    {moment(createdAt).format("lll")}
-                  </span>
-                </p>
-
-
+                {deliveryDate && (
+                  <>
+                    <h3 className="mb-1 font-semibold ">Delivery Date</h3>
+                    <p className="mb-5 flex items-center gap-2">
+                      <AiOutlineClockCircle />{" "}
+                      <span className="text-sm">
+                        {moment(deliveryDate).format("ll")}
+                      </span>
+                    </p>
+                  </>
+                )}
 
                 <h3 className="mb-2 font-semibold ">Amount</h3>
                 <p className="text-sm leading-relaxed">
@@ -236,6 +239,12 @@ const OrderDetailsModal = () => {
                     Quantity :{" "}
                     <span className="font-medium">{product.quantity}</span>
                   </p>
+                  {product.discount && (
+                    <p className="text-sm leading-relaxed">
+                      Discount :{" "}
+                      <span className="font-medium">{product.discount} %</span>
+                    </p>
+                  )}
                   <p className="text-sm leading-relaxed">
                     Price : {""} ৳{" "}
                     <span className="font-medium">

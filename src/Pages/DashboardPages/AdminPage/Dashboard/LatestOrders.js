@@ -37,11 +37,17 @@ const LatestOrders = () => {
               <p className="overflow-hidden border-l border-gray-300 pl-2">
                 {order.phoneNumber}
               </p>
-              <p className="border-l border-gray-300 pl-2"> ৳ 456</p>
+              <p className="border-l border-gray-300 pl-2">
+                {" "}
+                ৳ {order.totalPrice}
+              </p>
               <p
                 className={`capitalize w-24 text-center rounded-full px-2 py-0.5 text-sm font-medium ${
                   order.status === "pending" &&
                   "text-orange-500 bg-orange-200 border border-orange-400"
+                } ${
+                  order.status === "processing" &&
+                  "text-blue-500 bg-blue-200 border border-blue-400"
                 } ${
                   order.status === "canceled" &&
                   "text-red-600 bg-red-200 border border-red-400"

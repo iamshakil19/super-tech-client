@@ -99,6 +99,7 @@ const ProductDetails = () => {
         colorCost: colorExtraPrice,
         size: sizeName,
         sizeCost: sizeExtraPrice,
+        discount: discount,
       })
     );
     dispatch(getTotals());
@@ -112,6 +113,7 @@ const ProductDetails = () => {
         colorCost: colorExtraPrice,
         size: sizeName,
         sizeCost: sizeExtraPrice,
+        discount: discount,
       })
     );
     dispatch(getTotals());
@@ -185,7 +187,10 @@ const ProductDetails = () => {
                 </span>
                 {discount > 0 && (
                   <span className="ml-4">
-                    ৳ {finalTotalPrice ? numberWithComma(finalTotalPrice) : ""}
+                    ৳{" "}
+                    {finalTotalPrice
+                      ? numberWithComma(Math.floor(finalTotalPrice))
+                      : ""}
                   </span>
                 )}
               </span>

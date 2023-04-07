@@ -18,6 +18,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const { cart, cartTotalAmount } = useSelector((state) => state.orders);
+  console.log(cart);
   useEffect(() => {
     dispatch(getTotals());
   }, [dispatch, cart]);
@@ -67,10 +68,14 @@ const Cart = () => {
                 {cart?.map((cartProduct) => (
                   <tr
                     key={cartProduct._id}
-                    className="border-b border-gray-300 p-5"
+                    className="border-b border-gray-300 p-5 relative"
                   >
                     <td>
-                      {" "}
+                      {cartProduct?.discount > 0 && (
+                        <button className="absolute top-3 left-0 text-white bg-slate-800 text-sm px-3 py-0.5 font-medium rounded-r-full">
+                          - {cartProduct?.discount} %
+                        </button>
+                      )}{" "}
                       <div className="flex gap-5 items-center">
                         <div>
                           <img
@@ -150,15 +155,43 @@ const Cart = () => {
                       </div>
                     </td>
                     <td>
-                      ৳{" "}
-                      {cartProduct.price && cartProduct.quantity
-                        ? numberWithComma(
-                            (cartProduct.price +
-                              cartProduct.colorCost +
-                              cartProduct.sizeCost) *
-                              cartProduct.quantity
-                          )
-                        : ""}
+                      <span
+                        className={`${
+                          cartProduct?.discount > 0 && "line-through "
+                        }`}
+                      >
+                        ৳{" "}
+                        {cartProduct.price && cartProduct.quantity
+                          ? numberWithComma(
+                              (cartProduct.price +
+                                cartProduct.colorCost +
+                                cartProduct.sizeCost) *
+                                cartProduct.quantity
+                            )
+                          : ""}
+                      </span>
+                      {cartProduct?.discount > 0 && (
+                        <span
+                          className={`${cartProduct?.discount > 0 && "ml-4"}`}
+                        >
+                          ৳{" "}
+                          {cartProduct.price && cartProduct.quantity
+                            ? numberWithComma(
+                                Math.floor(
+                                  (cartProduct.price +
+                                    cartProduct.colorCost +
+                                    cartProduct.sizeCost) *
+                                    cartProduct.quantity -
+                                    (cartProduct.discount / 100) *
+                                      ((cartProduct.price +
+                                        cartProduct.colorCost +
+                                        cartProduct.sizeCost) *
+                                        cartProduct.quantity)
+                                )
+                              )
+                            : ""}
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))}

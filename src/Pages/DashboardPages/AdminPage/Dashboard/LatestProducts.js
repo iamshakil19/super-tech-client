@@ -106,10 +106,10 @@ const LatestProducts = () => {
           </p>
 
           <p className="flex items-center border-l border-gray-300 pl-2">456</p>
-          <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2">
+          <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2 capitalize">
             {product.category}
           </p>
-          <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2">
+          <p className="overflow-hidden whitespace-nowrap border-l border-gray-300 pl-2 capitalize">
             {product.subCategory}
           </p>
           <p className="overflow-hidden border-l border-gray-300 pl-2">

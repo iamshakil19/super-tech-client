@@ -27,6 +27,9 @@ const ManageOrderFilter = () => {
             <option className=" font-medium text-md" value="pending">
               Pending
             </option>
+            <option className=" font-medium text-md" value="processing">
+              Processing
+            </option>
             <option className=" font-medium text-md" value="completed">
               Completed
             </option>

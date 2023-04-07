@@ -32,10 +32,17 @@ const OrderCard = ({ cartProduct }) => {
           ৳{" "}
           {cartProduct?.price && cartProduct?.quantity
             ? numberWithComma(
-                (cartProduct?.price +
-                  cartProduct?.colorCost +
-                  cartProduct?.sizeCost) *
-                  cartProduct?.quantity
+                Math.floor(
+                  (cartProduct?.price +
+                    cartProduct?.colorCost +
+                    cartProduct?.sizeCost) *
+                    cartProduct?.quantity -
+                    (cartProduct.discount / 100) *
+                      ((cartProduct?.price +
+                        cartProduct?.colorCost +
+                        cartProduct?.sizeCost) *
+                        cartProduct?.quantity)
+                )
               )
             : ""}
         </p>

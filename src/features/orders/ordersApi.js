@@ -20,12 +20,13 @@ export const orderApi = apiSlice.injectEndpoints({
       }),
     }),
     updateOrderStatus: builder.mutation({
-      query: ({ id, status }) => ({
+      query: ({ id, data }) => ({
         url: `/api/v1/order/${id}`,
         method: "PATCH",
-        body: status,
+        body: data,
       }),
       async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        console.log(arg);
         const { page, limit, sort, status } = getState().orders.orderFilter;
         let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
         if (status) {
@@ -43,7 +44,8 @@ export const orderApi = apiSlice.injectEndpoints({
                     (item) => item._id === arg.id
                   );
                   if (updatedOrder) {
-                    updatedOrder.status = arg.status.status;
+                    updatedOrder.status = arg.data.status;
+                    updatedOrder.deliveryDate = arg.data.deliveryDate;
                   }
                 }
               )

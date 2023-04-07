@@ -61,6 +61,9 @@ const MyOrdersRow = ({ myOrder, i }) => {
             status === "pending" &&
             "text-orange-500 bg-orange-200 border border-orange-400"
           } ${
+            status === "processing" &&
+            "text-blue-500 bg-blue-200 border border-blue-400"
+          } ${
             status === "canceled" &&
             "text-red-600 bg-red-200 border border-red-400"
           } ${
