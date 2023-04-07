@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import {
+  useGetAllProductsQuery,
+  useProductBulkUpdateMutation,
+} from "../../../../features/products/productsApi";
+import { toast } from "react-hot-toast";
 
 const DiscountModal = ({ setDiscountModalOpen, discountModalOpen }) => {
+  const [productBulkUpdate, { isSuccess }] = useProductBulkUpdateMutation();
+  const {
+    data: allProducts,
+    isLoading,
+    isError,
+    error,
+  } = useGetAllProductsQuery();
+
+  const { products } = allProducts?.data || {};
+  const ids = [...new Set(products?.map((item) => item._id))];
   const [discount, setDiscount] = useState(0);
-
-  const handleUpdate = () => {
-
+  const data = {
+    ids,
+    data: { discount: discount },
   };
+  const handleUpdate = () => {
+    productBulkUpdate(data);
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Successfully discount updated for all products", {
+        id: "bulkUpdate",
+      });
+    }
+    setDiscountModalOpen(false);
+  }, [isSuccess, setDiscountModalOpen]);
+
   return (
     discountModalOpen && (
       <div className="fixed w-full h-full inset-0 z-50 bg-black/70 poppins">

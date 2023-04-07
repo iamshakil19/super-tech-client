@@ -96,6 +96,13 @@ export const productsApi = apiSlice.injectEndpoints({
         }
       },
     }),
+    productBulkUpdate: builder.mutation({
+      query: (data) => ({
+        url: `/api/v1/product/bulk-update`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
     deleteProduct: builder.mutation({
       query: (id) => ({
         url: `/api/v1/product/${id}`,
@@ -147,4 +154,5 @@ export const {
   useAddProductMutation,
   useUpdateProductMutation,
   useDeleteProductMutation,
+  useProductBulkUpdateMutation,
 } = productsApi;
