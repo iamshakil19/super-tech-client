@@ -14,7 +14,7 @@ const WhySuperTech = () => {
             Exceptional Furniture For The Taskmasters
           </h2>
           <p className="poppins text-justify max-w-md mx-auto">
-            We founded GRID: to make it easy for teams of all sizes to create an
+            We founded Super Tech: to make it easy for teams of all sizes to create an
             office you love. We sell direct, so our collection costs half as
             much as premium furniture of comparable quality.
           </p>
@@ -32,7 +32,7 @@ const WhySuperTech = () => {
             Enjoy stylish and ergonomic work seating for every budget, from the
             home office to the open office. Durable, adjustable and built to
             inspire: make your office feel like home with contract-grade desks &
-            chairs from GRID Furniture.
+            chairs from Super Tech Furniture.
           </p>
         </div>
         <div className="p-5 ">

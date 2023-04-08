@@ -3,15 +3,13 @@ import { ImArrowDown2 } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { BiTime } from "react-icons/bi";
 const LicenseAndCertificateCard = ({ license }) => {
-  const { title, name, date, colorFrom, colorTo, link } = license;
-  console.log(colorTo);
-  const gradientClass = `bg-gradient-to-r from-${colorFrom} to-${colorTo}`;
+  const { name, colorFrom, colorTo, link } = license;
   return (
     <div className="border shadow-md w-full mx-auto border-gray-300 max-w-xs h-96 rounded-md poppins">
       <div
         className={`bg-gradient-to-r ${colorFrom} ${colorTo} rounded-t-md h-[60%] flex justify-center items-center relative`}
       >
-        <p className="text-white font-medium text-lg">{title}</p>
+        <p className="text-white font-medium text-lg px-3">{name}</p>
         <Link
           to={link}
           target="blank"
@@ -21,9 +19,6 @@ const LicenseAndCertificateCard = ({ license }) => {
         </Link>
       </div>
       <p className="mt-10 px-3">{name}</p>
-      <p className="mt-5 px-3 flex items-center gap-2">
-        <BiTime size={20} /> <span className="text-sm">{date}</span>
-      </p>
     </div>
   );
 };

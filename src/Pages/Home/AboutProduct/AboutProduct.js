@@ -20,23 +20,18 @@ const AboutProduct = () => {
           </h1>
 
           <p className="poppins my-5 max-w-xl text-justify">
-            GRID ensures you 100% authenticity and originality of the products
-            which are imported via China, Vietnam & Taiwan. We never want you to
-            compromise with the quality that is why we ensure you get the best
-            furniture delivered via GRID!
+            Super Tech ensures you 100% authenticity and originality of the
+            products. We never want you to compromise with the quality that is
+            why we ensure you get the best furniture delivered via Super Tech!
           </p>
           <p className="poppins my-5  max-w-xl text-justify">
             1. We assure you 100% premium quality of our products and before the
-            delivery of each product, we have 4 product experts who do the
+            delivery of each product, we have 3 product experts who do the
             quality check while the product is ready for delivery.
           </p>
           <p className="poppins my-5  max-w-xl text-justify">
-            2. At GRID, we deliver you premium quality and stylish design which
-            also delivers the meaning of elegance at your home.
-          </p>
-          <p className="poppins my-5  max-w-xl text-justify">
-            3. Our products are made of strong materials imported from China
-            which ensure 100% durability.
+            2. At Super Tech, we deliver you premium quality and stylish design
+            which also delivers the meaning of elegance at your home.
           </p>
 
           <button

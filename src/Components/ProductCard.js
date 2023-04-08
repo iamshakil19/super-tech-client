@@ -53,7 +53,7 @@ const ProductCard = ({ product }) => {
       className="max-w-xs relative flex flex-col gap-2 justify-between bg-white px-3 py-5 poppins shadow-xl shadow-gray-200 rounded-md mx-auto "
     >
       {discount > 0 && (
-        <button className="absolute top-3 right-0 text-white bg-slate-800 text-sm px-3 py-0.5 font-medium rounded-l-full">
+        <button className="absolute top-3 right-0 text-white bg-gradient-to-r from-yellow-400 to-orange-500 text-sm px-3 py-0.5 font-medium rounded-l-full poppins">
           - {discount} %
         </button>
       )}

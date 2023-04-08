@@ -1,83 +1,9 @@
 import React from "react";
 import { FaBoxOpen } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
 import Error from "../../../Shared/Error/Error";
 import Loading from "../../../Shared/Loading/Loading";
-const productData = [
-  {
-    _id: "507f1f77bcf86cd799439011",
-    name: "GRID Newon Chair",
-    price: 84000,
-    views: 5,
-    category: "Home",
-    subCategory: "Dressing Table",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: "507f1f77bcf86cd799439011",
-    name: "GRID Newon Chair",
-    price: 84000,
-    views: 54,
-    category: "Home",
-    subCategory: "Cup Board",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: "507f1f77bcf86cd799439011",
-    name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
-    price: 84000,
-    views: 82,
-    category: "Home",
-    subCategory: "Wardrobe",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: "507f1f77bcf86cd799439011",
-    name: "GRID Newon Chair",
-    price: 84000,
-    views: 9,
-    category: "Home",
-    subCategory: "Cup Board",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/industrioustable_1080x.jpg?v=1652877979",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: "507f1f77bcf86cd799439011",
-    name: "GRID Newon Chair, GRID Newon Chair, GRID Newon Chair",
-    price: 84000,
-    views: 139,
-    category: "Home",
-    subCategory: "Dressing Table",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-  {
-    _id: "507f1f77bcf86cd799439011",
-    name: "GRID Newon Chair",
-    price: 84000,
-    views: 2,
-    category: "Home",
-    subCategory: "Wardrobe",
-    primaryImage:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/simplextsizes_720x.jpg?v=1652878756",
-    image2:
-      "https://cdn.shopify.com/s/files/1/0521/4434/1176/products/CM-F85AS-145_1080x.webp?v=1672562358",
-  },
-];
+
 const LatestProducts = () => {
   const queryString = `page=1&limit=5&sort=-createdAt`;
   const { data, isError, isLoading, error } =
@@ -120,8 +46,6 @@ const LatestProducts = () => {
       </div>
     ));
   }
-
-  const newLatestProducts = productData.slice(0, 5);
   return (
     <div>
       <div className="my-10 poppins border border-gray-200 bg-white p-5 rounded-md shadow-lg shadow-gray-200">
