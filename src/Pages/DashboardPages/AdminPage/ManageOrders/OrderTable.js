@@ -44,6 +44,7 @@ const OrderTable = () => {
               <th className="px-6 py-4 whitespace-nowrap">City</th>
               <th className="px-6 py-4 whitespace-nowrap">Quantity</th>
               <th className="px-6 py-4 whitespace-nowrap">Price</th>
+              <th className="px-6 py-4 whitespace-nowrap">Print</th>
               <th className="px-6 py-4 whitespace-nowrap">Status</th>
               <th className="px-6 py-4 whitespace-nowrap">Action</th>
             </tr>

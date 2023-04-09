@@ -166,7 +166,7 @@ const ReturnAndWarrantyPolicy = () => {
           </div>
           <p className="mt-5">
             For servicing related queries, call us @{" "}
-            <span className="font-semibold text-red-500">01716-926040</span>
+            <span className="font-semibold text-black">01716-926040</span>
           </p>
           <p className="mt-5">
             For any other general/corporate/business related queries, feel free
@@ -180,7 +180,7 @@ const ReturnAndWarrantyPolicy = () => {
           </p>
           <p className="mt-5">
             Or give us a ring @{" "}
-            <span className="font-semibold text-red-500">01716-926040</span>
+            <span className="font-semibold text-black">01716-926040</span>
           </p>
         </div>
       </div>

@@ -1,7 +1,10 @@
 import moment from "moment/moment";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import numberWithComma from "../../../../Utils/numberWithComa";
-import { useUpdateOrderStatusMutation } from "../../../../features/orders/ordersApi";
+import {
+  useUpdateInvoiceNoMutation,
+  useUpdateOrderStatusMutation,
+} from "../../../../features/orders/ordersApi";
 import {
   handleDeleteOrderModal,
   handleOrderDetails,
@@ -10,10 +13,14 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import ProcessingModal from "./ProcessingModal";
+import { AiFillPrinter } from "react-icons/ai";
+import ReactToPrint from "react-to-print";
+import OrderInvoice from "./OrderInvoice";
 const OrderTableRow = ({ i, order }) => {
   const dispatch = useDispatch();
   const [processingModal, setProcessingModal] = useState(false);
   const [updateOrderStatus, { isSuccess }] = useUpdateOrderStatusMutation();
+  const [updateInvoiceNo] = useUpdateInvoiceNoMutation();
   const {
     _id,
     orderId,
@@ -38,7 +45,7 @@ const OrderTableRow = ({ i, order }) => {
     }
     updateOrderStatus({ id, data: { status, deliveryDate: "" } });
   };
-  console.log(processingModal);
+
   const handleDetails = () => {
     dispatch(handleOrderDetails(order));
   };
@@ -48,6 +55,8 @@ const OrderTableRow = ({ i, order }) => {
       toast.success("Successfully updated the order", { id: "order" });
     }
   }, [isSuccess]);
+
+  const componentRef = useRef();
 
   return (
     <tr className="bg-white border-b poppins border-gray-300 hover:bg-gray-200">
@@ -78,6 +87,23 @@ const OrderTableRow = ({ i, order }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-[15px] font-semibold">
         ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
+      </td>
+      <td className="px-6 font-semibold">
+        <button onClick={() => updateInvoiceNo()}>
+          <ReactToPrint
+            trigger={() => (
+              <AiFillPrinter
+                size={35}
+                className="hover:border border-gray-400 rounded-full hover:shadow-lg hover:text-blue-500 hover:bg-blue-100 shadow-gray-500 p-2 cursor-pointer"
+              />
+            )}
+            content={() => componentRef.current}
+          />
+        </button>
+
+        <div className="hidden">
+          <OrderInvoice order={order} componentRef={componentRef} />
+        </div>
       </td>
       <td>
         <select

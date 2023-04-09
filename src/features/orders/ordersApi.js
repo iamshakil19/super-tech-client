@@ -91,6 +91,38 @@ export const orderApi = apiSlice.injectEndpoints({
         }
       },
     }),
+    getInvoiceNo: builder.query({
+      query: () => ({
+        url: `/api/v1/invoice`,
+      }),
+    }),
+    updateInvoiceNo: builder.mutation({
+      query: () => ({
+        url: `/api/v1/invoice`,
+        method: "PATCH",
+      }),
+      async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
+        console.log(arg);
+        try {
+          const result = await queryFulfilled;
+          if (result?.data?.data?.modifiedCount > 0) {
+            dispatch(
+              apiSlice.util.updateQueryData(
+                "getInvoiceNo",
+                undefined,
+                (draft) => {
+                  console.log(JSON.parse(JSON.stringify(draft)));
+
+                  draft.data.invoiceNo = draft.data.invoiceNo + 1;
+                }
+              )
+            );
+          }
+        } catch (err) {
+          console.error("Failed to update task status in cache", err);
+        }
+      },
+    }),
   }),
 });
 
@@ -100,4 +132,6 @@ export const {
   useGetOrderByEmailQuery,
   useUpdateOrderStatusMutation,
   useDeleteOrderMutation,
+  useGetInvoiceNoQuery,
+  useUpdateInvoiceNoMutation,
 } = orderApi;

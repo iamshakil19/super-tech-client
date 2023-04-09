@@ -52,7 +52,7 @@ const data = [
     link: "https://drive.google.com/file/d/1GOZMGUWsrnml5voRm16QgoPXPvUTT_6u/view?usp=sharing",
   },
   {
-    name: "Fair license",
+    name: "Fire license",
     colorFrom: "from-[#F0F2F0]",
     colorTo: "to-[#000C40]",
     link: "https://drive.google.com/file/d/1ZbZlSrqizy6e94TzA25abbn3CID0EunH/view?usp=sharing",

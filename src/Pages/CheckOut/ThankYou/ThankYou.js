@@ -7,6 +7,7 @@ import nagadLogo from "../../../Assets/Others/nagad.png";
 import qrCode from "../../../Assets/Others/qr-code.png";
 import numberWithComma from "../../../Utils/numberWithComa";
 import PageTitle from "../../../Utils/PageTitle";
+import moment from "moment/moment";
 const ThankYou = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const ThankYou = () => {
     shippingMethod,
     billingAddress,
     totalPrice,
+    createdAt
   } = orderResponse || {};
 
   useEffect(() => {
@@ -211,6 +213,10 @@ const ThankYou = () => {
                 <p className="text-sm">{billingAddress?.streetAddress}</p>
               </>
             )}
+          </div>
+          <div>
+            <h3 className="font-medium mb-2">Order Date</h3>
+            <p className="text-sm">{moment(createdAt).format("lll")}</p>
           </div>
           <div>
             <h3 className="font-medium mb-2">Shipping Method</h3>
