@@ -72,7 +72,7 @@ const Cart = () => {
                   >
                     <td>
                       {cartProduct?.discount > 0 && (
-                        <button className="absolute top-3 left-0 text-white bg-slate-800 text-sm px-3 py-0.5 font-medium rounded-r-full">
+                        <button className="absolute top-3 left-0 text-white bg-gradient-to-r from-orange-500 to-yellow-400 text-sm px-3 py-0.5 font-medium rounded-r-full">
                           - {cartProduct?.discount} %
                         </button>
                       )}{" "}

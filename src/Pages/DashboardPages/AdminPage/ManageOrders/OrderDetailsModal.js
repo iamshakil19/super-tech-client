@@ -32,11 +32,12 @@ const OrderDetailsModal = () => {
     createdAt,
     deliveryDate,
     _id,
+    advanceAmount,
   } = orderForDetails;
   return (
     _id && (
-      <div className="fixed w-full h-full inset-0 z-50 bg-black/70 poppins">
-        <div className="rounded w-full max-w-2xl space-y-8 bg-white p-5 absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+      <div className="fixed overflow-auto w-full h-full inset-0 z-50 bg-black/70 poppins">
+        <div className="rounded overflow-auto w-full max-w-2xl space-y-8 bg-white p-5 absolute translate-y-20 left-1/2 z-20 -translate-x-1/2">
           <div>
             <div className="flex justify-between">
               <p>
@@ -208,7 +209,23 @@ const OrderDetailsModal = () => {
                     ৳ {totalPrice ? numberWithComma(totalPrice) : ""}
                   </span>
                 </p>
-                <p className="text-sm leading-relaxed">
+                <p className="text-sm leading-relaxed font-semibold">
+                  Advance :{" "}
+                  <span className="">
+                    ৳ {advanceAmount ? numberWithComma(advanceAmount) : ""}
+                  </span>
+                </p>
+                <p className="border-b border-gray-300 max-w-xs my-2"></p>
+                <p className="text-sm leading-relaxed font-semibold">
+                  Due Amount :{" "}
+                  <span className="">
+                    ৳{" "}
+                    {totalPrice
+                      ? numberWithComma(totalPrice - advanceAmount)
+                      : ""}
+                  </span>
+                </p>
+                <p className="text-sm leading-relaxed mt-2">
                   Payment Method :{" "}
                   <span className="font-medium">
                     {paymentMethod === "codInsideDhaka" &&

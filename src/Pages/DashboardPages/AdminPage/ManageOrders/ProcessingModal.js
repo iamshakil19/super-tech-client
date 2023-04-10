@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 
 const ProcessingModal = ({ _id, processingModal, setProcessingModal }) => {
   const [deliveryDate, setDeliveryDate] = useState("");
+  const [advanceAmount, setAdvanceAmount] = useState("");
   const [updateOrderStatus, { isSuccess }] = useUpdateOrderStatusMutation();
 
   const handleUpdate = () => {
@@ -14,6 +15,7 @@ const ProcessingModal = ({ _id, processingModal, setProcessingModal }) => {
       data: {
         status: "processing",
         deliveryDate: deliveryDate,
+        advanceAmount: advanceAmount,
       },
     });
   };
@@ -38,6 +40,15 @@ const ProcessingModal = ({ _id, processingModal, setProcessingModal }) => {
                 type="date"
                 placeholder="Discount number"
                 className="outline-none px-2 border border-gray-600 py-1 w-full"
+              />
+            </div>
+            <div>
+              <input
+                required
+                onChange={(e) => setAdvanceAmount(e.target.value)}
+                type="number"
+                placeholder="Enter advance amount"
+                className="outline-none px-2 border border-gray-600 py-1 w-full mt-3"
               />
             </div>
 

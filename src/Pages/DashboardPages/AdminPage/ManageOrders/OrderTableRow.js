@@ -43,7 +43,10 @@ const OrderTableRow = ({ i, order }) => {
       console.log("processing");
       return setProcessingModal(true);
     }
-    updateOrderStatus({ id, data: { status, deliveryDate: "" } });
+    updateOrderStatus({
+      id,
+      data: { status, deliveryDate: "", advanceAmount: 0 },
+    });
   };
 
   const handleDetails = () => {
