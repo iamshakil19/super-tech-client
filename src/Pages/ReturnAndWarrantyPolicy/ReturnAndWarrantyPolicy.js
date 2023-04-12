@@ -18,14 +18,14 @@ const ReturnAndWarrantyPolicy = () => {
           In case the Furniture purchaused from us for some reason, dose not
           match your order it seems. That's what you'll get!
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           <span className="text-lg font-semibold font-serif">SUPER TECH</span>{" "}
           provides a simple, hassle-free servicing system where we pick up your
           product from your home if there is a major problem and bring it back
           to you anew. If there is a small problem, we will solve it at your
           point.
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           Replacement and Refund is possible if notified within 24 hours of
           delivery and in its original packaging. Any purchase, including
           corporate office orders, are subject to a 25% restocking fee. In
@@ -34,7 +34,7 @@ const ReturnAndWarrantyPolicy = () => {
           product plus a shipment cost of BDT 500 & restocking fee of 25% as
           well.{" "}
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           If you’ve received damaged products, please notify{" "}
           <span className="text-lg font-semibold font-serif">SUPER TECH</span>{" "}
           instantly of receiving the product, in which case we will cover the
@@ -42,23 +42,23 @@ const ReturnAndWarrantyPolicy = () => {
           transit can be returned for a full refund, or replaced under the SUPER
           TECH Warranty Policy.
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           Products that suffer from defects during their useable lifetime, as
           outlined in the SUPER TECH Warranty Policy, qualify for repair or
           replacement. Please review the SUPER TECH Warranty Policy below for
           further details
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           Any custom-made products (size or color) or products clearly marked as
           final sale on our website are not eligible for returns. All white
           glove delivery and installation fees are also non-refundable
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           All refunds are transferred to the customer in the original form of
           payment, typically within 5-10 business days of our receipt of the
           returned furniture.{" "}
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           Returns and refunds can be organized by reaching out to our customer
           service team at{" "}
           <span className="font-semibold">super.tech767@gmail.com</span>{" "}
@@ -66,13 +66,13 @@ const ReturnAndWarrantyPolicy = () => {
         <p className="mt-7 text-lg font-semibold font-serif">
           WARRANTY & SERVICING POLICY:
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           SUPER TECH believes in making great furniture products, which stand
           the test of time. As such, SUPER TECH furniture purchases include One
           (1) year warranty policy. All warranty periods begin from the date of
           delivery
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-justify">
           <span className="font-semibold text-lg">The Warranty:</span> Our
           furniture is designed and manufactured to the highest standards, but
           things happen. We’ll happily repair or replace furniture which

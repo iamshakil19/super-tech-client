@@ -1,7 +1,7 @@
 {
   "name": "super-tech-client",
   "version": "0.1.0",
-  "type": "module",
+  "homePage": "https://supertechfurniture.com",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",

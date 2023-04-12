@@ -128,8 +128,8 @@ const PaymentSection = () => {
             <img src={bkashLogo} className="w-24 mx-auto block" alt="" />
             <div className="border-b border-dashed max-w-xs mx-auto border-gray-400 my-2"></div>
             <p className="text-sm leading-6">
-              <span className="font-semibold text-pink-500">01716-926040</span>{" "}
-              - Merchant Account (Make Payment)
+              <span className="font-semibold text-pink-500">01853-870017</span>{" "}
+              - Personal Account (Send Money)
             </p>
             <p className="text-sm leading-6">
               Put your order ID as reference number
@@ -139,9 +139,9 @@ const PaymentSection = () => {
             <div className="border-b border-dashed max-w-xs mx-auto border-gray-400 my-2"></div>
             <p className="text-sm leading-6">
               <span className="font-semibold text-orange-500">
-                01716-926040
+                01853-870017
               </span>{" "}
-              - Merchant Account (Make Payment)
+              - Personal Account (Send Money)
             </p>
             <p className="text-sm leading-6">
               Put your order ID as reference number

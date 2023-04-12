@@ -24,6 +24,7 @@ const SignUp = () => {
   const [signUp, { data, isLoading, error: resError }] = useSignUpMutation();
   useEffect(() => {
     if (resError) {
+      console.log(resError);
       toast.error(resError?.data?.error?.errors?.confirmPassword?.message, {
         id: "signup",
       });

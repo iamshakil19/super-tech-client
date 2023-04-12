@@ -26,7 +26,7 @@ const responsive = {
 };
 
 const NewArrivalProductSlider = () => {
-  const queryString =  `page=1&limit=10&sort=-createdAt`
+  const queryString = `page=1&limit=10&sort=-createdAt`;
   const {
     data: allProducts,
     isError,
@@ -34,13 +34,13 @@ const NewArrivalProductSlider = () => {
     error,
   } = useGetAllProductsQuery(queryString);
   const { products } = allProducts?.data || {};
-
+  console.log(error);
   let content = null;
 
   if (isLoading) {
     content = <Loading />;
   } else if (!isLoading && isError) {
-    content = <Error message="There was an error" />;
+    content = <Error message={JSON.stringify(error)} />;
   } else if (!isLoading && !isError && products.length === 0) {
     content = <p>No product found </p>;
   } else if (!isLoading && !isError && products.length > 0) {

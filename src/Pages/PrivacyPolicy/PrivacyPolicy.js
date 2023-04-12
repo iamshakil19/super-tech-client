@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
         </h3>
 
         <div className="mt-10">
-          <p>
+          <p className="text-justify">
             Being a smart, contemporary furniture brand, Super Tech aspires to
             make sure you get the best value and exciting experience. We also
             believe you have high expectations from Super Tech, and we too
@@ -45,23 +45,23 @@ const PrivacyPolicy = () => {
               We let you know based on that information only who can contact you
               Details We Ask For:
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               Photograph: When you go for a visual search, you select
               ‘photographs’ of our furniture. When you are done with searching
               and decide to log out, we remove your select ‘photographs’ of
               those chosen furniture
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               Names & Emails: To get back to you with feedback, we need to have
               your name and Email Sharing of Information
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               We do not share, exchange, spread, or trade your details to any
               third party, banks, and marketing agencies. Only business
               verticals of us who actually are there to serve you can access
               that information for your best interest
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               In case of any directive from state agencies or regulatory bodies,
               as a law-abiding corporate citizen, we have no choice but to share
               your details Data Security: We take a series of steps to maintain
@@ -73,24 +73,24 @@ const PrivacyPolicy = () => {
             <li className="leading-relaxed">
               Logging Systems Data Preservation
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               We don’t store your personal information once they are no longer
               in use. Your searched photos are stored only for a few hours.
               Names and Emails remain with us as long as you wish them to be
               with us. Privacy Rights
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               Right to Access: You have the sole right to access your personal
               information you share with us. If you have the right to
               change/alter/modify them when you feel like, providing you contact
               us through proper channel
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               Right to Object: You have every right to inform us about any
               erroneous or misinformation we have for you. We shall rectify
               those immediately
             </li>
-            <li className="leading-relaxed">
+            <li className="leading-relaxed text-justify">
               Right to Withdraw: You have the sole right to withdraw your
               personal information anytime. In In this case, you need to inform
               us through the proper channel Share Your Mind: For any concern or

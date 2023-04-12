@@ -30,7 +30,7 @@ const ThankYou = () => {
     shippingMethod,
     billingAddress,
     totalPrice,
-    createdAt
+    createdAt,
   } = orderResponse || {};
 
   useEffect(() => {
@@ -81,20 +81,18 @@ const ThankYou = () => {
             <div className="xl:flex flex-row-reverse items-center justify-between gap-2">
               <div>
                 <img className="w-24 mx-auto" src={bkashLogo} alt="" />
-                <img className="w-36 mx-auto" src={qrCode} alt="" />
+                {/* <img className="w-36 mx-auto" src={qrCode} alt="" /> */}
               </div>
               <div>
                 <p>Go to your Bkash app</p>
-                <p>Select " Payment " Option</p>
+                <p>Select " Send Money " Option</p>
                 <p>
                   Input "{" "}
-                  <span className="font-medium text-pink-500">01404431331</span>{" "}
-                  " as merchant number or Scan QR code
+                  <span className="font-medium text-pink-500">01853870017</span>{" "}
+                  " as recipient's number
                 </p>
                 <p>Input the due amount and press next</p>
-                <p>
-                  Put your order ID as reference number and make the payment
-                </p>
+                <p>Put your order ID as reference number and proceed.</p>
                 <p>
                   We will check the transaction history and update your order
                 </p>
@@ -105,21 +103,22 @@ const ThankYou = () => {
             <div className="xl:flex flex-row-reverse items-center justify-between gap-2">
               <div>
                 <img className="w-24 mx-auto" src={nagadLogo} alt="" />
-                <img className="w-36 mx-auto" src={qrCode} alt="" />
+                {/* <img className="w-36 mx-auto" src={qrCode} alt="" /> */}
               </div>
               <div>
                 <p>Go to your Nagad app</p>
-                <p>Select " Merchant Pay " Option</p>
+                <p>Select " Send money " Option</p>
                 <p>
                   Input "{" "}
                   <span className="font-medium text-orange-500">
-                    01404431331
+                    01853870017
                   </span>{" "}
-                  " as merchant number or Scan QR code
+                  " as number of the recipient
                 </p>
                 <p>Input the due amount and press next</p>
                 <p>
-                  Put your order ID as reference number and make the payment
+                  Put your order ID as reference number and confirm the
+                  transaction
                 </p>
                 <p>
                   We will check the transaction history and update your order
