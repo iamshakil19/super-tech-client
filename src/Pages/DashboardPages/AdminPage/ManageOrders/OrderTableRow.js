@@ -40,7 +40,6 @@ const OrderTableRow = ({ i, order }) => {
   const handleStatus = (e, id) => {
     const status = e.target.value;
     if (e.target.value === "processing") {
-      console.log("processing");
       return setProcessingModal(true);
     }
     updateOrderStatus({

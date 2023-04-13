@@ -155,7 +155,6 @@ const ordersSlice = createSlice({
       let { total, quantity } = state.cart.reduce(
         (cartTotal, cartItem) => {
           const { price, quantity, colorCost, sizeCost, discount } = cartItem;
-          console.log(JSON.parse(JSON.stringify(cartItem)));
           const itemTotal = Math.floor(
             (price + colorCost + sizeCost) * quantity -
               (discount / 100) * ((price + colorCost + sizeCost) * quantity)

@@ -34,7 +34,6 @@ const NewArrivalProductSlider = () => {
     error,
   } = useGetAllProductsQuery(queryString);
   const { products } = allProducts?.data || {};
-  console.log(error);
   let content = null;
 
   if (isLoading) {

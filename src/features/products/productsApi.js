@@ -42,7 +42,6 @@ export const productsApi = apiSlice.injectEndpoints({
             )
           );
         } catch (error) {
-          console.log(error);
         }
       },
     }),
@@ -92,7 +91,6 @@ export const productsApi = apiSlice.injectEndpoints({
           }
         } catch (error) {
           toast.error("Something went wrong");
-          console.log(error);
         }
       },
     }),
@@ -141,7 +139,6 @@ export const productsApi = apiSlice.injectEndpoints({
             )
           );
         } catch (err) {
-          console.log(err);
         }
       },
     }),

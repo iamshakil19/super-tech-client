@@ -151,7 +151,6 @@ export const userApi = apiSlice.injectEndpoints({
             )
           );
         } catch (error) {
-          console.log(error);
         }
       },
     }),

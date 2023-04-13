@@ -6,6 +6,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
 import numberWithComma from "../../../../Utils/numberWithComa";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { FcProcess } from "react-icons/fc";
 import moment from "moment";
 const OrderDetailsModal = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ const OrderDetailsModal = () => {
               <p>
                 {status === "completed" && (
                   <BsFillCheckCircleFill size={25} className="text-green-500" />
+                )}
+                {status === "processing" && (
+                  <FcProcess size={25} className="text-green-500" />
                 )}
                 {status === "canceled" && (
                   <MdCancel size={28} className="text-red-500" />

@@ -11,7 +11,6 @@ import PageTitle from "../../../Utils/PageTitle";
 import { useUpdateUserMutation } from "../../../features/user/usersApi";
 const Information = () => {
   const [isSaveInfo, setSaveInfo] = useState(false);
-  console.log(isSaveInfo);
   const [updateUser, { isError, isLoading, isSuccess }] =
     useUpdateUserMutation();
   const navigate = useNavigate();
@@ -73,7 +72,6 @@ const Information = () => {
     dispatch(handleContactInformation(data));
     navigate("/checkouts/shipping");
     if (isSaveInfo) {
-      console.log(data);
       updateUser({ id: _id, data });
     }
   };

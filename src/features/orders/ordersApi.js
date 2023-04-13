@@ -26,7 +26,6 @@ export const orderApi = apiSlice.injectEndpoints({
         body: data,
       }),
       async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
-        console.log(arg);
         const { page, limit, sort, status } = getState().orders.orderFilter;
         let queryString = `page=${page}&limit=${limit}&sort=${sort}`;
         if (status) {
@@ -87,7 +86,6 @@ export const orderApi = apiSlice.injectEndpoints({
             )
           );
         } catch (error) {
-          console.log(error);
         }
       },
     }),
@@ -102,7 +100,7 @@ export const orderApi = apiSlice.injectEndpoints({
         method: "PATCH",
       }),
       async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
-        console.log(arg);
+
         try {
           const result = await queryFulfilled;
           if (result?.data?.data?.modifiedCount > 0) {
@@ -111,8 +109,6 @@ export const orderApi = apiSlice.injectEndpoints({
                 "getInvoiceNo",
                 undefined,
                 (draft) => {
-                  console.log(JSON.parse(JSON.stringify(draft)));
-
                   draft.data.invoiceNo = draft.data.invoiceNo + 1;
                 }
               )

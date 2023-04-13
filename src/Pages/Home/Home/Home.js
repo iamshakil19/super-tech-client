@@ -7,7 +7,7 @@ import Companies from "../Companies/Companies";
 import AboutProduct from "../AboutProduct/AboutProduct";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";
 import PageTitle from "../../../Utils/PageTitle";
-
+import MessengerCustomerChat from "react-messenger-customer-chat";
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,6 +22,10 @@ const Home = () => {
       <Companies />
       <AboutProduct />
       <WhySuperTech />
+      <MessengerCustomerChat
+        pageId="104781992532592"
+        appId="172220599059465"
+      />
     </div>
   );
 };

@@ -18,7 +18,6 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const { cart, cartTotalAmount } = useSelector((state) => state.orders);
-  console.log(cart);
   useEffect(() => {
     dispatch(getTotals());
   }, [dispatch, cart]);
