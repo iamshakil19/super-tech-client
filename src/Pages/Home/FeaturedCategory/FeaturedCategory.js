@@ -38,7 +38,7 @@ const FeaturedCategory = () => {
       <h1 className="text-center poppins mt-10 lg:mt-14 text-2xl lg:text-3xl text-black font-semibold">
         Featured Category
       </h1>
-      <p className="text-center text-sm md:text-[15px] poppins text-black mt-2">
+      <p className="text-center px-2 text-sm md:text-[15px] poppins text-black mt-2">
         Get Your Desired Product From Featured Category!
       </p>
 

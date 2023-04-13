@@ -18,7 +18,7 @@ const Home = () => {
       <MainSlider />
       <FeaturedCategory />
       <HomeProduct />
-      <Policy />
+      {/* <Policy /> */}
       <Companies />
       <AboutProduct />
       <WhySuperTech />

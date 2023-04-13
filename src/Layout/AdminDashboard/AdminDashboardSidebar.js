@@ -7,14 +7,13 @@ import localAvatar from "../../Assets/Others/avatar.png";
 import { MdLogout } from "react-icons/md";
 import { userLoggedOut } from "../../features/auth/authSlice";
 import { useUpdateAvatarMutation } from "../../features/user/usersApi";
-const AdminDashboardSidebar = ({ open, setOpen }) => {
+const AdminDashboardSidebar = () => {
   const location = useLocation();
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(userLoggedOut());
     localStorage.removeItem("auth");
-    setOpen(false);
   };
 
   const [updateAvatar, { isSuccess }] = useUpdateAvatarMutation();
@@ -27,19 +26,9 @@ const AdminDashboardSidebar = ({ open, setOpen }) => {
   return (
     <div
       className={`
-      bg-black w-72 overflow-y-auto h-screen fixed lg:sticky top-0 p-3 duration-500 transition-all ease-in-out z-50 text-white poppins ${
-        !open ? "left-0" : "left-[-100%]"
-      }`}
+      bg-black w-72 overflow-y-auto h-screen top-0 p-3 duration-500 transition-all ease-in-out z-50 text-white poppins`}
     >
-      <div className="flex justify-end lg:hidden">
-        <div className="py-2">
-          <AiOutlineCloseCircle
-            className="text-3xl cursor-pointer mr-4"
-            onClick={() => setOpen(!open)}
-          />
-        </div>
-      </div>
-      <h2 className="text-xl lg:mt-5 mb-4 font-bold font-serif">
+      <h2 className="text-xl mt-5 mb-4 font-bold font-serif">
         Super Tech Dashboard
       </h2>
 

@@ -19,7 +19,7 @@ const HomeProduct = () => {
           <div className="flex space-x-1 rounded-xl p-1 max-w-md mx-auto mb-4">
             <button
               onClick={handleRecent}
-              className={`w-full py-2.5 text-xl poppins font-semibold ${
+              className={`w-full py-2.5 text-lg md:text-xl poppins font-semibold ${
                 isSelected
                   ? " text-black  border-b border-black transition-all duration-500 ease-in-out"
                   : "text-black "
@@ -29,7 +29,7 @@ const HomeProduct = () => {
             </button>
             <button
               onClick={handlePopular}
-              className={` w-full py-2.5 poppins text-xl font-semibold ${
+              className={` w-full py-2.5 poppins text-lg md:text-xl font-semibold ${
                 !isSelected
                   ? "text-black border-b border-black transition-all duration-500 ease-in-out"
                   : "text-black"

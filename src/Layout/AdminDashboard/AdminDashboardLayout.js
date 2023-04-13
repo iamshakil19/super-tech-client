@@ -1,30 +1,40 @@
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import AdminDashboardSidebar from "./AdminDashboardSidebar";
 import PageTitle from "../../Utils/PageTitle";
 
 const AdminDashboardLayout = () => {
-  const [open, setOpen] = useState(true);
   return (
     <div>
       <PageTitle
         title={"Dashboard - Super Tech Furniture & Interior"}
       ></PageTitle>
-      <section className="lg:flex gap-5 bg-[#F2F3F8]">
-        <div>
-          <AdminDashboardSidebar open={open} setOpen={setOpen} />
-        </div>
-        <div className="w-full p-5">
-          <div className="py-3 ml-4 lg:hidden">
+
+      <div className="drawer drawer-mobile">
+        <input
+          id="adminDashboardSidebar"
+          type="checkbox"
+          className="drawer-toggle"
+        />
+        <div className="drawer-content p-5">
+
+          <label htmlFor="adminDashboardSidebar" className="py-3 ml-4 lg:hidden">
             <HiMenuAlt3
               className="text-3xl cursor-pointer"
-              onClick={() => setOpen(!open)}
             />
-          </div>
+          </label>
+
           <Outlet />
         </div>
-      </section>
+        <div className="drawer-side ">
+          <label
+            htmlFor="adminDashboardSidebar"
+            className="drawer-overlay"
+          ></label>
+          <AdminDashboardSidebar/>
+        </div>
+      </div>
     </div>
   );
 };
