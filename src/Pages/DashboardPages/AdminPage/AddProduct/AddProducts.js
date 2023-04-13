@@ -32,14 +32,23 @@ const AddProducts = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(error?.data?.message, { id: "addProducts" });
+      if (error?.data?.error) {
+        toast.error("Use unique name", {
+          id: "addProducts",
+        });
+      }
+    }
+    if (isError) {
+      if (!error?.data?.error) {
+        toast.error(error?.data?.message, { id: "addProducts" });
+      }
     }
     if (isSuccess) {
       toast.success("Products added", { id: "addProducts" });
       reset();
     }
-  }, [isError, error?.data?.message, isSuccess, reset]);
-
+  }, [isError, error?.data?.message, isSuccess, reset, error?.data?.error]);
+  console.log(error);
   const onSubmit = (data) => {
     const formData = new FormData();
     const { primaryImage, extraImages, category, ...others } = data;

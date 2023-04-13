@@ -49,7 +49,7 @@ const AboutUs = () => {
         </p>
 
         <p className="text-2xl font-bold font-serif mt-5">Our Aims:</p>
-        <p className="mt-5 text-justify">
+        <p className="mt-3 text-justify">
           <span className="text-lg font-semibold">MISSION:</span> Guided by
           relentless focus, we strive to achieve our mission by taking constant
           critical initiatives. Delivering operational excellence in every

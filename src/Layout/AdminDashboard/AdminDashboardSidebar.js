@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { adminSidebarMenus } from "../../Utils/LocalData";
 import { AiOutlineCamera, AiOutlineCloseCircle } from "react-icons/ai";
@@ -7,6 +7,7 @@ import localAvatar from "../../Assets/Others/avatar.png";
 import { MdLogout } from "react-icons/md";
 import { userLoggedOut } from "../../features/auth/authSlice";
 import { useUpdateAvatarMutation } from "../../features/user/usersApi";
+import { toast } from "react-hot-toast";
 const AdminDashboardSidebar = () => {
   const location = useLocation();
   const { user } = useSelector((state) => state.auth);
@@ -16,12 +17,22 @@ const AdminDashboardSidebar = () => {
     localStorage.removeItem("auth");
   };
 
-  const [updateAvatar, { isSuccess }] = useUpdateAvatarMutation();
+  const [updateAvatar, { isSuccess, isError, error }] =
+    useUpdateAvatarMutation();
   const handleAvatar = (e) => {
     const formData = new FormData();
     formData.append("avatar", e.target.files[0]);
     updateAvatar({ id: user._id, formData });
   };
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error?.data?.message, { id: "adminAvatar" });
+    }
+    if (isSuccess) {
+      toast.success("Avatar successfully updated", { id: "adminAvatar" });
+    }
+  }, [isError, error?.data?.message, isSuccess]);
 
   return (
     <div

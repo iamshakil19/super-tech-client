@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import localAvatar from "../../../../Assets/Others/avatar.png";
 import { FiEdit } from "react-icons/fi";
 import ProfileInfo from "./ProfileInfo";
@@ -6,16 +6,27 @@ import ProfileInfoEdit from "./ProfileInfoEdit";
 import { useSelector } from "react-redux";
 import { useUpdateAvatarMutation } from "../../../../features/user/usersApi";
 import { AiOutlineCamera } from "react-icons/ai";
+import { toast } from "react-hot-toast";
 const Profile = () => {
   const [isEditable, setEditable] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const { _id } = user || {};
-  const [updateAvatar, { isSuccess }] = useUpdateAvatarMutation();
+  const [updateAvatar, { isSuccess, isError, error }] =
+    useUpdateAvatarMutation();
   const handleAvatar = (e) => {
     const formData = new FormData();
     formData.append("avatar", e.target.files[0]);
     updateAvatar({ id: _id, formData });
   };
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error?.data?.message, { id: "adminAvatar" });
+    }
+    if (isSuccess) {
+      toast.success("Avatar successfully updated", { id: "adminAvatar" });
+    }
+  }, [isError, error?.data?.message, isSuccess]);
   return (
     <div>
       <div className="flex justify-center items-center overflow-auto poppins p-5">
