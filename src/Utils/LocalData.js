@@ -30,12 +30,16 @@ export const footerLinks = [
       path: "/terms-of-service",
     },
     {
-      name: "Return & Warranty Policy",
-      path: "/return-warranty-policy",
+      name: "Warranty Policy",
+      path: "/warranty-policy",
     },
     {
-      name: "privacy policy",
-      path: "/privacy-policy",
+      name: "Shipping Policy",
+      path: "/shipping-policy",
+    },
+    {
+      name: "Exchange & Refund",
+      path: "/exchange-refund",
     },
   ],
   [
@@ -52,6 +56,14 @@ export const footerLinks = [
     {
       name: "Contact Us",
       path: "/contact-us",
+    },
+    {
+      name: "privacy policy",
+      path: "/privacy-policy",
+    },
+    {
+      name: "FAQS",
+      path: "/faqs",
     },
   ],
 ];

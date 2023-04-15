@@ -8,11 +8,11 @@ const ReturnAndWarrantyPolicy = () => {
   return (
     <div className="poppins my-10 px-5">
       <PageTitle
-        title={"Return & Warranty Policy - Super Tech Furniture & Interior"}
+        title={"Warranty Policy - Super Tech Furniture & Interior"}
       ></PageTitle>
       <div className="max-w-3xl mx-auto">
         <h3 className="lg:text-3xl text-xl text-center font-serif font-semibold text-black">
-          Return and Warranty Policy
+          Warranty Policy
         </h3>
         <p className="mt-10">
           In case the Furniture purchaused from us for some reason, dose not

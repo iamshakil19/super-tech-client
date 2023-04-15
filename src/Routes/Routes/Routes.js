@@ -36,6 +36,9 @@ import TermsOfService from "../../Pages/TermsOfService/TermsOfService";
 import ReturnAndWarrantyPolicy from "../../Pages/ReturnAndWarrantyPolicy/ReturnAndWarrantyPolicy";
 import PrivacyPolicy from "../../Pages/PrivacyPolicy/PrivacyPolicy";
 import LicenseAndCertificates from "../../Pages/LicenseAndCertificates/LicenseAndCertificates";
+import ShippingPolicy from "../../Pages/ShippingPolicy/ShippingPolicy";
+import ExchangeRefund from "../../Pages/ExchangeRefund/ExchangeRefund";
+import Faqs from "../../Pages/Faqs/Faqs";
 
 const routes = createBrowserRouter([
   {
@@ -87,8 +90,20 @@ const routes = createBrowserRouter([
         element: <TermsOfService />,
       },
       {
-        path: "/return-warranty-policy",
+        path: "/warranty-policy",
         element: <ReturnAndWarrantyPolicy />,
+      },
+      {
+        path: "/shipping-policy",
+        element: <ShippingPolicy />,
+      },
+      {
+        path: "/exchange-refund",
+        element: <ExchangeRefund />,
+      },
+      {
+        path: "/faqs",
+        element: <Faqs />,
       },
       {
         path: "/privacy-policy",
