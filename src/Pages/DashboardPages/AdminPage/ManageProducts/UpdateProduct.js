@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { IoMdStar } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -28,22 +28,33 @@ const UpdateProduct = () => {
     description: initialDescription,
     category: initialCategory,
     discount: initialDiscount,
+    sizes: initialSizes,
   } = updateProductData?.data || {};
-
   const [updateProduct, { isSuccess }] = useUpdateProductMutation();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-    setValue,
+    control,
   } = useForm();
+
+  const {
+    fields: sizeFields,
+    append: sizeAppend,
+    remove: sizeRemove,
+  } = useFieldArray({ control, name: "sizes" });
+
   const onSubmit = (data) => {
     const { category, ...others } = data;
     const finalCategory = category.split(",")[1];
     const finalData = { ...others, category: finalCategory };
+    console.log(finalData);
+
     updateProduct({ id, data: finalData });
   };
+
   const subCategoryFilter = subCategories?.filter(
     (subCategory) =>
       Number(subCategory.id) === Number(selectedCategory.split(",")[0])
@@ -70,7 +81,7 @@ const UpdateProduct = () => {
     content = (
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-2xl mx-auto lg:mt-10 border border-gray-300 px-3 py-10 rounded-md shadow-md"
+        className="w-full max-w-2xl mx-auto lg:mt-10 border border-gray-300 bg-slate-100 px-3 py-10 rounded-md shadow-md"
       >
         <h2 className=" text-2xl font-semibold mb-5 ">Update Product</h2>
         <div className="">
@@ -265,6 +276,70 @@ const UpdateProduct = () => {
               )}
             </div>
           </section>
+
+          {initialSizes?.map((size, index) => (
+            <section
+              key={index}
+              className="sm:flex items-center justify-between gap-5 mb-4"
+            >
+              <div className="flex flex-col w-full">
+                <label className="mb-2 text-base font-semibold">Size</label>
+                <input
+                  type="text"
+                  defaultValue={size.sizeName}
+                  placeholder="Type Product Size"
+                  className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    errors?.sizes?.[index]?.sizeName?.message
+                      ? " border-red-500 focus:border-red-500"
+                      : "focus:border-slate-700 border-slate-300"
+                  }`}
+                  {...register(`sizes[${index}].sizeName`, {
+                    required: {
+                      value: true,
+                      message: "Size Name is required",
+                    },
+                  })}
+                />
+                {errors?.sizes?.[index]?.sizeName?.message && (
+                  <span className="label-text-alt text-red-500 text-sm ">
+                    {errors?.sizes?.[index]?.sizeName?.message}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex flex-col w-full">
+                <label className="mb-2 text-base font-semibold">
+                  Extra Price
+                </label>
+                <input
+                  type="number"
+                  defaultValue={size.extraPrice}
+                  placeholder="Type Product Size Price"
+                  className={`border block outline-none py-2 px-3 w-full rounded-md drop-shadow-md focus:drop-shadow-none ${
+                    errors?.sizes?.[index]?.extraPrice
+                      ? " border-red-500 focus:border-red-500"
+                      : "focus:border-slate-700 border-slate-300"
+                  }`}
+                  {...register(`sizes[${index}].extraPrice`, {
+                    required: {
+                      value: true,
+                      message: "Size extra price is required",
+                    },
+                    min: {
+                      value: 0,
+                      message: "Price can't be negative",
+                    },
+                    valueAsNumber: true,
+                  })}
+                />
+                {errors.extraPrice && (
+                  <span className="label-text-alt text-red-500 text-sm ">
+                    {errors.extraPrice.message}
+                  </span>
+                )}
+              </div>
+            </section>
+          ))}
 
           <div className="flex flex-col w-full">
             <label

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import image from "../../../Assets/Others/chair.jpg";
+import chair from "../../../Assets/Others/chair.jpg";
 
 const AboutProduct = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const AboutProduct = () => {
         <div>
           <img
             className="w-[500px] mx-auto md:float-right"
-            src={image}
+            src={chair}
             alt=""
           />
         </div>

@@ -39,7 +39,7 @@ const NewArrivalProductSlider = () => {
   if (isLoading) {
     content = <Loading />;
   } else if (!isLoading && isError) {
-    content = <Error message={JSON.stringify(error)} />;
+    content = <Error message="There was an error" />;
   } else if (!isLoading && !isError && products.length === 0) {
     content = <p>No product found </p>;
   } else if (!isLoading && !isError && products.length > 0) {
