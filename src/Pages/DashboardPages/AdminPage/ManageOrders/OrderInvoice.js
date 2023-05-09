@@ -20,7 +20,7 @@ const OrderInvoice = ({ componentRef, order }) => {
 
   return (
     <div
-      className="p-10 container mx-auto poppins text-black"
+      className="p-5 container mx-auto poppins text-black"
       ref={componentRef}
     >
       <div>
@@ -184,7 +184,7 @@ const OrderInvoice = ({ componentRef, order }) => {
         <section className="mt-32">
           <p className="flex justify-around items-center">
             <span className="border-t border-black">Receiver's Signature</span>
-            <span className="border-t border-black">Checked By</span>
+            <span className="border-t border-black">Authorized By</span>
           </p>
         </section>
       </div>
@@ -192,7 +192,8 @@ const OrderInvoice = ({ componentRef, order }) => {
         {`@media print {
           @page {
             size: auto;
-            margin-top: 150px;
+            margin-top: 130px;
+            margin-bottom: 96px;
           }
         }`}
       </style>

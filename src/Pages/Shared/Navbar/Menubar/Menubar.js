@@ -144,7 +144,7 @@ const Menubar = ({ setSearchOpen, searchOpen }) => {
           </li>
           <li>
             <Link
-              to="/all-collection"
+              to="/collections"
               className="py-4 px-4 inline-block text-sm whitespace-nowrap"
             >
               All Collection
