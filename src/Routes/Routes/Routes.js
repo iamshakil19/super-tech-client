@@ -306,6 +306,10 @@ const routes = createBrowserRouter([
         element: <Product />,
       },
       {
+        path: "/collections/table/conference-table",
+        element: <Product />,
+      },
+      {
         path: "/collections/storage/drawer",
         element: <Product />,
       },

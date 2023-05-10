@@ -68,6 +68,7 @@ const ManageProductCard = ({ product }) => {
                 {subCategory === "executiveTable" && "executive Table"}
                 {subCategory === "managerTable" && "manager Table"}
                 {subCategory === "computerTable" && "computer Table"}
+                {subCategory === "conferenceTable" && "Conference Table"}
                 {subCategory === "drawer" && "drawer"}
                 {subCategory === "sideCabinet" && "side Cabinet"}
                 {subCategory === "fileCabinet" && "file Cabinet"}

@@ -71,6 +71,10 @@ export const links = [
             name: "Computer Table",
             link: "/collections/table/computer-table",
           },
+          {
+            name: "Conference Table",
+            link: "/collections/table/conference-table",
+          },
         ],
       },
     ],

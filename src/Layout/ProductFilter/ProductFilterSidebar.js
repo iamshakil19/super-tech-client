@@ -107,6 +107,8 @@ const ProductFilterSidebar = () => {
     queryString = `category=table&subCategory=managerTable`;
   } else if (location.pathname === "/collections/table/computer-table") {
     queryString = `category=table&subCategory=computerTable`;
+  } else if (location.pathname === "/collections/table/conference-table") {
+    queryString = `category=table&subCategory=conferenceTable`;
   }
 
   if (location.pathname === "/collections/storage") {
