@@ -85,8 +85,7 @@ export const orderApi = apiSlice.injectEndpoints({
               }
             )
           );
-        } catch (error) {
-        }
+        } catch (error) {}
       },
     }),
     getInvoiceNo: builder.query({
@@ -100,7 +99,6 @@ export const orderApi = apiSlice.injectEndpoints({
         method: "PATCH",
       }),
       async onQueryStarted(arg, { dispatch, getState, queryFulfilled }) {
-
         try {
           const result = await queryFulfilled;
           if (result?.data?.data?.modifiedCount > 0) {

@@ -48,6 +48,7 @@ const AddProducts = () => {
       reset();
     }
   }, [isError, error?.data?.message, isSuccess, reset, error?.data?.error]);
+
   const onSubmit = (data) => {
     const formData = new FormData();
     const { primaryImage, extraImages, category, ...others } = data;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import WhySuperTech from "../../Shared/WhySuperTech/WhySuperTech";

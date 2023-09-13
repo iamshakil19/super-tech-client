@@ -41,8 +41,7 @@ export const productsApi = apiSlice.injectEndpoints({
               }
             )
           );
-        } catch (error) {
-        }
+        } catch (error) {}
       },
     }),
     updateProduct: builder.mutation({
@@ -138,8 +137,7 @@ export const productsApi = apiSlice.injectEndpoints({
               }
             )
           );
-        } catch (err) {
-        }
+        } catch (err) {}
       },
     }),
   }),

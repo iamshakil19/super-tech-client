@@ -126,6 +126,7 @@ const ordersSlice = createSlice({
       );
       if (state.cart[itemIndex].quantity > 1) {
         state.cart[itemIndex].quantity -= 1;
+        
         toast.error(`Decreased ${action.payload.name} cart quantity`, {
           id: "cartSlice",
           position: "bottom-center",

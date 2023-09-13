@@ -31,11 +31,13 @@ const Login = () => {
       toast.error(resError?.data?.error, { id: "login" });
     }
   }, [resError]);
+  
   useEffect(() => {
     if (isSuccess) {
       navigate(from);
     }
   }, [from, isSuccess, navigate]);
+  
   const onSubmit = (data) => {
     login(data);
   };

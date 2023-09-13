@@ -24,5 +24,5 @@ export const apiSlice = createApi({
     }
     return result;
   },
-  endpoints: (builder) => ({}),
+  endpoints: () => ({}),
 });

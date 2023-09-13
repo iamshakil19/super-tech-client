@@ -24,7 +24,7 @@ const UserDashboardSidebar = ({ open, setOpen }) => {
         </div>
       </div>
       <h2 className="text-xl lg:mt-5 mb-5 font-bold text-center font-serif ">
-        Shakil Ahmed
+        Dashboard
       </h2>
       <div className="mt-4 flex  flex-col gap-4 relative">
         {userSidebarMenus?.map((menu, i) => (
