@@ -21,14 +21,14 @@ const MainSlider = () => {
       showIndicators={true}
       emulateTouch={true}
     >
-      <div className="">
+      <div>
+        <img className="h-96 lg:h-[500px] object-cover" src={img3} alt="" />
+      </div>
+      <div>
         <img className="h-96 lg:h-[500px] object-cover" src={img1} alt="" />
       </div>
       <div>
         <img className="h-96 lg:h-[500px] object-cover" src={img2} alt="" />
-      </div>
-      <div>
-        <img className="h-96 lg:h-[500px] object-cover" src={img3} alt="" />
       </div>
       <div>
         <img className="h-96 lg:h-[500px] object-cover" src={img4} alt="" />
